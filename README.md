@@ -1,6 +1,16 @@
 # AIB
 elenco script per AIB
-``` /home/meteo/script/fwi/alfuoco_roberto_dmod.sh: script principale in crontab
-                           batch-grass6.sh: script lancio grass6
-                          /conversione_img_neve/neve_operativo.sh: conversione copertura nevosa via grass6```
+
+Struttura directory
+## script
+alfuoco_roberto_dmod.sh
+batch-grass6.sh
+### interpolazione
+oi_fwi.sh
+## programmi
+### interpolazione statistica/oi_fwi/applicativi
+*tutti i file binari per l'interpolazione*
+#### interpolazione statistica/oi_fwi/applicativi/log
+*log per tipologia: precipitazione, radiazione,temperatura, umiditarelativa, vento*
+### interpolazione statistica/oi_fwi/info
                       
