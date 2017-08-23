@@ -6,24 +6,11 @@ La procedura per la creazione dei file e delle immagini necessarie alla produzio
 
 L'organizzazione degli script e dei programmi è la seguente (_nota: estratta solo la parte in milanone che corrisponde agli script; i programmi eseguibili e i relativi sorgenti non sono compresi in questo repository_)
 
-**./script**
+**./script** contiene gli script principali e quello lanciato da crontab
 
-alfuoco_roberto_dmod.sh
-batch-grass6.sh
+**./script/interpolazione** contiene gli script e i programmi per l'interpolazione statistica
 
-**./script/interpolazione**
+**./programmi/getdata** contiene gli script per l'acquisizione dei dati dal dBMETEO
 
-oi_fwi.sh
-
-**./script/interpolazione/programmi/**
-
-**./script/interpolazione/oi_fwi/applicativi**
-
-*tutti i file binari per l'interpolazione*
-
-**./script/interpolazione/oi_fwi/applicativi/log**
-
-*log per tipologia: precipitazione, radiazione,temperatura, umiditarelativa, vento*
-
-**./script/interpolazione/oi_fwi/info**
+**./conversione_img_neve** script di conversione del file immagine satellitare copertura nevosa
                       
