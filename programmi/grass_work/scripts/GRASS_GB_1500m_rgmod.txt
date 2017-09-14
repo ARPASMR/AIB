@@ -1,0 +1,311 @@
+#!/bin/bash
+####################  GRASS_GB_1500m_rgmod.txt  ###################
+#                                                                 # 
+#  MARIA RANCI - 1 APRILE 2009                                    #
+#  MARIA RANCI - 23 NOVEMBRE 2009  modifiche per raccordarsi      #
+#                con codice fortran                               #
+#  DAVIDE GALERI - MARZO 2011 modifiche per neve e IDI su script  #
+#		   meteo e aggiunta trattamento -7557             #
+#                  per codice f90                                 #
+#  DAVIDE GALERI - MAGGIO/GIUGNO 2011 aggiunta ciclo maschere     #
+#                  per eliminare errore su aree con tutto NULL    #
+#  R.GIMALDELLI - MARZO 2012 correzione trattamento nearest       #     
+#                 neighbour                                       #
+#  DAVIDE GALERI - MARZO 2012 correzione calcolo medie su dd del  #
+#                  vettoriale AO                                  #
+#  DAVIDE GALERI - MARZO 2013adattamento a Milanone Virtuale      #
+#                                                                 #
+###################################################################
+#
+ echo "indice: $nomeindice"
+ echo "IERI: $dataieri"
+# echo "OGGI: $dataoggi"
+# echo "DOMANI: $datadomani"
+MESE=${dataieri:4:2}
+#MESE=$(date +%m)
+echo "mese: " $MESE ", indice " $nomeindice
+#
+###################################################################
+#  definizione di giorno, mese e anno per scrivere date nei titoli:
+ANNOieri=${dataieri:0:4}
+MESEieri=${dataieri:4:2}
+GIORNOieri=${dataieri:6:2}
+###################################################################
+#
+grezzi=grezzi
+mask=mask
+AO=AO
+legenda=legenda
+underscore=_
+# Paths:
+DIR_METEO_ANA=/home/meteo/programmi/fwi_grid/meteo/ana
+DIR_ANA=/home/meteo/programmi/fwi_grid/indici/ana
+#DIR_IMG_PNG=/home/meteo/programmi/fwi_grid/immagini/png
+DIR_ANA_IMG=/home/meteo/programmi/fwi_grid/immagini/ana
+DIR_GRASS=/home/meteo/programmi/grass_work/scripts
+DIR_STATS=/home/meteo/programmi/fwi_grid/statistiche_cfs
+dir_tabella=/home/meteo/programmi/fwi_grid/tabella
+# indici txt
+fileinput=$DIR_ANA/$nomeindice$underscore$grezzi$underscore$dataieri.txt
+fileoutmasktxt=$DIR_ANA/$nomeindice$underscore$mask$underscore$dataieri.txt
+fileouttxt=$DIR_ANA/$nomeindice$underscore$dataieri.txt
+# file txt statistiche
+statitxt=$DIR_STATS/$nomeindice$underscore$dataieri.txt
+# Png
+fileoutmaskpng=$DIR_ANA_IMG/$nomeindice$underscore$mask$underscore$dataieri.png
+fileoutAOpng=$DIR_ANA_IMG/$nomeindice$underscore$AO$underscore$dataieri.png
+# Mappe gif
+fileoutmaskgif=$DIR_ANA_IMG/$nomeindice$underscore$mask$underscore$dataieri.gif
+fileoutAOlegendagif=$DIR_ANA_IMG/$nomeindice$underscore$legenda$underscore$dataieri.gif
+# ini
+filescale=/home/meteo/programmi/fwi_grid/ini/fwiscale.ini
+#
+colore1=0:100:0
+colore2=50:205:50
+colore3=255:255:0
+colore4=255:127:0
+colore5=255:0:0
+colore6=139:35:35
+#
+#####################################################################
+echo "impostazione regione di calcolo"            
+g.region -d 
+#
+echo $fileinput
+#INDICE
+echo "importazione raster dell'indice"
+g.remove rast=indici_tmp
+r.in.gdal -o  input=$fileinput output=indici_tmp
+#
+# calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557)
+r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
+#
+#####################################################################
+# tolgo dall indice i punti con IDI basso
+g.remove rast=indici_bucato
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+#  TAPPA BUCHI INDICE DOVE IDI =0 CON NEAREST NEIGHBOUR 
+# moltiplica * 1000 (perche' r.surf.idw approssima all'unita') 
+g.remove rast=indici_permille
+r.mapcalculator amap=indici_bucato formula="A*1000" outfile=indici_permille 
+# ricalcola con nearest neighbour 
+g.remove rast=indici_calc_permille
+r.surf.idw input=indici_permille  output=indici_calc_permille npoints=1 
+# divide * 1000 
+g.remove rast=indici_calc
+r.mapcalculator amap=indici_calc_permille formula="A/1000" outfile=indici_calc 
+
+# maschera su regione 
+r.mask input=AO
+r.mapcalculator amap=indici_calc formula="A" outfile=indici_calc --o
+g.remove rast=MASK
+
+# creazione indici con valori -7557 nei punti di neve, per f90
+g.remove rast=indiciout
+r.mapcalculator amap=indici_calc bmap=indici_tmp formula="if(B<0,B,A)" outfile=indiciout
+echo "Esportazione in file di testo"
+r.out.arc input=indiciout output=$fileouttxt
+
+#
+#####################################################################
+# imposta la cop nevosa come maschera di lavoro dei raster
+r.mask input=neve maskcats=1
+# calcola nuova mappa dell'indice (solo dove non c'e' neve)
+g.remove rast=indici_IDI_neve
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
+g.remove rast=MASK
+#
+#####################################################################
+#
+echo "maschera con aree non bruciabili"
+#r.mask input=AB maskcats=1
+# calcola nuova mappa dell'indice mascherato
+g.remove rast=indici_IDI_neve_bruc
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+#g.remove rast=MASK
+#
+#####################################################################
+#
+g.region -d 
+echo "esportazione in file di testo"
+r.out.arc input=indici_IDI_neve_bruc output=$fileoutmasktxt
+#####################################################################
+#
+echo "salvataggio immagini"
+ export GRASS_PNGFILE=$fileoutmaskpng
+ d.mon start=PNG
+ d.mon select=PNG
+ r.colors map=indici_IDI_neve_bruc color=fwi$underscore$nomeindice$underscore$MESE 
+ d.rast map=indici_IDI_neve_bruc
+ d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+# d.out.file output=$fileoutputpng res=2 format=png compression=0
+ d.mon stop=PNG
+convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
+#
+# aggiunta del titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"$nomeindice - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titoloindice.gif
+#convert -size 1380x960 xc:white \
+convert -size 700x500 xc:white \
+        -draw "image over 50,25   0,0 '$fileoutmaskpng'  "             \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titoloindice.gif'      " $fileoutmaskgif 
+#
+#####################################################################
+#                                                                   #
+#####################################################################
+#
+echo "legge scale dell'indice"
+#-----------------------------------------------------
+#
+# CONTROLLO SU ESISTENZA FILE 
+   if [ ! -e $filescale ]; then
+  	echo "$filescale : non esiste"
+  	exit 1
+   elif [ ! -r $filescale ]; then
+  	echo "$filescale: errore in lettura"
+  	exit 2
+   fi
+
+#
+# INDIVIDUO INDICE
+ case "$nomeindice" in
+# trova corrispondenza esatta in fwiscale.ini e determina il numero di riga
+  "mc")   numriga=`grep -nx "MC"   $filescale | awk -F : '{print $1}'`;;
+  "ffmc") numriga=`grep -nx "FFMC" $filescale | awk -F : '{print $1}'`;;
+  "dmc")  numriga=`grep -nx "DMC"  $filescale | awk -F : '{print $1}'`;;
+  "dc")   numriga=`grep -nx "DC"   $filescale | awk -F : '{print $1}'`;;
+  "isi")  numriga=`grep -nx "ISI"  $filescale | awk -F : '{print $1}'`;;
+  "bui")  numriga=`grep -nx "BUI"  $filescale | awk -F : '{print $1}'`;;
+  "fwi")  numriga=`grep -nx "FWI"  $filescale | awk -F : '{print $1}'`;;
+  "dsr")  numriga=`grep -nx "DSR"  $filescale | awk -F : '{print $1}'`;;
+  *) echo $nomeindice " indice non riconosciuto " ;;
+  *) exit 9 ;;
+ esac
+#echo numriga=$numriga
+#
+# INDIVIDUO MESE 
+X=${MESE#0}
+punta=$((X+1))
+#
+# RICAVO SOGLIE
+ aux=$((numriga+1))
+L1=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+2))
+L2=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+3))
+L3=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+4))
+L4=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+5))
+L5=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+echo "L1="$L1" | "
+echo "L2="$L2" | "
+echo "L3="$L3" | "
+echo "L4="$L4" | "
+echo "L5="$L5" | "
+#-------------------------------------------------------
+
+echo "Aggregazione su Aree Omogenee e salvataggio immagini"
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+v.db.dropcol map=AO layer=1 column=FI_n
+v.db.dropcol map=AO layer=1 column=FI_min
+v.db.dropcol map=AO layer=1 column=FI_max
+v.db.dropcol map=AO layer=1 column=FI_mean
+v.db.dropcol map=AO layer=1 column=FI_range
+v.db.dropcol map=AO layer=1 column=FI_stddev
+v.db.dropcol map=AO layer=1 column=FI_varianc
+v.db.dropcol map=AO layer=1 column=FI_cf_var
+v.db.dropcol map=AO layer=1 column=FI_sum
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
+# Esporto Statistiche Univariate per area (tabelle CFS)
+v.db.select -c map=AO layer=1 column=NOME,FI_n,FI_min,FI_max,FI_mean,FI_range,FI_stddev,FI_varianc,FI_cf_var,FI_sum fs="|" file=$statitxt
+# Esporto Media per arrotondamento
+v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+cp $DIR_GRASS/mean_fi.txt $dir_tabella/$nomeindice$underscore$dataieri.txt
+# calcolo delle medie dell'indice sulle aree omogenee 
+for ((t=1; t<=15; t++))
+do
+        head -$t $DIR_GRASS/mean_fi.txt | tail -1 > $DIR_GRASS/b.txt
+        read cat mean < $DIR_GRASS/b.txt
+        echo "round (${mean})" | bc -l $DIR_GRASS/arrot.b > $DIR_GRASS/fi.txt
+        read FI < $DIR_GRASS/fi.txt
+        echo "update AO set FI_mean=${FI} where cat=${t}" | db.execute
+done
+
+# Ciclo di calcolo sostituito con quello seguente poichè il comando r.univar contenuto in v.rast.stats non gestisce
+# correttamente le aree con dati solo nulli (-nan spurio)
+
+# -------------------------------------------------------
+
+# Ciclo di 15 maschere raster per calcolare la media di ogni area e upload su db del vector AO
+# con controllo e sostituzione nel caso in cui l'area abbia dati nulli (mean: -nan)
+
+#echo "Aggregazione su Aree Omogenee e salvataggio immagini"
+#for area in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+#do
+# r.mask input=AO maskcats=$area
+# r.univar map=indici_IDI_neve_bruc > $DIR_GRASS/stats.txt
+# rm $DIR_GRASS/mean_fi.txt
+#AUX=`grep "mean: -nan" $DIR_GRASS/stats.txt | wc -l`
+#    if [ $AUX -eq 1 ]; then	
+#        echo "update AO set FI_mean=NULL where cat=$area" | db.execute
+#	echo "$area NULL" >> $DIR_GRASS/mean_fi.txt
+#    elif [ $AUX -eq 0 ]; then
+#        awk '/mean:/ { print $2 }' $DIR_GRASS/stats.txt > $DIR_GRASS/mean.txt	
+#        read mean < $DIR_GRASS/mean.txt
+#        echo "round (${mean})" | bc -l $DIR_GRASS/arrot.b > $DIR_GRASS/fi.txt
+#        read FI < $DIR_GRASS/fi.txt
+#	echo "$area ${FI}" >> $DIR_GRASS/mean_fi.txt
+#        echo "update AO set FI_mean=${FI} where cat=$area" | db.execute
+#    fi
+# g.remove rast=MASK
+#done
+
+export GRASS_PNGFILE=$fileoutAOpng
+d.mon start=PNG
+d.mon select=PNG
+
+############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
+
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore1
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore2
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore3
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore4
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore5
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore6
+d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+############################################################################################################
+
+#lcolor=black bgcolor=230:230:48 bcolor=red                  \
+#              lsize=14 font=romans xref=center yref=center
+
+#d.font     font=romans
+d.labels   label=ao_mean
+d.mon stop=PNG
+#
+echo "aggiunta trasparenza per la pubblicazione su WEB"
+convert  $fileoutAOpng -transparent white $fileoutAOpng 
+#
+echo "aggiunta didascalie "
+convert -background white -fill black -font Helvetica-Bold -pointsize 15 label:Legenda $DIR_GRASS/label_legenda.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"$nomeindice - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titolo.gif
+#convert -size 1380x960 xc:white \
+convert -size 700x500 xc:white \
+        -draw "image over 100,25   0,0 '$fileoutAOpng'  "             \
+        -draw "image over  20,150 100,0 '$DIR_GRASS/label_legenda.gif'" \
+        -draw "image over  20,200 100,0 '$DIR_GRASS/legenda.png'"       \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titolo.gif'      " $fileoutAOlegendagif
+#convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
+
+

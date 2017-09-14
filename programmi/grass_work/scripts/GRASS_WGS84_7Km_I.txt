@@ -1,0 +1,52 @@
+#################    GRASS_WGS84_7Km_I.txt   ################
+#                                                           #
+#  MARIA RANCI - 1 APRILE 2009                              #
+#  MARIA RANCI - 24 NOVEMBRE 2009 modifiche per raccordo    #
+#                                 con codice fortran        #
+#                                                           #
+#############################################################
+#
+####  da input:
+ echo "indice: $nomeindice"
+ echo "IERI: $dataieri"
+
+underscore=_
+LAMI=lami
+fileoutLAMItxt=/home/meteo/programmi/fwi_grid/indici/ana/$nomeindice$underscore$LAMI$underscore$dataieri.txt
+temporaneo=/home/meteo/programmi/fwi_grid/indici/ana/temp
+#
+#####################################################################
+#                              1                                    #
+#####################################################################
+echo "impostazione regione di calcolo"            
+g.region vect=LAMI@PERMANENT res=0.063 
+#
+echo "rimozione indici e IDI in memoria"
+g.remove rast=indici,neve  
+
+#  1 ######### CONVERSIONE IN LAT LON 
+echo "conversione in LAT LON "            
+  r.proj input=indici_IDI_neve_bruc location=GB output=indici method=nearest 
+echo "conversione in LAT LON della neve"            
+  r.proj input=neve location=GB output=neve method=nearest
+#
+#  2 ######### ESPORTAZIONE COME FILE DI TESTO SUI PUNTI DEL LAMI
+
+echo "estraggo l'indice sui punti del lami e lo memorizzo nella colonna VAL"
+r.null map=indici null=0            
+v.what.rast vector=LAMI raster=indici column=VAL 
+#d.what.vect LAMI
+
+echo "esportazione in file di testo"            
+
+g.region vect=LAMI@PERMANENT 
+v.out.ascii input=LAMI output=$fileoutLAMItxt fs=, columns=VAL
+
+#mkdir $temporaneo
+#v.out.ogr -c input=LAMI type=point dsn=$temporaneo olayer=temporaneo layer=1 format=CSV 
+#cp $temporaneo/temporaneo.csv $fileoutLAMItxt
+#rm $temporaneo/temporaneo.csv
+#rmdir  $temporaneo
+
+
+
