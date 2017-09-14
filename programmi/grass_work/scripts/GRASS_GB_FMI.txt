@@ -1,0 +1,438 @@
+#!/bin/bash
+#######################  GRASS_GB_FMI.txt  ########################
+#                                                                 # 
+#  DAVIDE GALERI - GIUGNO 2012 adattamento a Eccellente e         #
+#                  aggiunta calcolo angstrom fmi sharples         #
+#  DAVIDE GALERI - AGOSTO 2014 adattamento a Milanone Virtuale    #
+#                  aggiunta legende per messa in operativo	  #
+#                                                                 #
+###################################################################
+#
+#dataieri=20140817
+echo "IERI: $dataieri"
+#
+### definizione di giorno, mese e anno per scrivere date nei titoli:
+#
+ANNOieri=${dataieri:0:4}
+MESEieri=${dataieri:4:2}
+GIORNOieri=${dataieri:6:2}
+#
+###################################################################
+#
+mask=mask
+AO=AO
+legenda=legenda
+underscore=_
+# Paths:
+DIR_ANA=/home/meteo/programmi/non_fwi_grid/indici/ana      
+DIR_ANA_IMG=/home/meteo/programmi/non_fwi_grid/immagini/ana
+DIR_IMG_PNG=/home/meteo/programmi/non_fwi_grid/png
+DIR_GRASS=/home/meteo/programmi/grass_work/scripts
+#
+colore1=0:100:0
+colore2=50:205:50
+colore3=255:255:0
+colore4=255:127:0
+colore5=255:0:0
+colore6=139:35:35
+#
+########################## ANGSTROM #################################
+nomeindice=angstrom
+fileinput=$DIR_ANA/$nomeindice$underscore$dataieri.txt
+# Png
+fileoutmaskpng=$DIR_IMG_PNG/$nomeindice$underscore$mask$underscore$dataieri.png
+fileoutAOpng=$DIR_IMG_PNG/$nomeindice$underscore$AO$underscore$dataieri.png
+# Mappe .gif
+fileoutmaskgif=$DIR_ANA_IMG/archivio/$nomeindice$underscore$mask$underscore$dataieri.gif
+fileoutAOlegendagif=$DIR_ANA_IMG/archivio/$nomeindice$underscore$legenda$underscore$dataieri.gif
+#
+L1=2
+L2=2.5
+L3=3
+L4=3.5
+L5=4
+#
+######################################################################
+echo "impostazione regione di calcolo"            
+g.region -d 
+#
+echo $fileinput
+#INDICE
+echo "importazione raster dell'indice"
+g.remove rast=indici
+r.in.gdal -o  input=$fileinput output=indici --o
+#
+# calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557) <-- implementare in un secondo momento + verificare se serve (indice cumulativo)
+#r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
+#
+#####################################################################
+# tolgo dall indice i punti con IDI basso
+g.remove rast=indici_bucato
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+#
+#####################################################################
+# imposta la cop nevosa come maschera di lavoro dei raster
+r.mask input=neve maskcats=1
+# calcola nuova mappa dell'indice (solo dove non c'e' neve)
+g.remove rast=indici_IDI_neve
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
+g.remove rast=MASK
+#
+#####################################################################
+#
+echo "maschera con aree non bruciabili"
+# calcola nuova mappa dell'indice mascherato
+g.remove rast=indici_IDI_neve_bruc
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+#
+#####################################################################
+#
+echo "salvataggio immagini"
+ export GRASS_PNGFILE=$fileoutmaskpng
+ d.mon start=PNG
+ d.mon select=PNG
+ r.colors map=indici_IDI_neve_bruc color=angstrom
+ d.rast map=indici_IDI_neve_bruc
+ d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+ d.mon stop=PNG
+convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
+#
+# aggiunta del titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"ANGSTROM - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titoloindice.gif
+convert -size 700x500 xc:white \
+        -draw "image over 50,25   0,0 '$fileoutmaskpng'  "             \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titoloindice.gif'      " $fileoutmaskgif 
+#
+###################################################################
+#
+echo "Aggregazione su Aree Omogenee e salvataggio immagini"
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+v.db.dropcol map=AO layer=1 column=FI_n
+v.db.dropcol map=AO layer=1 column=FI_min
+v.db.dropcol map=AO layer=1 column=FI_max
+v.db.dropcol map=AO layer=1 column=FI_mean
+v.db.dropcol map=AO layer=1 column=FI_range
+v.db.dropcol map=AO layer=1 column=FI_stddev
+v.db.dropcol map=AO layer=1 column=FI_varianc
+v.db.dropcol map=AO layer=1 column=FI_cf_var
+v.db.dropcol map=AO layer=1 column=FI_sum
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
+v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+# calcolo delle medie dell'indice sulle aree omogenee 
+for ((t=1; t<=15; t++))
+do
+        head -$t $DIR_GRASS/mean_fi.txt | tail -1 > $DIR_GRASS/b.txt
+        read cat mean < $DIR_GRASS/b.txt
+        echo "round (${mean})" | bc -l $DIR_GRASS/arrot.b > $DIR_GRASS/fi.txt
+        read FI < $DIR_GRASS/fi.txt
+        echo "update AO set FI_mean=${FI} where cat=${t}" | db.execute
+done
+
+export GRASS_PNGFILE=$fileoutAOpng
+d.mon start=PNG
+d.mon select=PNG
+
+############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
+
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore6
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore5
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore4
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore3
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore2
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore1
+d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+#############################################################################################################
+#
+d.labels   label=ao_mean
+d.mon stop=PNG
+#
+echo "aggiunta trasparenza per la pubblicazione su WEB"
+convert  $fileoutAOpng -transparent white $fileoutAOpng 
+#
+echo "aggiunta didascalie "
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"ANGSTROM - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titolo.gif
+convert -size 700x500 xc:white \
+        -draw "image over 100,25   0,0 '$fileoutAOpng'  "             \
+        -draw "image over  20,150 100,0 '$DIR_GRASS/angstrom.gif'"       \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titolo.gif'      " $fileoutAOlegendagif
+
+#
+########################## FMI #################################
+#
+nomeindice=fmi
+fileinput=$DIR_ANA/$nomeindice$underscore$dataieri.txt
+# Png
+fileoutmaskpng=$DIR_IMG_PNG/$nomeindice$underscore$mask$underscore$dataieri.png
+fileoutAOpng=$DIR_IMG_PNG/$nomeindice$underscore$AO$underscore$dataieri.png
+# Mappe gif
+fileoutmaskgif=$DIR_ANA_IMG/archivio/$nomeindice$underscore$mask$underscore$dataieri.gif
+fileoutAOlegendagif=$DIR_ANA_IMG/archivio/$nomeindice$underscore$legenda$underscore$dataieri.gif
+#
+L1=2
+L2=5
+L3=10
+L4=20
+L5=25
+#
+######################################################################
+echo "impostazione regione di calcolo"            
+g.region -d 
+#
+echo $fileinput
+#INDICE
+echo "importazione raster dell'indice"
+g.remove rast=indici
+r.in.gdal -o  input=$fileinput output=indici --o
+#
+# calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557) <-- implementare in un secondo momento
+#r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
+#
+#####################################################################
+# tolgo dall indice i punti con IDI basso
+g.remove rast=indici_bucato
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+
+#####################################################################
+# imposta la cop nevosa come maschera di lavoro dei raster
+r.mask input=neve maskcats=1
+# calcola nuova mappa dell'indice (solo dove non c'e' neve)
+g.remove rast=indici_IDI_neve
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
+g.remove rast=MASK
+#
+#####################################################################
+#
+echo "maschera con aree non bruciabili"
+# calcola nuova mappa dell'indice mascherato
+g.remove rast=indici_IDI_neve_bruc
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+#
+#####################################################################
+#
+echo "salvataggio immagini"
+ export GRASS_PNGFILE=$fileoutmaskpng
+ d.mon start=PNG
+ d.mon select=PNG
+ r.colors map=indici_IDI_neve_bruc color=fmi
+ d.rast map=indici_IDI_neve_bruc
+ d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+ d.mon stop=PNG
+convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
+#
+# aggiunta del titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"FMI - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titoloindice.gif
+convert -size 700x500 xc:white \
+        -draw "image over 50,25   0,0 '$fileoutmaskpng'  "             \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titoloindice.gif'      " $fileoutmaskgif 
+#
+###################################################################
+#
+echo "Aggregazione su Aree Omogenee e salvataggio immagini"
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+v.db.dropcol map=AO layer=1 column=FI_n
+v.db.dropcol map=AO layer=1 column=FI_min
+v.db.dropcol map=AO layer=1 column=FI_max
+v.db.dropcol map=AO layer=1 column=FI_mean
+v.db.dropcol map=AO layer=1 column=FI_range
+v.db.dropcol map=AO layer=1 column=FI_stddev
+v.db.dropcol map=AO layer=1 column=FI_varianc
+v.db.dropcol map=AO layer=1 column=FI_cf_var
+v.db.dropcol map=AO layer=1 column=FI_sum
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
+v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+# calcolo delle medie dell'indice sulle aree omogenee 
+for ((t=1; t<=15; t++))
+do
+        head -$t $DIR_GRASS/mean_fi.txt | tail -1 > $DIR_GRASS/b.txt
+        read cat mean < $DIR_GRASS/b.txt
+        echo "round (${mean})" | bc -l $DIR_GRASS/arrot.b > $DIR_GRASS/fi.txt
+        read FI < $DIR_GRASS/fi.txt
+        echo "update AO set FI_mean=${FI} where cat=${t}" | db.execute
+done
+
+export GRASS_PNGFILE=$fileoutAOpng
+d.mon start=PNG
+d.mon select=PNG
+
+############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
+
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore6
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore5
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore4
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore3
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore2
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore1
+d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+#############################################################################################################
+#
+d.labels   label=ao_mean
+d.mon stop=PNG
+#
+echo "aggiunta trasparenza per la pubblicazione su WEB"
+convert  $fileoutAOpng -transparent white $fileoutAOpng 
+#
+echo "aggiunta didascalie "
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"FMI - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titolo.gif
+convert -size 700x500 xc:white \
+        -draw "image over 100,25   0,0 '$fileoutAOpng'  "             \
+        -draw "image over  20,150 100,0 '$DIR_GRASS/fmilegend.gif'"       \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titolo.gif'      " $fileoutAOlegendagif
+#
+#
+########################## SHARPLES #################################
+#
+nomeindice=sharples
+fileinput=$DIR_ANA/$nomeindice$underscore$dataieri.txt
+# Png
+fileoutmaskpng=$DIR_IMG_PNG/$nomeindice$underscore$mask$underscore$dataieri.png
+fileoutAOpng=$DIR_IMG_PNG/$nomeindice$underscore$AO$underscore$dataieri.png
+# Mappe gif
+fileoutmaskgif=$DIR_ANA_IMG/archivio/$nomeindice$underscore$mask$underscore$dataieri.gif
+fileoutAOlegendagif=$DIR_ANA_IMG/archivio/$nomeindice$underscore$legenda$underscore$dataieri.gif
+#
+L1=0.2
+L2=0.7
+L3=1.5
+L4=2.7
+L5=6.1
+#
+######################################################################
+echo "impostazione regione di calcolo"            
+g.region -d 
+#
+echo $fileinput
+#INDICE
+echo "importazione raster dell'indice"
+g.remove rast=indici
+r.in.gdal -o  input=$fileinput output=indici --o
+#
+# calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557) <-- implementare in un secondo momento
+#r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
+#
+#####################################################################
+# tolgo dall indice i punti con IDI basso
+g.remove rast=indici_bucato
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+
+#####################################################################
+# imposta la cop nevosa come maschera di lavoro dei raster
+r.mask input=neve maskcats=1
+# calcola nuova mappa dell'indice (solo dove non c'e' neve)
+g.remove rast=indici_IDI_neve
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
+g.remove rast=MASK
+#
+#####################################################################
+#
+echo "maschera con aree non bruciabili"
+# calcola nuova mappa dell'indice mascherato
+g.remove rast=indici_IDI_neve_bruc
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+#
+#####################################################################
+#
+echo "salvataggio immagini"
+ export GRASS_PNGFILE=$fileoutmaskpng
+ d.mon start=PNG
+ d.mon select=PNG
+ r.colors map=indici_IDI_neve_bruc color=sharples
+ d.rast map=indici_IDI_neve_bruc
+ d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+ d.mon stop=PNG
+convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
+#
+# aggiunta del titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"SHARPLES - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titoloindice.gif
+convert -size 700x500 xc:white \
+        -draw "image over 50,25   0,0 '$fileoutmaskpng'  "             \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titoloindice.gif'      " $fileoutmaskgif 
+#
+###################################################################
+#
+echo "Aggregazione su Aree Omogenee e salvataggio immagini"
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+v.db.dropcol map=AO layer=1 column=FI_n
+v.db.dropcol map=AO layer=1 column=FI_min
+v.db.dropcol map=AO layer=1 column=FI_max
+v.db.dropcol map=AO layer=1 column=FI_mean
+v.db.dropcol map=AO layer=1 column=FI_range
+v.db.dropcol map=AO layer=1 column=FI_stddev
+v.db.dropcol map=AO layer=1 column=FI_varianc
+v.db.dropcol map=AO layer=1 column=FI_cf_var
+v.db.dropcol map=AO layer=1 column=FI_sum
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
+v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+# calcolo delle medie dell'indice sulle aree omogenee 
+for ((t=1; t<=15; t++))
+do
+        head -$t $DIR_GRASS/mean_fi.txt | tail -1 > $DIR_GRASS/b.txt
+        read cat mean < $DIR_GRASS/b.txt
+        echo "round (${mean})" | bc -l $DIR_GRASS/arrot.b > $DIR_GRASS/fi.txt
+        read FI < $DIR_GRASS/fi.txt
+        echo "update AO set FI_mean=${FI} where cat=${t}" | db.execute
+done
+
+export GRASS_PNGFILE=$fileoutAOpng
+d.mon start=PNG
+d.mon select=PNG
+
+############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
+
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore1
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore2
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore3
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore4
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore5
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore6
+d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+###############################################################################################################
+#
+d.labels   label=ao_mean
+d.mon stop=PNG
+#
+echo "aggiunta trasparenza per la pubblicazione su WEB"
+convert  $fileoutAOpng -transparent white $fileoutAOpng 
+#
+echo "aggiunta didascalie "
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"SHARPLES - $GIORNOieri/$MESEieri/$ANNOieri - ANALISI" $DIR_GRASS/titolo.gif
+convert -size 700x500 xc:white \
+        -draw "image over 100,25   0,0 '$fileoutAOpng'  "             \
+        -draw "image over  20,150 100,0 '$DIR_GRASS/sharples.gif'"       \
+        -draw "image over 100,0   0,0 '$DIR_GRASS/titolo.gif'      " $fileoutAOlegendagif
+#
