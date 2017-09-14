@@ -1,0 +1,1799 @@
+2006/11/03, CL
+creazione del file "blacklist.txt" e della sua copia di backup. Il file contiene 119 sensori, che appartengono alle stazioni storiche (ovvero che non inviano piu' dati al DB ARPALo) e alle stazioni appartenenti al file "//SCHEDULATORE/AppServer/IDRO SMR QA/StazioniMETEOnnsignificative.txt" che sono state ritenute inutilizzabili dopo un esame del loro posizionamento da parte di Erica e MAaro (le stazioni sono: Saronno-via Marconi, Gallarate-P.zza S.Lorenzo, Chiavenna, Sondrio-via Merizzi, Tirano-v.le Italia, Treviglio, S.Rocco al Porto, Pavia-p.zza Minerva, Breno, Brescia-Borletto, Mantova-via Ariosto).
+2006/12/13 CL
+Aggiunti il sensore di temperatura di Vertemate 4009
+Aggiunti il sensore di temperatura di Milano via Zavattari 5920
+Numero totale di sensori nel file di blacklist = 121
+2006/12/14 CL
+Aggiunti il sensore di temperatura di Spluga 4034
+Numero totale di sensori nel file di blacklist = 122
+2007/01/05 CL
+Aggiunti i sensori di temperatura di Pavia Folperti 6698 e Pavia p.zza Minerva 6712
+Numero totale di sensori nel file di blacklist = 124
+2007/02/23 CL
+Aggiunti i sensori di temperatura Lonato 6834 e Umidita' relativa Lonato 6835 
+Aggiunti i sensori di temperatura  Odolo 6849 e Umidita' relativa  Odolo 6850 
+Aggiunti i sensori di temperatura Cornalita 2270 e Umidita' relativa Cornalita 2271 
+Aggiunti i sensori di temperatura S.Colombano 2039 e Umidita' relativa S.Colombano 2040 
+Aggiunto il sensori di umidita' relativa di Costa Volpino 6161
+Numero totale di sensori nel file di blacklist = 133
+2007/03/23 CL
+Aggiunto il sensori di umidita' relativa di Castello d'Agogna 2299 (ERRORE: si veda 2008/03/14)
+Numero totale di sensori nel file di blacklist = 134
+2007/05/11 CL
+Aggiunti sensore di umidita' relativa e temperatura di Milano-Parco Nord (ids: 4059 e 4058 rispettivamente)
+Numero totale di sensori nel file di blacklist = 136
+2007/05/14 CL
+Tolti i sensori di umidita' relativa e temperatura di Milano-Parco Nord (ids: 4059 e 4058 rispettivamente) 
+Numero totale di sensori nel file di blacklist = 134
+2007/05/25 CL
+Su segnalazione di Erica aggiunto alla lista il sensore di temperatura di Settala (id:2537)
+Numero totale di sensori nel file di blacklist = 135
+2007/06/19 CL
+Su segnalazione Erica aggiunti alla lista temperatura Sarnico (CAE) id:8136
+Numero totale di sensori nel file di blacklist = 136
+2007/08/22 CL
+Su segnalazione Erica aggiunti alla lista temperatura Milano-Brera Temperatura id:5897
+Numero totale di sensori nel file di blacklist = 137
+2007/10/15 CL
+Su segnalazione Erica aggiunti alla lista i sensori di umidita' relativa e temperatura di Milano-Parco Nord (ids: 4059 e 4058 rispettivamente) 
+Numero totale di sensori nel file di blacklist = 139
+2007/11/13 CL
+Su segnalazione Erica aggiunti alla lista il sensore di temperatura di Arconate[148] (id: 4066)
+Numero totale di sensori nel file di blacklist = 140
+2007/12/24 CL
+Aggiunto il pluviometro di Caorso[616] (id: 5885) per problemi legati alla trasmissione del dato
+Numero totale di sensori nel file di blacklist = 141
+2008/01/17 CL
+Aggiunto il pluviometro di Cassano[619] (id: 5892) perche' non funziona
+Aggiunto il pluviometro di Marmirolo-bosco fontana[667] (id: 6892) perche' forse intasato
+Numero totale di sensori nel file di blacklist = 143
+2008/02/08 CL
+Tolti i sensori di temperatura S.Colombano 2039 e Umidita' relativa S.Colombano 2040 
+Tolti i sensori di temperatura Cornalita 2270 e Umidita' relativa Cornalita 2271 
+Numero totale di sensori nel file di blacklist = 139
+2008/03/14 CL
+Scoperto Errore: in data 2007/03/23 e' stato inserito il sensore di RH 2299 come appartenente alla stazione Castello d'Agogna in realta' e' il sensore di Certosa di Pavia! Ora verra' elimato dalla blacklist.
+Numero totale di sensori nel file di blacklist = 138
+2008/05/13 CL
+Tolti dalla blacklist:
+id    param    staz
+5920   T       Milano-Zavattari
+6712   T       Pavia - Pza Minerva
+6834   T       Lonato
+6849   T       Odolo
+2537   T       Settala
+8136   T       Sarnico
+5897   T       Milano-Brera
+4059   T       Milano-Parco Nord
+4058   RH      Milano-Parco Nord
+Aggiunti alla blacklist [Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
+5885  Piog     Caorso 10 m [616]
+5886  T        Caorso 10 m [616]
+6015  DV       Caorso 10 m [616]
+9333  VVP      Caorso 10 m [616]
+6016  DVP      Caorso 10 m [616]
+6168  RH       Caorso 10 m [616]
+6441  RG       Caorso 10 m [616]
+6013  DV       Caorso 80 m [634]
+9332  VVP      Caorso 80 m [634]
+6014  DVP      Caorso 80 m [634]
+5868  T        Costa Volpino
+6105  DVP      Costa Volpino
+5995  VVP      Costa Volpino
+5992  DV       Dalmine
+6104  VVP      Dalmine
+5993  DVP      Dalmine
+6825  VV       Gambara
+6815  DV       Gambara
+6824  RH       Gambara
+9311  RH       Como - Villa Gallia
+9322  Piog     Casalmaggiore
+5966  T        Casalmaggiore
+9321  VV       Casalmaggiore
+9320  DV       Casalmaggiore
+6491  Press    Casalmaggiore
+6407  RH       Casalmaggiore
+6437  Rg       Casalmaggiore
+5876  Piog     Colico
+5877  T        Colico
+6008  DV       Colico
+6111  VVP      Colico
+6009  DVP      Colico
+6586  Press    Colico
+6164  RH       Colico
+5878  Piog     Lecco
+5882  Piog     Nibionno
+5884  Piog     Varenna
+9335  VVP      Tavazzano 240 m [636]
+6018  DVP      Tavazzano 240 m [636]
+5888  T        Tavazzano Enel Suolo [617]
+6442  RN       Tavazzano Enel Suolo [617]
+6443  RG       Tavazzano Enel Suolo [617]
+6175  RH       Carate Brianza
+5892  Piog     Cassano Suolo [619]
+5908  Pluv     Milano-via Juvara
+5909  T        Milano-via Juvara
+6044  DV       Milano-via Juvara
+6129  VVP      Milano-via Juvara
+6045  DVP      Milano-via Juvara
+6502  Press    Milano-via Juvara
+6179  RH       Milano-via Juvara
+6458  Rg       Milano-via Juvara
+6457  Rn       Milano-via Juvara
+6185  RH       Milano-via Zavattari
+5919  T        Trezzo
+5904  Piog     Turbigo Enel suolo [622]
+5905  T        Turbigo Enel suolo [622]
+6125  VVP      Turbigo Enel 20 m
+6126  VVP      Turbigo Enel 145 m
+6041  DVP      Turbigo Enel 145 m
+6040  DVP      Turbigo Enel 20 m
+6499  Press    Turbigo Enel suolo [622]
+6177  RH       Turbigo Enel suolo [622]
+6454  Rg       Turbigo Enel suolo [622]
+6892  Piog     Marmirolo
+4088  VV       Pieve S.G.
+4087  DV       Pieve S.G.
+5020  VVS      Pieve S.G.
+5021  DVS      Pieve S.G.
+9809  Piog     Mantova - S. Agnese
+9812  T        Mantova - S. Agnese
+9814  VV       Mantova - S. Agnese
+9808  DV       Mantova - S. Agnese
+9810  Press    Mantova - S. Agnese
+9813  RH       Mantova - S. Agnese
+9811  Rg       Mantova - S. Agnese
+9816  Piog     Mantova - Tridolino
+9863  Piog     Cornale
+9868  T        Cornale
+9870  VV       Cornale
+9862  DV       Cornale
+9864  Press    Cornale
+9869  RH       Cornale
+9865  Rg       Cornale
+9866  Rn       Cornale
+6698  T        Pavia - Folperti
+6699  RH       Pavia - Folperti
+6696  Rg       Pavia - Folperti
+7036  T        San Nazzaro
+7038  RH       San Nazzaro
+7032  Rg       San Nazzaro
+6725  Rg       Vigevano
+6189  RH       Morbegno
+5933  Piog     Busto Arsizio - Accam [558]
+6193  RH       Lonate Pozzolo
+6474  Rg       Lonate Pozzolo
+Aggiunti alla blacklist [Rete Ersaf-Quaderno Rosso Erica]:
+2449  Rg       Bema
+2447  T        Bema
+2452  Piog     Bema
+2259  RH       Curtatone
+2262  VV       Curtatone
+2265  DV       Curtatone
+2202  VV       Ispra Tetto
+2205  DV       Ispra Tetto
+2001  T        Lambrate
+2187  T        Landriano
+2146  T        Moggio
+2485  T        Persico
+2486  RH       Persico
+2497  T        Rivolta
+2498  RH       Rivolta
+2042  VV       San Colombano
+2048  DV       San Colombano
+2040  RH       San Colombano
+2082  T        Varzi
+Aggiunti alla blacklist [Rete ShakeUp-Quaderno Rosso Erica]:
+4025  Piog     Caiolo
+4024  VV       Caiolo
+4022  DV       Caiolo
+4045  Rg       Darfo
+4043  RH       Darfo
+4048  VV       Darfo
+4047  DV       Darfo
+4033  Piog     Livigno
+4032  VV       Livigno
+4031  DV       Livigno
+4027  RH       Livigno
+5127  VV       Mantova - Lunetta
+5126  DV       Mantova - Lunetta
+5125  RN       Mantova - Lunetta
+4008  Piog     Motta Visconti
+4001  T        Motta Visconti
+4007  VV       Motta Visconti
+4006  DV       Motta Visconti
+5006  VVS      Motta Visconti
+5007  DVS      Motta Visconti
+4003  Press    Motta Visconti
+4002  RH       Motta Visconti
+4004  Rg       Motta Visconti
+4005  Rn       Motta Visconti
+5048  Piog     Padenghe
+5044  Rg       Padenghe
+5042  RH       Padenghe
+5014  VVS      Milano - Parco Nord
+5015  DVS      Milano - Parco Nord
+4056  VV       Passo S. Marco
+4055  DV       Passo S. Marco
+4054  RN       Passo S. Marco
+4082  T        Pieve S.G.
+4034  T        Spluga
+4035  RH       Spluga
+4009  T        Vertemate
+4010  RH       Vertemate
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
+9120  Piog     Casalbuttano
+9114  Piog     Goito
+9115  Piog     Lurago Marinone
+9022  T        Porlezza
+9074  VV       Vercana
+9077  DV       Vercana
+Aggiunti alla blacklist [Rete Altro-Quaderno Rosso Erica]:
+8208  Piog     Manerbio
+9371  VV       Poggio S. Elsa
+9765  DV       Poggio S. Elsa
+8182  Piog     Ponte S. Marco
+8222  Piog     Sermide
+8097  Piog     Valtorta
+113   Piog     Branzi
+112   T        Branzi
+124   RN       Cam Boer
+36    Piog     Campo Franscia - Lanzada [24]
+37    Piog     Campo Franscia - Lanzada [25]
+57    T        Laghi di Chiesa
+88    T        Semogo
+34    Piog     Spriana
+135   Piog     Val Pola
+133   T        Val Pola
+137   VV       Val Pola
+138   DV       Val Pola
+134   RH       Val Pola
+141   RG       Val Pola
+143   RN       Val Pola
+25    T        Val Pola tar/100 - Valdisotto
+24    T        Val Pola tar/2 - Valdisotto
+10307 Piog     Mompiano
+94    Piog     Cedrasco
+122   Piog     Villa di Chiavenna
+8030  RH       La Vallaccia
+8011  RH       Oga S. Colombano
+8094  Piog     Palu
+8092  T        Palu
+9369  VV       Palu 
+9763  DV       Palu
+8390  RH       S. Caterina Valfurva
+2564  VV       Galbiate
+2563  DV       Galbiate
+2582  Piog     Missaglia
+2581  T        Missaglia
+2585  VV       Missaglia
+2584  DV       Missaglia
+2583  RH       Missaglia
+2596  Piog     Montevecchia
+2595  T        Montevecchia
+2599  VV       Montevecchia
+2598  DV       Montevecchia
+2587  RH       Montevecchia
+2568  Piog     Oliveto Lario
+116   Piog     Carona
+115   T        Carona
+Numero totale di sensori nel file di blacklist = 335
+2008/05/19 CL
+Aggiunto alla blacklist:
+6694  Piog     Pavia- via Folperti
+Numero totale di sensori nel file di blacklist = 336
+2008/08/11 CL
+Riepilogo Stazioni in blacklist:
++ = aggiunta ora ; - = tolta ora
+[Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
++ 5895  T        Agrate [530]
+  5885  Piog     Caorso 10 m [616]
+  5886  T        Caorso 10 m [616]
+  6015  DV       Caorso 10 m [616]
+  9333  VVP      Caorso 10 m [616]
+  6016  DVP      Caorso 10 m [616]
+  6168  RH       Caorso 10 m [616]
+  6441  RG       Caorso 10 m [616]
+  6013  DV       Caorso 80 m [634]
+  9332  VVP      Caorso 80 m [634]
+  6014  DVP      Caorso 80 m [634]
+  5868  T        Costa Volpino
+  6105  DVP      Costa Volpino
+  5995  VVP      Costa Volpino
+  5992  DV       Dalmine
+  6104  VVP      Dalmine
+  5993  DVP      Dalmine
++ 5979  DV       Filago [595]
++ 6095  VVP      Filago [595]
++ 5980  DVP      Filago [595]
+  6836  VV       Lonato [657]
+  6828  DV       Lonato [657]
+  6835  RH       Lonato [657]
+  6825  VV       Gambara
+  6815  DV       Gambara
+  6824  RH       Gambara
+  6850  RH       Odolo [659]
++ 6851  VV       Odolo [659]
++ 6843  DV       Odolo [659]
++ 6866  VV       Rezzato [661]
++ 6861  DV       Rezzato [661]
++ 6806  VV       Sarezzo [654]
++ 6800  DV       Sarezzo [654]
+  9311  RH       Como - Villa Gallia
+  9322  Piog     Casalmaggiore
+  5966  T        Casalmaggiore
+  9321  VV       Casalmaggiore
+  9320  DV       Casalmaggiore
+  6491  Press    Casalmaggiore
+  6407  RH       Casalmaggiore
+  6437  Rg       Casalmaggiore
+- 5876  Piog     Colico
+- 5877  T        Colico
+- 6008  DV       Colico
+- 6111  VVP      Colico
+- 6009  DVP      Colico
+- 6586  Press    Colico
+- 6164  RH       Colico
+- 5878  Piog     Lecco
++ 5879  T        Lecco [574]
++ 6010  VV       Lecco [574]
++ 6112  VVP      Lecco [574]
++ 6011  DVP      Lecco [574]
+  5884  Piog     Varenna
+- 5882  Piog     Nibionno
+  9335  VVP      Tavazzano 240 m [636]
+  6018  DVP      Tavazzano 240 m [636]
+  5888  T        Tavazzano Enel Suolo [617]
+  6442  RN       Tavazzano Enel Suolo [617]
+  6443  RG       Tavazzano Enel Suolo [617]
+  6175  RH       Carate Brianza
+  5892  Piog     Cassano Suolo [619]
+- 5908  Pluv     Milano-via Juvara
+- 5909  T        Milano-via Juvara
+  6044  DV       Milano-via Juvara
+  6129  VVP      Milano-via Juvara
+  6045  DVP      Milano-via Juvara
+- 6502  Press    Milano-via Juvara
+- 6179  RH       Milano-via Juvara
+- 6458  Rg       Milano-via Juvara
+- 6457  Rn       Milano-via Juvara 
+  6185  RH       Milano-via Zavattari [503]
++ 9341  Piog     Milano-via Zavattari [503]
++ 5920  T        Milano-via Zavattari [503]
++ 6063  VV       Milano-via Zavattari [503]
++ 6138  VVP      Milano-via Zavattari [503]
++ 6064  DVP      Milano-via Zavattari [503]
++ 5911  T        Milano-Marche [501]
++ 6048  VV       Milano-Marche [501]
++ 6131  VVP      Milano-Marche [501]
++ 6049  DVP      Milano-Marche [501]
++ 6597  RH       Milano-Marche [501]
+  5919  T        Trezzo
+  5904  Piog     Turbigo Enel suolo [622]
+  5905  T        Turbigo Enel suolo [622]
+  6125  VVP      Turbigo Enel 20 m
+  6126  VVP      Turbigo Enel 145 m
+  6041  DVP      Turbigo Enel 145 m
+  6040  DVP      Turbigo Enel 20 m
+  6499  Press    Turbigo Enel suolo [622]
+  6177  RH       Turbigo Enel suolo [622]
+  6454  Rg       Turbigo Enel suolo [622]
+  6892  Piog     Marmirolo
+  4088  VV       Pieve S.G.
+  4087  DV       Pieve S.G.
+  5020  VVS      Pieve S.G.
+  5021  DVS      Pieve S.G.
+  9809  Piog     Mantova - S. Agnese
+  9812  T        Mantova - S. Agnese
+  9814  VV       Mantova - S. Agnese
+  9808  DV       Mantova - S. Agnese
+  9810  Press    Mantova - S. Agnese
+  9813  RH       Mantova - S. Agnese
+  9811  Rg       Mantova - S. Agnese
+  9816  Piog     Mantova - Tridolino
+  9863  Piog     Cornale
+  9868  T        Cornale
+  9870  VV       Cornale
+  9862  DV       Cornale
+  9864  Press    Cornale
+  9869  RH       Cornale
+  9865  Rg       Cornale
+  9866  Rn       Cornale
+  6698  T        Pavia - Folperti
+  6699  RH       Pavia - Folperti
+  6696  Rg       Pavia - Folperti
+  7036  T        Sannazzaro [692]
++ 7033  Piog     Sannazzaro [692]
++ 7038  VV       Sannazzaro [692]
++ 7032  DV       Sannazzaro [692]
++ 7034  Press    Sannazzaro [692]
++ 7037  RH       Sannazzaro [692]
++ 7035  Rg       Sannazzaro [692]
+  6725  Rg       Vigevano
+  6189  RH       Morbegno
+- 5933  Piog     Busto Arsizio - Accam [558]
+  6193  RH       Lonate Pozzolo
+  6474  Rg       Lonate Pozzolo
+[Rete Ersaf-Quaderno Rosso Erica]:
+  2449  Rg       Bema [133]
+  2447  T        Bema [133]
+  2452  Piog     Bema [133] 
++ 2450  VV       Bema [133]
++ 2453  DV       Bema [133]
++ 2448  RH       Bema [133]
+  2259  RH       Curtatone
+  2262  VV       Curtatone
+  2265  DV       Curtatone
+  2202  VV       Ispra Tetto
+  2205  DV       Ispra Tetto
+- 2001  T        Lambrate
+  2187  T        Landriano
++ 2477  Piog     Minoprio [135]
++ 2471  T        Minoprio [135]
++ 2478  VV       Minoprio [135]
++ 2480  DV       Minoprio [135]
++ 2472  RH       Minoprio [135]
++ 2476  Rg       Minoprio [135]
+  2146  T        Moggio [111]
++ 2152  Piog     Moggio [111]
++ 2150  VV       Moggio [111]
++ 2153  DV       Moggio [111]
++ 2154  Press    Moggio [111]
++ 2147  RH       Moggio [111]
++ 2148  Rg       Moggio [111]
+  2485  T        Persico
+  2486  RH       Persico
+- 2497  T        Rivolta
+- 2498  RH       Rivolta
++ 2116  Piog     Samolaco (ersaf) [108]
++ 2110  T        Samolaco (ersaf) [108]
++ 2114  VV       Samolaco (ersaf) [108]
++ 2117  DV       Samolaco (ersaf) [108]
++ 2111  RH       Samolaco (ersaf) [108]
++ 2112  Rg       Samolaco (ersaf) [108]
+  2042  VV       San Colombano [102]
+  2048  DV       San Colombano [102]
+  2040  RH       San Colombano [102]
++ 2046  Piog     San Colombano [102]
++ 2047  Piog     San Colombano [102]
++ 2039  T        San Colombano [102]
++ 2040  RH       San Colombano [102]      
++ 2044  Rg       San Colombano [102]
+  2082  T        Varzi [106]
++ 2089  Piog     Varzi [106]     
++ 2090  Piog     Varzi [106]
++ 2086  VV       Varzi [106]
++ 2091  DV       Varzi [106]
++ 2083  RH       Varzi [106]
++ 2084  Rg       Varzi [106]
+[Rete ShakeUp-Quaderno Rosso Erica]:
+  4025  Piog     Caiolo [142]
+  4024  VV       Caiolo [142]
+  4022  DV       Caiolo [142]
++ 4017  T        Caiolo [142]
++ 5010  VVS      Caiolo [142]
++ 5011  DVS      Caiolo [142]
++ 4019  Press    Caiolo [142]
++ 4018  RH       Caiolo [142]
++ 4020  Rg       Caiolo [142]
++ 4021  Rn       Caiolo [142]
+  4045  Rg       Darfo [145]
+  4043  RH       Darfo [145]
+  4048  VV       Darfo [145]
+  4047  DV       Darfo [145]
++ 4044  Press    Darfo [145]
+  4033  Piog     Livigno
+  4032  VV       Livigno
+  4031  DV       Livigno
+  4027  RH       Livigno
+- 5127  VV       Mantova - Lunetta [166]
+- 5126  DV       Mantova - Lunetta [166]
+  5131  VVS      Mantova - Lunetta [166]
+  5132  DVS      Mantova - Lunetta [166]
+  5125  RN       Mantova - Lunetta [166]
+  4008  Piog     Motta Visconti
+  4001  T        Motta Visconti
+  4007  VV       Motta Visconti
+  4006  DV       Motta Visconti
+  5006  VVS      Motta Visconti
+  5007  DVS      Motta Visconti
+  4003  Press    Motta Visconti
+  4002  RH       Motta Visconti
+  4004  Rg       Motta Visconti
+  4005  Rn       Motta Visconti
+- 5048  Piog     Padenghe
+- 5044  Rg       Padenghe
+- 5042  RH       Padenghe
+  5014  VVS      Milano - Parco Nord [147]
+  5015  DVS      Milano - Parco Nord [147]
++ 4065  Piog     Milano - Parco Nord [147]  
++ 4058  Piog     Milano - Parco Nord [147]  
++ 4064  VV       Milano - Parco Nord [147]  
++ 4062  DV       Milano - Parco Nord [147]  
+  5014  VVS      Milano - Parco Nord [147]  
+  5015  DVS      Milano - Parco Nord [147]  
++ 4059  DVS      Milano - Parco Nord [147]  
++ 4060  DVS      Milano - Parco Nord [147]  
++ 4061  DVS      Milano - Parco Nord [147]  
+  4056  VV       Passo S. Marco [146]
+  4055  DV       Passo S. Marco [146]
+  4054  RN       Passo S. Marco [146]
++ 4052  Press    Passo S. Marco [146]  
+- 4082  T        Pieve S.G.
+  4034  T        Spluga [144]
+  4035  RH       Spluga [144]
++ 4041  Piog     Spluga [144]
++ 4040  VV       Spluga [144]
++ 4039  DV       Spluga [144]
++ 4036  Press    Spluga [144]
++ 4035  RH       Spluga [144]
++ 4037  Rg       Spluga [144]
++ 4038  Rn       Spluga [144]
+- 4009  T        Vertemate [141]
+  4010  RH       Vertemate [141]
++ 5008  VVS      Vertemate [141]      
++ 5009  DVS      Vertemate [141]  
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
++ 9091  Piog     Castronno [1211]
++ 9116  Piog     Cavaria [1206]
++ 9104  Piog     Grabiasca [1229]
++ 9015  T        Grabiasca [1229]
++ 9059  Press    Grabiasca [1229]
+- 9120  Piog     Casalbuttano
+- 9114  Piog     Goito
+- 9115  Piog     Lurago Marinone
+  9022  T        Porlezza
+  9074  VV       Vercana
+  9077  DV       Vercana
++ 9100  Piog     Lago Truzzo [1230]
++ 9011  T        Lago Truzzo [1230]
++ 9055  Press    Lago Truzzo [1230]
++ 9123  Piog     Rota Imagna [1209]
++ 9034  T        Rota Imagna [1209]
++ 9072  Press    Rota Imagna [1209]
++ 9103  Piog     San Giacomo-Monno [1237]
++ 9119  Piog     Valcanale [1218]
+[Rete Altro-Quaderno Rosso Erica]:
+- 8208  Piog     Manerbio
+  9371  VV       Poggio S. Elsa
+  9765  DV       Poggio S. Elsa
+  8182  Piog     Ponte S. Marco
+- 8222  Piog     Sermide
+  8097  Piog     Valtorta
+- 113   Piog     Branzi
+  112   T        Branzi
+  124   RN       Cam Boer
+  36    Piog     Campo Franscia - Lanzada [24]
+  37    Piog     Campo Franscia - Lanzada [25]
+  57    T        Laghi di Chiesa
+  88    T        Semogo
+  34    Piog     Spriana
+- 135   Piog     Val Pola
+- 133   T        Val Pola
+- 137   VV       Val Pola
+- 138   DV       Val Pola
+- 134   RH       Val Pola
+- 141   RG       Val Pola
+- 143   RN       Val Pola
+  25    T        Val Pola tar/100 - Valdisotto
+  24    T        Val Pola tar/2 - Valdisotto
+- 10307 Piog     Mompiano
+  94    Piog     Cedrasco
+  122   Piog     Villa di Chiavenna
+  8030  RH       La Vallaccia
+  8011  RH       Oga S. Colombano
+  8094  Piog     Palu
+  8092  T        Palu
+  9369  VV       Palu 
+  9763  DV       Palu
+  8390  RH       S. Caterina Valfurva
+  2564  VV       Galbiate
+  2563  DV       Galbiate
+  2582  Piog     Missaglia
+  2581  T        Missaglia
+  2585  VV       Missaglia
+  2584  DV       Missaglia
+  2583  RH       Missaglia
+  2596  Piog     Montevecchia
+  2595  T        Montevecchia
+  2599  VV       Montevecchia
+  2598  DV       Montevecchia
+  2587  RH       Montevecchia
+- 2568  Piog     Oliveto Lario
+- 116   Piog     Carona
+- 115   T        Carona
++ 8206  Piog     Asola [906]
++ 8139  Piog     Caino [876]
++ 8215  Piog     Castiglione delle Stiviere [899]
++ 19    Piog     Arnoga [12]
++ 79    T        Lanzada 5/L [44]
++ 75    T        Lanzada 1/L [40]
++ 37    Piog     Campo Franscia - Lanzada [25]
++ 9839  Piog     Fuentes [1244]
++ 9843  Piog     Samolaco [1246]
++ 2575  Piog     Introbio [202]
++ 2574  T        Introbio [202]
++ 2578  VV       Introbio [202]     
++ 2577  DV       Introbio [202]
++ 2576  RH       Introbio [202]
+Numero totale di sensori nel file di blacklist = 405 
+2008/08/29 CL
+[Rete ERSAF]
+id     param    staz
++ 2528  VV       Mantova Cerese [139]
++ 2536  DV       Mantova Cerese [139]
+Numero totale di sensori nel file di blacklist = 407 
+2008/10/31 CL
+2008/08/11 CL
+Riepilogo Stazioni in blacklist:
++ = aggiunta ora ; - = tolta ora
+[Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
+- 5895  T        Agrate [530]
+  5885  Piog     Caorso 10 m [616]
+  5886  T        Caorso 10 m [616]
+  6015  DV       Caorso 10 m [616]
+  9333  VVP      Caorso 10 m [616]
+  6016  DVP      Caorso 10 m [616]
+  6168  RH       Caorso 10 m [616]
+  6441  RG       Caorso 10 m [616]
+  6013  DV       Caorso 80 m [634]
+  9332  VVP      Caorso 80 m [634]
+  6014  DVP      Caorso 80 m [634]
+  5868  T        Costa Volpino [586]
+  6105  DVP      Costa Volpino [586]
+  5995  VVP      Costa Volpino [586]
+  5992  DV       Dalmine [585]
+  6104  VVP      Dalmine [585]
+  5993  DVP      Dalmine [585]
+  5979  DV       Filago [595]
+  6095  VVP      Filago [595]
+  5980  DVP      Filago [595]
+  6836  VV       Lonato [657]
+  6828  DV       Lonato [657]
+  6835  RH       Lonato [657]
+  6825  VV       Gambara [616]
+  6815  DV       Gambara [616]
+  6824  RH       Gambara [616]
+  6850  RH       Odolo [659]
+  6851  VV       Odolo [659]
+  6843  DV       Odolo [659]
+  6866  VV       Rezzato [661]
+  6861  DV       Rezzato [661]
+  6806  VV       Sarezzo [654]
+  6800  DV       Sarezzo [654]
+  9311  RH       Como - Villa Gallia
+  9322  Piog     Casalmaggiore
+  5966  T        Casalmaggiore
+  9321  VV       Casalmaggiore
+  9320  DV       Casalmaggiore
+  6491  Press    Casalmaggiore
+  6407  RH       Casalmaggiore
+  6437  Rg       Casalmaggiore
+- 5879  T        Lecco [574]
+- 6010  VV       Lecco [574]
+- 6112  VVP      Lecco [574]
+- 6011  DVP      Lecco [574]
+- 5884  Piog     Varenna
+  9335  VVP      Tavazzano 240 m [636]
+  6018  DVP      Tavazzano 240 m [636]
+  5888  T        Tavazzano Enel Suolo [617]
+  6442  RN       Tavazzano Enel Suolo [617]
+  6443  RG       Tavazzano Enel Suolo [617]
+  6175  RH       Carate Brianza
+  5892  Piog     Cassano Suolo [619]
+  6044  DV       Milano-via Juvara
+  6129  VVP      Milano-via Juvara
+  6045  DVP      Milano-via Juvara
+- 6185  RH       Milano-via Zavattari [503]
+- 9341  Piog     Milano-via Zavattari [503]
+- 5920  T        Milano-via Zavattari [503]
+- 6063  VV       Milano-via Zavattari [503]
+- 6138  VVP      Milano-via Zavattari [503]
+- 6064  DVP      Milano-via Zavattari [503]
+- 5911  T        Milano-Marche [501]
+- 6048  VV       Milano-Marche [501]
+- 6131  VVP      Milano-Marche [501]
+- 6049  DVP      Milano-Marche [501]
+- 6597  RH       Milano-Marche [501]
+  5919  T        Trezzo
+  5904  Piog     Turbigo Enel suolo [622]
+  5905  T        Turbigo Enel suolo [622]
+  6125  VVP      Turbigo Enel 20 m
+  6126  VVP      Turbigo Enel 145 m
+  6041  DVP      Turbigo Enel 145 m
+  6040  DVP      Turbigo Enel 20 m
+  6499  Press    Turbigo Enel suolo [622]
+  6177  RH       Turbigo Enel suolo [622]
+  6454  Rg       Turbigo Enel suolo [622]
+  6892  Piog     Marmirolo
+- 4088  VV       Pieve S.G.
+- 4087  DV       Pieve S.G.
+- 5020  VVS      Pieve S.G.
+- 5021  DVS      Pieve S.G.
+  9809  Piog     Mantova - S. Agnese
+  9812  T        Mantova - S. Agnese
+  9814  VV       Mantova - S. Agnese
+  9808  DV       Mantova - S. Agnese
+  9810  Press    Mantova - S. Agnese
+  9813  RH       Mantova - S. Agnese
+  9811  Rg       Mantova - S. Agnese
+  9816  Piog     Mantova - Tridolino
+  9863  Piog     Cornale
+  9868  T        Cornale
+  9870  VV       Cornale
+  9862  DV       Cornale
+  9864  Press    Cornale
+  9869  RH       Cornale
+  9865  Rg       Cornale
+  9866  Rn       Cornale
+  6698  T        Pavia - Folperti
+  6699  RH       Pavia - Folperti
+  6696  Rg       Pavia - Folperti
+  7036  T        Sannazzaro [692]
+  7033  Piog     Sannazzaro [692]
+  7038  VV       Sannazzaro [692]
+  7032  DV       Sannazzaro [692]
+  7034  Press    Sannazzaro [692]
+  7037  RH       Sannazzaro [692]
+  7035  Rg       Sannazzaro [692]
+  6725  Rg       Vigevano
+  6189  RH       Morbegno
+- 6193  RH       Lonate Pozzolo
+- 6474  Rg       Lonate Pozzolo
+[Rete Ersaf-Quaderno Rosso Erica]:
++ 2460  UR       Bargnano [134]
+- 2449  Rg       Bema [133]
+- 2447  T        Bema [133]
+- 2452  Piog     Bema [133] 
+- 2450  VV       Bema [133]
+- 2453  DV       Bema [133]
+- 2448  RH       Bema [133]
++ 2368  Piog     Castello d'Agogna [125]
++ 2361  T        Castello d'Agogna [125]
++ 2365  VV       Castello d'Agogna [125]
++ 2367  DV       Castello d'Agogna [125]
++ 2362  UR       Castello d'Agogna [125]
++ 2364  RG       Castello d'Agogna [125]
++ 2363  T-10     Castello d'Agogna [125]
++ 2305  Piog     Certosa di Pavia [121]
++ 2306  Piog     Certosa di Pavia [121]
+  2259  RH       Curtatone
+  2262  VV       Curtatone
+  2265  DV       Curtatone
++ 2258  T        Curtatone
++ 2534  Piog     Mantova Cerese [139]
++ 2535  Piog     Mantova Cerese [139]
++ 2524  T        Mantova Cerese [139]
++ 2528  VV       Mantova Cerese [139]
++ 2536  DV       Mantova Cerese [139]
++ 2527  UR       Mantova Cerese [139]
++ 2533  RG       Mantova Cerese [139]
++ 2532  T-10     Mantova Cerese [139]
+  2202  VV       Ispra Tetto
+  2205  DV       Ispra Tetto
+- 2187  T        Landriano
+  2477  Piog     Minoprio [135]
+  2471  T        Minoprio [135]
+  2478  VV       Minoprio [135]
+  2480  DV       Minoprio [135]
+  2472  RH       Minoprio [135]
+  2476  Rg       Minoprio [135]
+  2146  T        Moggio [111]
+- 2152  Piog     Moggio [111]
+- 2150  VV       Moggio [111]
+- 2153  DV       Moggio [111]
+- 2154  Press    Moggio [111]
+- 2147  RH       Moggio [111]
+- 2148  Rg       Moggio [111]
++ 2135  RH       Palidano
+- 2485  T        Persico
+  2486  RH       Persico
++ 2500  VV       Rivolta d'Adda [137]
++ 2503  DV       Rivolta d'Adda [137]
+  2116  Piog     Samolaco (ersaf) [108]
+  2110  T        Samolaco (ersaf) [108]
+  2114  VV       Samolaco (ersaf) [108]
+  2117  DV       Samolaco (ersaf) [108]
+  2111  RH       Samolaco (ersaf) [108]
+  2112  Rg       Samolaco (ersaf) [108]
+- 2042  VV       San Colombano [102]
+- 2048  DV       San Colombano [102]
+- 2040  RH       San Colombano [102]
+- 2046  Piog     San Colombano [102]
+- 2047  Piog     San Colombano [102]
+- 2039  T        San Colombano [102]
+- 2040  RH       San Colombano [102]      
+- 2044  Rg       San Colombano [102]
+  2082  T        Varzi [106]
+  2089  Piog     Varzi [106]     
+  2090  Piog     Varzi [106]
+  2086  VV       Varzi [106]
+  2091  DV       Varzi [106]
+  2083  RH       Varzi [106]
+  2084  Rg       Varzi [106]
+[Rete ShakeUp-Quaderno Rosso Erica]:
+  4025  Piog     Caiolo [142]
+  4024  VV       Caiolo [142]
+  4022  DV       Caiolo [142]
+  4017  T        Caiolo [142]
+  5010  VVS      Caiolo [142]
+  5011  DVS      Caiolo [142]
+  4019  Press    Caiolo [142]
+  4018  RH       Caiolo [142]
+  4020  Rg       Caiolo [142]
+  4021  Rn       Caiolo [142]
+  4045  Rg       Darfo [145]
+  4043  RH       Darfo [145]
+  4048  VV       Darfo [145]
+  4047  DV       Darfo [145]
+  4044  Press    Darfo [145]
+  4033  Piog     Livigno
+  4032  VV       Livigno
+  4031  DV       Livigno
+  4027  RH       Livigno
+  5131  VVS      Mantova - Lunetta [166]
+  5132  DVS      Mantova - Lunetta [166]
+  5125  RN       Mantova - Lunetta [166]
+  4008  Piog     Motta Visconti
+  4001  T        Motta Visconti
+  4007  VV       Motta Visconti
+  4006  DV       Motta Visconti
+  5006  VVS      Motta Visconti
+  5007  DVS      Motta Visconti
+  4003  Press    Motta Visconti
+  4002  RH       Motta Visconti
+  4004  Rg       Motta Visconti
+  4005  Rn       Motta Visconti
+  4056  VV       Passo S. Marco [146]
+  4055  DV       Passo S. Marco [146]
+  4054  RN       Passo S. Marco [146]
+  4052  Press    Passo S. Marco [146]  
+- 4034  T        Spluga [144]
+- 4035  RH       Spluga [144]
+- 4041  Piog     Spluga [144]
+- 4040  VV       Spluga [144]
+- 4039  DV       Spluga [144]
+- 4036  Press    Spluga [144]
+- 4035  RH       Spluga [144]
+- 4037  Rg       Spluga [144]
+- 4038  Rn       Spluga [144]
+  4010  RH       Vertemate [141]
+  5008  VVS      Vertemate [141]      
+  5009  DVS      Vertemate [141]  
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
+- 9091  Piog     Castronno [1211]
+- 9116  Piog     Cavaria [1206]
+  9104  Piog     Grabiasca [1229]
+  9015  T        Grabiasca [1229]
+  9059  Press    Grabiasca [1229]
+  9022  T        Porlezza
+- 9074  VV       Vercana
+- 9077  DV       Vercana
+- 9100  Piog     Lago Truzzo [1230]
+- 9011  T        Lago Truzzo [1230]
+- 9055  Press    Lago Truzzo [1230]
+- 9123  Piog     Rota Imagna [1209]
+- 9034  T        Rota Imagna [1209]
+- 9072  Press    Rota Imagna [1209]
+- 9103  Piog     San Giacomo-Monno [1237]
+- 9119  Piog     Valcanale [1218]
++ 9099  Piog     Ponte Cene
++ 9094  Piog     Oltre il Colle
++ 9098  Piog     Gardone ValTrompia
+[Rete Altro-Quaderno Rosso Erica]:
+  8206  Piog     Asola
+  9371  VV       Poggio S. Elsa
+  9765  DV       Poggio S. Elsa
+  8182  Piog     Ponte S. Marco
+  8097  Piog     Valtorta
+- 112   T        Branzi
+  124   RN       Cam Boer
+  36    Piog     Campo Franscia - Lanzada [24]
+  37    Piog     Campo Franscia - Lanzada [25]
+  57    T        Laghi di Chiesa
+  88    T        Semogo
+  34    Piog     Spriana
+  25    T        Val Pola tar/100 - Valdisotto
+  24    T        Val Pola tar/2 - Valdisotto
+  94    Piog     Cedrasco
+  122   Piog     Villa di Chiavenna
+  8030  RH       La Vallaccia
+  8011  RH       Oga S. Colombano
+  8094  Piog     Palu
+  8092  T        Palu
+  9369  VV       Palu 
+  9763  DV       Palu
+  8390  RH       S. Caterina Valfurva
+  2564  VV       Galbiate
+  2563  DV       Galbiate
+  2582  Piog     Missaglia
+  2581  T        Missaglia
+  2585  VV       Missaglia
+  2584  DV       Missaglia
+  2583  RH       Missaglia
+  2596  Piog     Montevecchia
+  2595  T        Montevecchia
+  2599  VV       Montevecchia
+  2598  DV       Montevecchia
+  2587  RH       Montevecchia
+  8139  Piog     Caino [876]
+  8215  Piog     Castiglione delle Stiviere [899]
+  19    Piog     Arnoga [12]
+  79    T        Lanzada 5/L [44]
+  75    T        Lanzada 1/L [40]
+  37    Piog     Campo Franscia - Lanzada [25]
+  9839  Piog     Fuentes [1244]
+  9843  Piog     Samolaco [1246]
+  2575  Piog     Introbio [202]
+  2574  T        Introbio [202]
+  2578  VV       Introbio [202]     
+  2577  DV       Introbio [202]
+  2576  RH       Introbio [202]
+Numero totale di sensori nel file di blacklist = 352
+2009/01/12 CL
+Riepilogo Stazioni in blacklist:
++ = aggiunta ora ; - = tolta ora
+[Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
+  5885  Piog     Caorso 10 m [616]
+  5886  T        Caorso 10 m [616]
+  6015  DV       Caorso 10 m [616]
+  9333  VVP      Caorso 10 m [616]
+  6016  DVP      Caorso 10 m [616]
+  6168  RH       Caorso 10 m [616]
+  6441  RG       Caorso 10 m [616]
+  6013  DV       Caorso 80 m [634]
+  9332  VVP      Caorso 80 m [634]
+  6014  DVP      Caorso 80 m [634]
+  5868  T        Costa Volpino [586]
+  6105  DVP      Costa Volpino [586]
+  5995  VVP      Costa Volpino [586]
+  5992  DV       Dalmine [585]
+  6104  VVP      Dalmine [585]
+  5993  DVP      Dalmine [585]
+  5979  DV       Filago [595]
+  6095  VVP      Filago [595]
+  5980  DVP      Filago [595]
+  6836  VV       Lonato [657]
+  6828  DV       Lonato [657]
+  6835  RH       Lonato [657]
+  6825  VV       Gambara [616]
+  6815  DV       Gambara [616]
+  6824  RH       Gambara [616]
+  6850  RH       Odolo [659]
+  6851  VV       Odolo [659]
+  6843  DV       Odolo [659]
+  6866  VV       Rezzato [661]
+  6861  DV       Rezzato [661]
+  6806  VV       Sarezzo [654]
+  6800  DV       Sarezzo [654]
+  9311  RH       Como - Villa Gallia
+  9322  Piog     Casalmaggiore
+  5966  T        Casalmaggiore
+  9321  VV       Casalmaggiore
+  9320  DV       Casalmaggiore
+  6491  Press    Casalmaggiore
+  6407  RH       Casalmaggiore
+  6437  Rg       Casalmaggiore
+  9335  VVP      Tavazzano 240 m [636]
+  6018  DVP      Tavazzano 240 m [636]
+  5888  T        Tavazzano Enel Suolo [617]
+  6442  RN       Tavazzano Enel Suolo [617]
+  6443  RG       Tavazzano Enel Suolo [617]
+  6175  RH       Carate Brianza
+  5892  Piog     Cassano Suolo [619]
+  6044  DV       Milano-via Juvara
+  6129  VVP      Milano-via Juvara
+  6045  DVP      Milano-via Juvara
+  5919  T        Trezzo
+  5904  Piog     Turbigo Enel suolo [622]
+  5905  T        Turbigo Enel suolo [622]
+  6125  VVP      Turbigo Enel 20 m
+  6126  VVP      Turbigo Enel 145 m
+  6041  DVP      Turbigo Enel 145 m
+  6040  DVP      Turbigo Enel 20 m
+  6499  Press    Turbigo Enel suolo [622]
+  6177  RH       Turbigo Enel suolo [622]
+  6454  Rg       Turbigo Enel suolo [622]
+  6892  Piog     Marmirolo
+  9809  Piog     Mantova - S. Agnese
+  9812  T        Mantova - S. Agnese
+  9814  VV       Mantova - S. Agnese
+  9808  DV       Mantova - S. Agnese
+  9810  Press    Mantova - S. Agnese
+  9813  RH       Mantova - S. Agnese
+  9811  Rg       Mantova - S. Agnese
+  9816  Piog     Mantova - Tridolino
+  9863  Piog     Cornale
+  9868  T        Cornale
+  9870  VV       Cornale
+  9862  DV       Cornale
+  9864  Press    Cornale
+  9869  RH       Cornale
+  9865  Rg       Cornale
+  9866  Rn       Cornale
+  6698  T        Pavia - Folperti
+  6699  RH       Pavia - Folperti
+  6696  Rg       Pavia - Folperti
+  7036  T        Sannazzaro [692]
+  7033  Piog     Sannazzaro [692]
+  7038  VV       Sannazzaro [692]
+  7032  DV       Sannazzaro [692]
+  7034  Press    Sannazzaro [692]
+  7037  RH       Sannazzaro [692]
+  7035  Rg       Sannazzaro [692]
+  6725  Rg       Vigevano
+  6189  RH       Morbegno
+[Rete Ersaf-Quaderno Rosso Erica]:
+- 2460  UR       Bargnano [134]
+- 2368  Piog     Castello d'Agogna [125]
+- 2361  T        Castello d'Agogna [125]
+- 2365  VV       Castello d'Agogna [125]
+- 2367  DV       Castello d'Agogna [125]
+- 2362  UR       Castello d'Agogna [125]
+- 2364  RG       Castello d'Agogna [125]
+- 2363  T-10     Castello d'Agogna [125]
+  2305  Piog     Certosa di Pavia [121]
+  2306  Piog     Certosa di Pavia [121]
+  2259  RH       Curtatone
+  2262  VV       Curtatone
+  2265  DV       Curtatone
+  2258  T        Curtatone
+  2534  Piog     Mantova Cerese [139]
+  2535  Piog     Mantova Cerese [139]
+  2524  T        Mantova Cerese [139]
+  2528  VV       Mantova Cerese [139]
+  2536  DV       Mantova Cerese [139]
+  2527  UR       Mantova Cerese [139]
+  2533  RG       Mantova Cerese [139]
+  2532  T-10     Mantova Cerese [139]
+- 2202  VV       Ispra Tetto
+- 2205  DV       Ispra Tetto
+- 2477  Piog     Minoprio [135]
+- 2471  T        Minoprio [135]
+- 2478  VV       Minoprio [135]
+- 2480  DV       Minoprio [135]
+- 2472  RH       Minoprio [135]
+- 2476  Rg       Minoprio [135]
+  2146  T        Moggio [111]
+- 2135  RH       Palidano
+- 2486  RH       Persico
+  2500  VV       Rivolta d'Adda [137]
+  2503  DV       Rivolta d'Adda [137]
+- 2116  Piog     Samolaco (ersaf) [108]
+- 2110  T        Samolaco (ersaf) [108]
+- 2114  VV       Samolaco (ersaf) [108]
+- 2117  DV       Samolaco (ersaf) [108]
+- 2111  RH       Samolaco (ersaf) [108]
+- 2112  Rg       Samolaco (ersaf) [108]
+  2082  T        Varzi [106]
+  2089  Piog     Varzi [106]     
+  2090  Piog     Varzi [106]
+  2086  VV       Varzi [106]
+  2091  DV       Varzi [106]
+  2083  RH       Varzi [106]
+  2084  Rg       Varzi [106]
+[Rete ShakeUp-Quaderno Rosso Erica]:
+  4025  Piog     Caiolo [142]
+  4024  VV       Caiolo [142]
+  4022  DV       Caiolo [142]
+  4017  T        Caiolo [142]
+  5010  VVS      Caiolo [142]
+  5011  DVS      Caiolo [142]
+  4019  Press    Caiolo [142]
+  4018  RH       Caiolo [142]
+  4020  Rg       Caiolo [142]
+  4021  Rn       Caiolo [142]
+  4045  Rg       Darfo [145]
+  4043  RH       Darfo [145]
+  4048  VV       Darfo [145]
+  4047  DV       Darfo [145]
+  4044  Press    Darfo [145]
+  4033  Piog     Livigno
+  4032  VV       Livigno
+  4031  DV       Livigno
+  4027  RH       Livigno
+  5131  VVS      Mantova - Lunetta [166]
+  5132  DVS      Mantova - Lunetta [166]
+  5125  RN       Mantova - Lunetta [166]
+- 4008  Piog     Motta Visconti
+- 4001  T        Motta Visconti
+- 4007  VV       Motta Visconti
+- 4006  DV       Motta Visconti
+- 5006  VVS      Motta Visconti
+- 5007  DVS      Motta Visconti
+- 4003  Press    Motta Visconti
+- 4002  RH       Motta Visconti
+- 4004  Rg       Motta Visconti
+- 4005  Rn       Motta Visconti
+  4056  VV       Passo S. Marco [146]
+  4055  DV       Passo S. Marco [146]
+  4054  RN       Passo S. Marco [146]
+  4052  Press    Passo S. Marco [146]  
+  4010  RH       Vertemate [141]
+  5008  VVS      Vertemate [141]      
+  5009  DVS      Vertemate [141]  
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
+  9104  Piog     Grabiasca [1229]
+  9015  T        Grabiasca [1229]
+  9059  Press    Grabiasca [1229]
+- 9022  T        Porlezza
+- 9099  Piog     Ponte Cene
+- 9094  Piog     Oltre il Colle
+- 9098  Piog     Gardone ValTrompia
++ 9119  Piog     Valcanale [1218]
+[Rete Altro-Quaderno Rosso Erica]:
+  8206  Piog     Asola
+- 9371  VV       Poggio S. Elsa
+- 9765  DV       Poggio S. Elsa
+- 8182  Piog     Ponte S. Marco
+  8097  Piog     Valtorta
+  124   RN       Cam Boer
+- 36    Piog     Campo Franscia - Lanzada [24]
+- 37    Piog     Campo Franscia - Lanzada [25]
+  57    T        Laghi di Chiesa
+  88    T        Semogo
+  34    Piog     Spriana
+  25    T        Val Pola tar/100 - Valdisotto
+  24    T        Val Pola tar/2 - Valdisotto
++ 137   VV       Val Pola [61]
++ 138   DV       Val Pola [61]
+  94    Piog     Cedrasco
+  122   Piog     Villa di Chiavenna
+  8030  RH       La Vallaccia
+  8011  RH       Oga S. Colombano
+  8094  Piog     Palu
+  8092  T        Palu
+  9369  VV       Palu 
+  9763  DV       Palu
+  8390  RH       S. Caterina Valfurva
+  2564  VV       Galbiate
+  2563  DV       Galbiate
+  2582  Piog     Missaglia
+  2581  T        Missaglia
+  2585  VV       Missaglia
+  2584  DV       Missaglia
+  2583  RH       Missaglia
+  2596  Piog     Montevecchia
+  2595  T        Montevecchia
+  2599  VV       Montevecchia
+  2598  DV       Montevecchia
+  2587  RH       Montevecchia
+- 8139  Piog     Caino [876]
+- 8215  Piog     Castiglione delle Stiviere [899]
+  19    Piog     Arnoga [12]
+  79    T        Lanzada 5/L [44]
+- 75    T        Lanzada 1/L [40]
+  37    Piog     Campo Franscia - Lanzada [25]
+  9839  Piog     Fuentes [1244]
+- 9843  Piog     Samolaco [1246]
+  2575  Piog     Introbio [202]
+  2574  T        Introbio [202]
+  2578  VV       Introbio [202]     
+  2577  DV       Introbio [202]
+  2576  RH       Introbio [202]
++ 112   T        Branzi
+Numero totale di sensori nel file di blacklist = 309
+2009/01/15 CL
+Riepilogo Stazioni in blacklist:
++ = aggiunta ora ; - = tolta ora
+[Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
+  5885  Piog     Caorso 10 m [616]
+  5886  T        Caorso 10 m [616]
+  6015  DV       Caorso 10 m [616]
+  9333  VVP      Caorso 10 m [616]
+  6016  DVP      Caorso 10 m [616]
+  6168  RH       Caorso 10 m [616]
+  6441  RG       Caorso 10 m [616]
+  6013  DV       Caorso 80 m [634]
+  9332  VVP      Caorso 80 m [634]
+  6014  DVP      Caorso 80 m [634]
+  5868  T        Costa Volpino [586]
+  6105  DVP      Costa Volpino [586]
+  5995  VVP      Costa Volpino [586]
+  5992  DV       Dalmine [585]
+  6104  VVP      Dalmine [585]
+  5993  DVP      Dalmine [585]
+  5979  DV       Filago [595]
+  6095  VVP      Filago [595]
+  5980  DVP      Filago [595]
+  6836  VV       Lonato [657]
+  6828  DV       Lonato [657]
+  6835  RH       Lonato [657]
+  6825  VV       Gambara [616]
+  6815  DV       Gambara [616]
+  6824  RH       Gambara [616]
+  6850  RH       Odolo [659]
+  6851  VV       Odolo [659]
+  6843  DV       Odolo [659]
+  6866  VV       Rezzato [661]
+  6861  DV       Rezzato [661]
+  6806  VV       Sarezzo [654]
+  6800  DV       Sarezzo [654]
+  9311  RH       Como - Villa Gallia
+  9322  Piog     Casalmaggiore
+  5966  T        Casalmaggiore
+  9321  VV       Casalmaggiore
+  9320  DV       Casalmaggiore
+  6491  Press    Casalmaggiore
+  6407  RH       Casalmaggiore
+  6437  Rg       Casalmaggiore
+  9335  VVP      Tavazzano 240 m [636]
+  6018  DVP      Tavazzano 240 m [636]
+  5888  T        Tavazzano Enel Suolo [617]
+  6442  RN       Tavazzano Enel Suolo [617]
+  6443  RG       Tavazzano Enel Suolo [617]
+  6175  RH       Carate Brianza
+  5892  Piog     Cassano Suolo [619]
+  6044  DV       Milano-via Juvara
+  6129  VVP      Milano-via Juvara
+  6045  DVP      Milano-via Juvara
+  5919  T        Trezzo
+  5904  Piog     Turbigo Enel suolo [622]
+  5905  T        Turbigo Enel suolo [622]
+  6125  VVP      Turbigo Enel 20 m
+  6126  VVP      Turbigo Enel 145 m
+  6041  DVP      Turbigo Enel 145 m
+  6040  DVP      Turbigo Enel 20 m
+  6499  Press    Turbigo Enel suolo [622]
+  6177  RH       Turbigo Enel suolo [622]
+  6454  Rg       Turbigo Enel suolo [622]
+  6892  Piog     Marmirolo
+  9809  Piog     Mantova - S. Agnese
+  9812  T        Mantova - S. Agnese
+  9814  VV       Mantova - S. Agnese
+  9808  DV       Mantova - S. Agnese
+  9810  Press    Mantova - S. Agnese
+  9813  RH       Mantova - S. Agnese
+  9811  Rg       Mantova - S. Agnese
+  9816  Piog     Mantova - Tridolino
+  9863  Piog     Cornale
+  9868  T        Cornale
+  9870  VV       Cornale
+  9862  DV       Cornale
+  9864  Press    Cornale
+  9869  RH       Cornale
+  9865  Rg       Cornale
+  9866  Rn       Cornale
+  6698  T        Pavia - Folperti
+  6699  RH       Pavia - Folperti
+  6696  Rg       Pavia - Folperti
+  7036  T        Sannazzaro [692]
+  7033  Piog     Sannazzaro [692]
+  7038  VV       Sannazzaro [692]
+  7032  DV       Sannazzaro [692]
+  7034  Press    Sannazzaro [692]
+  7037  RH       Sannazzaro [692]
+  7035  Rg       Sannazzaro [692]
+  6725  Rg       Vigevano
+  6189  RH       Morbegno
+[Rete Ersaf-Quaderno Rosso Erica]:
+  2305  Piog     Certosa di Pavia [121]
+  2306  Piog     Certosa di Pavia [121]
+  2259  RH       Curtatone
+  2262  VV       Curtatone
+  2265  DV       Curtatone
+  2258  T        Curtatone
+  2534  Piog     Mantova Cerese [139]
+  2535  Piog     Mantova Cerese [139]
+  2524  T        Mantova Cerese [139]
+  2528  VV       Mantova Cerese [139]
+  2536  DV       Mantova Cerese [139]
+  2527  UR       Mantova Cerese [139]
+  2533  RG       Mantova Cerese [139]
+  2532  T-10     Mantova Cerese [139]
+  2146  T        Moggio [111]
+  2500  VV       Rivolta d'Adda [137]
+  2503  DV       Rivolta d'Adda [137]
+  2082  T        Varzi [106]
+  2089  Piog     Varzi [106]     
+  2090  Piog     Varzi [106]
+  2086  VV       Varzi [106]
+  2091  DV       Varzi [106]
+  2083  RH       Varzi [106]
+  2084  Rg       Varzi [106]
++ 2042  VV       San Colombano [102]
++ 2048  DV       San Colombano [102]
++ 2040  RH       San Colombano [102]
++ 2046  Piog     San Colombano [102]
++ 2047  Piog     San Colombano [102]
++ 2039  T        San Colombano [102]
++ 2044  Rg       San Colombano [102]
+[Rete ShakeUp-Quaderno Rosso Erica]:
+  4025  Piog     Caiolo [142]
+  4024  VV       Caiolo [142]
+  4022  DV       Caiolo [142]
+  4017  T        Caiolo [142]
+  5010  VVS      Caiolo [142]
+  5011  DVS      Caiolo [142]
+  4019  Press    Caiolo [142]
+  4018  RH       Caiolo [142]
+  4020  Rg       Caiolo [142]
+  4021  Rn       Caiolo [142]
+  4045  Rg       Darfo [145]
+  4043  RH       Darfo [145]
+  4048  VV       Darfo [145]
+  4047  DV       Darfo [145]
+  4044  Press    Darfo [145]
+  4033  Piog     Livigno
+  4032  VV       Livigno
+  4031  DV       Livigno
+  4027  RH       Livigno
+  5131  VVS      Mantova - Lunetta [166]
+  5132  DVS      Mantova - Lunetta [166]
+  5125  RN       Mantova - Lunetta [166]
+  4056  VV       Passo S. Marco [146]
+  4055  DV       Passo S. Marco [146]
+  4054  RN       Passo S. Marco [146]
+  4052  Press    Passo S. Marco [146]  
+  4010  RH       Vertemate [141]
+  5008  VVS      Vertemate [141]      
+  5009  DVS      Vertemate [141]  
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
+  9104  Piog     Grabiasca [1229]
+  9015  T        Grabiasca [1229]
+  9059  Press    Grabiasca [1229]
+  9119  Piog     Valcanale [1218]
+[Rete Altro-Quaderno Rosso Erica]:
+  8206  Piog     Asola
+  8097  Piog     Valtorta
+  124   RN       Cam Boer
+  57    T        Laghi di Chiesa
+  88    T        Semogo
+  34    Piog     Spriana
+  25    T        Val Pola tar/100 - Valdisotto
+  24    T        Val Pola tar/2 - Valdisotto
+  137   VV       Val Pola [61]
+  138   DV       Val Pola [61]
+  94    Piog     Cedrasco
+  122   Piog     Villa di Chiavenna
+  8030  RH       La Vallaccia
+  8011  RH       Oga S. Colombano
+  8094  Piog     Palu
+  8092  T        Palu
+  9369  VV       Palu 
+  9763  DV       Palu
+  8390  RH       S. Caterina Valfurva
+  2564  VV       Galbiate
+  2563  DV       Galbiate
+  2582  Piog     Missaglia
+  2581  T        Missaglia
+  2585  VV       Missaglia
+  2584  DV       Missaglia
+  2583  RH       Missaglia
+  2596  Piog     Montevecchia
+  2595  T        Montevecchia
+  2599  VV       Montevecchia
+  2598  DV       Montevecchia
+  2587  RH       Montevecchia
+  19    Piog     Arnoga [12]
+  79    T        Lanzada 5/L [44]
+  37    Piog     Campo Franscia - Lanzada [25]
+  9839  Piog     Fuentes [1244]
+  2575  Piog     Introbio [202]
+  2574  T        Introbio [202]
+  2578  VV       Introbio [202]     
+  2577  DV       Introbio [202]
+  2576  RH       Introbio [202]
+  112   T        Branzi
+Numero totale di sensori nel file di blacklist = 316
+2009/01/16 CL
+Riepilogo Stazioni in blacklist:
++ = aggiunta ora ; - = tolta ora
+[Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
+  5885  Piog     Caorso 10 m [616]
+  5886  T        Caorso 10 m [616]
+  6015  DV       Caorso 10 m [616]
+  9333  VVP      Caorso 10 m [616]
+  6016  DVP      Caorso 10 m [616]
+  6168  RH       Caorso 10 m [616]
+  6441  RG       Caorso 10 m [616]
+  6013  DV       Caorso 80 m [634]
+  9332  VVP      Caorso 80 m [634]
+  6014  DVP      Caorso 80 m [634]
+  5868  T        Costa Volpino [586]
+  6105  DVP      Costa Volpino [586]
+  5995  VVP      Costa Volpino [586]
+  5992  DV       Dalmine [585]
+  6104  VVP      Dalmine [585]
+  5993  DVP      Dalmine [585]
+  5979  DV       Filago [595]
+  6095  VVP      Filago [595]
+  5980  DVP      Filago [595]
+  6836  VV       Lonato [657]
+  6828  DV       Lonato [657]
+  6835  RH       Lonato [657]
+  6825  VV       Gambara [616]
+  6815  DV       Gambara [616]
+  6824  RH       Gambara [616]
+  6850  RH       Odolo [659]
+  6851  VV       Odolo [659]
+  6843  DV       Odolo [659]
+  6866  VV       Rezzato [661]
+  6861  DV       Rezzato [661]
+  6806  VV       Sarezzo [654]
+  6800  DV       Sarezzo [654]
+  9311  RH       Como - Villa Gallia
+  9322  Piog     Casalmaggiore
+  5966  T        Casalmaggiore
+  9321  VV       Casalmaggiore
+  9320  DV       Casalmaggiore
+  6491  Press    Casalmaggiore
+  6407  RH       Casalmaggiore
+  6437  Rg       Casalmaggiore
+  9335  VVP      Tavazzano 240 m [636]
+  6018  DVP      Tavazzano 240 m [636]
+  5888  T        Tavazzano Enel Suolo [617]
+  6442  RN       Tavazzano Enel Suolo [617]
+  6443  RG       Tavazzano Enel Suolo [617]
+  6175  RH       Carate Brianza
+  5892  Piog     Cassano Suolo [619]
+  6044  DV       Milano-via Juvara
+  6129  VVP      Milano-via Juvara
+  6045  DVP      Milano-via Juvara
+  5919  T        Trezzo
+  5904  Piog     Turbigo Enel suolo [622]
+  5905  T        Turbigo Enel suolo [622]
+  6125  VVP      Turbigo Enel 20 m
+  6126  VVP      Turbigo Enel 145 m
+  6041  DVP      Turbigo Enel 145 m
+  6040  DVP      Turbigo Enel 20 m
+  6499  Press    Turbigo Enel suolo [622]
+  6177  RH       Turbigo Enel suolo [622]
+  6454  Rg       Turbigo Enel suolo [622]
+  6892  Piog     Marmirolo
+  9809  Piog     Mantova - S. Agnese
+  9812  T        Mantova - S. Agnese
+  9814  VV       Mantova - S. Agnese
+  9808  DV       Mantova - S. Agnese
+  9810  Press    Mantova - S. Agnese
+  9813  RH       Mantova - S. Agnese
+  9811  Rg       Mantova - S. Agnese
+  9816  Piog     Mantova - Tridolino
+  9863  Piog     Cornale
+  9868  T        Cornale
+  9870  VV       Cornale
+  9862  DV       Cornale
+  9864  Press    Cornale
+  9869  RH       Cornale
+  9865  Rg       Cornale
+  9866  Rn       Cornale
+  6698  T        Pavia - Folperti
+  6699  RH       Pavia - Folperti
+  6696  Rg       Pavia - Folperti
+  7036  T        Sannazzaro [692]
+  7033  Piog     Sannazzaro [692]
+  7038  VV       Sannazzaro [692]
+  7032  DV       Sannazzaro [692]
+  7034  Press    Sannazzaro [692]
+  7037  RH       Sannazzaro [692]
+  7035  Rg       Sannazzaro [692]
+  6725  Rg       Vigevano
+  6189  RH       Morbegno
+[Rete Ersaf-Quaderno Rosso Erica]:
+  2305  Piog     Certosa di Pavia [121]
+  2306  Piog     Certosa di Pavia [121]
+  2259  RH       Curtatone
+  2262  VV       Curtatone
+  2265  DV       Curtatone
+  2258  T        Curtatone
+  2534  Piog     Mantova Cerese [139]
+  2535  Piog     Mantova Cerese [139]
+  2524  T        Mantova Cerese [139]
+  2528  VV       Mantova Cerese [139]
+  2536  DV       Mantova Cerese [139]
+  2527  UR       Mantova Cerese [139]
+  2533  RG       Mantova Cerese [139]
+  2532  T-10     Mantova Cerese [139]
+  2146  T        Moggio [111]
+  2500  VV       Rivolta d'Adda [137]
+  2503  DV       Rivolta d'Adda [137]
+  2082  T        Varzi [106]
+  2089  Piog     Varzi [106]     
+  2090  Piog     Varzi [106]
+  2086  VV       Varzi [106]
+  2091  DV       Varzi [106]
+  2083  RH       Varzi [106]
+  2084  Rg       Varzi [106]
+  2042  VV       San Colombano [102]
+  2048  DV       San Colombano [102]
+  2040  RH       San Colombano [102]
+  2046  Piog     San Colombano [102]
+  2047  Piog     San Colombano [102]
+  2039  T        San Colombano [102]
+  2044  Rg       San Colombano [102]
+[Rete ShakeUp-Quaderno Rosso Erica]:
+  4025  Piog     Caiolo [142]
+  4024  VV       Caiolo [142]
+  4022  DV       Caiolo [142]
+  4017  T        Caiolo [142]
+  5010  VVS      Caiolo [142]
+  5011  DVS      Caiolo [142]
+  4019  Press    Caiolo [142]
+  4018  RH       Caiolo [142]
+  4020  Rg       Caiolo [142]
+  4021  Rn       Caiolo [142]
+  4045  Rg       Darfo [145]
+  4043  RH       Darfo [145]
+  4048  VV       Darfo [145]
+  4047  DV       Darfo [145]
+  4044  Press    Darfo [145]
+  4033  Piog     Livigno
+  4032  VV       Livigno
+  4031  DV       Livigno
+  4027  RH       Livigno
+  5131  VVS      Mantova - Lunetta [166]
+  5132  DVS      Mantova - Lunetta [166]
+  5125  RN       Mantova - Lunetta [166]
+  4056  VV       Passo S. Marco [146]
+  4055  DV       Passo S. Marco [146]
+  4054  RN       Passo S. Marco [146]
+  4052  Press    Passo S. Marco [146]  
+  4010  RH       Vertemate [141]
+  5008  VVS      Vertemate [141]      
+  5009  DVS      Vertemate [141]  
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
+  9104  Piog     Grabiasca [1229]
+  9015  T        Grabiasca [1229]
+  9059  Press    Grabiasca [1229]
+  9119  Piog     Valcanale [1218]
+[Rete Altro-Quaderno Rosso Erica]:
+  8206  Piog     Asola
+  8097  Piog     Valtorta
+  124   RN       Cam Boer
+  57    T        Laghi di Chiesa
+  88    T        Semogo
+  34    Piog     Spriana
+  25    T        Val Pola tar/100 - Valdisotto
+  24    T        Val Pola tar/2 - Valdisotto
+  137   VV       Val Pola [61]
+  138   DV       Val Pola [61]
+  94    Piog     Cedrasco
+  122   Piog     Villa di Chiavenna
+  8030  RH       La Vallaccia
+  8011  RH       Oga S. Colombano
+  8094  Piog     Palu
+  8092  T        Palu
+  9369  VV       Palu 
+  9763  DV       Palu
+  8390  RH       S. Caterina Valfurva
+  2564  VV       Galbiate
+  2563  DV       Galbiate
+  2582  Piog     Missaglia
+  2581  T        Missaglia
+  2585  VV       Missaglia
+  2584  DV       Missaglia
+  2583  RH       Missaglia
+  2596  Piog     Montevecchia
+  2595  T        Montevecchia
+  2599  VV       Montevecchia
+  2598  DV       Montevecchia
+  2587  RH       Montevecchia
+  19    Piog     Arnoga [12]
+  79    T        Lanzada 5/L [44]
+  37    Piog     Campo Franscia - Lanzada [25]
+  9839  Piog     Fuentes [1244]
+  2575  Piog     Introbio [202]
+  2574  T        Introbio [202]
+  2578  VV       Introbio [202]     
+  2577  DV       Introbio [202]
+  2576  RH       Introbio [202]
+  112   T        Branzi
+Numero totale di sensori nel file di blacklist = 315
+2009/08/06 CL
+Riepilogo Stazioni in blacklist:
++ = aggiunta ora ; - = tolta ora
+[Rete Aria-Quaderno Rosso Erica]:
+id    param    staz
+  5885  Piog     Caorso 10 m [616]
+  5886  T        Caorso 10 m [616]
+  6015  DV       Caorso 10 m [616]
+  9333  VVP      Caorso 10 m [616]
+  6016  DVP      Caorso 10 m [616]
+  6168  RH       Caorso 10 m [616]
+  6441  RG       Caorso 10 m [616]
+  6013  DV       Caorso 80 m [634]
+  9332  VVP      Caorso 80 m [634]
+  6014  DVP      Caorso 80 m [634]
+  5868  T        Costa Volpino [586]
+  6105  DVP      Costa Volpino [586]
+  5995  VVP      Costa Volpino [586]
+  5992  DV       Dalmine [585]
+  6104  VVP      Dalmine [585]
+  5993  DVP      Dalmine [585]
+  5979  DV       Filago [595]
+  6095  VVP      Filago [595]
+  5980  DVP      Filago [595]
+  6836  VV       Lonato [657]
+  6828  DV       Lonato [657]
+  6835  RH       Lonato [657]
+  6825  VV       Gambara [616]
+  6815  DV       Gambara [616]
+  6824  RH       Gambara [616]
+  6850  RH       Odolo [659]
+  6851  VV       Odolo [659]
+  6843  DV       Odolo [659]
+  6866  VV       Rezzato [661]
+  6861  DV       Rezzato [661]
+  6806  VV       Sarezzo [654]
+  6800  DV       Sarezzo [654]
+  9311  RH       Como - Villa Gallia
+  9322  Piog     Casalmaggiore
+  5966  T        Casalmaggiore
+  9321  VV       Casalmaggiore
+  9320  DV       Casalmaggiore
+  6491  Press    Casalmaggiore
+  6407  RH       Casalmaggiore
+  6437  Rg       Casalmaggiore
+  9335  VVP      Tavazzano 240 m [636]
+  6018  DVP      Tavazzano 240 m [636]
+  5888  T        Tavazzano Enel Suolo [617]
+  6442  RN       Tavazzano Enel Suolo [617]
+  6443  RG       Tavazzano Enel Suolo [617]
+  6175  RH       Carate Brianza
+  5892  Piog     Cassano Suolo [619]
+  6044  DV       Milano-via Juvara
+  6129  VVP      Milano-via Juvara
+  6045  DVP      Milano-via Juvara
+  5919  T        Trezzo
+  5904  Piog     Turbigo Enel suolo [622]
+  5905  T        Turbigo Enel suolo [622]
+  6125  VVP      Turbigo Enel 20 m
+  6126  VVP      Turbigo Enel 145 m
+  6041  DVP      Turbigo Enel 145 m
+  6040  DVP      Turbigo Enel 20 m
+  6499  Press    Turbigo Enel suolo [622]
+  6177  RH       Turbigo Enel suolo [622]
+  6454  Rg       Turbigo Enel suolo [622]
+  6892  Piog     Marmirolo
+  9809  Piog     Mantova - S. Agnese
+  9812  T        Mantova - S. Agnese
+  9814  VV       Mantova - S. Agnese
+  9808  DV       Mantova - S. Agnese
+  9810  Press    Mantova - S. Agnese
+  9813  RH       Mantova - S. Agnese
+  9811  Rg       Mantova - S. Agnese
+  9816  Piog     Mantova - Tridolino
+  9863  Piog     Cornale
+  9868  T        Cornale
+  9870  VV       Cornale
+  9862  DV       Cornale
+  9864  Press    Cornale
+  9869  RH       Cornale
+  9865  Rg       Cornale
+  9866  Rn       Cornale
+  6698  T        Pavia - Folperti
+  6699  RH       Pavia - Folperti
+  6696  Rg       Pavia - Folperti
+  7036  T        Sannazzaro [692]
+  7033  Piog     Sannazzaro [692]
+  7038  VV       Sannazzaro [692]
+  7032  DV       Sannazzaro [692]
+  7034  Press    Sannazzaro [692]
+  7037  RH       Sannazzaro [692]
+  7035  Rg       Sannazzaro [692]
+  6725  Rg       Vigevano
+  6189  RH       Morbegno
+[Rete Ersaf-Quaderno Rosso Erica]:
++ 2460  UR       Bargnano [134]
+  2305  Piog     Certosa di Pavia [121]
+  2306  Piog     Certosa di Pavia [121]
+  2259  RH       Curtatone
+  2262  VV       Curtatone
+  2265  DV       Curtatone
+  2258  T        Curtatone
+  2534  Piog     Mantova Cerese [139]
+  2535  Piog     Mantova Cerese [139]
+  2524  T        Mantova Cerese [139]
+  2528  VV       Mantova Cerese [139]
+  2536  DV       Mantova Cerese [139]
+  2527  UR       Mantova Cerese [139]
+  2533  RG       Mantova Cerese [139]
+  2532  T-10     Mantova Cerese [139]
+  2146  T        Moggio [111]
+  2500  VV       Rivolta d'Adda [137]
+  2503  DV       Rivolta d'Adda [137]
+  2082  T        Varzi [106]
+  2089  Piog     Varzi [106]     
+  2090  Piog     Varzi [106]
+  2086  VV       Varzi [106]
+  2091  DV       Varzi [106]
+  2083  RH       Varzi [106]
+  2084  Rg       Varzi [106]
+  2042  VV       San Colombano [102]
+  2048  DV       San Colombano [102]
+  2040  RH       San Colombano [102]
+  2046  Piog     San Colombano [102]
+  2047  Piog     San Colombano [102]
+  2039  T        San Colombano [102]
+  2044  Rg       San Colombano [102]
+[Rete ShakeUp-Quaderno Rosso Erica]:
+  4025  Piog     Caiolo [142]
+  4024  VV       Caiolo [142]
+  4022  DV       Caiolo [142]
+  4017  T        Caiolo [142]
+  5010  VVS      Caiolo [142]
+  5011  DVS      Caiolo [142]
+  4019  Press    Caiolo [142]
+  4018  RH       Caiolo [142]
+  4020  Rg       Caiolo [142]
+  4021  Rn       Caiolo [142]
+  4045  Rg       Darfo [145]
+  4043  RH       Darfo [145]
+  4048  VV       Darfo [145]
+  4047  DV       Darfo [145]
+  4044  Press    Darfo [145]
+  4033  Piog     Livigno
+  4032  VV       Livigno
+  4031  DV       Livigno
+  4027  RH       Livigno
+  5131  VVS      Mantova - Lunetta [166]
+  5132  DVS      Mantova - Lunetta [166]
+  5125  RN       Mantova - Lunetta [166]
+  4056  VV       Passo S. Marco [146]
+  4055  DV       Passo S. Marco [146]
+  4054  RN       Passo S. Marco [146]
+  4052  Press    Passo S. Marco [146]  
+  4010  RH       Vertemate [141]
+  5008  VVS      Vertemate [141]      
+  5009  DVS      Vertemate [141]  
+Aggiunti alla blacklist [Rete Micros-Quaderno Rosso Erica]:
+  9104  Piog     Grabiasca [1229]
+  9015  T        Grabiasca [1229]
+  9059  Press    Grabiasca [1229]
+  9119  Piog     Valcanale [1218]
+[Rete Altro-Quaderno Rosso Erica]:
+  8206  Piog     Asola
+  8097  Piog     Valtorta
+  124   RN       Cam Boer
+  57    T        Laghi di Chiesa
+  88    T        Semogo
+  34    Piog     Spriana
+  25    T        Val Pola tar/100 - Valdisotto
+  24    T        Val Pola tar/2 - Valdisotto
+  137   VV       Val Pola [61]
+  138   DV       Val Pola [61]
+  94    Piog     Cedrasco
+  122   Piog     Villa di Chiavenna
+  8030  RH       La Vallaccia
+  8011  RH       Oga S. Colombano
+  8094  Piog     Palu
+  8092  T        Palu
+  9369  VV       Palu 
+  9763  DV       Palu
+  8390  RH       S. Caterina Valfurva
+  2564  VV       Galbiate
+  2563  DV       Galbiate
+  2582  Piog     Missaglia
+  2581  T        Missaglia
+  2585  VV       Missaglia
+  2584  DV       Missaglia
+  2583  RH       Missaglia
+  2596  Piog     Montevecchia
+  2595  T        Montevecchia
+  2599  VV       Montevecchia
+  2598  DV       Montevecchia
+  2587  RH       Montevecchia
+  19    Piog     Arnoga [12]
+  79    T        Lanzada 5/L [44]
+  37    Piog     Campo Franscia - Lanzada [25]
+  9839  Piog     Fuentes [1244]
+  2575  Piog     Introbio [202]
+  2574  T        Introbio [202]
+  2578  VV       Introbio [202]     
+  2577  DV       Introbio [202]
+  2576  RH       Introbio [202]
+  112   T        Branzi
+Numero totale di sensori nel file di blacklist = 316
+
+
+
+
+
+

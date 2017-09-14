@@ -1,0 +1,78 @@
+2006/11/03, CL
+creazione del file "blacklist.txt" e della sua copia di backup. Il file contiene 119 sensori, che appartengono alle stazioni storiche (ovvero che non inviano piu' dati al DB ARPALo) e alle stazioni appartenenti al file "//SCHEDULATORE/AppServer/IDRO SMR QA/StazioniMETEOnnsignificative.txt" che sono state ritenute inutilizzabili dopo un esame del loro posizionamento da parte di Erica e MAaro (le stazioni sono: Saronno-via Marconi, Gallarate-P.zza S.Lorenzo, Chiavenna, Sondrio-via Merizzi, Tirano-v.le Italia, Treviglio, S.Rocco al Porto, Pavia-p.zza Minerva, Breno, Brescia-Borletto, Mantova-via Ariosto).
+2006/12/13 CL
+Aggiunti il sensore di temperatura di Vertemate 4009
+Aggiunti il sensore di temperatura di Milano via Zavattari 5920
+Numero totale di sensori nel file di blacklist = 121
+2006/12/14 CL
+Aggiunti il sensore di temperatura di Spluga 4034
+Numero totale di sensori nel file di blacklist = 122
+2007/01/05 CL
+Aggiunti i sensori di temperatura di Pavia Folperti 6698 e Pavia p.zza Minerva 6712
+Numero totale di sensori nel file di blacklist = 124
+2007/02/23 CL
+Aggiunti i sensori di temperatura Lonato 6834 e Umidita' relativa Lonato 6835 
+Aggiunti i sensori di temperatura  Odolo 6849 e Umidita' relativa  Odolo 6850 
+Aggiunti i sensori di temperatura Cornalita 2270 e Umidita' relativa Cornalita 2271 
+Aggiunti i sensori di temperatura S.Colombano 2039 e Umidita' relativa S.Colombano 2040 
+Aggiunto il sensori di umidita' relativa di Costa Volpino 6161
+Numero totale di sensori nel file di blacklist = 133
+2007/03/23 CL
+Aggiunto il sensori di umidita' relativa di Castello d'Agogna 2299
+Numero totale di sensori nel file di blacklist = 134
+2007/05/11 CL
+Aggiunti sensore di umidita' relativa e temperatura di Milano-Parco Nord (ids: 4059 e 4058 rispettivamente)
+Numero totale di sensori nel file di blacklist = 136
+2007/05/14 CL
+Tolti i sensori di umidita' relativa e temperatura di Milano-Parco Nord (ids: 4059 e 4058 rispettivamente) 
+Numero totale di sensori nel file di blacklist = 134
+2007/05/25 CL
+Su segnalazione di Erica aggiunto alla lista il sensore di temperatura di Settala (id:2537)
+Numero totale di sensori nel file di blacklist = 135
+2007/06/19 CL
+Su segnalazione Erica aggiunti alla lista temperatura Sarnico (CAE) id:8136
+Numero totale di sensori nel file di blacklist = 136
+2007/08/22 CL
+Su segnalazione Erica aggiunti alla lista temperatura Milano-Brera Temperatura id:5897
+Numero totale di sensori nel file di blacklist = 137
+2007/10/15 CL
+Su segnalazione Erica aggiunti alla lista i sensori di umidita' relativa e temperatura di Milano-Parco Nord (ids: 4059 e 4058 rispettivamente) 
+Numero totale di sensori nel file di blacklist = 139
+2007/11/13 CL
+Su segnalazione Erica aggiunti alla lista il sensore di temperatura di Arconate[148] (id: 4066)
+Numero totale di sensori nel file di blacklist = 140
+2007/12/24 CL
+Aggiunto il pluviometro di Caorso[616] (id: 5885) per problemi legati alla trasmissione del dato
+Numero totale di sensori nel file di blacklist = 141
+2008/01/17 CL
+Aggiunto il pluviometro di Cassano[619] (id: 5892) perche' non funziona
+Aggiunto il pluviometro di Marmirolo-bosco fontana[667] (id: 6892) perche' forse intasato
+Numero totale di sensori nel file di blacklist = 143
+2008/02/08 CL
+Tolti i sensori di temperatura S.Colombano 2039 e Umidita' relativa S.Colombano 2040 
+Tolti i sensori di temperatura Cornalita 2270 e Umidita' relativa Cornalita 2271 
+Numero totale di sensori nel file di blacklist = 139
+2008/03/14 RG
+Per inizializzare FWI, tolti quasi tutti i sensori non storici e alcuni di quelli "non significativi" (vedi inizio di questo file).
+In altre parole, oltre alle stazioni storiche sono state tenute in blacklist solo le stazioni intere di Treviglio, S.Rocco al Porto, Pavia-p.zza Minerva, Brescia-Broletto, Mantova-via Ariosto, ed il singolo sensore di  T PaviaFolperti.
+Aggiunto poi alla blacklist UR Mantova S.Agnese.
+Numero totale di sensori nel file di blacklist = 97
+2008/03/19 RG
+Aggiunto sensore di umidità relativa di Odolo 6850
+Numero totale di sensori nel file di blacklist = 98
+2008/03/25 RG
+Aggiunto sensore umidità relativa di Gambara 6824
+Numero totale di sensori nel file di blacklist = 99
+2008/03/27 RG
+Aggiunti sensore di umidità di Costa Volpino 6161
+Numero totale di sensori nel file di blacklist = 100
+2008/04/30 RG
+Aggiunti wind speed San Colombano 2042
+Aggiunti precipitazione Bema 2452
+Numero totale di sensori nel file di blacklist = 102
+2009/03/07 RG
+Tolta wind speed San Colombano 2042
+Tolta prcipitazione Bema 2452
+Tolta umidità Costa Volpino 6161
+Numero totale di sensori nella blacklist = 99
+
