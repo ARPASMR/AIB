@@ -1,0 +1,260 @@
+2016-12-12 05:06:47,209 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 05:06:47,209 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 05:06:47,209 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 05:06:47,209 null [INFO] (../src/fwidbmgr.cpp:458) action: in.
+2016-12-12 05:06:47,209 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 05:06:47,209 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 05:06:47,245 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 05:06:47,521 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 05:06:47,531 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 05:06:47,577 null [INFO] (../src/fwidbmgr.cpp:5367) Importing meteo data in database for day: 20161211.
+2016-12-12 05:06:47,578 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow
+2016-12-12 05:06:47,578 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow configured.
+2016-12-12 05:06:47,584 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_covering
+2016-12-12 05:06:47,584 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_covering configured.
+2016-12-12 05:06:47,591 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_dissolution
+2016-12-12 05:06:47,591 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_dissolution configured.
+2016-12-12 05:06:47,603 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: temperature
+2016-12-12 05:06:47,603 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid temperature configured.
+2016-12-12 05:06:47,606 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: humidity
+2016-12-12 05:06:47,606 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid humidity configured.
+2016-12-12 05:06:47,612 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: windspeed
+2016-12-12 05:06:47,612 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid windspeed configured.
+2016-12-12 05:06:47,626 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: rain
+2016-12-12 05:06:47,626 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid rain configured.
+2016-12-12 05:06:47,628 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: cum_rain
+2016-12-12 05:06:47,628 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid cum_rain configured.
+2016-12-12 05:06:59,761 null [INFO] (../src/fwidbmgr.cpp:1502) Storing meteo input ...
+2016-12-12 05:07:21,363 null [INFO] (../src/fwidbmgr.cpp:5370) OK --> 20161211 data imported.
+2016-12-12 05:07:21,419 null [INFO] (../src/fwidbmgr.cpp:5496) action in took about 34 seconds.
+2016-12-12 05:07:21,614 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 05:08:31,536 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 05:08:31,536 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 05:08:31,536 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 05:08:31,536 null [INFO] (../src/fwidbmgr.cpp:458) action: out.
+2016-12-12 05:08:31,536 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 05:08:31,536 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 05:08:31,604 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 05:08:31,634 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 05:08:31,634 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 05:08:31,634 null [INFO] (../src/fwidbmgr.cpp:5379) Importing fwi indexes data in database for day: 20161211.
+2016-12-12 05:08:31,642 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2016-12-12 05:08:31,642 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2016-12-12 05:08:31,649 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2016-12-12 05:08:31,649 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2016-12-12 05:08:31,656 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2016-12-12 05:08:31,656 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2016-12-12 05:08:31,662 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2016-12-12 05:08:31,662 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2016-12-12 05:08:31,669 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2016-12-12 05:08:31,669 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2016-12-12 05:08:31,676 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2016-12-12 05:08:31,676 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2016-12-12 05:08:31,682 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2016-12-12 05:08:31,683 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2016-12-12 05:08:31,853 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2016-12-12 05:08:31,853 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2016-12-12 05:08:31,918 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2016-12-12 05:08:31,918 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2016-12-12 05:08:31,935 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2016-12-12 05:08:31,935 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2016-12-12 05:09:52,059 null [INFO] (../src/fwidbmgr.cpp:2045) Storing FWI indexes ...
+2016-12-12 05:11:22,925 null [INFO] (../src/fwidbmgr.cpp:5382) OK --> 20161211 data imported.
+2016-12-12 05:11:22,926 null [INFO] (../src/fwidbmgr.cpp:5496) action out took about 171 seconds.
+2016-12-12 05:11:22,926 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 05:11:23,796 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 05:11:23,796 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 05:11:23,796 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 05:11:23,796 null [INFO] (../src/fwidbmgr.cpp:458) action: computeidx.
+2016-12-12 05:11:23,796 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 05:11:23,796 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 05:11:23,863 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 05:11:24,163 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 05:11:24,163 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 05:11:24,163 null [INFO] (../src/fwidbmgr.cpp:5463) Computing indexes.
+2016-12-12 05:11:24,164 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2016-12-12 05:11:24,164 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2016-12-12 05:11:24,166 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2016-12-12 05:11:24,166 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2016-12-12 05:11:24,167 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2016-12-12 05:11:24,173 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2016-12-12 05:11:24,174 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2016-12-12 05:11:24,174 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2016-12-12 05:11:24,175 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2016-12-12 05:11:24,175 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2016-12-12 05:11:24,176 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2016-12-12 05:11:24,176 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2016-12-12 05:11:24,177 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2016-12-12 05:11:24,177 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2016-12-12 05:11:24,178 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2016-12-12 05:11:24,178 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2016-12-12 05:11:24,179 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2016-12-12 05:11:24,179 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2016-12-12 05:11:24,180 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2016-12-12 05:11:24,180 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2016-12-12 05:11:24,181 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2016-12-12 05:11:24,181 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2016-12-12 05:11:24,182 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2016-12-12 05:11:24,182 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2016-12-12 05:11:24,183 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2016-12-12 05:11:24,184 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2016-12-12 05:12:27,081 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow configured.
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_covering
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_covering configured.
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_dissolution
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_dissolution configured.
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: temperature
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid temperature configured.
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: humidity
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid humidity configured.
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: windspeed
+2016-12-12 05:12:27,130 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid windspeed configured.
+2016-12-12 05:12:27,131 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: rain
+2016-12-12 05:12:27,131 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid rain configured.
+2016-12-12 05:12:27,131 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: cum_rain
+2016-12-12 05:12:27,131 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid cum_rain configured.
+2016-12-12 05:14:54,155 null [INFO] (../src/fwidbmgr.cpp:5466) OK --> 20161211 indexes computed.
+2016-12-12 05:14:54,173 null [INFO] (../src/fwidbmgr.cpp:5496) action computeidx took about 210 seconds.
+2016-12-12 05:14:54,173 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 05:14:55,710 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 05:14:55,710 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 05:14:55,710 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 05:14:55,710 null [INFO] (../src/fwidbmgr.cpp:458) action: exportidx.
+2016-12-12 05:14:55,710 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 05:14:55,712 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 05:14:55,756 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 05:14:55,837 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 05:14:55,837 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 05:14:55,837 null [INFO] (../src/fwidbmgr.cpp:5415) Exporting indexes.
+2016-12-12 05:14:55,849 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2016-12-12 05:14:55,849 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2016-12-12 05:14:55,850 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2016-12-12 05:14:55,850 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2016-12-12 05:14:55,851 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2016-12-12 05:14:55,851 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2016-12-12 05:14:55,852 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2016-12-12 05:14:55,852 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2016-12-12 05:14:55,853 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2016-12-12 05:14:55,853 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2016-12-12 05:14:55,854 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2016-12-12 05:14:55,854 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2016-12-12 05:14:55,855 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2016-12-12 05:14:55,855 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2016-12-12 05:14:55,856 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2016-12-12 05:14:55,856 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2016-12-12 05:14:55,857 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2016-12-12 05:14:55,857 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2016-12-12 05:14:55,858 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2016-12-12 05:14:55,858 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2016-12-12 05:14:55,859 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2016-12-12 05:14:55,859 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2016-12-12 05:14:55,860 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2016-12-12 05:14:55,860 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2016-12-12 05:14:55,861 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2016-12-12 05:14:55,861 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2016-12-12 05:16:17,261 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2016-12-12 05:16:17,286 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2016-12-12 05:16:17,351 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2016-12-12 05:16:17,351 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2016-12-12 05:16:17,370 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2016-12-12 05:16:17,370 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2016-12-12 05:16:17,428 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2016-12-12 05:16:17,428 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2016-12-12 05:16:17,475 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2016-12-12 05:16:17,475 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2016-12-12 05:16:17,510 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2016-12-12 05:16:17,510 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2016-12-12 05:16:17,548 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2016-12-12 05:16:17,548 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2016-12-12 05:16:17,569 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2016-12-12 05:16:17,569 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2016-12-12 05:16:17,595 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2016-12-12 05:16:17,595 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2016-12-12 05:16:17,630 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2016-12-12 05:16:17,630 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2016-12-12 05:16:17,700 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2016-12-12 05:16:17,700 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2016-12-12 05:16:17,719 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2016-12-12 05:16:17,719 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2016-12-12 05:16:17,739 null [INFO] (../src/fwidbmgr.cpp:5418) OK --> 20161211 indexes exported to files.
+2016-12-12 05:16:17,739 null [INFO] (../src/fwidbmgr.cpp:5496) action exportidx took about 82 seconds.
+2016-12-12 05:16:17,739 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 05:16:56,710 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 05:16:56,710 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 05:16:56,710 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 05:16:56,710 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2016-12-12 05:16:56,710 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 05:16:56,710 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 05:16:56,726 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 05:16:56,799 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 05:16:56,799 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 05:16:56,799 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2016-12-12 05:16:59,149 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20161211 images imported.
+2016-12-12 05:16:59,149 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 3 seconds.
+2016-12-12 05:16:59,149 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 05:37:01,306 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 05:37:01,306 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 05:37:01,306 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 05:37:01,306 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2016-12-12 05:37:01,306 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 05:37:01,306 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 05:37:01,307 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 05:37:01,309 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 05:37:01,309 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 05:37:01,309 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2016-12-12 05:37:01,475 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20161211 images imported.
+2016-12-12 05:37:01,475 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 0 seconds.
+2016-12-12 05:37:01,475 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 06:05:01,767 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 06:05:01,767 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 06:05:01,767 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 06:05:01,767 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2016-12-12 06:05:01,767 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 06:05:01,767 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 06:05:01,802 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 06:05:01,826 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 06:05:01,826 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 06:05:01,826 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2016-12-12 06:05:01,858 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20161211 images imported.
+2016-12-12 06:05:01,858 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 0 seconds.
+2016-12-12 06:05:01,858 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 06:37:01,955 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 06:37:01,955 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 06:37:01,955 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 06:37:01,955 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2016-12-12 06:37:01,955 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 06:37:01,955 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 06:37:01,956 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 06:37:01,958 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 06:37:01,958 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 06:37:01,958 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2016-12-12 06:37:01,991 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20161211 images imported.
+2016-12-12 06:37:01,991 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 0 seconds.
+2016-12-12 06:37:01,991 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 07:05:01,049 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 07:05:01,049 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 07:05:01,049 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 07:05:01,049 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2016-12-12 07:05:01,049 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 07:05:01,049 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 07:05:01,050 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 07:05:01,052 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 07:05:01,052 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 07:05:01,052 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2016-12-12 07:05:01,133 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20161211 images imported.
+2016-12-12 07:05:01,133 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 0 seconds.
+2016-12-12 07:05:01,133 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2016-12-12 07:37:01,246 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2016-12-12 07:37:01,246 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2016-12-12 07:37:01,246 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2016-12-12 07:37:01,246 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2016-12-12 07:37:01,246 null [INFO] (../src/fwidbmgr.cpp:482) date: 20161211.
+2016-12-12 07:37:01,246 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2016-12-12 07:37:01,247 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2016-12-12 07:37:01,250 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2016-12-12 07:37:01,250 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20161211.
+2016-12-12 07:37:01,250 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2016-12-12 07:37:01,374 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20161211 images imported.
+2016-12-12 07:37:01,374 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 0 seconds.
+2016-12-12 07:37:01,374 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.

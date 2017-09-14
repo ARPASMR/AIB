@@ -1,0 +1,1435 @@
+\hypertarget{fwidbmgr_8cpp}{\section{src/fwidbmgr.cpp File Reference}
+\label{fwidbmgr_8cpp}\index{src/fwidbmgr.\-cpp@{src/fwidbmgr.\-cpp}}
+}
+
+
+The main program file.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$strings.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include $<$getopt.\-h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\-h$>$}\\*
+{\ttfamily \#include $<$libconfig.\-h++$>$}\\*
+{\ttfamily \#include $<$libpq-\/fe.\-h$>$}\\*
+{\ttfamily \#include $<$geos.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}boost/date\-\_\-time/posix\-\_\-time/posix\-\_\-time.\-hpp\char`\"{}}\\*
+{\ttfamily \#include $<$boost/date\-\_\-time/date\-\_\-facet.\-hpp$>$}\\*
+{\ttfamily \#include \char`\"{}log4cxx/logger.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}log4cxx/basicconfigurator.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}log4cxx/helpers/exception.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$log4cxx/xml/domconfigurator.\-h$>$}\\*
+{\ttfamily \#include $<$fwi\-\_\-define.\-h$>$}\\*
+{\ttfamily \#include $<$Command\-Line\-Arguments.\-h$>$}\\*
+{\ttfamily \#include $<$Grid.\-h$>$}\\*
+Include dependency graph for fwidbmgr.\-cpp\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{fwidbmgr_8cpp_a8092de03a999785681bfd66617347509}{get\-Program\-Home} ()
+\begin{DoxyCompactList}\small\item\em Reads environment variable F\-W\-I\-D\-B\-M\-G\-R\-\_\-\-H\-O\-M\-E. \end{DoxyCompactList}\item 
+\hyperlink{structstruct}{struct} tm \hyperlink{fwidbmgr_8cpp_ac1a614c0e711cd92b1408f9782efeca3}{parse\-Date} (std\-::string dt)
+\begin{DoxyCompactList}\small\item\em Parses a string for a date value. \end{DoxyCompactList}\item 
+void \hyperlink{fwidbmgr_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage} ()
+\begin{DoxyCompactList}\small\item\em helper function for usage display \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a3f95bacf615012af3ca8c5147fb67e78}{process\-\_\-cmd\-\_\-line} (int argc, char $\ast$$\ast$argv, \hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} $\ast$args)
+\begin{DoxyCompactList}\small\item\em Process command line parameters. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a75294009f12771743e780fb1cd29ea0b}{get\-Sql\-Files} (std\-::vector$<$ std\-::string $>$ \&files)
+\begin{DoxyCompactList}\small\item\em gets sql files paths from configuration \end{DoxyCompactList}\item 
+std\-::string \hyperlink{fwidbmgr_8cpp_aefa4566e928a888272b2bb6ea64bf5b7}{load\-Query\-From\-File} (std\-::string filepath)
+\begin{DoxyCompactList}\small\item\em loads in memory a file content \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a70d1726d4a3cc7251e837cb215bcf28a}{execute} (std\-::string \&query)
+\begin{DoxyCompactList}\small\item\em executes query command \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_af714ee130fbe3608763e82a83fa82f6b}{create\-\_\-database} ()
+\begin{DoxyCompactList}\small\item\em creates database structure based on configuration contents \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_aaa99c4763d01c3d0861fd71da99cdb24}{fill\-\_\-database} ()
+\begin{DoxyCompactList}\small\item\em fills empty database structure with data (ex. spatial ref systems from postgis) \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_af096ec7cf9fb3987d214214148870c08}{prepare\-\_\-meteo\-\_\-input} (std\-::string date)
+\begin{DoxyCompactList}\small\item\em creates skeleton structure for meteo input grid referring to date \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_ab634351f7a6d0acc48f15d6bc39b53f8}{fill\-\_\-nometeo\-\_\-points} ()
+\begin{DoxyCompactList}\small\item\em fills grid table with no mete point flags \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a2fb09d0e4d5c6e054ebfd2d9ac968666}{import\-\_\-regions} ()
+\begin{DoxyCompactList}\small\item\em Imports regions polygons in database from file. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a5b9e21aeecbc85d18df0adb2a3224383}{import\-\_\-provinces} ()
+\begin{DoxyCompactList}\small\item\em Imports provinces polygons in database from file. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a57681ab7a113244ae858bb19b7184b0b}{create\-\_\-standard\-\_\-grid} ()
+\begin{DoxyCompactList}\small\item\em create a standard 174 row x 177 columns grid \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a9d3e902b9bc14990ac6c4bed26bad37c}{delete\-\_\-meteo\-\_\-input} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em deletes meteo input grid for date in {\itshape args} from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a78b4bfc87ac267b154f62dedc6a6af79}{store\-\_\-meteo\-\_\-input} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em stores meteo input grid for date in {\itshape args} reading from files \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a218c3c8cfae00c4c87b8688123c5e738}{retrieve\-\_\-meteo\-\_\-input} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args, \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ float $>$ $\ast$res)
+\begin{DoxyCompactList}\small\item\em retrieves meteo input grid for date in {\itshape args} reading from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_af719c60a28562c72e011a7325542a4e3}{delete\-\_\-fwi\-\_\-indexes} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em deletes fwi indexes grid for date in {\itshape args} from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_aab3d53b815ff0ae5705d8df38b6572d5}{store\-\_\-fwi\-\_\-indexes} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em stores fwi indexes grid for date in {\itshape args} reading from files \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_acb7223747213b5470ee41d17f6074673}{prepare\-\_\-fwi\-\_\-indexes\-\_\-grid} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args, \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ float $>$ $\ast$res)
+\begin{DoxyCompactList}\small\item\em prepares and configure fwi indexes grid \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a4f48949da5f549a345bb9bc28892d4be}{retrieve\-\_\-fwi\-\_\-indexes} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args, \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ float $>$ $\ast$res)
+\begin{DoxyCompactList}\small\item\em retrieves fwi indexes grid for date in {\itshape args} reading from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a0017bdeda50d6bb3c904a20dfd64be00}{get\-File\-Bytea} (std\-::string file, char $\ast$$\ast$buffer, int \&size)
+\begin{DoxyCompactList}\small\item\em Reads file, returns file contents in buffer and file size in size. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a4b115ce9696f522f0ea30465dfa1e6e8}{delete\-\_\-images} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em deletes fwi indexes grid for date in {\itshape args} from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_ac15d859897a0b656e05af23a6d70d5c8}{store\-\_\-images} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em stores fwi images for date in {\itshape args} reading from disk. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a54dccb550d87ad6c3be7d8fc979f7ea6}{retrieve\-\_\-images} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em retrieves fwi images for date in {\itshape args} reading from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_ae30eb3df28207d16bc27063892f629be}{export\-\_\-indexes} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em exports fwi indexes grid for date in {\itshape args} from database \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_adb860c95840f4cd656980ce5e99348b2}{load\-\_\-computation\-\_\-indexes} (std\-::vector$<$ std\-::string $>$ \&indexes)
+\begin{DoxyCompactList}\small\item\em Loads from configuration the list of index names to be computed. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a5befbe97132e81efac9b1ffe7f55a61f}{compute\-\_\-index} (std\-::string \&index\-\_\-name, \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ float $>$ $\ast$indexes, \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ float $>$ $\ast$meteo)
+\begin{DoxyCompactList}\small\item\em Compute a single index given its name. \end{DoxyCompactList}\item 
+bool \hyperlink{fwidbmgr_8cpp_a63f9228a29ed4967f202d475773e2a2e}{compute\-\_\-indexes} (\hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments} \&args)
+\begin{DoxyCompactList}\small\item\em Computes the new three indexes angstroem, fmi and sharples as an experimental feature. Requires the previous import of the standard indexes in database. \end{DoxyCompactList}\item 
+int \hyperlink{fwidbmgr_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em main function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main program file. 
+
+Definition in file \hyperlink{fwidbmgr_8cpp_source}{fwidbmgr.\-cpp}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{fwidbmgr_8cpp_a5befbe97132e81efac9b1ffe7f55a61f}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!compute\-\_\-index@{compute\-\_\-index}}
+\index{compute\-\_\-index@{compute\-\_\-index}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{compute\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}bool compute\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{index\-\_\-name, }
+\item[{{\bf Grid}$<$ float $>$ $\ast$}]{indexes, }
+\item[{{\bf Grid}$<$ float $>$ $\ast$}]{meteo}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a5befbe97132e81efac9b1ffe7f55a61f}
+
+
+Compute a single index given its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\-\_\-name} & the index name \\
+\hline
+{\em indexes} & the already loaded indexes grid \\
+\hline
+{\em meteo} & the already loaded meteo input grid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 3317 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a5befbe97132e81efac9b1ffe7f55a61f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a5befbe97132e81efac9b1ffe7f55a61f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a63f9228a29ed4967f202d475773e2a2e}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!compute\-\_\-indexes@{compute\-\_\-indexes}}
+\index{compute\-\_\-indexes@{compute\-\_\-indexes}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{compute\-\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}bool compute\-\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a63f9228a29ed4967f202d475773e2a2e}
+
+
+Computes the new three indexes angstroem, fmi and sharples as an experimental feature. Requires the previous import of the standard indexes in database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 3446 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a63f9228a29ed4967f202d475773e2a2e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{fwidbmgr_8cpp_a63f9228a29ed4967f202d475773e2a2e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_af714ee130fbe3608763e82a83fa82f6b}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!create\-\_\-database@{create\-\_\-database}}
+\index{create\-\_\-database@{create\-\_\-database}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{create\-\_\-database}]{\setlength{\rightskip}{0pt plus 5cm}bool create\-\_\-database (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_af714ee130fbe3608763e82a83fa82f6b}
+
+
+creates database structure based on configuration contents 
+
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 590 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{fwidbmgr_8cpp_af714ee130fbe3608763e82a83fa82f6b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{fwidbmgr_8cpp_af714ee130fbe3608763e82a83fa82f6b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a57681ab7a113244ae858bb19b7184b0b}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!create\-\_\-standard\-\_\-grid@{create\-\_\-standard\-\_\-grid}}
+\index{create\-\_\-standard\-\_\-grid@{create\-\_\-standard\-\_\-grid}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{create\-\_\-standard\-\_\-grid}]{\setlength{\rightskip}{0pt plus 5cm}bool create\-\_\-standard\-\_\-grid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a57681ab7a113244ae858bb19b7184b0b}
+
+
+create a standard 174 row x 177 columns grid 
+
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1083 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{fwidbmgr_8cpp_a57681ab7a113244ae858bb19b7184b0b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{fwidbmgr_8cpp_a57681ab7a113244ae858bb19b7184b0b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_af719c60a28562c72e011a7325542a4e3}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!delete\-\_\-fwi\-\_\-indexes@{delete\-\_\-fwi\-\_\-indexes}}
+\index{delete\-\_\-fwi\-\_\-indexes@{delete\-\_\-fwi\-\_\-indexes}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{delete\-\_\-fwi\-\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}bool delete\-\_\-fwi\-\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_af719c60a28562c72e011a7325542a4e3}
+
+
+deletes fwi indexes grid for date in {\itshape args} from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 1644 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_af719c60a28562c72e011a7325542a4e3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_af719c60a28562c72e011a7325542a4e3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a4b115ce9696f522f0ea30465dfa1e6e8}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!delete\-\_\-images@{delete\-\_\-images}}
+\index{delete\-\_\-images@{delete\-\_\-images}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{delete\-\_\-images}]{\setlength{\rightskip}{0pt plus 5cm}bool delete\-\_\-images (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a4b115ce9696f522f0ea30465dfa1e6e8}
+
+
+deletes fwi indexes grid for date in {\itshape args} from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 2539 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{fwidbmgr_8cpp_a4b115ce9696f522f0ea30465dfa1e6e8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{fwidbmgr_8cpp_a4b115ce9696f522f0ea30465dfa1e6e8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a9d3e902b9bc14990ac6c4bed26bad37c}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!delete\-\_\-meteo\-\_\-input@{delete\-\_\-meteo\-\_\-input}}
+\index{delete\-\_\-meteo\-\_\-input@{delete\-\_\-meteo\-\_\-input}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{delete\-\_\-meteo\-\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}bool delete\-\_\-meteo\-\_\-input (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a9d3e902b9bc14990ac6c4bed26bad37c}
+
+
+deletes meteo input grid for date in {\itshape args} from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 1248 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a9d3e902b9bc14990ac6c4bed26bad37c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a9d3e902b9bc14990ac6c4bed26bad37c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a70d1726d4a3cc7251e837cb215bcf28a}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!execute@{execute}}
+\index{execute@{execute}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool execute (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{query}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a70d1726d4a3cc7251e837cb215bcf28a}
+
+
+executes query command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & sql commands to be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 562 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a70d1726d4a3cc7251e837cb215bcf28a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_ae30eb3df28207d16bc27063892f629be}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!export\-\_\-indexes@{export\-\_\-indexes}}
+\index{export\-\_\-indexes@{export\-\_\-indexes}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{export\-\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}bool export\-\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_ae30eb3df28207d16bc27063892f629be}
+
+
+exports fwi indexes grid for date in {\itshape args} from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 2775 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_ae30eb3df28207d16bc27063892f629be_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{fwidbmgr_8cpp_ae30eb3df28207d16bc27063892f629be_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_aaa99c4763d01c3d0861fd71da99cdb24}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!fill\-\_\-database@{fill\-\_\-database}}
+\index{fill\-\_\-database@{fill\-\_\-database}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{fill\-\_\-database}]{\setlength{\rightskip}{0pt plus 5cm}bool fill\-\_\-database (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_aaa99c4763d01c3d0861fd71da99cdb24}
+
+
+fills empty database structure with data (ex. spatial ref systems from postgis) 
+
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+libconfig++ documentation at \href{http://www.hyperrealm.com/libconfig/}{\tt http\-://www.\-hyperrealm.\-com/libconfig/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 645 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{fwidbmgr_8cpp_aaa99c4763d01c3d0861fd71da99cdb24_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{fwidbmgr_8cpp_aaa99c4763d01c3d0861fd71da99cdb24_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_ab634351f7a6d0acc48f15d6bc39b53f8}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!fill\-\_\-nometeo\-\_\-points@{fill\-\_\-nometeo\-\_\-points}}
+\index{fill\-\_\-nometeo\-\_\-points@{fill\-\_\-nometeo\-\_\-points}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{fill\-\_\-nometeo\-\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}bool fill\-\_\-nometeo\-\_\-points (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_ab634351f7a6d0acc48f15d6bc39b53f8}
+
+
+fills grid table with no mete point flags 
+
+\begin{DoxySeeAlso}{See also}
+Grid 
+\end{DoxySeeAlso}
+
+
+Definition at line 724 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{fwidbmgr_8cpp_ab634351f7a6d0acc48f15d6bc39b53f8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_ab634351f7a6d0acc48f15d6bc39b53f8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a0017bdeda50d6bb3c904a20dfd64be00}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!get\-File\-Bytea@{get\-File\-Bytea}}
+\index{get\-File\-Bytea@{get\-File\-Bytea}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{get\-File\-Bytea}]{\setlength{\rightskip}{0pt plus 5cm}bool get\-File\-Bytea (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file, }
+\item[{char $\ast$$\ast$}]{buffer, }
+\item[{int \&}]{size}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a0017bdeda50d6bb3c904a20dfd64be00}
+
+
+Reads file, returns file contents in buffer and file size in size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & file absolute path \\
+\hline
+{\em buffer} & file contents buffer \\
+\hline
+{\em size} & file size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 2510 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{fwidbmgr_8cpp_a0017bdeda50d6bb3c904a20dfd64be00_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a8092de03a999785681bfd66617347509}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!get\-Program\-Home@{get\-Program\-Home}}
+\index{get\-Program\-Home@{get\-Program\-Home}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{get\-Program\-Home}]{\setlength{\rightskip}{0pt plus 5cm}string get\-Program\-Home (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a8092de03a999785681bfd66617347509}
+
+
+Reads environment variable F\-W\-I\-D\-B\-M\-G\-R\-\_\-\-H\-O\-M\-E. 
+
+This environment variable has to be defined in order to run fwidbmgr
+
+\begin{DoxyReturn}{Returns}
+the path pointed by F\-W\-I\-D\-B\-M\-G\-R\-\_\-\-H\-O\-M\-E or a standard path 
+\end{DoxyReturn}
+
+
+Definition at line 261 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{fwidbmgr_8cpp_a8092de03a999785681bfd66617347509_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a75294009f12771743e780fb1cd29ea0b}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!get\-Sql\-Files@{get\-Sql\-Files}}
+\index{get\-Sql\-Files@{get\-Sql\-Files}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{get\-Sql\-Files}]{\setlength{\rightskip}{0pt plus 5cm}bool get\-Sql\-Files (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::string $>$ \&}]{files}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a75294009f12771743e780fb1cd29ea0b}
+
+
+gets sql files paths from configuration 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files} & string vector containing files paths \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+libconfig++ documentation at \href{http://www.hyperrealm.com/libconfig/}{\tt http\-://www.\-hyperrealm.\-com/libconfig/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 499 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{fwidbmgr_8cpp_a75294009f12771743e780fb1cd29ea0b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a5b9e21aeecbc85d18df0adb2a3224383}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!import\-\_\-provinces@{import\-\_\-provinces}}
+\index{import\-\_\-provinces@{import\-\_\-provinces}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{import\-\_\-provinces}]{\setlength{\rightskip}{0pt plus 5cm}bool import\-\_\-provinces (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a5b9e21aeecbc85d18df0adb2a3224383}
+
+
+Imports provinces polygons in database from file. 
+
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 927 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{fwidbmgr_8cpp_a5b9e21aeecbc85d18df0adb2a3224383_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a5b9e21aeecbc85d18df0adb2a3224383_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a2fb09d0e4d5c6e054ebfd2d9ac968666}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!import\-\_\-regions@{import\-\_\-regions}}
+\index{import\-\_\-regions@{import\-\_\-regions}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{import\-\_\-regions}]{\setlength{\rightskip}{0pt plus 5cm}bool import\-\_\-regions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a2fb09d0e4d5c6e054ebfd2d9ac968666}
+
+
+Imports regions polygons in database from file. 
+
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 803 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{fwidbmgr_8cpp_a2fb09d0e4d5c6e054ebfd2d9ac968666_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a2fb09d0e4d5c6e054ebfd2d9ac968666_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_adb860c95840f4cd656980ce5e99348b2}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!load\-\_\-computation\-\_\-indexes@{load\-\_\-computation\-\_\-indexes}}
+\index{load\-\_\-computation\-\_\-indexes@{load\-\_\-computation\-\_\-indexes}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{load\-\_\-computation\-\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}bool load\-\_\-computation\-\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::string $>$ \&}]{indexes}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_adb860c95840f4cd656980ce5e99348b2}
+
+
+Loads from configuration the list of index names to be computed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em indexes} & the list of index names \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 3276 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_adb860c95840f4cd656980ce5e99348b2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_aefa4566e928a888272b2bb6ea64bf5b7}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!load\-Query\-From\-File@{load\-Query\-From\-File}}
+\index{load\-Query\-From\-File@{load\-Query\-From\-File}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{load\-Query\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}string load\-Query\-From\-File (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filepath}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_aefa4566e928a888272b2bb6ea64bf5b7}
+
+
+loads in memory a file content 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & complete file path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the file content 
+\end{DoxyReturn}
+
+
+Definition at line 545 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_aefa4566e928a888272b2bb6ea64bf5b7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!main@{main}}
+\index{main@{main}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+main function 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{fwidbmgr_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage()} 
+\end{DoxySeeAlso}
+
+
+Definition at line 4112 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{fwidbmgr_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_ac1a614c0e711cd92b1408f9782efeca3}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!parse\-Date@{parse\-Date}}
+\index{parse\-Date@{parse\-Date}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{parse\-Date}]{\setlength{\rightskip}{0pt plus 5cm}{\bf struct} tm parse\-Date (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{dt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [read]}}}\label{fwidbmgr_8cpp_ac1a614c0e711cd92b1408f9782efeca3}
+
+
+Parses a string for a date value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & string to be parsed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct tm filled with parsed values 
+\end{DoxyReturn}
+
+
+Definition at line 274 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{fwidbmgr_8cpp_ac1a614c0e711cd92b1408f9782efeca3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_acb7223747213b5470ee41d17f6074673}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!prepare\-\_\-fwi\-\_\-indexes\-\_\-grid@{prepare\-\_\-fwi\-\_\-indexes\-\_\-grid}}
+\index{prepare\-\_\-fwi\-\_\-indexes\-\_\-grid@{prepare\-\_\-fwi\-\_\-indexes\-\_\-grid}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{prepare\-\_\-fwi\-\_\-indexes\-\_\-grid}]{\setlength{\rightskip}{0pt plus 5cm}bool prepare\-\_\-fwi\-\_\-indexes\-\_\-grid (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args, }
+\item[{{\bf Grid}$<$ float $>$ $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_acb7223747213b5470ee41d17f6074673}
+
+
+prepares and configure fwi indexes grid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+{\em res} & resulting grid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+
+Grid 
+\end{DoxySeeAlso}
+
+
+Definition at line 1970 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_acb7223747213b5470ee41d17f6074673_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_acb7223747213b5470ee41d17f6074673_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_af096ec7cf9fb3987d214214148870c08}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!prepare\-\_\-meteo\-\_\-input@{prepare\-\_\-meteo\-\_\-input}}
+\index{prepare\-\_\-meteo\-\_\-input@{prepare\-\_\-meteo\-\_\-input}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{prepare\-\_\-meteo\-\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}bool prepare\-\_\-meteo\-\_\-input (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{date}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_af096ec7cf9fb3987d214214148870c08}
+
+
+creates skeleton structure for meteo input grid referring to date 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & referring date as Y\-Y\-Y\-Y\-M\-M\-D\-D \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 691 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_af096ec7cf9fb3987d214214148870c08_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a3f95bacf615012af3ca8c5147fb67e78}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!process\-\_\-cmd\-\_\-line@{process\-\_\-cmd\-\_\-line}}
+\index{process\-\_\-cmd\-\_\-line@{process\-\_\-cmd\-\_\-line}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{process\-\_\-cmd\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}bool process\-\_\-cmd\-\_\-line (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{{\bf Command\-Line\-Arguments} $\ast$}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a3f95bacf615012af3ca8c5147fb67e78}
+
+
+Process command line parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command line parameters \\
+\hline
+{\em argv} & array of string parameters \\
+\hline
+{\em args} & command line arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 390 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{fwidbmgr_8cpp_a3f95bacf615012af3ca8c5147fb67e78_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{fwidbmgr_8cpp_a3f95bacf615012af3ca8c5147fb67e78_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a4f48949da5f549a345bb9bc28892d4be}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!retrieve\-\_\-fwi\-\_\-indexes@{retrieve\-\_\-fwi\-\_\-indexes}}
+\index{retrieve\-\_\-fwi\-\_\-indexes@{retrieve\-\_\-fwi\-\_\-indexes}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{retrieve\-\_\-fwi\-\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}bool retrieve\-\_\-fwi\-\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args, }
+\item[{{\bf Grid}$<$ float $>$ $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a4f48949da5f549a345bb9bc28892d4be}
+
+
+retrieves fwi indexes grid for date in {\itshape args} reading from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+{\em res} & resulting grid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+
+Grid 
+\end{DoxySeeAlso}
+
+
+Definition at line 2255 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a4f48949da5f549a345bb9bc28892d4be_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a4f48949da5f549a345bb9bc28892d4be_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a54dccb550d87ad6c3be7d8fc979f7ea6}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!retrieve\-\_\-images@{retrieve\-\_\-images}}
+\index{retrieve\-\_\-images@{retrieve\-\_\-images}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{retrieve\-\_\-images}]{\setlength{\rightskip}{0pt plus 5cm}bool retrieve\-\_\-images (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a54dccb550d87ad6c3be7d8fc979f7ea6}
+
+
+retrieves fwi images for date in {\itshape args} reading from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 2682 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{fwidbmgr_8cpp_a54dccb550d87ad6c3be7d8fc979f7ea6_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a218c3c8cfae00c4c87b8688123c5e738}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!retrieve\-\_\-meteo\-\_\-input@{retrieve\-\_\-meteo\-\_\-input}}
+\index{retrieve\-\_\-meteo\-\_\-input@{retrieve\-\_\-meteo\-\_\-input}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{retrieve\-\_\-meteo\-\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}bool retrieve\-\_\-meteo\-\_\-input (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args, }
+\item[{{\bf Grid}$<$ float $>$ $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a218c3c8cfae00c4c87b8688123c5e738}
+
+
+retrieves meteo input grid for date in {\itshape args} reading from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+{\em res} & resulting grid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 1541 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{fwidbmgr_8cpp_a218c3c8cfae00c4c87b8688123c5e738_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_a218c3c8cfae00c4c87b8688123c5e738_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_aab3d53b815ff0ae5705d8df38b6572d5}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!store\-\_\-fwi\-\_\-indexes@{store\-\_\-fwi\-\_\-indexes}}
+\index{store\-\_\-fwi\-\_\-indexes@{store\-\_\-fwi\-\_\-indexes}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{store\-\_\-fwi\-\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}bool store\-\_\-fwi\-\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_aab3d53b815ff0ae5705d8df38b6572d5}
+
+
+stores fwi indexes grid for date in {\itshape args} reading from files 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 1664 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{fwidbmgr_8cpp_aab3d53b815ff0ae5705d8df38b6572d5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{fwidbmgr_8cpp_aab3d53b815ff0ae5705d8df38b6572d5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_ac15d859897a0b656e05af23a6d70d5c8}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!store\-\_\-images@{store\-\_\-images}}
+\index{store\-\_\-images@{store\-\_\-images}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{store\-\_\-images}]{\setlength{\rightskip}{0pt plus 5cm}bool store\-\_\-images (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_ac15d859897a0b656e05af23a6d70d5c8}
+
+
+stores fwi images for date in {\itshape args} reading from disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 2559 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fwidbmgr_8cpp_ac15d859897a0b656e05af23a6d70d5c8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{fwidbmgr_8cpp_ac15d859897a0b656e05af23a6d70d5c8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a78b4bfc87ac267b154f62dedc6a6af79}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!store\-\_\-meteo\-\_\-input@{store\-\_\-meteo\-\_\-input}}
+\index{store\-\_\-meteo\-\_\-input@{store\-\_\-meteo\-\_\-input}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{store\-\_\-meteo\-\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}bool store\-\_\-meteo\-\_\-input (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\-Line\-Arguments} \&}]{args}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a78b4bfc87ac267b154f62dedc6a6af79}
+
+
+stores meteo input grid for date in {\itshape args} reading from files 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command line arguments class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Command\-Line\-Arguments 
+\end{DoxySeeAlso}
+
+
+Definition at line 1268 of file fwidbmgr.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{fwidbmgr_8cpp_a78b4bfc87ac267b154f62dedc6a6af79_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{fwidbmgr_8cpp_a78b4bfc87ac267b154f62dedc6a6af79_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{fwidbmgr_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{\index{fwidbmgr.\-cpp@{fwidbmgr.\-cpp}!usage@{usage}}
+\index{usage@{usage}!fwidbmgr.cpp@{fwidbmgr.\-cpp}}
+\subsubsection[{usage}]{\setlength{\rightskip}{0pt plus 5cm}void usage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fwidbmgr_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}
+
+
+helper function for usage display 
+
+Displays the following text\-:
+
+{\bfseries fwidbmgr usage}
+
+{\itshape fwidbmgr -\/a action \mbox{[}-\/d date\mbox{]} \mbox{[}-\/c config\mbox{]} \mbox{[}-\/\-D database\mbox{]} \mbox{[}-\/\-H host\mbox{]} \mbox{[}-\/\-P port\mbox{]} \mbox{[}-\/\-U user\mbox{]} \mbox{[}-\/p password\mbox{]} \mbox{[}-\/h\mbox{]}}
+
+where action must be one of\-:
+
+\begin{TabularC}{2}
+\hline
+{\bfseries create}&creates an empty database structure \\\cline{1-2}
+{\bfseries createstdgrid}&creates the standard 177x174 point grid \\\cline{1-2}
+{\bfseries in}&saves in db input data for date given by option date \\\cline{1-2}
+{\bfseries out}&saves in db output data of fwi indexes computation \\\cline{1-2}
+{\bfseries outimg}&saves in db output images \\\cline{1-2}
+{\bfseries exportidx}&exports indexes grid to Gr\-A\-D\-S files \\\cline{1-2}
+{\bfseries computeidx}&computes new indexes angstroem, fmi and sharples \mbox{[}experimental\mbox{]} \\\cline{1-2}
+{\bfseries computeidx24}&computes new indexes over 24 time slots \mbox{[}experimental\mbox{]} \\\cline{1-2}
+\end{TabularC}
+
+
+where date must be a valid date in I\-S\-O 8601 format ex. (2012-\/03-\/22)
+
+where config is the absolute path to the configuration file
+
+where database is the database name to be used
+
+where host is the database host name or I\-P address
+
+where port is the postgresql port
+
+where user is the database user that has the proper rights
+
+where password is the user password
+
+h --$>$ prints this text 
+
+Definition at line 358 of file fwidbmgr.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{fwidbmgr_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0_icgraph}
+\end{center}
+\end{figure}
+
+

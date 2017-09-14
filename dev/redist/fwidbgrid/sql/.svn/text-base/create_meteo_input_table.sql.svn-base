@@ -1,0 +1,82 @@
+-- Table: meteo_input
+
+-- DROP TABLE meteo_input;
+
+SET client_min_messages TO warning;
+
+CREATE TABLE meteo_input
+(
+  id serial NOT NULL, -- Primary key
+  point_id integer NOT NULL,
+  dt date NOT NULL,
+  xb real NOT NULL DEFAULT 0.0, -- T background field						-
+  xa real NOT NULL DEFAULT 0.0, -- T analysis field							|+- Temperature
+  tidi real NOT NULL DEFAULT 0.0, -- Temperature integral data influence	-
+  tdb real NOT NULL DEFAULT 0.0, -- TD background field						-
+  ta real NOT NULL DEFAULT 0.0, -- T analysis field							|
+  tda real NOT NULL DEFAULT 0.0, -- T analysis field						|+- Relative humidity
+  rha real NOT NULL DEFAULT 0.0, -- RH analysis field						|
+  rhidi real NOT NULL DEFAULT 0.0, -- RH integral data influence			|
+  hdxa real NOT NULL DEFAULT 0.0, -- HUMIDEX analysis						-
+  bu real NOT NULL DEFAULT 0.0, -- u background								-
+  bv real NOT NULL DEFAULT 0.0, -- v background								|
+  bhu real NOT NULL DEFAULT 0.0, -- horizontal u background					|
+  bhv real NOT NULL DEFAULT 0.0, -- horizontal v background					|
+  bvw real NOT NULL DEFAULT 0.0, -- background vertical wind				|
+  avw real NOT NULL DEFAULT 0.0, -- analysis vertical wind					|
+  au real NOT NULL DEFAULT 0.0, -- u analysis								|+- Wind speed
+  av real NOT NULL DEFAULT 0.0, -- v analysis								|
+  ahu real NOT NULL DEFAULT 0.0, -- horizontal u analysis					|
+  ahv real NOT NULL DEFAULT 0.0, -- horizontal v analysis					|
+  adiv real NOT NULL DEFAULT 0.0, -- analysis divergence					|
+  avor real NOT NULL DEFAULT 0.0, -- --										|
+  wsidi real NOT NULL DEFAULT 0.0, -- WS integral data influence			-
+  xpa real NOT NULL DEFAULT 0.0, -- prec analysis							-
+  ridiw real NOT NULL DEFAULT 0.0, -- wet integral data influence			|+- Rain
+  ridid real NOT NULL DEFAULT 0.0, -- dry integral data influence			-
+  cum_rain real NOT NULL DEFAULT 0.0, -- cumulative rain                -
+  snow_covering real NOT NULL DEFAULT 0.0, -- snow covering                 -+- Snow
+  snow_dissolution real NOT NULL DEFAULT 0.0, -- snow dissolution           - 
+  CONSTRAINT meteo_input_pkey PRIMARY KEY (id ),
+  CONSTRAINT grid_point_fkey FOREIGN KEY (point_id)
+      REFERENCES grid (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION --,
+--  CONSTRAINT check_rhidi CHECK (rhidi >= 0.0::double precision AND rhidi <= 2.0::double precision),
+--  CONSTRAINT check_tidi CHECK (tidi >= 0.0::double precision AND tidi <= 2.0::double precision),
+--  CONSTRAINT check_wsidi CHECK (wsidi >= 0.0::double precision AND wsidi <= 2.0::double precision)
+)
+WITH (
+  OIDS=TRUE
+);
+ALTER TABLE meteo_input
+  OWNER TO meteo;
+COMMENT ON TABLE meteo_input
+  IS 'Input meteo data for fwi computation';
+COMMENT ON COLUMN meteo_input.id IS 'Primary key';
+COMMENT ON COLUMN meteo_input.tidi IS 'Temperature integral data influence';
+COMMENT ON COLUMN meteo_input.tdb IS 'TD background field';
+COMMENT ON COLUMN meteo_input.ta IS 'T analysis field';
+COMMENT ON COLUMN meteo_input.tda IS 'T analysis field';
+COMMENT ON COLUMN meteo_input.rha IS 'RH analysis field';
+COMMENT ON COLUMN meteo_input.rhidi IS 'RH integral data influence';
+COMMENT ON COLUMN meteo_input.hdxa IS 'HUMIDEX analysis';
+COMMENT ON COLUMN meteo_input.bu IS 'u background';
+COMMENT ON COLUMN meteo_input.bv IS 'v background';
+COMMENT ON COLUMN meteo_input.bhu IS 'horizontal u background';
+COMMENT ON COLUMN meteo_input.bhv IS 'horizontal v background';
+COMMENT ON COLUMN meteo_input.bvw IS 'background vertical wind';
+COMMENT ON COLUMN meteo_input.avw IS 'analysis vertical wind';
+COMMENT ON COLUMN meteo_input.au IS 'u analysis';
+COMMENT ON COLUMN meteo_input.av IS 'v analysis';
+COMMENT ON COLUMN meteo_input.ahu IS 'horizontal u analysis';
+COMMENT ON COLUMN meteo_input.ahv IS 'horizontal v analysis';
+COMMENT ON COLUMN meteo_input.adiv IS 'analysis divergence';
+COMMENT ON COLUMN meteo_input.avor IS '--';
+COMMENT ON COLUMN meteo_input.wsidi IS 'WS integral data influence';
+COMMENT ON COLUMN meteo_input.xpa IS 'prec analysis';
+COMMENT ON COLUMN meteo_input.ridiw IS 'wet integral data influence';
+COMMENT ON COLUMN meteo_input.ridid IS 'dry integral data influence';
+COMMENT ON COLUMN meteo_input.cum_rain IS 'cumulative rain';
+COMMENT ON COLUMN meteo_input.snow_covering IS 'snow covering';
+COMMENT ON COLUMN meteo_input.snow_dissolution IS 'snow dissolution';
+

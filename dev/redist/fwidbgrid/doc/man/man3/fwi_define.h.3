@@ -1,0 +1,242 @@
+.TH "include/fwi_define.h" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/fwi_define.h \- 
+.PP
+defines for program  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBGRD_DEFAULT_UNDEF_VALUE\fP   -9999.0"
+.br
+.RI "\fIdefault grid undefined value \fP"
+.ti -1c
+.RI "#define \fBGRD_COLS\fP   177"
+.br
+.RI "\fIdefault grid columns number \fP"
+.ti -1c
+.RI "#define \fBGRD_ROWS\fP   174"
+.br
+.RI "\fIdefault grid rows number \fP"
+.ti -1c
+.RI "#define \fBGRD_X_START\fP   1436301.375"
+.br
+.RI "\fIdefault grid start point x coordinate \fP"
+.ti -1c
+.RI "#define \fBGRD_Y_START\fP   4916704.500"
+.br
+.RI "\fIdefault grid start point y coordinate \fP"
+.ti -1c
+.RI "#define \fBGRD_X_STEP\fP   1500.0"
+.br
+.RI "\fIdefault grid step in x direction expressed in meters \fP"
+.ti -1c
+.RI "#define \fBGRD_Y_STEP\fP   1500.0"
+.br
+.RI "\fIdefault grid step in y direction expressed in meters \fP"
+.ti -1c
+.RI "#define \fBGRD_DEFAULT_VARNUM\fP   1"
+.br
+.RI "\fIdefault grid variables number \fP"
+.ti -1c
+.RI "#define \fBTOPOGRAPHY_FIELDSNUM\fP   6"
+.br
+.RI "\fITopography file fields number. \fP"
+.ti -1c
+.RI "#define \fBTEMPERATURE_FIELDSNUM\fP   3"
+.br
+.RI "\fITemperature dat file fields number. \fP"
+.ti -1c
+.RI "#define \fBHUMIDITY_FIELDSNUM\fP   6"
+.br
+.RI "\fIHumidity dat file fields number. \fP"
+.ti -1c
+.RI "#define \fBWINDSPEED_FIELDSNUM\fP   13"
+.br
+.RI "\fIWindspeed dat file fields number. \fP"
+.ti -1c
+.RI "#define \fBRAIN_FIELDSNUM\fP   3"
+.br
+.RI "\fIRain dat file fields number. \fP"
+.ti -1c
+.RI "#define \fBGEOGRID\fP   0"
+.br
+.RI "\fIGeoreferenced grid. \fP"
+.ti -1c
+.RI "#define \fBMETEO_INPUT\fP   1"
+.br
+.RI "\fIGrid containing meteo data. \fP"
+.ti -1c
+.RI "#define \fBFWI_INDEXES\fP   2"
+.br
+.RI "\fIGrid containing FWI indexes data. \fP"
+.ti -1c
+.RI "#define \fBNUMERIC\fP   3"
+.br
+.RI "\fIGrid containing generic data. \fP"
+.ti -1c
+.RI "#define \fBGRD_FORMAT_TEXT\fP   0"
+.br
+.RI "\fIGrid data are stored as ascii text. \fP"
+.ti -1c
+.RI "#define \fBGRD_FORMAT_BINARY\fP   1"
+.br
+.RI "\fIGrid data are stored in binary format. \fP"
+.ti -1c
+.RI "#define \fBMETEO_PARAM_TEMPERATURE\fP   'temperature'"
+.br
+.RI "\fIMeteo parameter: temperature. \fP"
+.ti -1c
+.RI "#define \fBMETEO_PARAM_HUMIDITY\fP   'humidity'"
+.br
+.RI "\fIMeteo parameter: humidity. \fP"
+.ti -1c
+.RI "#define \fBMETEO_PARAM_WINDSPEED\fP   'windspeed'"
+.br
+.RI "\fIMeteo parameter: wind speed. \fP"
+.ti -1c
+.RI "#define \fBMETEO_PARAM_RAIN\fP   'rain'"
+.br
+.RI "\fIMeteo parameter: rain. \fP"
+.ti -1c
+.RI "#define \fBACTION_CREATE\fP   'create'"
+.br
+.RI "\fIProgram switch to create empty database. \fP"
+.ti -1c
+.RI "#define \fBACTION_CREATE_STD_GRID\fP   'createstdgrid'"
+.br
+.RI "\fIProgram switch to create the standard grid (177x174). \fP"
+.ti -1c
+.RI "#define \fBACTION_IN\fP   'in'"
+.br
+.RI "\fIProgram switch to store the needed input data in database. \fP"
+.ti -1c
+.RI "#define \fBACTION_OUT\fP   'out'"
+.br
+.RI "\fIProgram switch to store FWI indexes computation results in database. \fP"
+.ti -1c
+.RI "#define \fBACTION_OUT_IMG\fP   'outimg'"
+.br
+.RI "\fIProgram switch to store summary images in database. \fP"
+.ti -1c
+.RI "#define \fBACTION_EXPORT_INDEXES\fP   'exportidx'"
+.br
+.RI "\fIProgram switch to export FWI indexes as GrADS files. \fP"
+.ti -1c
+.RI "#define \fBACTION_COMPUTE_INDEXES\fP   'computeidx'"
+.br
+.RI "\fIProgram switch to compute indexes. \fP"
+.ti -1c
+.RI "#define \fBACTION_COMPUTE_INDEXES_24\fP   'computeidx24'"
+.br
+.RI "\fIProgram switch to compute indexes over 24 time slots. \fP"
+.ti -1c
+.RI "#define \fBACTION_TEST\fP   'test'"
+.br
+.RI "\fIUsed only for testing. \fP"
+.ti -1c
+.RI "#define \fBGIS_DEFAULT_SRID\fP   3003"
+.br
+.RI "\fIDefault used SRID (Gauss-Boaga - Monte Mario 1 - Roma 40). \fP"
+.ti -1c
+.RI "#define \fBGRD_DEFAULT_TABLE\fP   'grid'"
+.br
+.RI "\fIDefault grid table name. \fP"
+.ti -1c
+.RI "#define \fBGRD_METEO_INPUT_TABLE\fP   'meteo_input'"
+.br
+.RI "\fIDefault meteo input tables name. \fP"
+.ti -1c
+.RI "#define \fBGRD_FWI_INDEXES_TABLE\fP   'fwi_indexes'"
+.br
+.RI "\fIDefault FWI indexes tables name. \fP"
+.ti -1c
+.RI "#define \fBTAG_DATE\fP   '<<date>>'"
+.br
+.RI "\fIDate tag used in fwidbmgr.conf configuration file. \fP"
+.ti -1c
+.RI "#define \fBNOT_FOUND\fP   -1"
+.br
+.RI "\fINot found value after serch. \fP"
+.ti -1c
+.RI "#define \fBSUCCESS\fP   1"
+.br
+.RI "\fIsuccessful operation return value \fP"
+.ti -1c
+.RI "#define \fBFAILURE\fP   0"
+.br
+.RI "\fIunsuccessfull operation return value \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+defines for program 
+
+
+.PP
+Definition in file \fBfwi_define.h\fP.
+.SH "Define Documentation"
+.PP 
+.SS "#define ACTION_COMPUTE_INDEXES   'computeidx'"
+.PP
+Program switch to compute indexes. This is an experimental feature At the moment this action computes only these three new indexes
+.IP "\(bu" 2
+angstroem
+.IP "  \(bu" 4
+fmi
+.IP "    \(bu" 6
+sharples 
+.PP
+
+.PP
+
+.PP
+
+.PP
+Definition at line 197 of file fwi_define.h.
+.SS "#define ACTION_COMPUTE_INDEXES_24   'computeidx24'"
+.PP
+Program switch to compute indexes over 24 time slots. This is an experimental feature At the moment this action computes only these three new indexes 
+.PP
+Definition at line 207 of file fwi_define.h.
+.SS "#define FAILURE   0"
+.PP
+unsuccessfull operation return value FAILURE 
+.PP
+Definition at line 265 of file fwi_define.h.
+.SS "#define GRD_X_START   1436301.375"
+.PP
+default grid start point x coordinate Coordinates are expressed using Monte Mario 1 SRS 
+.PP
+\fBSee also:\fP
+.RS 4
+postgis documentation at http://postgis.refractions.net/ 
+.PP
+http://www.epsg.org/ 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file fwi_define.h.
+.SS "#define GRD_Y_START   4916704.500"
+.PP
+default grid start point y coordinate Coordinates are expressed using Monte Mario 1 SRS 
+.PP
+\fBSee also:\fP
+.RS 4
+postgis documentation at http://postgis.refractions.net/ 
+.PP
+http://www.epsg.org/ 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file fwi_define.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

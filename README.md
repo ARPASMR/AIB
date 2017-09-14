@@ -16,4 +16,7 @@ L'organizzazione degli script e dei programmi è la seguente (_nota: estratta so
 
 **./programmi/grass_work** contiene gli script per l'acquisizione dei dati dal dBMETEO
 
+**./dev/redist/fwidbmgr** contiene sorgente ed eseguibili C++ dell'applicativo usato per memorizzare gli indici calcolati (??) su 
+database 
+
                       

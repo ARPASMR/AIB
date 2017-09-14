@@ -1,0 +1,424 @@
+2015-07-30 05:07:07,355 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 05:07:07,807 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 05:07:07,807 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 05:07:07,807 null [INFO] (../src/fwidbmgr.cpp:458) action: in.
+2015-07-30 05:07:07,807 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 05:07:07,807 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 05:07:07,827 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 05:07:07,876 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 05:07:07,876 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 05:07:07,876 null [INFO] (../src/fwidbmgr.cpp:5367) Importing meteo data in database for day: 20150729.
+2015-07-30 05:07:07,877 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow
+2015-07-30 05:07:07,877 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow configured.
+2015-07-30 05:07:07,889 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_covering
+2015-07-30 05:07:07,890 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_covering configured.
+2015-07-30 05:07:07,902 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_dissolution
+2015-07-30 05:07:07,903 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_dissolution configured.
+2015-07-30 05:07:07,927 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: temperature
+2015-07-30 05:07:07,927 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid temperature configured.
+2015-07-30 05:07:07,932 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: humidity
+2015-07-30 05:07:07,932 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid humidity configured.
+2015-07-30 05:07:07,947 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: windspeed
+2015-07-30 05:07:07,947 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid windspeed configured.
+2015-07-30 05:07:07,970 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: rain
+2015-07-30 05:07:07,970 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid rain configured.
+2015-07-30 05:07:07,973 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: cum_rain
+2015-07-30 05:07:07,973 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid cum_rain configured.
+2015-07-30 05:07:22,722 null [INFO] (../src/fwidbmgr.cpp:1502) Storing meteo input ...
+2015-07-30 05:08:37,836 null [INFO] (../src/fwidbmgr.cpp:5370) OK --> 20150729 data imported.
+2015-07-30 05:08:37,876 null [INFO] (../src/fwidbmgr.cpp:5496) action in took about 90 seconds.
+2015-07-30 05:08:37,914 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 05:10:01,611 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 05:10:01,611 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 05:10:01,611 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 05:10:01,611 null [INFO] (../src/fwidbmgr.cpp:458) action: out.
+2015-07-30 05:10:01,611 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 05:10:01,612 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 05:10:01,633 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 05:10:01,645 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 05:10:01,645 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 05:10:01,645 null [INFO] (../src/fwidbmgr.cpp:5379) Importing fwi indexes data in database for day: 20150729.
+2015-07-30 05:10:01,656 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 05:10:01,656 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 05:10:01,670 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 05:10:01,670 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 05:10:01,684 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 05:10:01,684 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 05:10:01,698 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 05:10:01,698 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 05:10:01,712 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 05:10:01,712 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 05:10:01,727 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 05:10:01,727 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 05:10:01,741 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 05:10:01,741 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 05:10:01,799 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 05:10:01,799 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 05:10:01,821 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 05:10:01,821 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 05:10:01,843 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2015-07-30 05:10:01,855 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2015-07-30 05:10:17,946 null [INFO] (../src/fwidbmgr.cpp:2045) Storing FWI indexes ...
+2015-07-30 05:11:10,011 null [INFO] (../src/fwidbmgr.cpp:5382) OK --> 20150729 data imported.
+2015-07-30 05:11:10,011 null [INFO] (../src/fwidbmgr.cpp:5496) action out took about 69 seconds.
+2015-07-30 05:11:10,011 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 05:11:10,260 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 05:11:10,260 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 05:11:10,260 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 05:11:10,261 null [INFO] (../src/fwidbmgr.cpp:458) action: computeidx.
+2015-07-30 05:11:10,261 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 05:11:10,261 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 05:11:10,265 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 05:11:10,322 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 05:11:10,322 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 05:11:10,322 null [INFO] (../src/fwidbmgr.cpp:5463) Computing indexes.
+2015-07-30 05:11:10,323 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 05:11:10,323 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 05:11:10,325 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 05:11:10,325 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 05:11:10,326 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 05:11:10,331 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 05:11:10,332 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 05:11:10,332 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 05:11:10,334 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 05:11:10,334 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 05:11:10,335 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 05:11:10,335 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 05:11:10,337 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 05:11:10,337 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 05:11:10,338 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 05:11:10,338 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 05:11:10,340 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 05:11:10,340 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 05:11:10,341 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2015-07-30 05:11:10,341 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2015-07-30 05:11:10,343 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 05:11:10,343 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 05:11:10,344 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 05:11:10,344 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 05:11:10,346 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 05:11:10,346 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 05:11:25,156 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow
+2015-07-30 05:11:25,392 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow configured.
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_covering
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_covering configured.
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_dissolution
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_dissolution configured.
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: temperature
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid temperature configured.
+2015-07-30 05:11:25,571 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: humidity
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid humidity configured.
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: windspeed
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid windspeed configured.
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: rain
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid rain configured.
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: cum_rain
+2015-07-30 05:11:25,572 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid cum_rain configured.
+2015-07-30 05:13:57,083 null [INFO] (../src/fwidbmgr.cpp:5466) OK --> 20150729 indexes computed.
+2015-07-30 05:13:57,083 null [INFO] (../src/fwidbmgr.cpp:5496) action computeidx took about 167 seconds.
+2015-07-30 05:13:57,083 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 05:13:57,329 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 05:13:57,329 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 05:13:57,329 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 05:13:57,330 null [INFO] (../src/fwidbmgr.cpp:458) action: exportidx.
+2015-07-30 05:13:57,330 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 05:13:57,330 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 05:13:57,336 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 05:13:57,372 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 05:13:57,372 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 05:13:57,372 null [INFO] (../src/fwidbmgr.cpp:5415) Exporting indexes.
+2015-07-30 05:13:57,373 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 05:13:57,374 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 05:13:57,375 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 05:13:57,375 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 05:13:57,376 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 05:13:57,376 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 05:13:57,378 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 05:13:57,378 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 05:13:57,379 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 05:13:57,379 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 05:13:57,381 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 05:13:57,381 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 05:13:57,382 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 05:13:57,382 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 05:13:57,383 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 05:13:57,384 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 05:13:57,385 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 05:13:57,385 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 05:13:57,386 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2015-07-30 05:13:57,386 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2015-07-30 05:13:57,388 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 05:13:57,388 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 05:13:57,389 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 05:13:57,389 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 05:13:57,391 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 05:13:57,391 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 05:14:10,200 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 05:14:10,202 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 05:14:10,244 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 05:14:10,244 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 05:14:10,282 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 05:14:10,282 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 05:14:10,321 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 05:14:10,321 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 05:14:10,361 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 05:14:10,361 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 05:14:10,410 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 05:14:10,410 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 05:14:10,449 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 05:14:10,449 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 05:14:10,487 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 05:14:10,487 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 05:14:10,524 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 05:14:10,524 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 05:14:10,561 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 05:14:10,561 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 05:14:10,654 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 05:14:10,655 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 05:14:10,705 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 05:14:10,705 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 05:14:10,747 null [INFO] (../src/fwidbmgr.cpp:5418) OK --> 20150729 indexes exported to files.
+2015-07-30 05:14:10,747 null [INFO] (../src/fwidbmgr.cpp:5496) action exportidx took about 13 seconds.
+2015-07-30 05:14:10,747 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:10:24,282 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:10:24,284 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:10:24,284 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:10:24,285 null [INFO] (../src/fwidbmgr.cpp:458) action: exportimg.
+2015-07-30 17:10:24,285 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 17:10:24,285 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:10:24,299 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:10:24,327 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:10:24,327 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 17:10:24,327 null [INFO] (../src/fwidbmgr.cpp:5403) Exporting images
+2015-07-30 17:10:24,663 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:10:24,663 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:10:24,663 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:10:24,663 null [INFO] (../src/fwidbmgr.cpp:458) action: exportidx.
+2015-07-30 17:10:24,664 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150728.
+2015-07-30 17:10:24,664 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:10:24,665 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:10:24,669 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:10:24,669 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150728.
+2015-07-30 17:10:24,669 null [INFO] (../src/fwidbmgr.cpp:5415) Exporting indexes.
+2015-07-30 17:10:24,670 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 17:10:24,671 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 17:10:24,672 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 17:10:24,672 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 17:10:24,673 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 17:10:24,674 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 17:10:24,675 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 17:10:24,675 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 17:10:24,676 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 17:10:24,677 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 17:10:24,678 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 17:10:24,678 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 17:10:24,679 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 17:10:24,679 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 17:10:24,681 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 17:10:24,681 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 17:10:24,682 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 17:10:24,682 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 17:10:24,684 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2015-07-30 17:10:24,684 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2015-07-30 17:10:24,685 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 17:10:24,685 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 17:10:24,687 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 17:10:24,687 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 17:10:24,688 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 17:10:24,688 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 17:10:40,187 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 17:10:40,189 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 17:10:40,275 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 17:10:40,275 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 17:10:40,345 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 17:10:40,346 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 17:10:40,454 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 17:10:40,454 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 17:10:40,505 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 17:10:40,505 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 17:10:40,555 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 17:10:40,555 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 17:10:40,621 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 17:10:40,621 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 17:10:40,669 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 17:10:40,669 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 17:10:40,728 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 17:10:40,729 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 17:10:40,812 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 17:10:40,812 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 17:10:40,907 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 17:10:40,907 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 17:10:40,978 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 17:10:40,978 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 17:10:41,043 null [INFO] (../src/fwidbmgr.cpp:5418) OK --> 20150728 indexes exported to files.
+2015-07-30 17:10:41,043 null [INFO] (../src/fwidbmgr.cpp:5496) action exportidx took about 17 seconds.
+2015-07-30 17:10:41,043 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:13:06,338 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:13:06,338 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:13:06,338 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:13:06,338 null [INFO] (../src/fwidbmgr.cpp:458) action: in.
+2015-07-30 17:13:06,338 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 17:13:06,338 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:13:06,351 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:13:06,355 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:13:06,355 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 17:13:06,355 null [INFO] (../src/fwidbmgr.cpp:5367) Importing meteo data in database for day: 20150729.
+2015-07-30 17:13:06,357 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow
+2015-07-30 17:13:06,357 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow configured.
+2015-07-30 17:13:06,370 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_covering
+2015-07-30 17:13:06,370 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_covering configured.
+2015-07-30 17:13:06,383 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_dissolution
+2015-07-30 17:13:06,383 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_dissolution configured.
+2015-07-30 17:13:06,406 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: temperature
+2015-07-30 17:13:06,406 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid temperature configured.
+2015-07-30 17:13:06,411 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: humidity
+2015-07-30 17:13:06,412 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid humidity configured.
+2015-07-30 17:13:06,422 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: windspeed
+2015-07-30 17:13:06,422 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid windspeed configured.
+2015-07-30 17:13:06,444 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: rain
+2015-07-30 17:13:06,445 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid rain configured.
+2015-07-30 17:13:06,448 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: cum_rain
+2015-07-30 17:13:06,448 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid cum_rain configured.
+2015-07-30 17:13:22,249 null [INFO] (../src/fwidbmgr.cpp:1491) Meteo input for date 20150729 already stored, delete it.
+2015-07-30 17:13:37,147 null [INFO] (../src/fwidbmgr.cpp:1498) Meteo input for date 20150729 deleted.
+2015-07-30 17:13:37,148 null [INFO] (../src/fwidbmgr.cpp:1502) Storing meteo input ...
+2015-07-30 17:14:50,943 null [INFO] (../src/fwidbmgr.cpp:5370) OK --> 20150729 data imported.
+2015-07-30 17:14:50,991 null [INFO] (../src/fwidbmgr.cpp:5496) action in took about 104 seconds.
+2015-07-30 17:14:51,109 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:16:04,696 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:16:04,696 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:16:04,696 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:16:04,696 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2015-07-30 17:16:04,696 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 17:16:04,696 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:16:04,700 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:16:04,716 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:16:04,716 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 17:16:04,716 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2015-07-30 17:16:05,242 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20150729 images imported.
+2015-07-30 17:16:05,242 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 1 seconds.
+2015-07-30 17:16:05,242 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:19:30,836 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:19:30,836 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:19:30,836 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:19:30,836 null [INFO] (../src/fwidbmgr.cpp:458) action: exportimg.
+2015-07-30 17:19:30,836 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 17:19:30,836 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:19:30,838 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:19:30,842 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:19:30,842 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 17:19:30,845 null [INFO] (../src/fwidbmgr.cpp:5403) Exporting images
+2015-07-30 17:19:30,883 null [INFO] (../src/fwidbmgr.cpp:2800) /home/meteo/programmi/fwi_grid/immagini/ana/impaginata_20150729.gif points to 203419 bytes.
+2015-07-30 17:19:30,902 null [INFO] (../src/fwidbmgr.cpp:2845) /home/meteo/programmi/fwi_grid/immagini/meteo/ana/impaginatameteo_20150729.gif points to 94890 bytes.
+2015-07-30 17:19:30,935 null [INFO] (../src/fwidbmgr.cpp:2890) /home/meteo/programmi/fwi_grid/meteo/ana/neve_20150729.img points to 406969 bytes.
+2015-07-30 17:19:30,952 null [INFO] (../src/fwidbmgr.cpp:5406) OK --> 20150729 images exported to files.
+2015-07-30 17:19:30,952 null [INFO] (../src/fwidbmgr.cpp:5496) action exportimg took about 0 seconds.
+2015-07-30 17:19:30,953 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:19:31,091 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:19:31,091 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:19:31,091 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:19:31,091 null [INFO] (../src/fwidbmgr.cpp:458) action: exportidx.
+2015-07-30 17:19:31,091 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150728.
+2015-07-30 17:19:31,091 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:19:31,093 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:19:31,096 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:19:31,096 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150728.
+2015-07-30 17:19:31,096 null [INFO] (../src/fwidbmgr.cpp:5415) Exporting indexes.
+2015-07-30 17:19:31,097 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 17:19:31,097 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 17:19:31,099 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 17:19:31,099 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 17:19:31,100 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 17:19:31,100 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 17:19:31,102 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 17:19:31,102 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 17:19:31,103 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 17:19:31,103 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 17:19:31,104 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 17:19:31,104 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 17:19:31,106 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 17:19:31,106 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 17:19:31,107 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 17:19:31,107 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 17:19:31,109 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 17:19:31,109 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 17:19:31,110 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: idi
+2015-07-30 17:19:31,110 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid idi configured.
+2015-07-30 17:19:31,111 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 17:19:31,112 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 17:19:31,113 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 17:19:31,113 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 17:19:31,114 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 17:19:31,114 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 17:19:48,937 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: isi
+2015-07-30 17:19:48,939 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid isi configured.
+2015-07-30 17:19:48,988 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fwi
+2015-07-30 17:19:48,988 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fwi configured.
+2015-07-30 17:19:49,068 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc
+2015-07-30 17:19:49,068 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc configured.
+2015-07-30 17:19:49,108 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc
+2015-07-30 17:19:49,108 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc configured.
+2015-07-30 17:19:49,177 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc
+2015-07-30 17:19:49,177 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc configured.
+2015-07-30 17:19:49,230 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: bui
+2015-07-30 17:19:49,231 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid bui configured.
+2015-07-30 17:19:49,295 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: ffmc_tmp
+2015-07-30 17:19:49,295 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid ffmc_tmp configured.
+2015-07-30 17:19:49,360 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dmc_tmp
+2015-07-30 17:19:49,360 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dmc_tmp configured.
+2015-07-30 17:19:49,416 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: dc_tmp
+2015-07-30 17:19:49,416 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid dc_tmp configured.
+2015-07-30 17:19:49,465 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: angstrom
+2015-07-30 17:19:49,465 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid angstrom configured.
+2015-07-30 17:19:49,547 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: sharples
+2015-07-30 17:19:49,547 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid sharples configured.
+2015-07-30 17:19:49,597 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: fmi
+2015-07-30 17:19:49,597 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid fmi configured.
+2015-07-30 17:19:49,672 null [INFO] (../src/fwidbmgr.cpp:5418) OK --> 20150728 indexes exported to files.
+2015-07-30 17:19:49,672 null [INFO] (../src/fwidbmgr.cpp:5496) action exportidx took about 18 seconds.
+2015-07-30 17:19:49,672 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:22:15,013 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:22:15,014 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:22:15,014 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:22:15,014 null [INFO] (../src/fwidbmgr.cpp:458) action: in.
+2015-07-30 17:22:15,014 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 17:22:15,014 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:22:15,021 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:22:15,033 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:22:15,033 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 17:22:15,033 null [INFO] (../src/fwidbmgr.cpp:5367) Importing meteo data in database for day: 20150729.
+2015-07-30 17:22:15,035 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow
+2015-07-30 17:22:15,035 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow configured.
+2015-07-30 17:22:15,051 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_covering
+2015-07-30 17:22:15,051 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_covering configured.
+2015-07-30 17:22:15,066 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: snow_dissolution
+2015-07-30 17:22:15,067 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid snow_dissolution configured.
+2015-07-30 17:22:15,098 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: temperature
+2015-07-30 17:22:15,098 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid temperature configured.
+2015-07-30 17:22:15,104 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: humidity
+2015-07-30 17:22:15,104 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid humidity configured.
+2015-07-30 17:22:15,117 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: windspeed
+2015-07-30 17:22:15,118 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid windspeed configured.
+2015-07-30 17:22:15,156 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: rain
+2015-07-30 17:22:15,156 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid rain configured.
+2015-07-30 17:22:15,159 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1595) Configuring grid: cum_rain
+2015-07-30 17:22:15,159 null [INFO] (/home/meteo/dev/redist/fwidbmgr/include/Grid.h:1695) Grid cum_rain configured.
+2015-07-30 17:22:35,657 null [INFO] (../src/fwidbmgr.cpp:1491) Meteo input for date 20150729 already stored, delete it.
+2015-07-30 17:22:54,812 null [INFO] (../src/fwidbmgr.cpp:1498) Meteo input for date 20150729 deleted.
+2015-07-30 17:22:54,812 null [INFO] (../src/fwidbmgr.cpp:1502) Storing meteo input ...
+2015-07-30 17:23:38,103 null [INFO] (../src/fwidbmgr.cpp:5370) OK --> 20150729 data imported.
+2015-07-30 17:23:38,129 null [INFO] (../src/fwidbmgr.cpp:5496) action in took about 83 seconds.
+2015-07-30 17:23:38,292 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.
+2015-07-30 17:24:47,964 null [INFO] (../src/fwidbmgr.cpp:5207) fwi db manager
+2015-07-30 17:24:47,964 null [INFO] (../src/fwidbmgr.cpp:5209) Program home: /home/meteo/dev/redist/fwidbmgr
+2015-07-30 17:24:47,964 null [INFO] (../src/fwidbmgr.cpp:5211) Auto convert: 1
+2015-07-30 17:24:47,964 null [INFO] (../src/fwidbmgr.cpp:458) action: outimg.
+2015-07-30 17:24:47,964 null [INFO] (../src/fwidbmgr.cpp:482) date: 20150729.
+2015-07-30 17:24:47,964 null [INFO] (../src/fwidbmgr.cpp:319) Try to read: /home/meteo/dev/redist/fwidbmgr/config/fwidbmgr.conf.
+2015-07-30 17:24:47,968 null [INFO] (../src/fwidbmgr.cpp:5240) Configuration parsing: OK.
+2015-07-30 17:24:47,974 null [INFO] (../src/fwidbmgr.cpp:5322) Connected to database
+2015-07-30 17:24:47,974 null [INFO] (../src/fwidbmgr.cpp:5323) Manage data for date: 20150729.
+2015-07-30 17:24:47,974 null [INFO] (../src/fwidbmgr.cpp:5391) Importing fwi indexes images in database.
+2015-07-30 17:24:48,401 null [INFO] (../src/fwidbmgr.cpp:5394) OK --> 20150729 images imported.
+2015-07-30 17:24:48,402 null [INFO] (../src/fwidbmgr.cpp:5496) action outimg took about 1 seconds.
+2015-07-30 17:24:48,404 null [INFO] (../src/fwidbmgr.cpp:5499) Disconnected from database.

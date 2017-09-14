@@ -1,0 +1,97 @@
+.TH "include/ctlgen.hpp" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/ctlgen.hpp \- 
+.PP
+Grads control file generator using spirit.karma from boost libraries.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <boost/spirit/include/karma.hpp>\fP
+.br
+\fC#include <boost/spirit/include/karma_real.hpp>\fP
+.br
+\fC#include <boost/spirit/include/phoenix_core.hpp>\fP
+.br
+\fC#include <boost/spirit/include/phoenix_operator.hpp>\fP
+.br
+\fC#include <boost/fusion/include/support.hpp>\fP
+.br
+\fC#include <boost/fusion/include/adapt_struct.hpp>\fP
+.br
+\fC#include <boost/fusion/support.hpp>\fP
+.br
+\fC#include <boost/type_traits.hpp>\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBfwi\fP"
+.br
+.PP
+
+.RI "\fImain fwidbmgr namespace \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef real_generator< float, fixed_policy< float > > \fBfwi::generators::fixed_type\fP"
+.br
+.RI "\fIfloating-point fixed-point generator type \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "fixed_type const \fBfwi::generators::fixedgen\fP = fixed_type()"
+.br
+.RI "\fIfixed-point generator instance \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Grads control file generator using spirit.karma from boost libraries. 
+
+CTL file generator This generator produces the .ctl file content about the coupled .dat file like for example:
+.PP
+\fC DSET /home/meteo/programmi/interpolazione_statistica/oi_fwi/temp/20120111t2m_g.dat
+.br
+ TITLE 2m temperature
+.br
+ UNDEF -9999.000
+.br
+ XDEF 177 LINEAR 1436301.37500000 1500.00000000000
+.br
+ YDEF 174 LINEAR 4916704.50000000 1500.00000000000
+.br
+ ZDEF 1 LINEAR 1.000000 1.000000
+.br
+ TDEF 24 LINEAR 13:00Z11jan2012 1HR
+.br
+ VARS 3
+.br
+ xb 0 99 T background field
+.br
+ xa 0 99 T analysis field
+.br
+ xidi 0 99 integral data influence
+.br
+ ENDVARS
+.br
+ \fP
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.boost.org/ 
+.RE
+.PP
+
+.PP
+Definition in file \fBctlgen.hpp\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

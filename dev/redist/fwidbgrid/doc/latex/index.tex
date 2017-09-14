@@ -1,0 +1,72 @@
+{\itshape fwidbmanager} is a custom application developed to store/retrieve meteo data and fire weather indexes in/from a postgresql database.
+
+Presently fwi indexes are computed on a dayly basis taking as input the following data\-:
+
+
+\begin{DoxyItemize}
+\item a 174x177 point grid of Lumbardy starting from point (1436301.\-375 4916704.\-500) with 1500 meters resolution expressed in Gauss-\/\-Boaga (E\-P\-S\-G\-:3003). To each grid point the following information are associated 
+\begin{DoxyEnumerate}
+\item {\itshape nometeo} a flag indicating the fact that no meteo data are associated to the grid point 
+\begin{DoxyItemize}
+\item 1 means that no meteo data are associated to the grid point 
+\item 0 means that meteo data are associated to the grid point 
+\end{DoxyItemize}
+\item {\itshape name} a symbolic name representing the grid point row and column in the format \mbox{[}row\mbox{]}-\/\mbox{[}column\mbox{]} with values starting from 1 
+\item {\itshape mask} a flag indicating that the grid point is inside the region border 
+\begin{DoxyItemize}
+\item 1 means that the grid point is inside the region border 
+\item 0 means that the grid point is outside the region border 
+\end{DoxyItemize}
+\item {\itshape dz/dx} how z coordinate changes in the x direction 
+\item {\itshape dz/dy} how z coordinate changes in the y direction 
+\item {\itshape lake\-\_\-mask} a flag indicating if the the point falls inside a lake area 
+\begin{DoxyItemize}
+\item 1 means that the grid point is inside a lake area 
+\item 0 means that the grid point is outside a lake area 
+\end{DoxyItemize}
+\item {\itshape urban\-\_\-weight} a real parameter between 0.\-0 and 1.\-0 indicating the urban weight 
+\item {\itshape p} the point geometry in the form (x, y, z) 
+\end{DoxyEnumerate}
+\item a set of G\-R\-I\-B files on the previous grid containing the following meteo data 
+\begin{DoxyItemize}
+\item temperature 
+\begin{DoxyEnumerate}
+\item {\itshape xb} T background field 
+\item {\itshape xa} T analysis field 
+\item {\itshape tidi} T integral data influence 
+\end{DoxyEnumerate}
+\item humidity 
+\begin{DoxyEnumerate}
+\item {\itshape tdb} T\-D background field 
+\item {\itshape ta} T analysis field 
+\item {\itshape tda} ?????? 
+\item {\itshape rha} R\-H analysis field 
+\item {\itshape rhidi} R\-H integral data influence 
+\item {\itshape hdxa} H\-U\-M\-I\-D\-E\-X analysis 
+\end{DoxyEnumerate}
+\item wind speed 
+\begin{DoxyEnumerate}
+\item {\itshape bu} u background 
+\item {\itshape bv} v background 
+\item {\itshape bhu} horizontal u background 
+\item {\itshape bhv} horizontal v background 
+\item {\itshape bvw} background vertical wind 
+\item {\itshape avw} analysis bertical wind 
+\item {\itshape au} u analysis 
+\item {\itshape av} v analysis 
+\item {\itshape ahu} horizontal u analysis 
+\item {\itshape ahv} horizontal v analysis 
+\item {\itshape adiv} analysis divergence 
+\item {\itshape avor} ?????? 
+\item {\itshape wsidi} W\-S integral data influence 
+\end{DoxyEnumerate}
+\item cumulated rain 
+\begin{DoxyEnumerate}
+\item {\itshape xpa} precipitation analysis 
+\item {\itshape ridiw} wet integral data influence 
+\item {\itshape ridid} dry integral data influence 
+\item {\itshape snow\-\_\-covering} snow covering factor 
+\item {\itshape snow\-\_\-dissolution} snow dissolution factor 
+\end{DoxyEnumerate}
+\end{DoxyItemize}
+\end{DoxyItemize}

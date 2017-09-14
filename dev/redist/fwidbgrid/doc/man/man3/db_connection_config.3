@@ -1,0 +1,12 @@
+.TH "db_connection_config" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+db_connection_config \- Database connection 
+The first configuration parameters to be set are those related to the database connection. You need postgres superuser credentials and the ones of a standard postgres user that must be setup in the database server before running the application. Database connection needed parameters are:
+.PP
+.PD 0
+.IP "\(bu" 2
+\fIhost\fP the network name or IP address of the machine running postgresql server e.g 'localhost' \fIport\fP e.g 5432 is the standard postgresql port change it accordingly to your system setup \fIdbname\fP the database name e.g. 'fwidb' \fIuser\fP the standard postgres user e.g. 'meteo' \fIpassword\fP standard user password e.g. 'secret' \fIsuperuser\fP e.g. postgres \fIsuperpwd\fP postgres user password  
+.PP
+

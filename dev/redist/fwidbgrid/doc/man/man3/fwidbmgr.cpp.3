@@ -1,0 +1,780 @@
+.TH "src/fwidbmgr.cpp" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/fwidbmgr.cpp \- 
+.PP
+The main program file.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <cstdlib>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <strings.h>\fP
+.br
+\fC#include <time.h>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <fstream>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <assert.h>\fP
+.br
+\fC#include <getopt.h>\fP
+.br
+\fC#include <arpa/inet.h>\fP
+.br
+\fC#include <libconfig.h++>\fP
+.br
+\fC#include <libpq-fe.h>\fP
+.br
+\fC#include <geos.h>\fP
+.br
+\fC#include 'boost/date_time/posix_time/posix_time.hpp'\fP
+.br
+\fC#include <boost/date_time/date_facet.hpp>\fP
+.br
+\fC#include 'log4cxx/logger.h'\fP
+.br
+\fC#include 'log4cxx/basicconfigurator.h'\fP
+.br
+\fC#include 'log4cxx/helpers/exception.h'\fP
+.br
+\fC#include <log4cxx/xml/domconfigurator.h>\fP
+.br
+\fC#include <fwi_define.h>\fP
+.br
+\fC#include <CommandLineArguments.h>\fP
+.br
+\fC#include <Grid.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBgetProgramHome\fP ()"
+.br
+.RI "\fIReads environment variable FWIDBMGR_HOME. \fP"
+.ti -1c
+.RI "\fBstruct\fP tm \fBparseDate\fP (std::string dt)"
+.br
+.RI "\fIParses a string for a date value. \fP"
+.ti -1c
+.RI "void \fBusage\fP ()"
+.br
+.RI "\fIhelper function for usage display \fP"
+.ti -1c
+.RI "bool \fBprocess_cmd_line\fP (int argc, char **argv, \fBCommandLineArguments\fP *args)"
+.br
+.RI "\fIProcess command line parameters. \fP"
+.ti -1c
+.RI "bool \fBgetSqlFiles\fP (std::vector< std::string > &files)"
+.br
+.RI "\fIgets sql files paths from configuration \fP"
+.ti -1c
+.RI "std::string \fBloadQueryFromFile\fP (std::string filepath)"
+.br
+.RI "\fIloads in memory a file content \fP"
+.ti -1c
+.RI "bool \fBexecute\fP (std::string &query)"
+.br
+.RI "\fIexecutes query command \fP"
+.ti -1c
+.RI "bool \fBcreate_database\fP ()"
+.br
+.RI "\fIcreates database structure based on configuration contents \fP"
+.ti -1c
+.RI "bool \fBfill_database\fP ()"
+.br
+.RI "\fIfills empty database structure with data (ex. spatial ref systems from postgis) \fP"
+.ti -1c
+.RI "bool \fBprepare_meteo_input\fP (std::string date)"
+.br
+.RI "\fIcreates skeleton structure for meteo input grid referring to date \fP"
+.ti -1c
+.RI "bool \fBfill_nometeo_points\fP ()"
+.br
+.RI "\fIfills grid table with no mete point flags \fP"
+.ti -1c
+.RI "bool \fBimport_regions\fP ()"
+.br
+.RI "\fIImports regions polygons in database from file. \fP"
+.ti -1c
+.RI "bool \fBimport_provinces\fP ()"
+.br
+.RI "\fIImports provinces polygons in database from file. \fP"
+.ti -1c
+.RI "bool \fBcreate_standard_grid\fP ()"
+.br
+.RI "\fIcreate a standard 174 row x 177 columns grid \fP"
+.ti -1c
+.RI "bool \fBdelete_meteo_input\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIdeletes meteo input grid for date in \fIargs\fP from database \fP"
+.ti -1c
+.RI "bool \fBstore_meteo_input\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIstores meteo input grid for date in \fIargs\fP reading from files \fP"
+.ti -1c
+.RI "bool \fBretrieve_meteo_input\fP (\fBCommandLineArguments\fP &args, \fBGrid\fP< float > *res)"
+.br
+.RI "\fIretrieves meteo input grid for date in \fIargs\fP reading from database \fP"
+.ti -1c
+.RI "bool \fBdelete_fwi_indexes\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIdeletes fwi indexes grid for date in \fIargs\fP from database \fP"
+.ti -1c
+.RI "bool \fBstore_fwi_indexes\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIstores fwi indexes grid for date in \fIargs\fP reading from files \fP"
+.ti -1c
+.RI "bool \fBprepare_fwi_indexes_grid\fP (\fBCommandLineArguments\fP &args, \fBGrid\fP< float > *res)"
+.br
+.RI "\fIprepares and configure fwi indexes grid \fP"
+.ti -1c
+.RI "bool \fBretrieve_fwi_indexes\fP (\fBCommandLineArguments\fP &args, \fBGrid\fP< float > *res)"
+.br
+.RI "\fIretrieves fwi indexes grid for date in \fIargs\fP reading from database \fP"
+.ti -1c
+.RI "bool \fBgetFileBytea\fP (std::string file, char **buffer, int &size)"
+.br
+.RI "\fIReads file, returns file contents in buffer and file size in size. \fP"
+.ti -1c
+.RI "bool \fBdelete_images\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIdeletes fwi indexes grid for date in \fIargs\fP from database \fP"
+.ti -1c
+.RI "bool \fBstore_images\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIstores fwi images for date in \fIargs\fP reading from disk. \fP"
+.ti -1c
+.RI "bool \fBretrieve_images\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIretrieves fwi images for date in \fIargs\fP reading from database \fP"
+.ti -1c
+.RI "bool \fBexport_indexes\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIexports fwi indexes grid for date in \fIargs\fP from database \fP"
+.ti -1c
+.RI "bool \fBload_computation_indexes\fP (std::vector< std::string > &indexes)"
+.br
+.RI "\fILoads from configuration the list of index names to be computed. \fP"
+.ti -1c
+.RI "bool \fBcompute_index\fP (std::string &index_name, \fBGrid\fP< float > *indexes, \fBGrid\fP< float > *meteo)"
+.br
+.RI "\fICompute a single index given its name. \fP"
+.ti -1c
+.RI "bool \fBcompute_indexes\fP (\fBCommandLineArguments\fP &args)"
+.br
+.RI "\fIComputes the new three indexes angstroem, fmi and sharples as an experimental feature. Requires the previous import of the standard indexes in database. \fP"
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.RI "\fImain function \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The main program file. 
+
+
+.PP
+Definition in file \fBfwidbmgr.cpp\fP.
+.SH "Function Documentation"
+.PP 
+.SS "bool compute_index (std::string & index_name, \fBGrid\fP< float > * indexes, \fBGrid\fP< float > * meteo)"
+.PP
+Compute a single index given its name. \fBParameters:\fP
+.RS 4
+\fIindex_name\fP the index name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindexes\fP the already loaded indexes grid 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImeteo\fP the already loaded meteo input grid 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 3317 of file fwidbmgr.cpp.
+.SS "bool compute_indexes (\fBCommandLineArguments\fP & args)"
+.PP
+Computes the new three indexes angstroem, fmi and sharples as an experimental feature. Requires the previous import of the standard indexes in database. \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 3446 of file fwidbmgr.cpp.
+.SS "bool create_database ()"
+.PP
+creates database structure based on configuration contents \fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+
+.PP
+Definition at line 590 of file fwidbmgr.cpp.
+.SS "bool create_standard_grid ()"
+.PP
+create a standard 174 row x 177 columns grid \fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+
+.PP
+Definition at line 1083 of file fwidbmgr.cpp.
+.SS "bool delete_fwi_indexes (\fBCommandLineArguments\fP & args)"
+.PP
+deletes fwi indexes grid for date in \fIargs\fP from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1644 of file fwidbmgr.cpp.
+.SS "bool delete_images (\fBCommandLineArguments\fP & args)"
+.PP
+deletes fwi indexes grid for date in \fIargs\fP from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2539 of file fwidbmgr.cpp.
+.SS "bool delete_meteo_input (\fBCommandLineArguments\fP & args)"
+.PP
+deletes meteo input grid for date in \fIargs\fP from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1248 of file fwidbmgr.cpp.
+.SS "bool execute (std::string & query)"
+.PP
+executes query command \fBParameters:\fP
+.RS 4
+\fIquery\fP sql commands to be executed 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 562 of file fwidbmgr.cpp.
+.SS "bool export_indexes (\fBCommandLineArguments\fP & args)"
+.PP
+exports fwi indexes grid for date in \fIargs\fP from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2775 of file fwidbmgr.cpp.
+.SS "bool fill_database ()"
+.PP
+fills empty database structure with data (ex. spatial ref systems from postgis) \fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+libconfig++ documentation at http://www.hyperrealm.com/libconfig/ 
+.RE
+.PP
+
+.PP
+Definition at line 645 of file fwidbmgr.cpp.
+.SS "bool fill_nometeo_points ()"
+.PP
+fills grid table with no mete point flags \fBSee also:\fP
+.RS 4
+Grid 
+.RE
+.PP
+
+.PP
+Definition at line 724 of file fwidbmgr.cpp.
+.SS "bool getFileBytea (std::string file, char ** buffer, int & size)"
+.PP
+Reads file, returns file contents in buffer and file size in size. \fBParameters:\fP
+.RS 4
+\fIfile\fP file absolute path 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP file contents buffer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP file size 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2510 of file fwidbmgr.cpp.
+.SS "string getProgramHome ()"
+.PP
+Reads environment variable FWIDBMGR_HOME. This environment variable has to be defined in order to run fwidbmgr
+.PP
+\fBReturns:\fP
+.RS 4
+the path pointed by FWIDBMGR_HOME or a standard path 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file fwidbmgr.cpp.
+.SS "bool getSqlFiles (std::vector< std::string > & files)"
+.PP
+gets sql files paths from configuration \fBParameters:\fP
+.RS 4
+\fIfiles\fP string vector containing files paths 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+libconfig++ documentation at http://www.hyperrealm.com/libconfig/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 499 of file fwidbmgr.cpp.
+.SS "bool import_provinces ()"
+.PP
+Imports provinces polygons in database from file. \fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+
+.PP
+Definition at line 927 of file fwidbmgr.cpp.
+.SS "bool import_regions ()"
+.PP
+Imports regions polygons in database from file. \fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+
+.PP
+Definition at line 803 of file fwidbmgr.cpp.
+.SS "bool load_computation_indexes (std::vector< std::string > & indexes)"
+.PP
+Loads from configuration the list of index names to be computed. \fBParameters:\fP
+.RS 4
+\fIindexes\fP the list of index names 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 3276 of file fwidbmgr.cpp.
+.SS "string loadQueryFromFile (std::string filepath)"
+.PP
+loads in memory a file content \fBParameters:\fP
+.RS 4
+\fIfilepath\fP complete file path 
+.PP
+\fBReturns:\fP
+.RS 4
+the file content 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 545 of file fwidbmgr.cpp.
+.SS "int main (int argc, char ** argv)"
+.PP
+main function \fBSee also:\fP
+.RS 4
+\fBusage()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4112 of file fwidbmgr.cpp.
+.SS "\fBstruct\fP tm parseDate (std::string dt)\fC [read]\fP"
+.PP
+Parses a string for a date value. \fBParameters:\fP
+.RS 4
+\fIdt\fP string to be parsed 
+.PP
+\fBReturns:\fP
+.RS 4
+struct tm filled with parsed values 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 274 of file fwidbmgr.cpp.
+.SS "bool prepare_fwi_indexes_grid (\fBCommandLineArguments\fP & args, \fBGrid\fP< float > * res)"
+.PP
+prepares and configure fwi indexes grid \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP resulting grid 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.PP
+Grid 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1970 of file fwidbmgr.cpp.
+.SS "bool prepare_meteo_input (std::string date)"
+.PP
+creates skeleton structure for meteo input grid referring to date \fBParameters:\fP
+.RS 4
+\fIdate\fP referring date as YYYYMMDD 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 691 of file fwidbmgr.cpp.
+.SS "bool process_cmd_line (int argc, char ** argv, \fBCommandLineArguments\fP * args)"
+.PP
+Process command line parameters. \fBParameters:\fP
+.RS 4
+\fIargc\fP Number of command line parameters 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargv\fP array of string parameters 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 390 of file fwidbmgr.cpp.
+.SS "bool retrieve_fwi_indexes (\fBCommandLineArguments\fP & args, \fBGrid\fP< float > * res)"
+.PP
+retrieves fwi indexes grid for date in \fIargs\fP reading from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP resulting grid 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.PP
+Grid 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2255 of file fwidbmgr.cpp.
+.SS "bool retrieve_images (\fBCommandLineArguments\fP & args)"
+.PP
+retrieves fwi images for date in \fIargs\fP reading from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2682 of file fwidbmgr.cpp.
+.SS "bool retrieve_meteo_input (\fBCommandLineArguments\fP & args, \fBGrid\fP< float > * res)"
+.PP
+retrieves meteo input grid for date in \fIargs\fP reading from database \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP resulting grid 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1541 of file fwidbmgr.cpp.
+.SS "bool store_fwi_indexes (\fBCommandLineArguments\fP & args)"
+.PP
+stores fwi indexes grid for date in \fIargs\fP reading from files \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1664 of file fwidbmgr.cpp.
+.SS "bool store_images (\fBCommandLineArguments\fP & args)"
+.PP
+stores fwi images for date in \fIargs\fP reading from disk. \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2559 of file fwidbmgr.cpp.
+.SS "bool store_meteo_input (\fBCommandLineArguments\fP & args)"
+.PP
+stores meteo input grid for date in \fIargs\fP reading from files \fBParameters:\fP
+.RS 4
+\fIargs\fP command line arguments class 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CommandLineArguments 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1268 of file fwidbmgr.cpp.
+.SS "void usage ()"
+.PP
+helper function for usage display Displays the following text:
+.PP
+\fBfwidbmgr usage\fP
+.PP
+\fIfwidbmgr -a action [-d date] [-c config] [-D database] [-H host] [-P port] [-U user] [-p password] [-h]\fP
+.PP
+where action must be one of:
+.PP
+\fBcreate\fPcreates an empty database structure \fBcreatestdgrid\fPcreates the standard 177x174 point grid \fBin\fPsaves in db input data for date given by option date \fBout\fPsaves in db output data of fwi indexes computation \fBoutimg\fPsaves in db output images \fBexportidx\fPexports indexes grid to GrADS files \fBcomputeidx\fPcomputes new indexes angstroem, fmi and sharples [experimental] \fBcomputeidx24\fPcomputes new indexes over 24 time slots [experimental] 
+.PP
+where date must be a valid date in ISO 8601 format ex. (2012-03-22)
+.PP
+where config is the absolute path to the alternative config file
+.PP
+where database is the database name to be used
+.PP
+where host is the database host name or IP address
+.PP
+where port is the postgresql port
+.PP
+where user is the database user that has the proper rights
+.PP
+where password is the user password
+.PP
+h --> prints this text 
+.PP
+Definition at line 358 of file fwidbmgr.cpp.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.
