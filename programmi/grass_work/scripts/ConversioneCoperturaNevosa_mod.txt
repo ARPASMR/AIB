@@ -1,0 +1,20 @@
+###################################################################
+#                                                                 # 
+#  MARIA RANCI - 13 GENNAIO 2010                                  #
+#                legge immagine neve .img a 500 metri             #
+#                converte in file ascii a res=1500 metri          #
+#                                                                 #
+###################################################################
+#
+#
+fileneve=$fileneve
+fileoutneve=$fileoutneve
+
+echo "fileneve="$fileneve
+echo "fileoutneve="$fileoutneve
+#
+g.region -d 
+g.remove rast=neve
+r.in.gdal -o input=$fileneve output=neve 
+r.out.arc input=neve output=$fileoutneve
+echo "fatto"
