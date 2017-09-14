@@ -10,7 +10,10 @@ L'organizzazione degli script e dei programmi è la seguente (_nota: estratta so
 
 **./script/interpolazione** contiene gli script e i programmi per l'interpolazione statistica
 
+**./script/fwi/conversione_img_neve** script di conversione del file immagine satellitare copertura nevosa
+
 **./programmi/getdata** contiene gli script per l'acquisizione dei dati dal dBMETEO
 
-**./conversione_img_neve** script di conversione del file immagine satellitare copertura nevosa
+**./programmi/grass_work** contiene gli script per l'acquisizione dei dati dal dBMETEO
+
                       
