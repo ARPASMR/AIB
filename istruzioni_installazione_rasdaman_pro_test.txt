@@ -215,10 +215,10 @@ QUESTO SAREBBE IL MASSIMO.. ma in assenza di questo.. scp va benissimo
 1.1) su Milanone 
 
 MILANONE 10.10.0.7 
-user: meteo
-pwd: METEO
+user: *****
+pwd: *****
 
-pwd root: LnxS1st3m01!
+pwd root: ******
 su
 
 nano /etc/exports
@@ -232,9 +232,11 @@ nano /etc/exports
 data=20171220
 
 
+**** da sostituire con la pwd
+
 #scaricare i dati su nostro server virtuale
 sudo vpnc arpa_lombardia
-sshpass -p "METEO" scp -o StrictHostKeyChecking=no meteo@10.10.0.7:/home/meteo/programmi/fwi_grid/indici/ana/*20171220* ./
+sshpass -p "*****" scp -o StrictHostKeyChecking=no meteo@10.10.0.7:/home/meteo/programmi/fwi_grid/indici/ana/*20171220* ./
 sudo vpnc-disconnect
 
 
