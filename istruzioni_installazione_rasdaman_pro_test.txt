@@ -145,6 +145,11 @@ yum install cmake3
 ERRORE su 10.10.99.136 forse dovuto alla versione di boost? installato da sorgente boost-1.65
 
 
+forse invece bastano le seguenti librerie 
+
+yum install boost_thread boost_system boost_filesystem
+
+
 cmake3 /home/rasdaman/rasdaman/ -DPETASCOPEDB=postgresql -DDEFAULT_BASEDB=sqlite -DUSE_NETCDF=ON -DBoost_NO_BOOST_CMAKE=TRUE -DBOOST_ROOT:PATHNAME=/usr/local -DWAR_DIR=/var/lib/tomcat7/webapps  -DUSE_GRIB=ON -DUSE_HDF4=ON
 
 
