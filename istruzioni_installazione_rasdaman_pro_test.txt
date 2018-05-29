@@ -1,0 +1,245 @@
+#################################################
+STEP1 - Installazione RASDAMAN su 10.10.99.136
+#################################################
+user:*****
+pwd: *****
+
+
+user: *****
+pwd: *****
+
+
+Chiedere a Mauro Mussin
+---------------------------------
+
+yum install gcc gcc-c++ make autoconf automake bison libtiff-devel hdf-devel libjpeg-devel libedit-devel zlib-devel libpng12-devel netcdf-cxx-devel libpng-devel netpbm-devel openssl-devel flex flex-devel postgresql-devel doxygen netcdf-devel gdal-devel gdal-python boost-devel java-1.7.0-openjdk-devel python-setuptools libsqlite-devel
+
+
+yum install libsq3-devel
+
+yum install libtool
+
+yum install maven maven-resources-plugin xmvn 
+
+yum install gdal-java
+
+yum install cntlm libntlm-devel
+
+#imposto il proxy nel file 
+/home/rasdaman/.m2/settings.xml
+
+
+<settings>
+	<proxies>
+                <proxy>
+                       	<id>proxy-arpa-lombardia</id>
+                        <active>true</active>
+                        <protocol>http</protocol>
+                        <host>proxy2.arpa.local</host>
+                        <port>8080</port>
+                        <username>meteo</username>
+                        <password>%meteo2010</password>
+                        <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
+                </proxy>
+                <proxy>
+                       	<id>proxy-arpa-lombardia-https</id>
+                        <active>true</active>
+                        <protocol>https</protocol>
+                        <host>proxy2.arpa.local</host>
+                        <port>8080</port>
+                        <username>meteo</username>
+                        <password>%meteo2010</password>
+                        <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
+                </proxy>
+        </proxies>
+</settings>
+
+
+
+easy_install glob2
+
+
+# verifico libpng12
+
+#verifica java con 
+java -version
+javac -version
+
+#installato tutto come 1.8
+yum install java-1.8.0-openjdk-devel
+
+
+#installato tomcat
+yum install tomcat
+
+
+#installato tomcat
+yum install postgis
+
+# aggiungiamo l'utente di sistema rasdaman
+adduser -m rasdaman -G tomcat -p rasdaman
+
+# installato postgresql server
+yum install postgresql-server
+
+
+# per attivare il service postgresql
+systemctl enable postgresql
+
+
+# per far partire il DBMS postgresql
+service postgresql start
+
+# entro come utente postgresql
+su - postgres
+
+# creo utente rasdaman con la pwd=meteoaib
+createuser -s rasdaman -P 
+
+
+
+# aggiungere le seguenti righe in /etc/tomcat/tomcat.conf
+#To prevent "java.lang.OutOfMemoryError?" using rasdaman
+JAVA_OPTS="-Xmx1024m"
+ 
+
+
+# a questo punto sono pronto per l'installazione da sorgente ssh 
+
+
+su - rasdaman
+
+
+# imposto il proxy come per utente sudo (NON SERVE.. il proxy è in /etc/environment)
+# export http_proxy=meteo:%meteo2010@proxy2.arpa.local:8080
+
+
+#siccome il repository ufficiale di rasdaman non è raggiungibile a causa del proxy ne abbiamo installato il mirror su github (situazione da tenere monitorata, ma almeno per le fasi di test sembra OK) 
+
+git clone https://github.com/kalxas/rasdaman.git
+
+# aggiungo le seguenti righe al file .bashrc
+export RMANHOME=/home/rasdaman/install
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export JRE_HOME=$JAVA_HOME/jre
+export CATALINA_HOME=/var/lib/tomcat
+export PATH=$PATH:$RMANHOME/bin:/usr/lib/postgresql/9.1/bin
+
+nano .bashrc e copio le righe seguenti
+
+
+quindi: 
+1) autoreconf -fi
+
+2) ./configure --prefix=$RMANHOME --with-wardir=$CATALINA_HOME/webapps/ --with-netcdf
+
+3) make
+
+possibile che ci sia qualcosa da risolvere, anche se molte dipendenze le ho già aggiunte
+
+
+4) mkdir $RMANHOME
+
+5) make install
+
+
+
+MEGLIO l'installazione con cmake
+
+!! installato cmake3 
+
+ERRORE forse dovuto alla versione di boost? installato da sorgente boost-1.65
+
+cmake3 /home/rasdaman/rasdaman/ -DPETASCOPEDB=postgresql -DUSE_NETCDF=ON -DDEFAULT_BASEDB=postgresql -DBoost_NO_BOOST_CMAKE=TRUE -DBOOST_ROOT:PATHNAME=/usr/local -DWAR_DIR=/var/lib/tomcat/webapps
+
+
+make
+
+make install (dopo aver creato la cartella /opt/rasdaman da utente user a assegnatoli tutti i permessi del caso)
+
+
+
+
+# entro come utente postgresql
+su - postgres
+
+# creo utente petauser con la pwd=peta_pwd
+createuser -s petauser -P 
+
+
+
+
+
+
+
+#################################################
+FINE INSTALLAZIONE
+#################################################
+
+
+
+#################################################
+STEP 2 - Cosa importare?
+#################################################
+METEO qualcosa (non tutto):
+meteo@arpav-milanone02:~/programmi/fwi_grid/meteo/ana> ls *_20170920.txt
+IDI_comune_20170920.txt  prec24_20170920.txt       t_20170920.txt
+isciolgo_20170920.txt    raincum_tmp_20170920.txt  ur_20170920.txt
+neve_20170920.txt        snowper_20170920.txt      ws_20170920.txt
+
+
+INDICI:
+meteo@arpav-milanone02:~/programmi/fwi_grid/indici/ana> ls *_20170920.txt
+bui_20170920.txt         dmc_20170920.txt          ffmc_mask_20170920.txt
+bui_c_20170920.txt       dmc_c_20170920.txt        ffmc_tmp_20170920.txt
+bui_grezzi_20170920.txt  dmc_grezzi_20170920.txt   fwi_20170920.txt
+bui_mask_20170920.txt    dmc_lami_20170920.txt     fwi_c_20170920.txt
+dc_20170920.txt          dmc_mask_20170920.txt     fwi_grezzi_20170920.txt
+dc_c_20170920.txt        dmc_tmp_20170920.txt      fwi_mask_20170920.txt
+dc_grezzi_20170920.txt   ffmc_20170920.txt         isi_20170920.txt
+dc_lami_20170920.txt     ffmc_c_20170920.txt       isi_c_20170920.txt
+dc_mask_20170920.txt     ffmc_grezzi_20170920.txt  isi_grezzi_20170920.txt
+dc_tmp_20170920.txt      ffmc_lami_20170920.txt    isi_mask_20170920.txt
+
+
+bui
+dc
+dmc
+ffmc
+fwi
+isi
+
+Il sistema di riferimento è 3003 e sono in formato standard gdal
+
+
+
+QUESTO SAREBBE IL MASSIMO.. ma in assenza di questo.. scp va benissimo
+1) NFS di quella cartella
+
+1.1) su Milanone 
+
+MILANONE 10.10.0.7 
+user: meteo
+pwd: METEO
+
+pwd root: LnxS1st3m01!
+su
+
+nano /etc/exports
+
+/home/meteo/programmi/fwi_grid/indici/ana 10.10.99.136(rw,sync,no_root_squash)
+
+
+########
+#SCP
+########
+data=20171220
+
+
+#scaricare i dati su nostro server virtuale
+sudo vpnc arpa_lombardia
+sshpass -p "METEO" scp -o StrictHostKeyChecking=no meteo@10.10.0.7:/home/meteo/programmi/fwi_grid/indici/ana/*20171220* ./
+sudo vpnc-disconnect
+
+
+
