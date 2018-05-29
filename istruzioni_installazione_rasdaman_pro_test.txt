@@ -116,6 +116,9 @@ su - rasdaman
 
 #siccome il repository ufficiale di rasdaman non è raggiungibile a causa del proxy ne abbiamo installato il mirror su github (situazione da tenere monitorata, ma almeno per le fasi di test sembra OK) 
 
+git clone git://rasdaman.org/rasdaman.git # this creates subdirectory rasdaman/
+
+
 git clone https://github.com/kalxas/rasdaman.git
 
 # aggiungo le seguenti righe al file .bashrc
@@ -128,19 +131,7 @@ export PATH=$PATH:$RMANHOME/bin:/usr/lib/postgresql/9.1/bin
 nano .bashrc e copio le righe seguenti
 
 
-quindi: 
-1) autoreconf -fi
 
-2) ./configure --prefix=$RMANHOME --with-wardir=$CATALINA_HOME/webapps/ --with-netcdf
-
-3) make
-
-possibile che ci sia qualcosa da risolvere, anche se molte dipendenze le ho già aggiunte
-
-
-4) mkdir $RMANHOME
-
-5) make install
 
 
 
@@ -148,9 +139,13 @@ MEGLIO l'installazione con cmake
 
 !! installato cmake3 
 
-ERRORE forse dovuto alla versione di boost? installato da sorgente boost-1.65
+yum install cmake3
 
-cmake3 /home/rasdaman/rasdaman/ -DPETASCOPEDB=postgresql -DUSE_NETCDF=ON -DDEFAULT_BASEDB=postgresql -DBoost_NO_BOOST_CMAKE=TRUE -DBOOST_ROOT:PATHNAME=/usr/local -DWAR_DIR=/var/lib/tomcat/webapps
+
+ERRORE su 10.10.99.136 forse dovuto alla versione di boost? installato da sorgente boost-1.65
+
+
+cmake3 /home/rasdaman/rasdaman/ -DPETASCOPEDB=postgresql -DDEFAULT_BASEDB=sqlite -DUSE_NETCDF=ON -DBoost_NO_BOOST_CMAKE=TRUE -DBOOST_ROOT:PATHNAME=/usr/local -DWAR_DIR=/var/lib/tomcat7/webapps  -DUSE_GRIB=ON -DUSE_HDF4=ON
 
 
 make
