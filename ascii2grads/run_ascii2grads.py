@@ -15,6 +15,15 @@ import subprocess
 path="/home/meteo/programmi/interpolazione_statistica/oi_ascii/archivio_ascii"
 path_d="{0}/ascii2grads".format(path)
 
+
+#rimozione vecchi file dat
+output_dir="{0}/grads_file".format(path)
+rm_old_files="rm {0}/*.dat".format(output_dir)
+p=subprocess.Popen(rm_old_files, stdout=subprocess.PIPE, shell=True)
+out, err = p.communicate() 
+result = out.split('\n')
+
+
 yesterday = datetime.date.today()-datetime.timedelta(hours=int(24))
 
 print yesterday
@@ -107,7 +116,7 @@ for lin in result:
 
 
 #rain
-rain="python {2}/ascii2grads.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -v {0}/precipitazione_IDI/PRIDIW,{0}/precipitazione_IDI/PRIDID -z xpa,xidiw,xidid -o raintana11_g -p {0}/grads_file".format(path,data_start,path_d)
+rain="python {2}/ascii2grads.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -v {0}/precipitazione_IDI/PRIDIW,{0}/precipitazione_IDI/PRIDID -z xpa,xidiw,xidid -o plzln_g -p {0}/grads_file".format(path,data_start,path_d)
 
 print rain
 
@@ -120,7 +129,7 @@ for lin in result:
 
 
 #rain_cumulata
-rain_cum="python {2}/ascii2grads_cumulata.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -z rain -o cumraintana11_g -p {0}/grads_file".format(path,data_start,path_d)
+rain_cum="python {2}/ascii2grads_cumulata.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -z rain -o CUMplzln_g -p {0}/grads_file".format(path,data_start,path_d)
 
 print rain_cum
 

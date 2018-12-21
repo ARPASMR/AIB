@@ -313,16 +313,19 @@ def main():
     print "Inizio a scrivere il file {0}".format(nomefile_ctl)
     data_file_output=data_read_z.strftime("%Y%m%d")
     nomefile_dat="{0}/{1}{2}.dat".format(output_path,data_file_output,title_output)
-    nomefile_dat_nopath="^{0}.dat".format(title_output)
+    #nome_path_milanone="/home/meteo/programmi/interpolazione_statistica/oi_fwi/temp" #marta- mhhh, non ha funzionato... 
+    #nomefile_dat="{0}/{1}{2}.dat".format(nome_path_milanone,data_file_output,title_output)   
+    nomefile_dat_nopath="^{1}{0}.dat".format(title_output,data_file_output)
     # se volessi creare un file grads effettivamente leggibile sarebbe da sostituire a nomefile_milanone
     ####################################################################################
     # PARTE CHE RENDE I FILE CONGRUENTI CON LA STRUTTURA DI MILANONE
     # (rende leggibile il file solo da MILANONE)
-    #nome_path_milanone="/home/meteo/programmi/interpolazione_statistica/oi_fwi/temp"
-    #nomefile_milanone="{0}/{1}{2}.dat".format(nome_path_milanone,data_file_output,title_output)
+    nome_path_milanone="/home/meteo/programmi/interpolazione_statistica/oi_fwi/temp"
+    nomefile_milanone="{0}/{1}{2}.dat".format(nome_path_milanone,data_file_output,title_output)
     ####################################################################################
     ctl = open(nomefile_ctl, 'w') # 'r' = read 
-    ctl.write("DSET {0}".format(nomefile_dat_nopath))
+    #ctl.write("DSET {0}".format(nomefile_dat_nopath))
+    ctl.write("DSET {0}".format(nomefile_milanone))
     ctl.write("\nTITLE {0}".format(title_output))
     ctl.write("\nUNDEF {0}".format(NODATA_value))
     ctl.write("\nXDEF {0} LINEAR {1} {2}".format(ncols,xllcorner,cellsize))
