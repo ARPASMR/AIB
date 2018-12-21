@@ -13,6 +13,8 @@ quindi l'aggregazione definitiva per aree di allerta (GRASS).
 ## Organizzazione dei file
 L'organizzazione degli script e dei programmi è la seguente (_nota: estratta solo la parte in milanone che corrisponde agli script; i programmi eseguibili e i relativi sorgenti non sono compresi in questo repository_)
 
+**./script** contiene gli script attualmente presenti su Mediano per convertire i dati da formato ascii a grads e usati per sostituire lo script oi_fwi.sh dalla procedura di calcolo degli indici (GTER srl - 2018)
+
 **./script** contiene gli script principali e quello lanciato da crontab
 
 **./script/interpolazione** contiene gli script e i programmi per l'interpolazione statistica
