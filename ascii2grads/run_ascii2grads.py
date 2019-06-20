@@ -102,7 +102,7 @@ for lin in result:
 #rh="python {0}/ascii2grads.py  -i {0}/dummy_{1} -t 24 -h 1 -v {0}/dummy,{0}/dummy,{2}/umiditarelativa/RH,{2}/umiditarelativa_IDI/RHIDI,{0}/dummy -z dummy,dummy,dummy,rha,xidi,dummy -o rhtd -p {2}/grads_file".format(path_d,data_start,path)
 
 #versione pulita 
-rh="python {0}/ascii2grads.py  -i {1}/umiditarelativa/RH_{2} -t 24 -h 1 -v {1}/umiditarelativa_IDI/RHIDI -z rha,xidi -o rhtd_g -p {1}/grads_file".format(path_d,path,data_start)
+rh="python {0}/ascii2grads.py  -i {1}/umiditarelativa/RH_{2} -t 24 -h 1 -v {1}/umiditarelativa_IDI/RHIDI -z rha,xidi -o tdrh_g -p {1}/grads_file".format(path_d,path,data_start)
 
 
 print rh
@@ -113,6 +113,17 @@ result = out.split('\n')
 for lin in result:
     if not lin.startswith('#'):
         print(lin)
+
+
+#rename file 
+#probabilmente dovuto ad un errore di battitura 
+#il dat e il ctl in questo caso hanno un nome diverso
+#quindi li creaiamo con il nome del dat giusto e poi rinominiamo il ctl che lo richiama
+
+old_file='{0}/tdrh_g.ctl'.format(output_dir)
+new_file='{0}/rhtd_g.ctl'.format(output_dir)
+
+os.rename(old_file,new_file)
 
 
 #rain
@@ -128,6 +139,19 @@ for lin in result:
         print(lin)
 
 
+
+#rename file
+#probabilmente dovuto ad un errore di battitura
+#il dat e il ctl in questo caso hanno un nome diverso
+#quindi li creaiamo con il nome del dat giusto e poi rinominiamo il ctl che lo richiama
+
+old_file='{0}/plzln_g.ctl'.format(output_dir)
+new_file='{0}/raintana11_g.ctl'.format(output_dir)
+
+os.rename(old_file,new_file)
+
+
+
 #rain_cumulata
 rain_cum="python {2}/ascii2grads_cumulata.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -z rain -o CUMplzln_g -p {0}/grads_file".format(path,data_start,path_d)
 
@@ -139,6 +163,23 @@ result = out.split('\n')
 for lin in result:
     if not lin.startswith('#'):
         print(lin)
+
+
+
+#rename file
+#probabilmente dovuto ad un errore di battitura
+#il dat e il ctl in questo caso hanno un nome diverso
+#quindi li creaiamo con il nome del dat giusto e poi rinominiamo il ctl che lo richiama
+
+old_file='{0}/CUMplzln_g.ctl'.format(output_dir)
+new_file='{0}/CUMraintana11_g.ctl'.format(output_dir)
+
+os.rename(old_file,new_file)
+
+
+
+
+
 
 
 print "\n\n################################"
