@@ -435,7 +435,7 @@ End-of-smbclient5
             WEBPREVDIR1=Incendi_boschivi/creaxvigaib/
 			WEBPREVDIR2="\Precompilazione\AIB_vig"
             WEBPREVUSR=ARPA/meteo
-            WEBPREVPWD="%meteo2010"
+            WEBPREVPWD="**********"
 # ...prima perÃ² li copio su meteo.arpalombardia.it/Precompilazione/AIB/bolvig
 scp $SPEDIZIONI/creaxvigaib* meteoweb@172.16.1.10:/var/www/meteo/Precompilazione/AIB/bolvig			
 
