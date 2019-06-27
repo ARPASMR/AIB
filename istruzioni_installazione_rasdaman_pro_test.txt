@@ -37,8 +37,8 @@ yum install cntlm libntlm-devel
                         <protocol>http</protocol>
                         <host>proxy2.arpa.local</host>
                         <port>8080</port>
-                        <username>meteo</username>
-                        <password>%meteo2010</password>
+                        <username>*****</username>
+                        <password>**********</password>
                         <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
                 </proxy>
                 <proxy>
@@ -47,8 +47,8 @@ yum install cntlm libntlm-devel
                         <protocol>https</protocol>
                         <host>proxy2.arpa.local</host>
                         <port>8080</port>
-                        <username>meteo</username>
-                        <password>%meteo2010</password>
+                        <username>*****</username>
+                        <password>**********</password>
                         <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
                 </proxy>
         </proxies>
@@ -111,7 +111,7 @@ su - rasdaman
 
 
 # imposto il proxy come per utente sudo (NON SERVE.. il proxy è in /etc/environment)
-# export http_proxy=meteo:%meteo2010@proxy2.arpa.local:8080
+# export http_proxy=<user>:<password>@proxy2.arpa.local:8080
 
 
 #siccome il repository ufficiale di rasdaman non è raggiungibile a causa del proxy ne abbiamo installato il mirror su github (situazione da tenere monitorata, ma almeno per le fasi di test sembra OK) 
