@@ -7,3 +7,8 @@ vengono utilizzati i seguenti file
 * plotta_t2m.gs, plotta_vento.gs, plotta_hourlyrain_tana11.gs, plotta_dailyrain_tana11.gs, plotta_rh2m.gs, dalla cartella ./programmi/interpolazione_statistica/oi_fwi/mappe/script _script GrADS_
 * fwigrid_ana_2.1, dalla cartella ./programmi/fwi_grid, _eseguibile FORTRAN (?)_
 * fwidbmgr, dalla cartella ./dev/redist/fwidbmgr _eseguibile C++, documentazione in AIB_
+
+
+
+UPDATE 2019
+Nell'ottica della semplificazione dell'intera procedura FWI, questo script **non è più utilizzato** grazie agli script ascii2grids realizzatida Gter che vengono eseguiti da mediano (in crontab) e producono i file necessaari al funzionamento di FWI.
