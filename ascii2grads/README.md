@@ -1,7 +1,9 @@
 # ascii2grads
 ## scopo
 Il codice viene eseguito da mediano (in crontab) e produce i file necessaari al funzionamento di FWI.
-Questa versione non era su git ed è stata portata su git il 17.10.2019
+
+Si tratta di una semplificazione della procedura AIB.
+
 
 ## uso
 ```
