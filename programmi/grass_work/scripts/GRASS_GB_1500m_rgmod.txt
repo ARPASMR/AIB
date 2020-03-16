@@ -15,6 +15,7 @@
 #                  vettoriale AO                                  #
 #  DAVIDE GALERI - MARZO 2013adattamento a Milanone Virtuale      #
 #                                                                 #
+#  GTER - MARZO 2020 quiet mode ai comandi GRASS                  #
 ###################################################################
 #
  echo "indice: $nomeindice"
@@ -69,66 +70,66 @@ colore6=139:35:35
 #
 #####################################################################
 echo "impostazione regione di calcolo"            
-g.region -d 
+g.region -d --q
 #
 echo $fileinput
 #INDICE
 echo "importazione raster dell'indice"
-g.remove rast=indici_tmp
-r.in.gdal -o  input=$fileinput output=indici_tmp
+g.remove rast=indici_tmp --q
+r.in.gdal -o  input=$fileinput output=indici_tmp --q
 #
 # calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557)
-r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
+r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o --q
 #
 #####################################################################
 # tolgo dall indice i punti con IDI basso
-g.remove rast=indici_bucato
-r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+g.remove rast=indici_bucato --q
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato --q 
 #  TAPPA BUCHI INDICE DOVE IDI =0 CON NEAREST NEIGHBOUR 
 # moltiplica * 1000 (perche' r.surf.idw approssima all'unita') 
-g.remove rast=indici_permille
-r.mapcalculator amap=indici_bucato formula="A*1000" outfile=indici_permille 
+g.remove rast=indici_permille --q
+r.mapcalculator amap=indici_bucato formula="A*1000" outfile=indici_permille --q 
 # ricalcola con nearest neighbour 
-g.remove rast=indici_calc_permille
-r.surf.idw input=indici_permille  output=indici_calc_permille npoints=1 
+g.remove rast=indici_calc_permille --q
+r.surf.idw input=indici_permille  output=indici_calc_permille npoints=1 --q 
 # divide * 1000 
-g.remove rast=indici_calc
-r.mapcalculator amap=indici_calc_permille formula="A/1000" outfile=indici_calc 
+g.remove rast=indici_calc --q
+r.mapcalculator amap=indici_calc_permille formula="A/1000" outfile=indici_calc --q 
 
 # maschera su regione 
-r.mask input=AO
-r.mapcalculator amap=indici_calc formula="A" outfile=indici_calc --o
-g.remove rast=MASK
+r.mask input=AO --q
+r.mapcalculator amap=indici_calc formula="A" outfile=indici_calc --o --q
+g.remove rast=MASK --q
 
 # creazione indici con valori -7557 nei punti di neve, per f90
-g.remove rast=indiciout
-r.mapcalculator amap=indici_calc bmap=indici_tmp formula="if(B<0,B,A)" outfile=indiciout
+g.remove rast=indiciout --q
+r.mapcalculator amap=indici_calc bmap=indici_tmp formula="if(B<0,B,A)" outfile=indiciout --q
 echo "Esportazione in file di testo"
-r.out.arc input=indiciout output=$fileouttxt
+r.out.arc input=indiciout output=$fileouttxt --q
 
 #
 #####################################################################
 # imposta la cop nevosa come maschera di lavoro dei raster
-r.mask input=neve maskcats=1
+r.mask input=neve maskcats=1 --q
 # calcola nuova mappa dell'indice (solo dove non c'e' neve)
-g.remove rast=indici_IDI_neve
-r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
-g.remove rast=MASK
+g.remove rast=indici_IDI_neve --q
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve --q
+g.remove rast=MASK --q
 #
 #####################################################################
 #
 echo "maschera con aree non bruciabili"
 #r.mask input=AB maskcats=1
 # calcola nuova mappa dell'indice mascherato
-g.remove rast=indici_IDI_neve_bruc
-r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+g.remove rast=indici_IDI_neve_bruc --q
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc --q
 #g.remove rast=MASK
 #
 #####################################################################
 #
-g.region -d 
+g.region -d --q
 echo "esportazione in file di testo"
-r.out.arc input=indici_IDI_neve_bruc output=$fileoutmasktxt
+r.out.arc input=indici_IDI_neve_bruc output=$fileoutmasktxt --q
 #####################################################################
 #
 echo "salvataggio immagini"
@@ -208,20 +209,20 @@ echo "L5="$L5" | "
 
 echo "Aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.db.dropcol map=AO layer=1 column=FI_n
-v.db.dropcol map=AO layer=1 column=FI_min
-v.db.dropcol map=AO layer=1 column=FI_max
-v.db.dropcol map=AO layer=1 column=FI_mean
-v.db.dropcol map=AO layer=1 column=FI_range
-v.db.dropcol map=AO layer=1 column=FI_stddev
-v.db.dropcol map=AO layer=1 column=FI_varianc
-v.db.dropcol map=AO layer=1 column=FI_cf_var
-v.db.dropcol map=AO layer=1 column=FI_sum
-v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
+v.db.dropcol map=AO layer=1 column=FI_n --q
+v.db.dropcol map=AO layer=1 column=FI_min --q
+v.db.dropcol map=AO layer=1 column=FI_max --q
+v.db.dropcol map=AO layer=1 column=FI_mean --q
+v.db.dropcol map=AO layer=1 column=FI_range --q
+v.db.dropcol map=AO layer=1 column=FI_stddev --q
+v.db.dropcol map=AO layer=1 column=FI_varianc --q
+v.db.dropcol map=AO layer=1 column=FI_cf_var --q
+v.db.dropcol map=AO layer=1 column=FI_sum --q
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI --q
 # Esporto Statistiche Univariate per area (tabelle CFS)
-v.db.select -c map=AO layer=1 column=NOME,FI_n,FI_min,FI_max,FI_mean,FI_range,FI_stddev,FI_varianc,FI_cf_var,FI_sum fs="|" file=$statitxt
+v.db.select -c map=AO layer=1 column=NOME,FI_n,FI_min,FI_max,FI_mean,FI_range,FI_stddev,FI_varianc,FI_cf_var,FI_sum fs="|" file=$statitxt --q
 # Esporto Media per arrotondamento
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt --q
 cp $DIR_GRASS/mean_fi.txt $dir_tabella/$nomeindice$underscore$dataieri.txt
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
