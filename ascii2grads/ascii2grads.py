@@ -281,7 +281,8 @@ def main():
     ########################################################
     # scrivere file .ctl
     ########################################################
-    print "Inizio a leggere il file {0} (solo intestazione) per scrivere file ctl".format(nomefile1)
+    if debug==1:
+        print("Inizio a leggere il file {0} (solo intestazione) per scrivere file ctl".format(nomefile1))
     f = open(nomefile1, 'r') # 'r' = read
     if debug==1:
         print(nomefile1)
