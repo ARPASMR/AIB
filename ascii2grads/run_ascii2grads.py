@@ -190,9 +190,9 @@ os.rename(old_file,new_file)
 
 
 
-
-print "\n\n################################"
-print "Remove dummy"
+if debug==0:
+    print ("\n\n################################")
+    print ("Remove dummy")
 # remove dummy
 rm_dummy="python {0}/rm_dummy.py".format(path_d)
 p=subprocess.Popen(rm_dummy, stdout=subprocess.PIPE, shell=True)
