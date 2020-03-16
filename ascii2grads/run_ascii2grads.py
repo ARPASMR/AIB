@@ -190,7 +190,7 @@ os.rename(old_file,new_file)
 
 
 
-if debug==0:
+if debug==1:
     print ("\n\n################################")
     print ("Remove dummy")
 # remove dummy
