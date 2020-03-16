@@ -32,7 +32,7 @@ result = out.split('\n')
 
 yesterday = datetime.date.today()-datetime.timedelta(hours=int(24))
 
-print("Inizio script run_ascii2grads per la data {}".format(yesterday))
+print("Inizio script run_ascii2grads per la data {0}".format(yesterday))
 
 
 yd=yesterday.strftime("%Y%m%d")
@@ -203,4 +203,4 @@ for lin in result:
         print(lin)
 
         
-print("Fine script run_ascii2grads per la data {}".format(yesterday))
+print("Fine script run_ascii2grads per la data {0}".format(yesterday))
