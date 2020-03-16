@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 #   Gter Copyleft 2018
 #   Roberto Marzocchi, Lorenzo Benvenuto
+#   Script for Python 2.7
 
 
 import os,sys,re #,shutil,glob
@@ -10,6 +11,11 @@ import os,sys,re #,shutil,glob
 import datetime
 import subprocess
 
+
+# debug
+# 0 = only short message (Quiet mode) 
+# 1 = a lot of print message (Verbose mode) 
+debug=0
 
 # absolute path mediano
 path="/home/meteo/programmi/interpolazione_statistica/oi_ascii/archivio_ascii"
@@ -26,7 +32,7 @@ result = out.split('\n')
 
 yesterday = datetime.date.today()-datetime.timedelta(hours=int(24))
 
-print yesterday
+print("Inizio script run_ascii2grads per la data {}".format(yesterday))
 
 
 yd=yesterday.strftime("%Y%m%d")
@@ -34,7 +40,7 @@ yd=yesterday.strftime("%Y%m%d")
 
 data_start="{0}12UTCplus1.txt".format(yd)
 
-print data_start
+#print data_start
 
 crea_dummy="python {1}/crea_dummy.py  -s {0} -t 24 -h 1 -p dummy".format(data_start,path_d)
 
@@ -62,9 +68,8 @@ for lin in result:
 #versione pulita
 temperatura="python {0}/ascii2grads.py  -i {1}/temperatura/TEMP2m_{2} -t 24 -h 1 -v {1}/temperatura_IDI/T2mIDI -z xa,xidi -o t2m_g -p {1}/grads_file".format(path_d,path,data_start)
 
-
-
-print temperatura
+if debug==1:
+    print temperatura
 
 p=subprocess.Popen(temperatura, stdout=subprocess.PIPE, shell=True)
 out, err = p.communicate() 
@@ -86,7 +91,8 @@ for lin in result:
 wind="python {0}/ascii2grads.py  -i {1}/vento/VU_{2} -t 24 -h 1 -v {1}/vento/VV,{1}/vento_IDI/VVIDI -z ahu,ahv,xidi -o wind_g -p {1}/grads_file".format(path_d,path,data_start)
 
 
-print wind
+if debug==1:
+    print wind
 
 p=subprocess.Popen(wind, stdout=subprocess.PIPE, shell=True)
 out, err = p.communicate() 
@@ -105,7 +111,8 @@ for lin in result:
 rh="python {0}/ascii2grads.py  -i {1}/umiditarelativa/RH_{2} -t 24 -h 1 -v {1}/umiditarelativa_IDI/RHIDI -z rha,xidi -o tdrh_g -p {1}/grads_file".format(path_d,path,data_start)
 
 
-print rh
+if debug==1:
+    print rh
 
 p=subprocess.Popen(rh, stdout=subprocess.PIPE, shell=True)
 out, err = p.communicate() 
@@ -129,7 +136,8 @@ os.rename(old_file,new_file)
 #rain
 rain="python {2}/ascii2grads.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -v {0}/precipitazione_IDI/PRIDIW,{0}/precipitazione_IDI/PRIDID -z xpa,xidiw,xidid -o plzln_g -p {0}/grads_file".format(path,data_start,path_d)
 
-print rain
+if debug==1:
+    print rain
 
 p=subprocess.Popen(rain, stdout=subprocess.PIPE, shell=True)
 out, err = p.communicate() 
@@ -155,7 +163,8 @@ os.rename(old_file,new_file)
 #rain_cumulata
 rain_cum="python {2}/ascii2grads_cumulata.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -z rain -o CUMplzln_g -p {0}/grads_file".format(path,data_start,path_d)
 
-print rain_cum
+if debug==1:
+    print rain_cum
 
 p=subprocess.Popen(rain_cum, stdout=subprocess.PIPE, shell=True)
 out, err = p.communicate() 
@@ -192,3 +201,6 @@ result = out.split('\n')
 for lin in result:
     if not lin.startswith('#'):
         print(lin)
+
+        
+print("Fine script run_ascii2grads per la data {}".format(yesterday))
