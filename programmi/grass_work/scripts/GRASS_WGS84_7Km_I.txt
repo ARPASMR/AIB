@@ -7,6 +7,8 @@
 #############################################################
 #
 ####  da input:
+echo "####################################"
+echo "START GRASS_WGS84_7Km_I.txt"
  echo "indice: $nomeindice"
  echo "IERI: $dataieri"
 
@@ -19,28 +21,28 @@ temporaneo=/home/meteo/programmi/fwi_grid/indici/ana/temp
 #                              1                                    #
 #####################################################################
 echo "impostazione regione di calcolo"            
-g.region vect=LAMI@PERMANENT res=0.063 
+g.region vect=LAMI@PERMANENT res=0.063 --quiet 
 #
 echo "rimozione indici e IDI in memoria"
-g.remove rast=indici,neve  
+g.remove rast=indici,neve --quiet 
 
 #  1 ######### CONVERSIONE IN LAT LON 
 echo "conversione in LAT LON "            
-  r.proj input=indici_IDI_neve_bruc location=GB output=indici method=nearest 
+  r.proj input=indici_IDI_neve_bruc location=GB output=indici method=nearest --quiet
 echo "conversione in LAT LON della neve"            
-  r.proj input=neve location=GB output=neve method=nearest
+  r.proj input=neve location=GB output=neve method=nearest --quiet
 #
 #  2 ######### ESPORTAZIONE COME FILE DI TESTO SUI PUNTI DEL LAMI
 
 echo "estraggo l'indice sui punti del lami e lo memorizzo nella colonna VAL"
-r.null map=indici null=0            
-v.what.rast vector=LAMI raster=indici column=VAL 
+r.null map=indici null=0  --quiet           
+v.what.rast --quiet vector=LAMI raster=indici column=VAL 
 #d.what.vect LAMI
 
 echo "esportazione in file di testo"            
 
-g.region vect=LAMI@PERMANENT 
-v.out.ascii input=LAMI output=$fileoutLAMItxt fs=, columns=VAL
+g.region vect=LAMI@PERMANENT  --quiet
+v.out.ascii input=LAMI output=$fileoutLAMItxt fs=, columns=VAL --quiet
 
 #mkdir $temporaneo
 #v.out.ogr -c input=LAMI type=point dsn=$temporaneo olayer=temporaneo layer=1 format=CSV 
@@ -49,4 +51,5 @@ v.out.ascii input=LAMI output=$fileoutLAMItxt fs=, columns=VAL
 #rmdir  $temporaneo
 
 
-
+echo "END GRASS_WGS84_7Km_I.txt"
+echo "####################################"
