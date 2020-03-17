@@ -4,11 +4,14 @@
 #  DAVIDE GALERI - GIUGNO 2012 adattamento a Eccellente e         #
 #                  aggiunta calcolo angstrom fmi sharples         #
 #  DAVIDE GALERI - AGOSTO 2014 adattamento a Milanone Virtuale    #
-#                  aggiunta legende per messa in operativo	  #
+#                  aggiunta legende per messa in operativo	       #
 #                                                                 #
+# GTER - MARZO 2020 GRASS quiet mode for log                      #
 ###################################################################
 #
 #dataieri=20140817
+echo "####################################"
+echo "START GRASS_GB_FMI.txt"
 echo "IERI: $dataieri"
 #
 ### definizione di giorno, mese e anno per scrivere date nei titoli:
@@ -54,49 +57,49 @@ L5=4
 #
 ######################################################################
 echo "impostazione regione di calcolo"            
-g.region -d 
+g.region -d --quiet
 #
 echo $fileinput
 #INDICE
 echo "importazione raster dell'indice"
-g.remove rast=indici
-r.in.gdal -o  input=$fileinput output=indici --o
+g.remove rast=indici --quiet
+r.in.gdal -o  input=$fileinput output=indici --o --quiet
 #
 # calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557) <-- implementare in un secondo momento + verificare se serve (indice cumulativo)
 #r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
 #
 #####################################################################
 # tolgo dall indice i punti con IDI basso
-g.remove rast=indici_bucato
-r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+g.remove rast=indici_bucato --quiet
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato --quiet 
 #
 #####################################################################
 # imposta la cop nevosa come maschera di lavoro dei raster
-r.mask input=neve maskcats=1
+r.mask input=neve maskcats=1 --quiet
 # calcola nuova mappa dell'indice (solo dove non c'e' neve)
-g.remove rast=indici_IDI_neve
-r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
-g.remove rast=MASK
+g.remove rast=indici_IDI_neve --quiet
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve --quiet
+g.remove rast=MASK --quiet
 #
 #####################################################################
 #
 echo "maschera con aree non bruciabili"
 # calcola nuova mappa dell'indice mascherato
-g.remove rast=indici_IDI_neve_bruc
-r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+g.remove rast=indici_IDI_neve_bruc --quiet
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc  --quiet
 #
 #####################################################################
 #
 echo "salvataggio immagini"
  export GRASS_PNGFILE=$fileoutmaskpng
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=indici_IDI_neve_bruc color=angstrom
- d.rast map=indici_IDI_neve_bruc
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=indici_IDI_neve_bruc color=angstrom --quiet
+ d.rast map=indici_IDI_neve_bruc --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
 #
 # aggiunta del titolo
@@ -109,17 +112,17 @@ convert -size 700x500 xc:white \
 #
 echo "Aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.db.dropcol map=AO layer=1 column=FI_n
-v.db.dropcol map=AO layer=1 column=FI_min
-v.db.dropcol map=AO layer=1 column=FI_max
-v.db.dropcol map=AO layer=1 column=FI_mean
-v.db.dropcol map=AO layer=1 column=FI_range
-v.db.dropcol map=AO layer=1 column=FI_stddev
-v.db.dropcol map=AO layer=1 column=FI_varianc
-v.db.dropcol map=AO layer=1 column=FI_cf_var
-v.db.dropcol map=AO layer=1 column=FI_sum
-v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+v.db.dropcol map=AO layer=1 column=FI_n --quiet
+v.db.dropcol map=AO layer=1 column=FI_min --quiet
+v.db.dropcol map=AO layer=1 column=FI_max --quiet
+v.db.dropcol map=AO layer=1 column=FI_mean --quiet
+v.db.dropcol map=AO layer=1 column=FI_range --quiet
+v.db.dropcol map=AO layer=1 column=FI_stddev --quiet
+v.db.dropcol map=AO layer=1 column=FI_varianc --quiet
+v.db.dropcol map=AO layer=1 column=FI_cf_var --quiet
+v.db.dropcol map=AO layer=1 column=FI_sum --quiet
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI --quiet
+v.db.select --quiet -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
 do
@@ -131,32 +134,32 @@ do
 done
 
 export GRASS_PNGFILE=$fileoutAOpng
-d.mon start=PNG
-d.mon select=PNG
+d.mon start=PNG --quiet
+d.mon select=PNG --quiet
 
 ############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
 
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
               color=black fcolor=$colore6
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
               color=black fcolor=$colore5
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
               color=black fcolor=$colore4
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
               color=black fcolor=$colore3
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
               color=black fcolor=$colore2
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
               color=black fcolor=$colore1
-d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
-v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
                color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
 #############################################################################################################
 #
-d.labels   label=ao_mean
-d.mon stop=PNG
+d.labels   label=ao_mean --quiet
+d.mon stop=PNG --quiet
 #
 echo "aggiunta trasparenza per la pubblicazione su WEB"
 convert  $fileoutAOpng -transparent white $fileoutAOpng 
@@ -188,49 +191,49 @@ L5=25
 #
 ######################################################################
 echo "impostazione regione di calcolo"            
-g.region -d 
+g.region -d --quiet 
 #
 echo $fileinput
 #INDICE
 echo "importazione raster dell'indice"
-g.remove rast=indici
-r.in.gdal -o  input=$fileinput output=indici --o
+g.remove rast=indici --quiet
+r.in.gdal -o  input=$fileinput output=indici --o --quiet
 #
 # calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557) <-- implementare in un secondo momento
 #r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
 #
 #####################################################################
 # tolgo dall indice i punti con IDI basso
-g.remove rast=indici_bucato
-r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+g.remove rast=indici_bucato --quiet
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato  --quiet
 
 #####################################################################
 # imposta la cop nevosa come maschera di lavoro dei raster
-r.mask input=neve maskcats=1
+r.mask input=neve maskcats=1 --quiet
 # calcola nuova mappa dell'indice (solo dove non c'e' neve)
-g.remove rast=indici_IDI_neve
-r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
-g.remove rast=MASK
+g.remove rast=indici_IDI_neve --quiet
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve --quiet
+g.remove rast=MASK --quiet
 #
 #####################################################################
 #
 echo "maschera con aree non bruciabili"
 # calcola nuova mappa dell'indice mascherato
-g.remove rast=indici_IDI_neve_bruc
-r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+g.remove rast=indici_IDI_neve_bruc --quiet
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc --quiet 
 #
 #####################################################################
 #
 echo "salvataggio immagini"
  export GRASS_PNGFILE=$fileoutmaskpng
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=indici_IDI_neve_bruc color=fmi
- d.rast map=indici_IDI_neve_bruc
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=indici_IDI_neve_bruc color=fmi --quiet
+ d.rast map=indici_IDI_neve_bruc --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
 #
 # aggiunta del titolo
@@ -243,17 +246,17 @@ convert -size 700x500 xc:white \
 #
 echo "Aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.db.dropcol map=AO layer=1 column=FI_n
-v.db.dropcol map=AO layer=1 column=FI_min
-v.db.dropcol map=AO layer=1 column=FI_max
-v.db.dropcol map=AO layer=1 column=FI_mean
-v.db.dropcol map=AO layer=1 column=FI_range
-v.db.dropcol map=AO layer=1 column=FI_stddev
-v.db.dropcol map=AO layer=1 column=FI_varianc
-v.db.dropcol map=AO layer=1 column=FI_cf_var
-v.db.dropcol map=AO layer=1 column=FI_sum
-v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+v.db.dropcol map=AO layer=1 column=FI_n --quiet
+v.db.dropcol map=AO layer=1 column=FI_min --quiet
+v.db.dropcol map=AO layer=1 column=FI_max --quiet
+v.db.dropcol map=AO layer=1 column=FI_mean --quiet
+v.db.dropcol map=AO layer=1 column=FI_range --quiet
+v.db.dropcol map=AO layer=1 column=FI_stddev --quiet
+v.db.dropcol map=AO layer=1 column=FI_varianc --quiet
+v.db.dropcol map=AO layer=1 column=FI_cf_var --quiet
+v.db.dropcol map=AO layer=1 column=FI_sum --quiet
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI --quiet
+v.db.select --quiet -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
 do
@@ -265,32 +268,32 @@ do
 done
 
 export GRASS_PNGFILE=$fileoutAOpng
-d.mon start=PNG
-d.mon select=PNG
+d.mon start=PNG --quiet
+d.mon select=PNG --quiet
 
 ############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
 
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
               color=black fcolor=$colore6
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
               color=black fcolor=$colore5
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
               color=black fcolor=$colore4
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
               color=black fcolor=$colore3
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
               color=black fcolor=$colore2
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
               color=black fcolor=$colore1
-d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
-v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
                color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
 #############################################################################################################
 #
-d.labels   label=ao_mean
-d.mon stop=PNG
+d.labels   label=ao_mean --quiet
+d.mon stop=PNG --quiet
 #
 echo "aggiunta trasparenza per la pubblicazione su WEB"
 convert  $fileoutAOpng -transparent white $fileoutAOpng 
@@ -322,49 +325,49 @@ L5=6.1
 #
 ######################################################################
 echo "impostazione regione di calcolo"            
-g.region -d 
+g.region -d  --quiet
 #
 echo $fileinput
 #INDICE
 echo "importazione raster dell'indice"
-g.remove rast=indici
-r.in.gdal -o  input=$fileinput output=indici --o
+g.remove rast=indici --quiet
+r.in.gdal -o  input=$fileinput output=indici --o --quiet
 #
 # calcola una nuova mappa dell'indice (solo dove non c'è neve per rimuovere i -7557) <-- implementare in un secondo momento
 #r.mapcalculator amap=indici_tmp formula="if(A>-800,A,null())" outfile=indici --o
 #
 #####################################################################
 # tolgo dall indice i punti con IDI basso
-g.remove rast=indici_bucato
-r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato 
+g.remove rast=indici_bucato --quiet
+r.mapcalculator amap=indici bmap=IDI formula="if(B>0,A,null())" outfile=indici_bucato  --quiet
 
 #####################################################################
 # imposta la cop nevosa come maschera di lavoro dei raster
-r.mask input=neve maskcats=1
+r.mask input=neve maskcats=1 --quiet
 # calcola nuova mappa dell'indice (solo dove non c'e' neve)
-g.remove rast=indici_IDI_neve
-r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve
-g.remove rast=MASK
+g.remove rast=indici_IDI_neve --quiet
+r.mapcalculator amap=indici_bucato formula="A" outfile=indici_IDI_neve --quiet
+g.remove rast=MASK --quiet
 #
 #####################################################################
 #
 echo "maschera con aree non bruciabili"
 # calcola nuova mappa dell'indice mascherato
-g.remove rast=indici_IDI_neve_bruc
-r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc 
+g.remove rast=indici_IDI_neve_bruc --quiet
+r.mapcalculator amap=indici_IDI_neve bmap=AB formula="if(B>0,A,null())" outfile=indici_IDI_neve_bruc --quiet
 #
 #####################################################################
 #
 echo "salvataggio immagini"
  export GRASS_PNGFILE=$fileoutmaskpng
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=indici_IDI_neve_bruc color=sharples
- d.rast map=indici_IDI_neve_bruc
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=indici_IDI_neve_bruc color=sharples --quiet
+ d.rast map=indici_IDI_neve_bruc --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
 #
 # aggiunta del titolo
@@ -377,17 +380,17 @@ convert -size 700x500 xc:white \
 #
 echo "Aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.db.dropcol map=AO layer=1 column=FI_n
-v.db.dropcol map=AO layer=1 column=FI_min
-v.db.dropcol map=AO layer=1 column=FI_max
-v.db.dropcol map=AO layer=1 column=FI_mean
-v.db.dropcol map=AO layer=1 column=FI_range
-v.db.dropcol map=AO layer=1 column=FI_stddev
-v.db.dropcol map=AO layer=1 column=FI_varianc
-v.db.dropcol map=AO layer=1 column=FI_cf_var
-v.db.dropcol map=AO layer=1 column=FI_sum
-v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+v.db.dropcol map=AO layer=1 column=FI_n --quiet
+v.db.dropcol map=AO layer=1 column=FI_min --quiet
+v.db.dropcol map=AO layer=1 column=FI_max --quiet
+v.db.dropcol map=AO layer=1 column=FI_mean --quiet
+v.db.dropcol map=AO layer=1 column=FI_range --quiet
+v.db.dropcol map=AO layer=1 column=FI_stddev --quiet
+v.db.dropcol map=AO layer=1 column=FI_varianc --quiet
+v.db.dropcol map=AO layer=1 column=FI_cf_var --quiet
+v.db.dropcol map=AO layer=1 column=FI_sum --quiet
+v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI --quiet
+v.db.select --quiet -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
 do
@@ -399,32 +402,32 @@ do
 done
 
 export GRASS_PNGFILE=$fileoutAOpng
-d.mon start=PNG
-d.mon select=PNG
+d.mon start=PNG --quiet
+d.mon select=PNG --quiet
 
 ############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
 
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
               color=black fcolor=$colore1
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
               color=black fcolor=$colore2
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
               color=black fcolor=$colore3
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
               color=black fcolor=$colore4
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
               color=black fcolor=$colore5
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
               color=black fcolor=$colore6
-d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
-v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
                color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
 ###############################################################################################################
 #
-d.labels   label=ao_mean
-d.mon stop=PNG
+d.labels   label=ao_mean --quiet
+d.mon stop=PNG --quiet
 #
 echo "aggiunta trasparenza per la pubblicazione su WEB"
 convert  $fileoutAOpng -transparent white $fileoutAOpng 
@@ -436,3 +439,5 @@ convert -size 700x500 xc:white \
         -draw "image over  20,150 100,0 '$DIR_GRASS/sharples.gif'"       \
         -draw "image over 100,0   0,0 '$DIR_GRASS/titolo.gif'      " $fileoutAOlegendagif
 #
+echo "END GRASS_GB_FMI.txt"
+echo "####################################"
