@@ -52,14 +52,16 @@ rainlegend=$DIR_GRASS/prec24legend.gif
 #                 Oggi                 #
 ########################################
 #
+echo "####################################################"
+echo "START GRASS_WGS84_METEO_II_dmod.txt"
 echo "Imposto regione do calcolo"
 g.region -d
 #
 echo "Riproietto mappe meteo di oggi in GB"
-r.proj input=temp location=WGS84 output=temp method=nearest --o
-r.proj input=humi location=WGS84 output=humi method=nearest --o
-r.proj input=wind location=WGS84 output=wind method=nearest --o
-r.proj input=rain location=WGS84 output=rain method=nearest --o
+r.proj input=temp location=WGS84 output=temp method=nearest --o --quiet
+r.proj input=humi location=WGS84 output=humi method=nearest --o --quiet
+r.proj input=wind location=WGS84 output=wind method=nearest --o --quiet
+r.proj input=rain location=WGS84 output=rain method=nearest --o --quiet
 #
 ########### Temperatura ###########
 echo "Plotto Temperatura $dataoggi"
@@ -67,15 +69,15 @@ echo "Plotto Temperatura $dataoggi"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=temp color=scala_colori_temp
- d.rast map=temp
- d.legend map=temp labelnum=10 at=10,65,0,5
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=temp color=scala_colori_temp --quiet
+ d.rast map=temp --quiet
+ d.legend --quiet map=temp labelnum=10 at=10,65,0,5
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOoggi/$MESEoggi/$ANNOoggi - Previsione" $DIR_GRASS/titolometeo.gif
@@ -92,14 +94,14 @@ echo "Plotto Umidità Relativa $dataoggi"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=humi color=scala_colori_ur
- d.rast map=humi
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=humi color=scala_colori_ur --quiet
+ d.rast map=humi --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOoggi/$MESEoggi/$ANNOoggi - Previsione" $DIR_GRASS/titolometeo.gif
@@ -116,14 +118,14 @@ echo "Plotto Velocità Vento $dataoggi"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=wind color=scala_colori_ws
- d.rast map=wind
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=wind color=scala_colori_ws --quiet
+ d.rast map=wind --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOoggi/$MESEoggi/$ANNOoggi - Previsione" $DIR_GRASS/titolometeo.gif
@@ -140,14 +142,14 @@ echo "Plotto Precipitazione Totale $dataoggi"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=rain color=scala_colori_prec24
- d.rast map=rain
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon --quiet start=PNG
+ d.mon --quiet select=PNG
+ r.colors --quiet map=rain color=scala_colori_prec24
+ d.rast map=rain --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOoggi/$MESEoggi/$ANNOoggi 12:00 - Previsione" $DIR_GRASS/titolometeo.gif
@@ -163,10 +165,10 @@ convert -size 800x600 xc:white \
 ########################################
 #
 echo "Riproietto mappe meteo di domani in GB"
-r.proj input=temp2 location=WGS84 output=temp2 method=nearest --o
-r.proj input=humi2 location=WGS84 output=humi2 method=nearest --o
-r.proj input=wind2 location=WGS84 output=wind2 method=nearest --o
-r.proj input=rain2 location=WGS84 output=rain2 method=nearest --o
+r.proj input=temp2 location=WGS84 output=temp2 method=nearest --o --quiet
+r.proj input=humi2 location=WGS84 output=humi2 method=nearest --o --quiet
+r.proj input=wind2 location=WGS84 output=wind2 method=nearest --o --quiet
+r.proj input=rain2 location=WGS84 output=rain2 method=nearest --o --quiet
 #
 ########### Temperatura ###########
 echo "Plotto Temperatura $datadomani"
@@ -174,15 +176,15 @@ echo "Plotto Temperatura $datadomani"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=temp2 color=scala_colori_temp
- d.rast map=temp2
- d.legend map=temp labelnum=10 at=10,65,0,5
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=temp2 color=scala_colori_temp --quiet
+ d.rast map=temp2 --quiet
+ d.legend --quiet map=temp labelnum=10 at=10,65,0,5
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOdomani/$MESEdomani/$ANNOdomani - Previsione" $DIR_GRASS/titolometeo.gif
@@ -199,14 +201,14 @@ echo "Plotto Umidità Relativa $datadomani"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=humi2 color=scala_colori_ur
- d.rast map=humi2
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=humi2 color=scala_colori_ur --quiet
+ d.rast map=humi2 --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOdomani/$MESEdomani/$ANNOdomani - Previsione" $DIR_GRASS/titolometeo.gif
@@ -223,14 +225,14 @@ echo "Plotto Velocità Vento $datadomani"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=wind2 color=scala_colori_ws
- d.rast map=wind2
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=wind2 color=scala_colori_ws --quiet
+ d.rast map=wind2 --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOdomani/$MESEdomani/$ANNOdomani - Previsione" $DIR_GRASS/titolometeo.gif
@@ -247,14 +249,14 @@ echo "Plotto Precipitazione Totale $datadomani"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=rain2 color=scala_colori_prec24
- d.rast map=rain2
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=rain2 color=scala_colori_prec24 --quiet
+ d.rast map=rain2 --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOdomani/$MESEdomani/$ANNOdomani 12:00 - Previsione" $DIR_GRASS/titolometeo.gif
@@ -265,3 +267,6 @@ convert -size 800x600 xc:white \
 	-draw "image over 30,150 0,0 '$rainlegend'" \
         -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $raingif2
 #
+
+echo "END GRASS_WGS84_METEO_II_dmod.txt"
+echo "####################################################"
