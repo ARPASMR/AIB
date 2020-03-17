@@ -4,8 +4,10 @@
 #dataoggi="20080302"
 #datadomani="20080302"
 
- echo "indice: $nomeindice"
- echo "IERI: $dataieri"
+
+echo "START ConversionePrevisioneInGB_dmod.txt"
+echo "indice: $nomeindice"
+echo "IERI: $dataieri"
 # echo "OGGI: $dataoggi"
 # echo "DOMANI: $datadomani"
 MESE=${dataoggi:4:2}
@@ -54,27 +56,27 @@ colore6=139:35:35
 #
 #####################################################################
 echo "impostazione regione di calcolo"            
-g.region -d 
+g.region -d --quiet
 #
 echo "conversione in GB dell'indice previsto"            
-g.remove rast=indici_prev1,indici_prev2
+g.remove rast=indici_prev1,indici_prev2 --quiet
 
 echo "conversione in GB dell'indice previsto"            
-r.proj input=indici_prev1 location=WGS84 output=indici_prev1 
-r.proj input=indici_prev2 location=WGS84 output=indici_prev2 
+r.proj input=indici_prev1 location=WGS84 output=indici_prev1 --quiet
+r.proj input=indici_prev2 location=WGS84 output=indici_prev2 --quiet
 #
 #########################à###   indice oggi ########################
 echo "salvataggio immagini oggi"
  export GRASS_PNGFILE=$fileout1
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=indici_prev1 color=fwi$underscore$nomeindice$underscore$MESE 
- d.rast map=indici_prev1
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=indici_prev1 color=fwi$underscore$nomeindice$underscore$MESE --quiet
+ d.rast map=indici_prev1 --quiet
  d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
-               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center --quiet
 # d.out.file output=$fileoutputpng res=2 format=png compression=0
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 convert  $fileout1 -transparent white $fileout1
 #
 # aggiunta del titolo
@@ -137,8 +139,8 @@ echo "L5="$L5" | "
 
 echo "aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.rast.stats -c vector=AO raster=indici_prev1 colprefix=FI
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+v.rast.stats -c vector=AO raster=indici_prev1 colprefix=FI --quiet
+v.db.select --quiet -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
 
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
@@ -151,29 +153,29 @@ do
 done
 
 export GRASS_PNGFILE=$fileoutAO1
-d.mon start=PNG
-d.mon select=PNG
+d.mon start=PNG --quiet
+d.mon select=PNG --quiet
 
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
-              color=black fcolor=$colore1
+              color=black fcolor=$colore1 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
-              color=black fcolor=$colore2
+              color=black fcolor=$colore2 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
-              color=black fcolor=$colore3
+              color=black fcolor=$colore3 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
-              color=black fcolor=$colore4
+              color=black fcolor=$colore4 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
-              color=black fcolor=$colore5
+              color=black fcolor=$colore5 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
-              color=black fcolor=$colore6
-d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+              color=black fcolor=$colore6 --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
-#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center --quiet
 v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
-               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes --quiet
 ##############
-d.labels   label=ao_mean
-d.mon stop=PNG
+d.labels   label=ao_mean --quiet
+d.mon stop=PNG --quiet
 #
 echo "aggiunta trasparenza per la pubblicazione su WEB"
 convert  $fileoutAO1 -transparent white $fileoutAO1 
@@ -194,15 +196,16 @@ convert -size 700x500 xc:white \
 #########################à###   indice domani ########################
 echo "salvataggio immagini domani "
  export GRASS_PNGFILE=$fileout2
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=indici_prev2 color=fwi$underscore$nomeindice$underscore$MESE 
- d.rast map=indici_prev2
+ d.mon start=PNG --quiet
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=indici_prev2 color=fwi$underscore$nomeindice$underscore$MESE  --quiet
+ d.rast map=indici_prev2 --quiet
  d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
-               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center --quiet
 # d.out.file output=$fileoutputpng res=2 format=png compression=0
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 convert  $fileout2 -transparent white $fileout2
 #
 # aggiunta del titolo
@@ -265,8 +268,8 @@ echo "L5="$L5" | "
 
 echo "aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.rast.stats -c vector=AO raster=indici_prev2 colprefix=FI
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
+v.rast.stats -c vector=AO raster=indici_prev2 colprefix=FI --quiet
+v.db.select --quiet -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
 
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
@@ -279,29 +282,29 @@ do
 done
 
 export GRASS_PNGFILE=$fileoutAO2
-d.mon start=PNG
-d.mon select=PNG
+d.mon start=PNG --quiet
+d.mon select=PNG --quiet
 
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
-              color=black fcolor=$colore1
+              color=black fcolor=$colore1 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
-              color=black fcolor=$colore2
+              color=black fcolor=$colore2 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
-              color=black fcolor=$colore3
+              color=black fcolor=$colore3 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
-              color=black fcolor=$colore4
+              color=black fcolor=$colore4 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
-              color=black fcolor=$colore5
+              color=black fcolor=$colore5 --quiet
 d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
-              color=black fcolor=$colore6
-d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+              color=black fcolor=$colore6 --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
-               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes --quiet
 ##############
-d.labels   label=ao_mean
-d.mon stop=PNG
+d.labels   label=ao_mean --quiet
+d.mon stop=PNG --quiet
 #
 echo "aggiunta trasparenza per la pubblicazione su WEB"
 convert  $fileoutAO2 -transparent white $fileoutAO2 
@@ -316,3 +319,4 @@ convert -size 700x500 xc:white \
         -draw "image over  20,200 100,  0 '$DIR_GRASS/legenda.png'"       \
         -draw "image over 100,  0   0,  0 '$DIR_GRASS/titolo.gif'      " $fileoutAO2gif
 #convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
+echo "END ConversionePrevisioneInGB_dmod.txt"
