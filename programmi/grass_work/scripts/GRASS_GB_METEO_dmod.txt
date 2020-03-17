@@ -46,6 +46,8 @@ humilegend=$DIR_GRASS/urlegend.gif
 windlegend=$DIR_GRASS/wslegend.gif
 rainlegend=$DIR_GRASS/prec24legend.gif
 #
+echo "###########################################"
+echo "START GRASS_GB_METEO_dmod.txt"
 echo "Plot mappe meteo in analisi di Temperatura, Umidità Relativa, Velocità del Vento e Precipitazione Totale"
 echo "IERI: $dataieri"
 #
@@ -53,16 +55,16 @@ echo "Imposto regione di calcolo"
 g.region -d
 #
 echo "Rimuovo raster in memoria"
-g.remove rast=temp,humi,wind,rain
+g.remove rast=temp,humi,wind,rain --quiet
 #
 echo "Importo raster meteo"
-r.in.gdal -o input=$tempin output=temp
-r.in.gdal -o input=$humiin output=humi
-r.in.gdal -o input=$windin output=wind
-r.in.gdal -o input=$rainin output=rain
+r.in.gdal -o input=$tempin output=temp --quiet
+r.in.gdal -o input=$humiin output=humi --quiet
+r.in.gdal -o input=$windin output=wind --quiet
+r.in.gdal -o input=$rainin output=rain --quiet
 #
 echo "Converto velocità del vento in m/s"
-r.mapcalculator amap=wind formula="A/3.6" outfile=wind --o
+r.mapcalculator amap=wind formula="A/3.6" outfile=wind --o --quiet
 #
 ############# Temperatura ###############
 #
@@ -71,15 +73,15 @@ echo "Plotto tempertura $dataieri"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=temp color=scala_colori_temp
- d.rast map=temp
- d.legend map=temp labelnum=10 at=10,65,0,5
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=temp color=scala_colori_temp --quiet
+ d.rast map=temp --quiet
+ d.legend map=temp labelnum=10 at=10,65,0,5 --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
-d.mon stop=PNG
+d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_GRASS/titolometeo.gif
@@ -97,14 +99,14 @@ echo "Plotto umidtà relativa $dataieri"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=humi color=scala_colori_ur
- d.rast map=humi 
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=humi color=scala_colori_ur --quiet
+ d.rast map=humi --quiet 
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_GRASS/titolometeo.gif
@@ -122,14 +124,14 @@ echo "Plotto velocità vento $dataieri"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=wind color=scala_colori_ws
- d.rast map=wind
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=wind color=scala_colori_ws --quiet
+ d.rast map=wind --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_GRASS/titolometeo.gif
@@ -147,14 +149,14 @@ echo "Plotto precipitazione totale $dataieri"
  export GRASS_WIDTH=800
  export GRASS_HEIGHT=600
  export GRASS_TRUECOLOR=TRUE
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=rain color=scala_colori_prec24
- d.rast map=rain
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ r.colors map=rain color=scala_colori_prec24 --quiet
+ d.rast map=rain --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 #
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOieri/$MESEieri/$ANNOieri 12:00 - Analisi" $DIR_GRASS/titolometeo.gif
@@ -168,21 +170,21 @@ convert -size 800x600 xc:white \
 ################### IDI ######################
 #
 echo "Importo raster dell'IDI"
-g.remove rast=IDI
-r.in.gdal -o  input=$IDIin output=IDI 
+g.remove rast=IDI --quiet
+r.in.gdal -o  input=$IDIin output=IDI --quiet 
 #
 echo "Plotto IDI"
  export GRASS_PNGFILE=$IDIout
  export GRASS_WIDTH=640
  export GRASS_HEIGHT=480
  export GRASS_TRUECOLOR=TRUE 
- d.mon start=PNG
- d.mon select=PNG
- d.rast map=IDI
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ d.rast map=IDI --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
+ d.mon stop=PNG --quiet
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"IDI - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_GRASS/titoloIDI.gif
 #
@@ -194,22 +196,22 @@ convert -size 700x500 xc:white \
 ##################### Neve #######################
 #
 echo "Importo neve"
-g.remove rast=neve
-r.in.gdal -o input=$snowin output=neve
+g.remove rast=neve --quiet
+r.in.gdal -o input=$snowin output=neve --quiet
 echo "Plotto mappa neve mascherata su AO"
-r.mask input=AO 
+r.mask input=AO  --quiet
  export GRASS_PNGFILE=$snowout
  export GRASS_WIDTH=640
  export GRASS_HEIGHT=480
  export GRASS_TRUECOLOR=TRUE  
- d.mon start=PNG
- d.mon select=PNG
- d.rast map=neve
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon start=PNG --quiet
+ d.mon select=PNG --quiet
+ d.rast map=neve --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
- d.mon stop=PNG
-g.remove rast=MASK
+ d.mon stop=PNG --quiet
+g.remove rast=MASK --quiet
 # Aggiunta titolo
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Copertura Nevosa - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_GRASS/titoloneve.gif
 #
@@ -218,3 +220,5 @@ convert -size 700x500 xc:white \
         -draw "image over 50,25 0,0 '$snowout'" \
         -draw "image over 100,0 0,0 '$DIR_GRASS/titoloneve.gif'" $snowgif 
 #
+echo "END GRASS_GB_METEO_dmod.txt"
+echo "###########################################"
