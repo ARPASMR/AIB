@@ -10,11 +10,12 @@
 fileneve=$fileneve
 fileoutneve=$fileoutneve
 
+echo "START ConversioneCoperturaNevosa_mod.txt"
 echo "fileneve="$fileneve
 echo "fileoutneve="$fileoutneve
 #
 g.region -d 
-g.remove rast=neve
-r.in.gdal -o input=$fileneve output=neve 
-r.out.arc input=neve output=$fileoutneve
-echo "fatto"
+g.remove rast=neve --quiet
+r.in.gdal -o input=$fileneve output=neve --quiet
+r.out.arc input=neve output=$fileoutneve --quiet
+echo "END ConversioneCoperturaNevosa_mod.txt"
