@@ -18,6 +18,8 @@
 #  GTER - MARZO 2020 quiet mode ai comandi GRASS                  #
 ###################################################################
 #
+echo "########################################################"
+echo "START GRASS_GB_1500m_rgmod.txt"
  echo "indice: $nomeindice"
  echo "IERI: $dataieri"
 # echo "OGGI: $dataoggi"
@@ -134,15 +136,15 @@ r.out.arc input=indici_IDI_neve_bruc output=$fileoutmasktxt --q
 #
 echo "salvataggio immagini"
  export GRASS_PNGFILE=$fileoutmaskpng
- d.mon start=PNG
- d.mon select=PNG
- r.colors map=indici_IDI_neve_bruc color=fwi$underscore$nomeindice$underscore$MESE 
- d.rast map=indici_IDI_neve_bruc
- d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+ d.mon --quiet start=PNG
+ d.mon --quiet select=PNG
+ r.colors --quiet map=indici_IDI_neve_bruc color=fwi$underscore$nomeindice$underscore$MESE 
+ d.rast --quiet map=indici_IDI_neve_bruc
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
                lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 # d.out.file output=$fileoutputpng res=2 format=png compression=0
- d.mon stop=PNG
+ d.mon --quiet stop=PNG
 convert  $fileoutmaskpng -transparent white $fileoutmaskpng 
 #
 # aggiunta del titolo
@@ -264,27 +266,27 @@ done
 #done
 
 export GRASS_PNGFILE=$fileoutAOpng
-d.mon start=PNG
-d.mon select=PNG
+d.mon --quiet start=PNG
+d.mon --quiet select=PNG
 
 ############ maschera con neve e aree non bruciabili per aiutare interpretazione del grafico #############
 
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
               color=black fcolor=$colore1
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
               color=black fcolor=$colore2
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
               color=black fcolor=$colore3
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
               color=black fcolor=$colore4
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
               color=black fcolor=$colore5
-d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
               color=black fcolor=$colore6
-d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
-v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
                color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
 ############################################################################################################
 
@@ -292,8 +294,8 @@ v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yof
 #              lsize=14 font=romans xref=center yref=center
 
 #d.font     font=romans
-d.labels   label=ao_mean
-d.mon stop=PNG
+d.labels --quiet   label=ao_mean
+d.mon --quiet stop=PNG
 #
 echo "aggiunta trasparenza per la pubblicazione su WEB"
 convert  $fileoutAOpng -transparent white $fileoutAOpng 
@@ -310,3 +312,5 @@ convert -size 700x500 xc:white \
 #convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
 
 
+echo "END GRASS_GB_1500m_rgmod.txt"
+echo "########################################################"
