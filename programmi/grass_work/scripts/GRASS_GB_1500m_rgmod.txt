@@ -224,7 +224,7 @@ v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI --q
 # Esporto Statistiche Univariate per area (tabelle CFS)
 v.db.select -c map=AO layer=1 column=NOME,FI_n,FI_min,FI_max,FI_mean,FI_range,FI_stddev,FI_varianc,FI_cf_var,FI_sum fs="|" file=$statitxt --q
 # Esporto Media per arrotondamento
-v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt --q
+v.db.select --q -c map=AO layer=1 column=cat,FI_mean fs=" " > $DIR_GRASS/mean_fi.txt
 cp $DIR_GRASS/mean_fi.txt $dir_tabella/$nomeindice$underscore$dataieri.txt
 # calcolo delle medie dell'indice sulle aree omogenee 
 for ((t=1; t<=15; t++))
