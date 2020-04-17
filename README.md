@@ -7,12 +7,14 @@ La procedura per la creazione dei file e delle immagini necessarie alla produzio
 (FORTRAN compilato & bash), viene fatto il calcolo degli indici (FORTRAN compilato) e una prima aggregazione su grigliato (GRASS), 
 quindi l'aggregazione definitiva per aree di allerta (GRASS).
 
+![ANALISI AIB](./AIB_ANALISI.png)
+
 https://app.lucidchart.com/invitations/accept/1d353ef9-8581-4a63-be2c-76e3f76e1c6d
 
 
 
 **2. previsione:** 
-
+![PREVISIONE AIB](./AIB_PREVISIONE.png)
 
 
 ## Organizzazione dei file
