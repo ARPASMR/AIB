@@ -9,12 +9,17 @@ quindi l'aggregazione definitiva per aree di allerta (GRASS).
 
 ![ANALISI AIB](./AIB_ANALISI.png)
 
+Per modifiche (utenti abilitati)
 https://app.lucidchart.com/invitations/accept/1d353ef9-8581-4a63-be2c-76e3f76e1c6d
 
 
 
 **2. previsione:** 
 ![PREVISIONE AIB](./AIB_PREVISIONE.png)
+
+
+Entrambi i diagrammi sono visibili anche a questo link con accesso tramite account google:
+https://drive.google.com/file/d/1301Rr5IztjZ-_Z99DyQ2-e98mDiM7IQu/view?usp=sharing
 
 
 ## Organizzazione dei file
