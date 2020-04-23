@@ -1,0 +1,2331 @@
+\hypertarget{classfwi_1_1grid_1_1Grid}{\section{fwi\-:\-:grid\-:\-:Grid$<$ T $>$ Class Template Reference}
+\label{classfwi_1_1grid_1_1Grid}\index{fwi\-::grid\-::\-Grid$<$ T $>$@{fwi\-::grid\-::\-Grid$<$ T $>$}}
+}
+
+
+3-\/dimensional grid  
+
+
+
+
+{\ttfamily \#include $<$Grid.\-h$>$}
+
+
+
+Collaboration diagram for fwi\-:\-:grid\-:\-:Grid$<$ T $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classfwi_1_1grid_1_1Grid__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a890011022f243b72633d7bc28fa7494e}{typedef grid\-\_\-t\-::index \hyperlink{classfwi_1_1grid_1_1Grid_a890011022f243b72633d7bc28fa7494e}{index}}\label{classfwi_1_1grid_1_1Grid_a890011022f243b72633d7bc28fa7494e}
+
+\begin{DoxyCompactList}\small\item\em typedef helper \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a1328a3f31a8b8fb007597dfd6bcf1cbd}{\hyperlink{classfwi_1_1grid_1_1Grid_a1328a3f31a8b8fb007597dfd6bcf1cbd}{Grid} (int varnum=\hyperlink{fwi__define_8h_a0b5ef1a7f011a268d5767ad76dc0d2f3}{G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-V\-A\-R\-N\-U\-M})}\label{classfwi_1_1grid_1_1Grid_a1328a3f31a8b8fb007597dfd6bcf1cbd}
+
+\begin{DoxyCompactList}\small\item\em Standard constructor. \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1Grid_aa3834cf6b13445bf8eb53b6ebe1cfb71}{Grid} (int rows, int cols, std\-::string table=\hyperlink{fwi__define_8h_a2a3ae53495ee4efc3c35a2acc837603c}{G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-A\-B\-L\-E}, int type=\hyperlink{fwi__define_8h_aea937ca2785273f5b96467b2b3f3d22d}{G\-E\-O\-G\-R\-I\-D}, float xstart=\hyperlink{fwi__define_8h_aba5ceb4d7323417c50fdc179ce915020}{G\-R\-D\-\_\-\-X\-\_\-\-S\-T\-A\-R\-T}, float ystart=\hyperlink{fwi__define_8h_a08e286b41c7e537fde7ecebff1c59ce3}{G\-R\-D\-\_\-\-Y\-\_\-\-S\-T\-A\-R\-T}, float xstep=\hyperlink{fwi__define_8h_ab0465700b128a48e19c72d90119a96e1}{G\-R\-D\-\_\-\-X\-\_\-\-S\-T\-E\-P}, float ystep=\hyperlink{fwi__define_8h_a3b5df539b73755a7159b0e38bc69ce7a}{G\-R\-D\-\_\-\-Y\-\_\-\-S\-T\-E\-P}, C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N xdir=I\-N\-C\-R\-E\-A\-S\-I\-N\-G, C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N ydir=I\-N\-C\-R\-E\-A\-S\-I\-N\-G, int varnum=\hyperlink{fwi__define_8h_a0b5ef1a7f011a268d5767ad76dc0d2f3}{G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-V\-A\-R\-N\-U\-M}, int srid=\hyperlink{fwi__define_8h_a039f584144fef5765f3541a17f8dc3c4}{G\-I\-S\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-R\-I\-D}, float undef\-Value=\hyperlink{fwi__define_8h_a7682eceef088f1177c13859d3d7ce43d}{G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-U\-N\-D\-E\-F\-\_\-\-V\-A\-L\-U\-E}, int slot\-Size=G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-L\-O\-T\-S\-I\-Z\-E)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_af9301a4e3301edfe6faf65d71a563037}{virtual \hyperlink{classfwi_1_1grid_1_1Grid_af9301a4e3301edfe6faf65d71a563037}{$\sim$\-Grid} ()}\label{classfwi_1_1grid_1_1Grid_af9301a4e3301edfe6faf65d71a563037}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a546028acbdac7d1646e7f3ede24c76b9}{void \hyperlink{classfwi_1_1grid_1_1Grid_a546028acbdac7d1646e7f3ede24c76b9}{initialize} ()}\label{classfwi_1_1grid_1_1Grid_a546028acbdac7d1646e7f3ede24c76b9}
+
+\begin{DoxyCompactList}\small\item\em Initialize grid memory. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a15090d3154d2f147b6437464354d9c20}{void \hyperlink{classfwi_1_1grid_1_1Grid_a15090d3154d2f147b6437464354d9c20}{init} (T t)}\label{classfwi_1_1grid_1_1Grid_a15090d3154d2f147b6437464354d9c20}
+
+\begin{DoxyCompactList}\small\item\em set all grid elements to t \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_a7c43b6bb6f6b0d61a6669bd5c7ea8c7a}{get\-Rows} () const 
+\begin{DoxyCompactList}\small\item\em rows number getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_aaf9b9814c8f513ceba002b75542620c9}{get\-Cols} () const 
+\begin{DoxyCompactList}\small\item\em cols number getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_afc3fafe3429aa908a9af84674dc4c1ee}{get\-Table} () const 
+\begin{DoxyCompactList}\small\item\em grid database table name getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_ac7c89b5eb43447e86ea0b5b956a8b88d}{get\-Date} () const 
+\begin{DoxyCompactList}\small\item\em date getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a51a7b639a01826dc7437d646930f6891}{get\-Grads\-Date} () const 
+\begin{DoxyCompactList}\small\item\em date in Gr\-A\-D\-S format getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a4be1b06ee3d8c6a4eabdd3a402ae3bf9}{get\-Ctl\-Path} () const 
+\begin{DoxyCompactList}\small\item\em grid ctl file path getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a23e0a0d0fa907ccfbc0881240dc528a2}{get\-Dat\-Path} () const 
+\begin{DoxyCompactList}\small\item\em grid dat file path getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a4fdc08766fd405bd37d38a6709c08342}{get\-Export\-Dat\-Path} () const 
+\begin{DoxyCompactList}\small\item\em grid export dat file path getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a2a47f95c96985a5e639285bde471d9a5}{get\-Export\-Ctl\-Path} () const 
+\begin{DoxyCompactList}\small\item\em grid export ctl file path getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a7e9e12dc12588d1834c261b610cac319}{get\-Title} () const 
+\begin{DoxyCompactList}\small\item\em grid title getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_a2deb54df5fc5e90b3b5b061a516c2a92}{get\-Type} () const 
+\begin{DoxyCompactList}\small\item\em grid type getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_ae9043ae6499a47872c6161516b721e21}{get\-Time\-Band} () const 
+\begin{DoxyCompactList}\small\item\em grid time band \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_ac6f053b3983bf2f651a1a523b8591be4}{get\-Time\-Bands\-Number} () const 
+\begin{DoxyCompactList}\small\item\em grid time bands number \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_a869002c87fc7e935b66c40ea712b90e4}{get\-Start\-Time} () const 
+\begin{DoxyCompactList}\small\item\em grid start time getter \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classfwi_1_1grid_1_1Grid_aa6a35277617cbae5fe3db3f9ae28558d}{get\-Time\-Increment} () const 
+\begin{DoxyCompactList}\small\item\em grid time increment getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_ac8b97200a77c83bbed7c441fe8414212}{get\-File\-Name\-Date\-Offset} () const 
+\begin{DoxyCompactList}\small\item\em grid file name date offset getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_af6127c6adeb24967516c1d9e0af1a4c6}{get\-I\-O\-Format} () const 
+\begin{DoxyCompactList}\small\item\em grid I/\-O format getter \end{DoxyCompactList}\item 
+float \hyperlink{classfwi_1_1grid_1_1Grid_ae2feb145847b2504ca2474a9e3e33945}{get\-X\-Start} () const 
+\begin{DoxyCompactList}\small\item\em grid start x coordinate getter \end{DoxyCompactList}\item 
+float \hyperlink{classfwi_1_1grid_1_1Grid_ac2986f115fadf2ef16cf0b9e61114baf}{get\-X\-Step} () const 
+\begin{DoxyCompactList}\small\item\em grid step in x direction getter \end{DoxyCompactList}\item 
+float \hyperlink{classfwi_1_1grid_1_1Grid_a5e41f9d7886b318044b1de323d075d54}{get\-Y\-Start} () const 
+\begin{DoxyCompactList}\small\item\em grid start y coordinate getter \end{DoxyCompactList}\item 
+float \hyperlink{classfwi_1_1grid_1_1Grid_aae81a8e8fddf00750337a86bc6940337}{get\-Y\-Step} () const 
+\begin{DoxyCompactList}\small\item\em grid step in y direction getter \end{DoxyCompactList}\item 
+C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N \hyperlink{classfwi_1_1grid_1_1Grid_a60d11b4f03f3ed4ef4349d25897486d7}{get\-X\-Dir} () const 
+\begin{DoxyCompactList}\small\item\em x\-Dir getter \end{DoxyCompactList}\item 
+C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N \hyperlink{classfwi_1_1grid_1_1Grid_ac8761c50efb6f2af694727b9b12d9f0e}{get\-Y\-Dir} () const 
+\begin{DoxyCompactList}\small\item\em y\-Dir getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_ad9e9ac91e9c338606e1199ffa89fc6bb}{get\-Var\-Num} () const 
+\begin{DoxyCompactList}\small\item\em variables number getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_a8aefb75a246d3a618f455d34c7e64f3f}{get\-S\-R\-I\-D} () const 
+\begin{DoxyCompactList}\small\item\em grid srid getter \end{DoxyCompactList}\item 
+float \hyperlink{classfwi_1_1grid_1_1Grid_a8d18ce74846ea7432f034a30ef879b59}{get\-Undef\-Value} () const 
+\begin{DoxyCompactList}\small\item\em grid undefindined value getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_adf68e16a1b1d07ed1745c57eb6732314}{get\-Slot\-Size} () const 
+\begin{DoxyCompactList}\small\item\em grid slot size getter \end{DoxyCompactList}\item 
+grid\-\_\-t \hyperlink{classfwi_1_1grid_1_1Grid_a73e900020a90dbad3808d3c91778a3b4}{get\-Data} ()
+\begin{DoxyCompactList}\small\item\em grid internal data pointer getter \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1GridFields}{Grid\-Fields} $\ast$ \hyperlink{classfwi_1_1grid_1_1Grid_a2e891ed3f46840241652cd435ac35a94}{get\-Fields} () const 
+\begin{DoxyCompactList}\small\item\em grid fields list getter \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_abe660314639e862657818d02aad3ff45}{get\-Elements\-Count} ()
+\begin{DoxyCompactList}\small\item\em gets the element count as rows x cols \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1Grid_aa140c12f1edfb152b7e859488969cf3e}{get\-Total\-Elements\-Count} ()
+\begin{DoxyCompactList}\small\item\em gets the total element count as rows x cols x var\-Num \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_aefe04321df7e26e6510293846d93f983}{set\-Rows} (int rows)
+\begin{DoxyCompactList}\small\item\em grid rows number setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a8ee0c76d69626d72bc385c5cb3cdf268}{set\-Cols} (int cols)
+\begin{DoxyCompactList}\small\item\em grid columns number setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a78f4a38e86a245ee62769e5f37bff1c6}{set\-Table} (std\-::string table)
+\begin{DoxyCompactList}\small\item\em grid table name setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a38c849794390871a95b8c7dbe505e00d}{set\-Date} (std\-::string date)
+\begin{DoxyCompactList}\small\item\em date setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a5beeb3bf022ee1dec908f76bf1b7ff5d}{set\-Ctl\-Path} (std\-::string filepath)
+\begin{DoxyCompactList}\small\item\em grid ctl file path setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_ac7df5d5cc5b9d184c5eceb03737bb598}{set\-Dat\-Path} (std\-::string filepath)
+\begin{DoxyCompactList}\small\item\em grid dat file path setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_ab138cac6c49037fc1b911a7a7d2eb437}{set\-Export\-Ctl\-Path} (std\-::string filepath)
+\begin{DoxyCompactList}\small\item\em grid export ctl file path setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a84899af1e9496f79a7cf43459c62c9bc}{set\-Export\-Dat\-Path} (std\-::string filepath)
+\begin{DoxyCompactList}\small\item\em grid export dat file path setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a0cdb2357ad4279db9bc990bb17eecef0}{set\-Title} (std\-::string title)
+\begin{DoxyCompactList}\small\item\em grid title setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a6e7dc5bcf9d26a25289a324b2d4f8926}{set\-Type} (int type)
+\begin{DoxyCompactList}\small\item\em grid type setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a3ed06b6c1a2ea5596c78256b2b872d81}{set\-Time\-Band} (int band)
+\begin{DoxyCompactList}\small\item\em grid time band setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a19b83ec99e6280c7da1ad6b08cc3b921}{set\-Time\-Bands\-Number} (int bands\-Number)
+\begin{DoxyCompactList}\small\item\em grid time bands number setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a9e75d99eef25e9a401aadd71ad646e08}{set\-Start\-Time} (std\-::string t)
+\begin{DoxyCompactList}\small\item\em grid start time setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_afc7b78751770989300220237fcae5256}{set\-Time\-Increment} (std\-::string increment)
+\begin{DoxyCompactList}\small\item\em grid time increment setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a15e1fd1e87919bba2971a6fe66566f43}{set\-File\-Name\-Date\-Offset} (int offset)
+\begin{DoxyCompactList}\small\item\em grid file name date offset setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a4fe86c25ec42f48f70d2353721e9aeed}{set\-I\-O\-Format} (int format)
+\begin{DoxyCompactList}\small\item\em grid I/\-O format setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a3e358d51e63374a9174fcff2206ba9d1}{set\-X\-Start} (float xstart)
+\begin{DoxyCompactList}\small\item\em grid start x coordinate setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a442147db5a15cb302bc640041bc42d49}{set\-X\-Step} (float xstep)
+\begin{DoxyCompactList}\small\item\em grid step in x direction setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a9a22e6a8991396d957900b33b9db6558}{set\-Y\-Start} (float ystart)
+\begin{DoxyCompactList}\small\item\em grid start y coordinate setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_aeb84b8b6061243f47f6cea19bda8acbc}{set\-Y\-Step} (float ystep)
+\begin{DoxyCompactList}\small\item\em grid step in y direction setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a58a313c74d268e1a892877dbe97782e0}{set\-X\-Dir} (C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N x\-Dir)
+\begin{DoxyCompactList}\small\item\em x\-Dir setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a8ee82188e306a47c14813024513bd56e}{set\-Y\-Dir} (C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N y\-Dir)
+\begin{DoxyCompactList}\small\item\em y\-Dir setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_ab063dbc1b9e23f21c27611851390de23}{set\-Var\-Num} (int varnum)
+\begin{DoxyCompactList}\small\item\em grid variables number setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_aff98dae08698282b2a1661810856e673}{set\-S\-R\-I\-D} (int srid)
+\begin{DoxyCompactList}\small\item\em grid srid setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_ad1090e0ab615bf979eb72bbc55ca6fb3}{set\-Undef\-Value} (float undef\-Value)
+\begin{DoxyCompactList}\small\item\em grid undefined value setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_ac0fe4e20d56ed5507f62c1d3e6502f68}{set\-Slot\-Size} (int slot\-Size)
+\begin{DoxyCompactList}\small\item\em grid slot size setter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_acfa22cf6901ee071064d5dccc255f5ed}{set\-Fields} (\hyperlink{classfwi_1_1grid_1_1GridFields}{Grid\-Fields} $\ast$fields)
+\begin{DoxyCompactList}\small\item\em grid fields list setter \end{DoxyCompactList}\item 
+T \& \hyperlink{classfwi_1_1grid_1_1Grid_a4892438084efa099f29fbb4fbf5d3e83}{operator()} (int i, int j, int k)
+\begin{DoxyCompactList}\small\item\em grid element access helper \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ T $>$ \& \hyperlink{classfwi_1_1grid_1_1Grid_a8cbde1277dbb531069c1b579cb10410f}{operator=} (const \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ T $>$ \&grid)
+\begin{DoxyCompactList}\small\item\em grid assignement operator \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a9e1229aefd4781e60641e1a946fb64e3}{void \hyperlink{classfwi_1_1grid_1_1Grid_a9e1229aefd4781e60641e1a946fb64e3}{raw\-\_\-dump} ()}\label{classfwi_1_1grid_1_1Grid_a9e1229aefd4781e60641e1a946fb64e3}
+
+\begin{DoxyCompactList}\small\item\em raw dump helper \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_abfcac51edc50447a1861ce85d68409cf}{configure} (std\-::string name, Config \&cfg)
+\begin{DoxyCompactList}\small\item\em configure grid from config file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a254a6c5a649b7d3a109f67811ef5f356}{merge} (\hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ T $>$ \&other)
+\begin{DoxyCompactList}\small\item\em merges {\itshape other} whith {\bfseries this} \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a099e8895d70f6ce5a5eba5ea3599704f}{subgrid} (std\-::vector$<$ std\-::string $>$ fieldnames, \hyperlink{classfwi_1_1grid_1_1Grid}{Grid}$<$ T $>$ \&sg)
+\begin{DoxyCompactList}\small\item\em Extracts a subgrid from {\itshape this} having fields contained in {\itshape fieldnames} \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a34cc464d768d11a63f6918e6a39e0415}{read\-Ctrl} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em reads grid control file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_aafc829b90cb1a0dc6ec9daf425f6b8b7}{read} ()
+\begin{DoxyCompactList}\small\item\em reads grid binary file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a115667cd2987c5972d7fa28d0f07a008}{write\-Ctrl} (ofstream \&out)
+\begin{DoxyCompactList}\small\item\em write grid ctl file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a3288da25df63b739516c2bf90f9131fa}{write} (ofstream \&out)
+\begin{DoxyCompactList}\small\item\em writes grid binary file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a0f7797bf1413a6082559ce7d4561ecbc}{write\-Txt} (ofstream \&out, bool esri=false)
+\begin{DoxyCompactList}\small\item\em writes grid text file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_ac3ac1ccceb7696f022d39ca4e99e5b92}{stored} (P\-Gconn $\ast$conn)
+\begin{DoxyCompactList}\small\item\em verify if {\bfseries this} is already stored in database \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_ad440bf48610e89a053d5d1a32a28579a}{store} (P\-Gconn $\ast$conn)
+\begin{DoxyCompactList}\small\item\em stores grid in database \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a65a165655dd630f5f1b7c52b4e261059}{insert} (P\-Gconn $\ast$conn)
+\begin{DoxyCompactList}\small\item\em insert grid in database \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_ac255d83afc8e784761cb2d46775612ee}{update} (P\-Gconn $\ast$conn)
+\begin{DoxyCompactList}\small\item\em updates grid in database \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a653fc4a3630fbcfc92229b42fea9ab77}{retrieve} (P\-Gconn $\ast$conn)
+\begin{DoxyCompactList}\small\item\em retrieves grid from database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_ac6262b427ff75bcfac1d118afccb1c71}{read\-Txt} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em reads grid data from text file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a9f941bf44e6f27620181cd7b406150e2}{read\-Bin} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em reads grid data from binary file \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1Grid_a07cf7c55e15a35e7b258574a8cda7685}{read\-Band} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em reads data from a grid time band (stream must be opened in binary mode) not appliable to text streams \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1Grid_a4b7534ee12c05e1a492da8de36cc0751}{skip\-Band} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em skip the next timeband from reading \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a3d70a0064502ecd7311f33a9bd4ab742}{ostream \& \hyperlink{classfwi_1_1grid_1_1Grid_a3d70a0064502ecd7311f33a9bd4ab742}{operator$<$$<$} (ostream \&stream, Point \&p)}\label{classfwi_1_1grid_1_1Grid_a3d70a0064502ecd7311f33a9bd4ab742}
+
+\begin{DoxyCompactList}\small\item\em output stream operator for Point data type \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_ac61dcfaea1a3b9d1fa2b0d36ab6f4c4e}{ostream \& \hyperlink{classfwi_1_1grid_1_1Grid_ac61dcfaea1a3b9d1fa2b0d36ab6f4c4e}{operator$<$$<$} (ostream \&stream, Point $\ast$p)}\label{classfwi_1_1grid_1_1Grid_ac61dcfaea1a3b9d1fa2b0d36ab6f4c4e}
+
+\begin{DoxyCompactList}\small\item\em output stream operator for Point$\ast$ data type \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a34fd445257de6bd999e8155057e359f7}{istream \& \hyperlink{classfwi_1_1grid_1_1Grid_a34fd445257de6bd999e8155057e359f7}{operator$>$$>$} (istream \&stream, Point \&p)}\label{classfwi_1_1grid_1_1Grid_a34fd445257de6bd999e8155057e359f7}
+
+\begin{DoxyCompactList}\small\item\em input stream operator for Point data type \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1Grid_a4c7faad19237f45792c62de03a47e448}{istream \& \hyperlink{classfwi_1_1grid_1_1Grid_a4c7faad19237f45792c62de03a47e448}{operator$>$$>$} (istream \&stream, Point $\ast$p)}\label{classfwi_1_1grid_1_1Grid_a4c7faad19237f45792c62de03a47e448}
+
+\begin{DoxyCompactList}\small\item\em input stream operator for Point$\ast$ data type \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class fwi\-::grid\-::\-Grid$<$ T $>$}
+
+3-\/dimensional grid 
+
+Definition at line 70 of file Grid.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfwi_1_1grid_1_1Grid_aa3834cf6b13445bf8eb53b6ebe1cfb71}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{Grid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::{\bf Grid} (
+\begin{DoxyParamCaption}
+\item[{int}]{rows, }
+\item[{int}]{cols, }
+\item[{std\-::string}]{table = {\ttfamily {\bf G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-A\-B\-L\-E}}, }
+\item[{int}]{type = {\ttfamily {\bf G\-E\-O\-G\-R\-I\-D}}, }
+\item[{float}]{xstart = {\ttfamily {\bf G\-R\-D\-\_\-\-X\-\_\-\-S\-T\-A\-R\-T}}, }
+\item[{float}]{ystart = {\ttfamily {\bf G\-R\-D\-\_\-\-Y\-\_\-\-S\-T\-A\-R\-T}}, }
+\item[{float}]{xstep = {\ttfamily {\bf G\-R\-D\-\_\-\-X\-\_\-\-S\-T\-E\-P}}, }
+\item[{float}]{ystep = {\ttfamily {\bf G\-R\-D\-\_\-\-Y\-\_\-\-S\-T\-E\-P}}, }
+\item[{C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}]{xdir = {\ttfamily INCREASING}, }
+\item[{C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}]{ydir = {\ttfamily INCREASING}, }
+\item[{int}]{varnum = {\ttfamily {\bf G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-V\-A\-R\-N\-U\-M}}, }
+\item[{int}]{srid = {\ttfamily {\bf G\-I\-S\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-R\-I\-D}}, }
+\item[{float}]{undef\-Value = {\ttfamily {\bf G\-R\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-U\-N\-D\-E\-F\-\_\-\-V\-A\-L\-U\-E}}, }
+\item[{int}]{slot\-Size = {\ttfamily GRD\-\_\-DEFAULT\-\_\-SLOTSIZE}}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_aa3834cf6b13445bf8eb53b6ebe1cfb71}
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & rows number \\
+\hline
+{\em cols} & columns number \\
+\hline
+{\em table} & grid table name \\
+\hline
+{\em type} & grid type \\
+\hline
+{\em xstart} & grid start x coordinate \\
+\hline
+{\em ystart} & grid y start coordinate \\
+\hline
+{\em xstep} & grid step in x direction \\
+\hline
+{\em ystep} & grid step in y direction \\
+\hline
+{\em xdir} & x coordinate changing direction \\
+\hline
+{\em ydir} & y coordinate changing direction \\
+\hline
+{\em varnum} & variables number \\
+\hline
+{\em srid} & grid srid \\
+\hline
+{\em undef\-Value} & undefined value \\
+\hline
+{\em slot\-Size} & slot size \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 996 of file Grid.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfwi_1_1grid_1_1Grid_abfcac51edc50447a1861ce85d68409cf}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!configure@{configure}}
+\index{configure@{configure}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{configure}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::configure (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{Config \&}]{cfg}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_abfcac51edc50447a1861ce85d68409cf}
+
+
+configure grid from config file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & grid name as present in config file \\
+\hline
+{\em cfg} & configuration class from libconfig++ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+libconfig++ documentation at \href{http://www.hyperrealm.com/libconfig/}{\tt http\-://www.\-hyperrealm.\-com/libconfig/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1532 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_abfcac51edc50447a1861ce85d68409cf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aaf9b9814c8f513ceba002b75542620c9}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Cols@{get\-Cols}}
+\index{get\-Cols@{get\-Cols}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Cols}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Cols (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_aaf9b9814c8f513ceba002b75542620c9}
+
+
+cols number getter 
+
+\begin{DoxyReturn}{Returns}
+grid cols number 
+\end{DoxyReturn}
+
+
+Definition at line 1051 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_aaf9b9814c8f513ceba002b75542620c9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a4be1b06ee3d8c6a4eabdd3a402ae3bf9}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Ctl\-Path@{get\-Ctl\-Path}}
+\index{get\-Ctl\-Path@{get\-Ctl\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Ctl\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Ctl\-Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a4be1b06ee3d8c6a4eabdd3a402ae3bf9}
+
+
+grid ctl file path getter 
+
+\begin{DoxyReturn}{Returns}
+grid ctl file full path 
+\end{DoxyReturn}
+
+
+Definition at line 1112 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a73e900020a90dbad3808d3c91778a3b4}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Grid}$<$ T $>$\-::grid\-\_\-t {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a73e900020a90dbad3808d3c91778a3b4}
+
+
+grid internal data pointer getter 
+
+\begin{DoxyReturn}{Returns}
+internal data representation 
+\end{DoxyReturn}
+
+
+Definition at line 1244 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac7c89b5eb43447e86ea0b5b956a8b88d}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Date@{get\-Date}}
+\index{get\-Date@{get\-Date}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Date}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ac7c89b5eb43447e86ea0b5b956a8b88d}
+
+
+date getter 
+
+\begin{DoxyReturn}{Returns}
+date current value 
+\end{DoxyReturn}
+
+
+Definition at line 1063 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ac7c89b5eb43447e86ea0b5b956a8b88d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a23e0a0d0fa907ccfbc0881240dc528a2}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Dat\-Path@{get\-Dat\-Path}}
+\index{get\-Dat\-Path@{get\-Dat\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Dat\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Dat\-Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a23e0a0d0fa907ccfbc0881240dc528a2}
+
+
+grid dat file path getter 
+
+\begin{DoxyReturn}{Returns}
+grid datfile full path 
+\end{DoxyReturn}
+
+
+Definition at line 1118 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a23e0a0d0fa907ccfbc0881240dc528a2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_abe660314639e862657818d02aad3ff45}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Elements\-Count@{get\-Elements\-Count}}
+\index{get\-Elements\-Count@{get\-Elements\-Count}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Elements\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Elements\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_abe660314639e862657818d02aad3ff45}
+
+
+gets the element count as rows x cols 
+
+\begin{DoxyReturn}{Returns}
+element number only x and y dimensions 
+\end{DoxyReturn}
+
+
+Definition at line 1256 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_abe660314639e862657818d02aad3ff45_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a2a47f95c96985a5e639285bde471d9a5}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Export\-Ctl\-Path@{get\-Export\-Ctl\-Path}}
+\index{get\-Export\-Ctl\-Path@{get\-Export\-Ctl\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Export\-Ctl\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Export\-Ctl\-Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a2a47f95c96985a5e639285bde471d9a5}
+
+
+grid export ctl file path getter 
+
+\begin{DoxyReturn}{Returns}
+grid export ctl file full path 
+\end{DoxyReturn}
+
+
+Definition at line 1124 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a2a47f95c96985a5e639285bde471d9a5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a4fdc08766fd405bd37d38a6709c08342}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Export\-Dat\-Path@{get\-Export\-Dat\-Path}}
+\index{get\-Export\-Dat\-Path@{get\-Export\-Dat\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Export\-Dat\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Export\-Dat\-Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a4fdc08766fd405bd37d38a6709c08342}
+
+
+grid export dat file path getter 
+
+\begin{DoxyReturn}{Returns}
+grid export datfile full path 
+\end{DoxyReturn}
+
+
+Definition at line 1130 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a4fdc08766fd405bd37d38a6709c08342_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a2e891ed3f46840241652cd435ac35a94}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Fields@{get\-Fields}}
+\index{get\-Fields@{get\-Fields}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Grid\-Fields} $\ast$ {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Fields (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a2e891ed3f46840241652cd435ac35a94}
+
+
+grid fields list getter 
+
+\begin{DoxyReturn}{Returns}
+grid fields list 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classfwi_1_1grid_1_1GridFields}{Grid\-Fields} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1250 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a2e891ed3f46840241652cd435ac35a94_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac8b97200a77c83bbed7c441fe8414212}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-File\-Name\-Date\-Offset@{get\-File\-Name\-Date\-Offset}}
+\index{get\-File\-Name\-Date\-Offset@{get\-File\-Name\-Date\-Offset}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-File\-Name\-Date\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-File\-Name\-Date\-Offset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ac8b97200a77c83bbed7c441fe8414212}
+
+
+grid file name date offset getter 
+
+\begin{DoxyReturn}{Returns}
+the grid file name date offset in days (+/-\/) 
+\end{DoxyReturn}
+
+
+Definition at line 1172 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a51a7b639a01826dc7437d646930f6891}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Grads\-Date@{get\-Grads\-Date}}
+\index{get\-Grads\-Date@{get\-Grads\-Date}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Grads\-Date}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Grads\-Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a51a7b639a01826dc7437d646930f6891}
+
+
+date in Gr\-A\-D\-S format getter 
+
+\begin{DoxyReturn}{Returns}
+date current value 
+\end{DoxyReturn}
+
+
+Definition at line 1084 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_af6127c6adeb24967516c1d9e0af1a4c6}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-I\-O\-Format@{get\-I\-O\-Format}}
+\index{get\-I\-O\-Format@{get\-I\-O\-Format}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-I\-O\-Format}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-I\-O\-Format (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_af6127c6adeb24967516c1d9e0af1a4c6}
+
+
+grid I/\-O format getter 
+
+\begin{DoxyReturn}{Returns}
+grid I/\-O format 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{fwi__define_8h}{fwi\-\_\-define.\-h} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1178 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a7c43b6bb6f6b0d61a6669bd5c7ea8c7a}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Rows@{get\-Rows}}
+\index{get\-Rows@{get\-Rows}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Rows}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Rows (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a7c43b6bb6f6b0d61a6669bd5c7ea8c7a}
+
+
+rows number getter 
+
+\begin{DoxyReturn}{Returns}
+grid rows number 
+\end{DoxyReturn}
+
+
+Definition at line 1045 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a7c43b6bb6f6b0d61a6669bd5c7ea8c7a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_adf68e16a1b1d07ed1745c57eb6732314}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Slot\-Size@{get\-Slot\-Size}}
+\index{get\-Slot\-Size@{get\-Slot\-Size}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Slot\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Slot\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_adf68e16a1b1d07ed1745c57eb6732314}
+
+
+grid slot size getter 
+
+\begin{DoxyReturn}{Returns}
+grid slot size 
+\end{DoxyReturn}
+
+
+Definition at line 1238 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_adf68e16a1b1d07ed1745c57eb6732314_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a8aefb75a246d3a618f455d34c7e64f3f}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-S\-R\-I\-D@{get\-S\-R\-I\-D}}
+\index{get\-S\-R\-I\-D@{get\-S\-R\-I\-D}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-S\-R\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-S\-R\-I\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a8aefb75a246d3a618f455d34c7e64f3f}
+
+
+grid srid getter 
+
+\begin{DoxyReturn}{Returns}
+grid srid 
+\end{DoxyReturn}
+
+
+Definition at line 1226 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a8aefb75a246d3a618f455d34c7e64f3f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a869002c87fc7e935b66c40ea712b90e4}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Start\-Time@{get\-Start\-Time}}
+\index{get\-Start\-Time@{get\-Start\-Time}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Start\-Time}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Start\-Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a869002c87fc7e935b66c40ea712b90e4}
+
+
+grid start time getter 
+
+\begin{DoxyReturn}{Returns}
+the grid start time in Gr\-A\-D\-S format 
+\end{DoxyReturn}
+
+
+Definition at line 1160 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_afc3fafe3429aa908a9af84674dc4c1ee}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Table@{get\-Table}}
+\index{get\-Table@{get\-Table}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Table}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Table (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_afc3fafe3429aa908a9af84674dc4c1ee}
+
+
+grid database table name getter 
+
+\begin{DoxyReturn}{Returns}
+table name 
+\end{DoxyReturn}
+
+
+Definition at line 1057 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_afc3fafe3429aa908a9af84674dc4c1ee_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ae9043ae6499a47872c6161516b721e21}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Time\-Band@{get\-Time\-Band}}
+\index{get\-Time\-Band@{get\-Time\-Band}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Time\-Band}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Time\-Band (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ae9043ae6499a47872c6161516b721e21}
+
+
+grid time band 
+
+\begin{DoxyReturn}{Returns}
+the grid time band 
+\end{DoxyReturn}
+
+
+Definition at line 1148 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac6f053b3983bf2f651a1a523b8591be4}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Time\-Bands\-Number@{get\-Time\-Bands\-Number}}
+\index{get\-Time\-Bands\-Number@{get\-Time\-Bands\-Number}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Time\-Bands\-Number}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Time\-Bands\-Number (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ac6f053b3983bf2f651a1a523b8591be4}
+
+
+grid time bands number 
+
+\begin{DoxyReturn}{Returns}
+the grid time bands number 
+\end{DoxyReturn}
+
+
+Definition at line 1154 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aa6a35277617cbae5fe3db3f9ae28558d}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Time\-Increment@{get\-Time\-Increment}}
+\index{get\-Time\-Increment@{get\-Time\-Increment}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Time\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Time\-Increment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_aa6a35277617cbae5fe3db3f9ae28558d}
+
+
+grid time increment getter 
+
+\begin{DoxyReturn}{Returns}
+the grid time increment in Gr\-A\-D\-S format 
+\end{DoxyReturn}
+
+
+Definition at line 1166 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a7e9e12dc12588d1834c261b610cac319}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Title@{get\-Title}}
+\index{get\-Title@{get\-Title}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Title}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a7e9e12dc12588d1834c261b610cac319}
+
+
+grid title getter 
+
+\begin{DoxyReturn}{Returns}
+the grid title as in grib files 
+\end{DoxyReturn}
+
+
+Definition at line 1136 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aa140c12f1edfb152b7e859488969cf3e}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Total\-Elements\-Count@{get\-Total\-Elements\-Count}}
+\index{get\-Total\-Elements\-Count@{get\-Total\-Elements\-Count}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Total\-Elements\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Total\-Elements\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_aa140c12f1edfb152b7e859488969cf3e}
+
+
+gets the total element count as rows x cols x var\-Num 
+
+\begin{DoxyReturn}{Returns}
+element total number 
+\end{DoxyReturn}
+
+
+Definition at line 1262 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a2deb54df5fc5e90b3b5b061a516c2a92}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a2deb54df5fc5e90b3b5b061a516c2a92}
+
+
+grid type getter 
+
+\begin{DoxyReturn}{Returns}
+grid type 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{fwi__define_8h}{fwi\-\_\-define.\-h} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1142 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a2deb54df5fc5e90b3b5b061a516c2a92_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a8d18ce74846ea7432f034a30ef879b59}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Undef\-Value@{get\-Undef\-Value}}
+\index{get\-Undef\-Value@{get\-Undef\-Value}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Undef\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ float {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Undef\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a8d18ce74846ea7432f034a30ef879b59}
+
+
+grid undefindined value getter 
+
+\begin{DoxyReturn}{Returns}
+grid undefined value 
+\end{DoxyReturn}
+
+
+Definition at line 1232 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a8d18ce74846ea7432f034a30ef879b59_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ad9e9ac91e9c338606e1199ffa89fc6bb}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Var\-Num@{get\-Var\-Num}}
+\index{get\-Var\-Num@{get\-Var\-Num}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Var\-Num}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Var\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ad9e9ac91e9c338606e1199ffa89fc6bb}
+
+
+variables number getter 
+
+\begin{DoxyReturn}{Returns}
+variables number 
+\end{DoxyReturn}
+
+
+Definition at line 1220 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ad9e9ac91e9c338606e1199ffa89fc6bb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a60d11b4f03f3ed4ef4349d25897486d7}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-X\-Dir@{get\-X\-Dir}}
+\index{get\-X\-Dir@{get\-X\-Dir}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-X\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-X\-Dir (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a60d11b4f03f3ed4ef4349d25897486d7}
+
+
+x\-Dir getter 
+
+\begin{DoxyReturn}{Returns}
+current value for x\-Dir 
+\end{DoxyReturn}
+
+
+Definition at line 1208 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ae2feb145847b2504ca2474a9e3e33945}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-X\-Start@{get\-X\-Start}}
+\index{get\-X\-Start@{get\-X\-Start}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-X\-Start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ float {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-X\-Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ae2feb145847b2504ca2474a9e3e33945}
+
+
+grid start x coordinate getter 
+
+\begin{DoxyReturn}{Returns}
+grid start x coordinate 
+\end{DoxyReturn}
+
+
+Definition at line 1184 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ae2feb145847b2504ca2474a9e3e33945_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac2986f115fadf2ef16cf0b9e61114baf}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-X\-Step@{get\-X\-Step}}
+\index{get\-X\-Step@{get\-X\-Step}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-X\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ float {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-X\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ac2986f115fadf2ef16cf0b9e61114baf}
+
+
+grid step in x direction getter 
+
+\begin{DoxyReturn}{Returns}
+grid step in x direction 
+\end{DoxyReturn}
+
+
+Definition at line 1190 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ac2986f115fadf2ef16cf0b9e61114baf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac8761c50efb6f2af694727b9b12d9f0e}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Y\-Dir@{get\-Y\-Dir}}
+\index{get\-Y\-Dir@{get\-Y\-Dir}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Y\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Y\-Dir (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_ac8761c50efb6f2af694727b9b12d9f0e}
+
+
+y\-Dir getter 
+
+\begin{DoxyReturn}{Returns}
+current value for y\-Dir 
+\end{DoxyReturn}
+
+
+Definition at line 1214 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a5e41f9d7886b318044b1de323d075d54}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Y\-Start@{get\-Y\-Start}}
+\index{get\-Y\-Start@{get\-Y\-Start}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Y\-Start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ float {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Y\-Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_a5e41f9d7886b318044b1de323d075d54}
+
+
+grid start y coordinate getter 
+
+\begin{DoxyReturn}{Returns}
+grid start y coordinate 
+\end{DoxyReturn}
+
+
+Definition at line 1196 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a5e41f9d7886b318044b1de323d075d54_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aae81a8e8fddf00750337a86bc6940337}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!get\-Y\-Step@{get\-Y\-Step}}
+\index{get\-Y\-Step@{get\-Y\-Step}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{get\-Y\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ float {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::get\-Y\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1Grid_aae81a8e8fddf00750337a86bc6940337}
+
+
+grid step in y direction getter 
+
+\begin{DoxyReturn}{Returns}
+grid step in y direction 
+\end{DoxyReturn}
+
+
+Definition at line 1202 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_aae81a8e8fddf00750337a86bc6940337_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a65a165655dd630f5f1b7c52b4e261059}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!insert@{insert}}
+\index{insert@{insert}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::insert (
+\begin{DoxyParamCaption}
+\item[{P\-Gconn $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a65a165655dd630f5f1b7c52b4e261059}
+
+
+insert grid in database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & postgresql connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 2213 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a254a6c5a649b7d3a109f67811ef5f356}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!merge@{merge}}
+\index{merge@{merge}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{merge}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::merge (
+\begin{DoxyParamCaption}
+\item[{{\bf Grid}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a254a6c5a649b7d3a109f67811ef5f356}
+
+
+merges {\itshape other} whith {\bfseries this} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & second grid \begin{DoxyVerb}     merge can be done only if
+     rows     == other.getRows()     && cols       == other.getCols()       and
+     xStart   == other.getXStart()   && yStart     == other.getYStart()     and
+     xStep    == other.getXStep()    && yStep      == other.getYStep()      and
+     type     == other.getType()     && srid       == other.getSRID()       and
+     slotSize == other.getSlotSize() && undefValue == other.getUndefValue() and
+     table    == other.getTable()
+\end{DoxyVerb}
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1652 of file Grid.\-h.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classfwi_1_1grid_1_1Grid_a254a6c5a649b7d3a109f67811ef5f356_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a254a6c5a649b7d3a109f67811ef5f356_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a4892438084efa099f29fbb4fbf5d3e83}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!operator()@{operator()}}
+\index{operator()@{operator()}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T \& {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::operator() (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j, }
+\item[{int}]{k}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a4892438084efa099f29fbb4fbf5d3e83}
+
+
+grid element access helper 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row number \\
+\hline
+{\em j} & column number \\
+\hline
+{\em k} & plane number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grid element at row {\itshape i} column {\itshape j} 
+\end{DoxyReturn}
+
+
+Definition at line 1447 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a8cbde1277dbb531069c1b579cb10410f}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!operator=@{operator=}}
+\index{operator=@{operator=}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Grid}$<$ T $>$ \& {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Grid}$<$ T $>$ \&}]{grid}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a8cbde1277dbb531069c1b579cb10410f}
+
+
+grid assignement operator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & grid to be assigned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this grid after assignement 
+\end{DoxyReturn}
+
+
+Definition at line 1455 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aafc829b90cb1a0dc6ec9daf425f6b8b7}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!read@{read}}
+\index{read@{read}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_aafc829b90cb1a0dc6ec9daf425f6b8b7}
+
+
+reads grid binary file 
+
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1776 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_aafc829b90cb1a0dc6ec9daf425f6b8b7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a07cf7c55e15a35e7b258574a8cda7685}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!read\-Band@{read\-Band}}
+\index{read\-Band@{read\-Band}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{read\-Band}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::read\-Band (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classfwi_1_1grid_1_1Grid_a07cf7c55e15a35e7b258574a8cda7685}
+
+
+reads data from a grid time band (stream must be opened in binary mode) not appliable to text streams 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & input stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1919 of file Grid.\-h.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classfwi_1_1grid_1_1Grid_a07cf7c55e15a35e7b258574a8cda7685_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a9f941bf44e6f27620181cd7b406150e2}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!read\-Bin@{read\-Bin}}
+\index{read\-Bin@{read\-Bin}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{read\-Bin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::read\-Bin (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classfwi_1_1grid_1_1Grid_a9f941bf44e6f27620181cd7b406150e2}
+
+
+reads grid data from binary file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & input stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1864 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a34cc464d768d11a63f6918e6a39e0415}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!read\-Ctrl@{read\-Ctrl}}
+\index{read\-Ctrl@{read\-Ctrl}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{read\-Ctrl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::read\-Ctrl (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a34cc464d768d11a63f6918e6a39e0415}
+
+
+reads grid control file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & input stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1770 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac6262b427ff75bcfac1d118afccb1c71}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!read\-Txt@{read\-Txt}}
+\index{read\-Txt@{read\-Txt}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{read\-Txt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::read\-Txt (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classfwi_1_1grid_1_1Grid_ac6262b427ff75bcfac1d118afccb1c71}
+
+
+reads grid data from text file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & input stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1819 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a653fc4a3630fbcfc92229b42fea9ab77}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{retrieve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::retrieve (
+\begin{DoxyParamCaption}
+\item[{P\-Gconn $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a653fc4a3630fbcfc92229b42fea9ab77}
+
+
+retrieves grid from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & postgresql connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 2352 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a653fc4a3630fbcfc92229b42fea9ab77_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a8ee0c76d69626d72bc385c5cb3cdf268}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Cols@{set\-Cols}}
+\index{set\-Cols@{set\-Cols}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Cols}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Cols (
+\begin{DoxyParamCaption}
+\item[{int}]{cols}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a8ee0c76d69626d72bc385c5cb3cdf268}
+
+
+grid columns number setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cols} & new columns number value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1274 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a8ee0c76d69626d72bc385c5cb3cdf268_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a5beeb3bf022ee1dec908f76bf1b7ff5d}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Ctl\-Path@{set\-Ctl\-Path}}
+\index{set\-Ctl\-Path@{set\-Ctl\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Ctl\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Ctl\-Path (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filepath}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a5beeb3bf022ee1dec908f76bf1b7ff5d}
+
+
+grid ctl file path setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & new ctl file path value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1304 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a38c849794390871a95b8c7dbe505e00d}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Date@{set\-Date}}
+\index{set\-Date@{set\-Date}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Date}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Date (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{date}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a38c849794390871a95b8c7dbe505e00d}
+
+
+date setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & date value expressed as Y\-Y\-Y\-Y\-M\-M\-D\-D \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1286 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a38c849794390871a95b8c7dbe505e00d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac7df5d5cc5b9d184c5eceb03737bb598}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Dat\-Path@{set\-Dat\-Path}}
+\index{set\-Dat\-Path@{set\-Dat\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Dat\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Dat\-Path (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filepath}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ac7df5d5cc5b9d184c5eceb03737bb598}
+
+
+grid dat file path setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & new dat file path value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1310 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ac7df5d5cc5b9d184c5eceb03737bb598_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ab138cac6c49037fc1b911a7a7d2eb437}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Export\-Ctl\-Path@{set\-Export\-Ctl\-Path}}
+\index{set\-Export\-Ctl\-Path@{set\-Export\-Ctl\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Export\-Ctl\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Export\-Ctl\-Path (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filepath}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ab138cac6c49037fc1b911a7a7d2eb437}
+
+
+grid export ctl file path setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & new ctl export file path value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1316 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a84899af1e9496f79a7cf43459c62c9bc}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Export\-Dat\-Path@{set\-Export\-Dat\-Path}}
+\index{set\-Export\-Dat\-Path@{set\-Export\-Dat\-Path}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Export\-Dat\-Path}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Export\-Dat\-Path (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filepath}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a84899af1e9496f79a7cf43459c62c9bc}
+
+
+grid export dat file path setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & new dat export file path value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1322 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_acfa22cf6901ee071064d5dccc255f5ed}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Fields@{set\-Fields}}
+\index{set\-Fields@{set\-Fields}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Fields (
+\begin{DoxyParamCaption}
+\item[{{\bf Grid\-Fields} $\ast$}]{fields}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_acfa22cf6901ee071064d5dccc255f5ed}
+
+
+grid fields list setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fields} & new grid fields list \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1437 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a15e1fd1e87919bba2971a6fe66566f43}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-File\-Name\-Date\-Offset@{set\-File\-Name\-Date\-Offset}}
+\index{set\-File\-Name\-Date\-Offset@{set\-File\-Name\-Date\-Offset}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-File\-Name\-Date\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-File\-Name\-Date\-Offset (
+\begin{DoxyParamCaption}
+\item[{int}]{offset}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a15e1fd1e87919bba2971a6fe66566f43}
+
+
+grid file name date offset setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & file name date offset value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1364 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a4fe86c25ec42f48f70d2353721e9aeed}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-I\-O\-Format@{set\-I\-O\-Format}}
+\index{set\-I\-O\-Format@{set\-I\-O\-Format}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-I\-O\-Format}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-I\-O\-Format (
+\begin{DoxyParamCaption}
+\item[{int}]{format}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a4fe86c25ec42f48f70d2353721e9aeed}
+
+
+grid I/\-O format setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & new I/\-O format value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1370 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aefe04321df7e26e6510293846d93f983}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Rows@{set\-Rows}}
+\index{set\-Rows@{set\-Rows}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Rows}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Rows (
+\begin{DoxyParamCaption}
+\item[{int}]{rows}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_aefe04321df7e26e6510293846d93f983}
+
+
+grid rows number setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & new rows number value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1268 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_aefe04321df7e26e6510293846d93f983_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac0fe4e20d56ed5507f62c1d3e6502f68}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Slot\-Size@{set\-Slot\-Size}}
+\index{set\-Slot\-Size@{set\-Slot\-Size}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Slot\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Slot\-Size (
+\begin{DoxyParamCaption}
+\item[{int}]{slot\-Size}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ac0fe4e20d56ed5507f62c1d3e6502f68}
+
+
+grid slot size setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slot\-Size} & new grid slot size value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1431 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aff98dae08698282b2a1661810856e673}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-S\-R\-I\-D@{set\-S\-R\-I\-D}}
+\index{set\-S\-R\-I\-D@{set\-S\-R\-I\-D}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-S\-R\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-S\-R\-I\-D (
+\begin{DoxyParamCaption}
+\item[{int}]{srid}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_aff98dae08698282b2a1661810856e673}
+
+
+grid srid setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em srid} & new srid value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1419 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a9e75d99eef25e9a401aadd71ad646e08}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Start\-Time@{set\-Start\-Time}}
+\index{set\-Start\-Time@{set\-Start\-Time}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Start\-Time}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Start\-Time (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{t}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a9e75d99eef25e9a401aadd71ad646e08}
+
+
+grid start time setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & grid new start time value in Gr\-A\-D\-S format \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{http://www.iges.org/grads/}{\tt http\-://www.\-iges.\-org/grads/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1352 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a78f4a38e86a245ee62769e5f37bff1c6}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Table@{set\-Table}}
+\index{set\-Table@{set\-Table}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Table}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Table (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{table}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a78f4a38e86a245ee62769e5f37bff1c6}
+
+
+grid table name setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & new table name value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1280 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a78f4a38e86a245ee62769e5f37bff1c6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a3ed06b6c1a2ea5596c78256b2b872d81}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Time\-Band@{set\-Time\-Band}}
+\index{set\-Time\-Band@{set\-Time\-Band}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Time\-Band}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Time\-Band (
+\begin{DoxyParamCaption}
+\item[{int}]{band}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a3ed06b6c1a2ea5596c78256b2b872d81}
+
+
+grid time band setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em band} & new time band value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1340 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a19b83ec99e6280c7da1ad6b08cc3b921}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Time\-Bands\-Number@{set\-Time\-Bands\-Number}}
+\index{set\-Time\-Bands\-Number@{set\-Time\-Bands\-Number}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Time\-Bands\-Number}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Time\-Bands\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{bands\-Number}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a19b83ec99e6280c7da1ad6b08cc3b921}
+
+
+grid time bands number setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bands\-Number} & new time bands number value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1346 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_afc7b78751770989300220237fcae5256}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Time\-Increment@{set\-Time\-Increment}}
+\index{set\-Time\-Increment@{set\-Time\-Increment}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Time\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Time\-Increment (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{increment}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_afc7b78751770989300220237fcae5256}
+
+
+grid time increment setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em increment} & new time increment value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1358 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a0cdb2357ad4279db9bc990bb17eecef0}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Title@{set\-Title}}
+\index{set\-Title@{set\-Title}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Title}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Title (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{title}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a0cdb2357ad4279db9bc990bb17eecef0}
+
+
+grid title setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & new title value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1328 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a6e7dc5bcf9d26a25289a324b2d4f8926}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Type@{set\-Type}}
+\index{set\-Type@{set\-Type}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Type (
+\begin{DoxyParamCaption}
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a6e7dc5bcf9d26a25289a324b2d4f8926}
+
+
+grid type setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & new type value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1334 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a6e7dc5bcf9d26a25289a324b2d4f8926_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ad1090e0ab615bf979eb72bbc55ca6fb3}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Undef\-Value@{set\-Undef\-Value}}
+\index{set\-Undef\-Value@{set\-Undef\-Value}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Undef\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Undef\-Value (
+\begin{DoxyParamCaption}
+\item[{float}]{undef\-Value}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ad1090e0ab615bf979eb72bbc55ca6fb3}
+
+
+grid undefined value setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em undef\-Value} & new grid undefined value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1425 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ad1090e0ab615bf979eb72bbc55ca6fb3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ab063dbc1b9e23f21c27611851390de23}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Var\-Num@{set\-Var\-Num}}
+\index{set\-Var\-Num@{set\-Var\-Num}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Var\-Num}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Var\-Num (
+\begin{DoxyParamCaption}
+\item[{int}]{varnum}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ab063dbc1b9e23f21c27611851390de23}
+
+
+grid variables number setter 
+
+\begin{DoxyVerb}     Implies grid resize. Elements are preserved only if the new value for
+     <i>varNum</i> is greater than or equal to the old one.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em varnum} & new variables number value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1412 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ab063dbc1b9e23f21c27611851390de23_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a58a313c74d268e1a892877dbe97782e0}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-X\-Dir@{set\-X\-Dir}}
+\index{set\-X\-Dir@{set\-X\-Dir}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-X\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-X\-Dir (
+\begin{DoxyParamCaption}
+\item[{C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}]{x\-Dir}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a58a313c74d268e1a892877dbe97782e0}
+
+
+x\-Dir setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\-Dir} & new x\-Dir value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1400 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a58a313c74d268e1a892877dbe97782e0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a3e358d51e63374a9174fcff2206ba9d1}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-X\-Start@{set\-X\-Start}}
+\index{set\-X\-Start@{set\-X\-Start}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-X\-Start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-X\-Start (
+\begin{DoxyParamCaption}
+\item[{float}]{xstart}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a3e358d51e63374a9174fcff2206ba9d1}
+
+
+grid start x coordinate setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xstart} & new xtsrat value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1376 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a442147db5a15cb302bc640041bc42d49}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-X\-Step@{set\-X\-Step}}
+\index{set\-X\-Step@{set\-X\-Step}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-X\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-X\-Step (
+\begin{DoxyParamCaption}
+\item[{float}]{xstep}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a442147db5a15cb302bc640041bc42d49}
+
+
+grid step in x direction setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xstep} & new xstep value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1382 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a8ee82188e306a47c14813024513bd56e}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Y\-Dir@{set\-Y\-Dir}}
+\index{set\-Y\-Dir@{set\-Y\-Dir}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Y\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Y\-Dir (
+\begin{DoxyParamCaption}
+\item[{C\-O\-O\-R\-D\-I\-N\-A\-T\-E\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}]{y\-Dir}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a8ee82188e306a47c14813024513bd56e}
+
+
+y\-Dir setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\-Dir} & new y\-Dir value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1406 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a9a22e6a8991396d957900b33b9db6558}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Y\-Start@{set\-Y\-Start}}
+\index{set\-Y\-Start@{set\-Y\-Start}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Y\-Start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Y\-Start (
+\begin{DoxyParamCaption}
+\item[{float}]{ystart}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a9a22e6a8991396d957900b33b9db6558}
+
+
+grid start y coordinate setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ystart} & new ystart value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1388 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_aeb84b8b6061243f47f6cea19bda8acbc}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!set\-Y\-Step@{set\-Y\-Step}}
+\index{set\-Y\-Step@{set\-Y\-Step}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{set\-Y\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::set\-Y\-Step (
+\begin{DoxyParamCaption}
+\item[{float}]{ystep}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_aeb84b8b6061243f47f6cea19bda8acbc}
+
+
+grid step in y direction setter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ystep} & new ystep value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1394 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a4b7534ee12c05e1a492da8de36cc0751}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!skip\-Band@{skip\-Band}}
+\index{skip\-Band@{skip\-Band}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{skip\-Band}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::skip\-Band (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classfwi_1_1grid_1_1Grid_a4b7534ee12c05e1a492da8de36cc0751}
+
+
+skip the next timeband from reading 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & input stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1970 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ad440bf48610e89a053d5d1a32a28579a}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!store@{store}}
+\index{store@{store}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{store}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::store (
+\begin{DoxyParamCaption}
+\item[{P\-Gconn $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ad440bf48610e89a053d5d1a32a28579a}
+
+
+stores grid in database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & postgresql connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 2193 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ad440bf48610e89a053d5d1a32a28579a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac3ac1ccceb7696f022d39ca4e99e5b92}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!stored@{stored}}
+\index{stored@{stored}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{stored}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::stored (
+\begin{DoxyParamCaption}
+\item[{P\-Gconn $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ac3ac1ccceb7696f022d39ca4e99e5b92}
+
+
+verify if {\bfseries this} is already stored in database 
+
+\begin{DoxyVerb}     The existence check is based on the element number: if there aren't
+     elements for <b>this</b> grid he grid is not present
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & postgresql connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if grid is present else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 2160 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_ac3ac1ccceb7696f022d39ca4e99e5b92_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a099e8895d70f6ce5a5eba5ea3599704f}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!subgrid@{subgrid}}
+\index{subgrid@{subgrid}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{subgrid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::subgrid (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::string $>$}]{fieldnames, }
+\item[{{\bf Grid}$<$ T $>$ \&}]{sg}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a099e8895d70f6ce5a5eba5ea3599704f}
+
+
+Extracts a subgrid from {\itshape this} having fields contained in {\itshape fieldnames} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fieldnames} & array containing the field names to extract from {\itshape this} grid. \\
+\hline
+{\em sg} & the computed subgrid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1707 of file Grid.\-h.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a099e8895d70f6ce5a5eba5ea3599704f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a099e8895d70f6ce5a5eba5ea3599704f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_ac255d83afc8e784761cb2d46775612ee}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!update@{update}}
+\index{update@{update}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{P\-Gconn $\ast$}]{conn}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_ac255d83afc8e784761cb2d46775612ee}
+
+
+updates grid in database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & postgresql connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 2297 of file Grid.\-h.
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a3288da25df63b739516c2bf90f9131fa}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!write@{write}}
+\index{write@{write}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::write (
+\begin{DoxyParamCaption}
+\item[{ofstream \&}]{out}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a3288da25df63b739516c2bf90f9131fa}
+
+
+writes grid binary file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & output stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 2066 of file Grid.\-h.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classfwi_1_1grid_1_1Grid_a3288da25df63b739516c2bf90f9131fa_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a3288da25df63b739516c2bf90f9131fa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a115667cd2987c5972d7fa28d0f07a008}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!write\-Ctrl@{write\-Ctrl}}
+\index{write\-Ctrl@{write\-Ctrl}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{write\-Ctrl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::write\-Ctrl (
+\begin{DoxyParamCaption}
+\item[{ofstream \&}]{out}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a115667cd2987c5972d7fa28d0f07a008}
+
+
+write grid ctl file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & output stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 1980 of file Grid.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1Grid_a115667cd2987c5972d7fa28d0f07a008_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1Grid_a0f7797bf1413a6082559ce7d4561ecbc}{\index{fwi\-::grid\-::\-Grid@{fwi\-::grid\-::\-Grid}!write\-Txt@{write\-Txt}}
+\index{write\-Txt@{write\-Txt}!fwi::grid::Grid@{fwi\-::grid\-::\-Grid}}
+\subsubsection[{write\-Txt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf fwi\-::grid\-::\-Grid}$<$ T $>$\-::write\-Txt (
+\begin{DoxyParamCaption}
+\item[{ofstream \&}]{out, }
+\item[{bool}]{esri = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1Grid_a0f7797bf1413a6082559ce7d4561ecbc}
+
+
+writes grid text file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & output stream \\
+\hline
+{\em esri} & flag for E\-S\-R\-I grid format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success else false 
+\end{DoxyReturn}
+
+
+Definition at line 2103 of file Grid.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Grid_8h}{Grid.\-h}\end{DoxyCompactItemize}

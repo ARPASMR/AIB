@@ -1,0 +1,81 @@
+\hypertarget{Grid_8h}{\section{include/\-Grid.h File Reference}
+\label{Grid_8h}\index{include/\-Grid.\-h@{include/\-Grid.\-h}}
+}
+
+
+2-\/dimensions grid class  
+
+
+{\ttfamily \#include \char`\"{}fwi\-\_\-define.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Grid\-Field.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$list$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include \char`\"{}boost/multi\-\_\-array.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}boost/date\-\_\-time/posix\-\_\-time/posix\-\_\-time.\-hpp\char`\"{}}\\*
+{\ttfamily \#include $<$boost/date\-\_\-time/date\-\_\-facet.\-hpp$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+{\ttfamily \#include $<$libpq-\/fe.\-h$>$}\\*
+{\ttfamily \#include $<$ctlgen.\-hpp$>$}\\*
+Include dependency graph for Grid.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Grid_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{Grid_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classfwi_1_1grid_1_1Grid}{fwi\-::grid\-::\-Grid$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em 3-\/dimensional grid \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacefwi}{fwi}
+\begin{DoxyCompactList}\small\item\em main fwidbmgr namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacefwi_1_1grid_abdfdc4327f4ecc3613f78936637956a8}{typedef Grid$<$ Point $\ast$ $>$ {\bfseries fwi\-::grid\-::\-Point\-Grid\-\_\-t}}\label{namespacefwi_1_1grid_abdfdc4327f4ecc3613f78936637956a8}
+
+\begin{DoxyCompactList}\small\item\em standard grid with 1 Point$\ast$ variable \end{DoxyCompactList}\item 
+\hypertarget{namespacefwi_1_1grid_aae48545f47123f8a75ad2241a1fbcf9f}{typedef Grid$<$ float $>$ {\bfseries fwi\-::grid\-::\-Float1\-Grid\-\_\-t}}\label{namespacefwi_1_1grid_aae48545f47123f8a75ad2241a1fbcf9f}
+
+\begin{DoxyCompactList}\small\item\em standard grid with 1 float variable \end{DoxyCompactList}\item 
+\hypertarget{namespacefwi_1_1grid_af867b78940c103565b0b7dbc83f6ae22}{typedef Grid$<$ int $>$ {\bfseries fwi\-::grid\-::\-Int1\-Grid\-\_\-t}}\label{namespacefwi_1_1grid_af867b78940c103565b0b7dbc83f6ae22}
+
+\begin{DoxyCompactList}\small\item\em standard grid with 1 int variable \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+log4cxx\-::\-Logger\-Ptr \hyperlink{Grid_8h_a3c17f6785803757d3544d34bd6d24b01}{logger}
+\begin{DoxyCompactList}\small\item\em Application logger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+2-\/dimensions grid class 
+
+Definition in file \hyperlink{Grid_8h_source}{Grid.\-h}.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{Grid_8h_a3c17f6785803757d3544d34bd6d24b01}{\index{Grid.\-h@{Grid.\-h}!logger@{logger}}
+\index{logger@{logger}!Grid.h@{Grid.\-h}}
+\subsubsection[{logger}]{\setlength{\rightskip}{0pt plus 5cm}log4cxx\-::\-Logger\-Ptr logger}}\label{Grid_8h_a3c17f6785803757d3544d34bd6d24b01}
+
+
+Application logger. 
+
+@see log4cxx documentation at \href{http://logging.apache.org/log4cxx/}{\tt http\-://logging.\-apache.\-org/log4cxx/} 

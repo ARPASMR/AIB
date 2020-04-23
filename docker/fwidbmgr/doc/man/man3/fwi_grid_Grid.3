@@ -1,0 +1,1382 @@
+.TH "fwi::grid::Grid" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fwi::grid::Grid \- 
+.PP
+3-dimensional grid  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Grid.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef grid_t::index \fBindex\fP"
+.br
+.RI "\fItypedef helper \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrid\fP (int varnum=GRD_DEFAULT_VARNUM)"
+.br
+.RI "\fIStandard constructor. \fP"
+.ti -1c
+.RI "\fBGrid\fP (int rows, int cols, std::string table=GRD_DEFAULT_TABLE, int type=GEOGRID, float xstart=GRD_X_START, float ystart=GRD_Y_START, float xstep=GRD_X_STEP, float ystep=GRD_Y_STEP, COORDINATE_DIRECTION xdir=INCREASING, COORDINATE_DIRECTION ydir=INCREASING, int varnum=GRD_DEFAULT_VARNUM, int srid=GIS_DEFAULT_SRID, float undefValue=GRD_DEFAULT_UNDEF_VALUE, int slotSize=GRD_DEFAULT_SLOTSIZE)"
+.br
+.RI "\fIParameterized constructor. \fP"
+.ti -1c
+.RI "virtual \fB~Grid\fP ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "void \fBinitialize\fP ()"
+.br
+.RI "\fIInitialize grid memory. \fP"
+.ti -1c
+.RI "void \fBinit\fP (T t)"
+.br
+.RI "\fIset all grid elements to t \fP"
+.ti -1c
+.RI "int \fBgetRows\fP () const "
+.br
+.RI "\fIrows number getter \fP"
+.ti -1c
+.RI "int \fBgetCols\fP () const "
+.br
+.RI "\fIcols number getter \fP"
+.ti -1c
+.RI "std::string \fBgetTable\fP () const "
+.br
+.RI "\fIgrid database table name getter \fP"
+.ti -1c
+.RI "std::string \fBgetDate\fP () const "
+.br
+.RI "\fIdate getter \fP"
+.ti -1c
+.RI "std::string \fBgetGradsDate\fP () const "
+.br
+.RI "\fIdate in GrADS format getter \fP"
+.ti -1c
+.RI "std::string \fBgetCtlPath\fP () const "
+.br
+.RI "\fIgrid ctl file path getter \fP"
+.ti -1c
+.RI "std::string \fBgetDatPath\fP () const "
+.br
+.RI "\fIgrid dat file path getter \fP"
+.ti -1c
+.RI "std::string \fBgetExportDatPath\fP () const "
+.br
+.RI "\fIgrid export dat file path getter \fP"
+.ti -1c
+.RI "std::string \fBgetExportCtlPath\fP () const "
+.br
+.RI "\fIgrid export ctl file path getter \fP"
+.ti -1c
+.RI "std::string \fBgetTitle\fP () const "
+.br
+.RI "\fIgrid title getter \fP"
+.ti -1c
+.RI "int \fBgetType\fP () const "
+.br
+.RI "\fIgrid type getter \fP"
+.ti -1c
+.RI "int \fBgetTimeBand\fP () const "
+.br
+.RI "\fIgrid time band \fP"
+.ti -1c
+.RI "int \fBgetTimeBandsNumber\fP () const "
+.br
+.RI "\fIgrid time bands number \fP"
+.ti -1c
+.RI "std::string \fBgetStartTime\fP () const "
+.br
+.RI "\fIgrid start time getter \fP"
+.ti -1c
+.RI "std::string \fBgetTimeIncrement\fP () const "
+.br
+.RI "\fIgrid time increment getter \fP"
+.ti -1c
+.RI "int \fBgetFileNameDateOffset\fP () const "
+.br
+.RI "\fIgrid file name date offset getter \fP"
+.ti -1c
+.RI "int \fBgetIOFormat\fP () const "
+.br
+.RI "\fIgrid I/O format getter \fP"
+.ti -1c
+.RI "float \fBgetXStart\fP () const "
+.br
+.RI "\fIgrid start x coordinate getter \fP"
+.ti -1c
+.RI "float \fBgetXStep\fP () const "
+.br
+.RI "\fIgrid step in x direction getter \fP"
+.ti -1c
+.RI "float \fBgetYStart\fP () const "
+.br
+.RI "\fIgrid start y coordinate getter \fP"
+.ti -1c
+.RI "float \fBgetYStep\fP () const "
+.br
+.RI "\fIgrid step in y direction getter \fP"
+.ti -1c
+.RI "COORDINATE_DIRECTION \fBgetXDir\fP () const "
+.br
+.RI "\fIxDir getter \fP"
+.ti -1c
+.RI "COORDINATE_DIRECTION \fBgetYDir\fP () const "
+.br
+.RI "\fIyDir getter \fP"
+.ti -1c
+.RI "int \fBgetVarNum\fP () const "
+.br
+.RI "\fIvariables number getter \fP"
+.ti -1c
+.RI "int \fBgetSRID\fP () const "
+.br
+.RI "\fIgrid srid getter \fP"
+.ti -1c
+.RI "float \fBgetUndefValue\fP () const "
+.br
+.RI "\fIgrid undefindined value getter \fP"
+.ti -1c
+.RI "int \fBgetSlotSize\fP () const "
+.br
+.RI "\fIgrid slot size getter \fP"
+.ti -1c
+.RI "grid_t \fBgetData\fP ()"
+.br
+.RI "\fIgrid internal data pointer getter \fP"
+.ti -1c
+.RI "\fBGridFields\fP * \fBgetFields\fP () const "
+.br
+.RI "\fIgrid fields list getter \fP"
+.ti -1c
+.RI "int \fBgetElementsCount\fP ()"
+.br
+.RI "\fIgets the element count as rows x cols \fP"
+.ti -1c
+.RI "int \fBgetTotalElementsCount\fP ()"
+.br
+.RI "\fIgets the total element count as rows x cols x varNum \fP"
+.ti -1c
+.RI "void \fBsetRows\fP (int rows)"
+.br
+.RI "\fIgrid rows number setter \fP"
+.ti -1c
+.RI "void \fBsetCols\fP (int cols)"
+.br
+.RI "\fIgrid columns number setter \fP"
+.ti -1c
+.RI "void \fBsetTable\fP (std::string table)"
+.br
+.RI "\fIgrid table name setter \fP"
+.ti -1c
+.RI "void \fBsetCtlPath\fP (std::string filepath)"
+.br
+.RI "\fIgrid ctl file path setter \fP"
+.ti -1c
+.RI "void \fBsetDatPath\fP (std::string filepath)"
+.br
+.RI "\fIgrid dat file path setter \fP"
+.ti -1c
+.RI "void \fBsetExportCtlPath\fP (std::string filepath)"
+.br
+.RI "\fIgrid export ctl file path setter \fP"
+.ti -1c
+.RI "void \fBsetExportDatPath\fP (std::string filepath)"
+.br
+.RI "\fIgrid export dat file path setter \fP"
+.ti -1c
+.RI "void \fBsetTitle\fP (std::string title)"
+.br
+.RI "\fIgrid title setter \fP"
+.ti -1c
+.RI "void \fBsetType\fP (int type)"
+.br
+.RI "\fIgrid type setter \fP"
+.ti -1c
+.RI "void \fBsetTimeBand\fP (int band)"
+.br
+.RI "\fIgrid time band setter \fP"
+.ti -1c
+.RI "void \fBsetTimeBandsNumber\fP (int bandsNumber)"
+.br
+.RI "\fIgrid time bands number setter \fP"
+.ti -1c
+.RI "void \fBsetStartTime\fP (std::string t)"
+.br
+.RI "\fIgrid start time setter \fP"
+.ti -1c
+.RI "void \fBsetTimeIncrement\fP (std::string increment)"
+.br
+.RI "\fIgrid time increment setter \fP"
+.ti -1c
+.RI "void \fBsetFileNameDateOffset\fP (int offset)"
+.br
+.RI "\fIgrid file name date offset setter \fP"
+.ti -1c
+.RI "void \fBsetIOFormat\fP (int format)"
+.br
+.RI "\fIgrid I/O format setter \fP"
+.ti -1c
+.RI "void \fBsetXStart\fP (float xstart)"
+.br
+.RI "\fIgrid start x coordinate setter \fP"
+.ti -1c
+.RI "void \fBsetXStep\fP (float xstep)"
+.br
+.RI "\fIgrid step in x direction setter \fP"
+.ti -1c
+.RI "void \fBsetYStart\fP (float ystart)"
+.br
+.RI "\fIgrid start y coordinate setter \fP"
+.ti -1c
+.RI "void \fBsetYStep\fP (float ystep)"
+.br
+.RI "\fIgrid step in y direction setter \fP"
+.ti -1c
+.RI "void \fBsetXDir\fP (COORDINATE_DIRECTION xDir)"
+.br
+.RI "\fIxDir setter \fP"
+.ti -1c
+.RI "void \fBsetYDir\fP (COORDINATE_DIRECTION yDir)"
+.br
+.RI "\fIyDir setter \fP"
+.ti -1c
+.RI "void \fBsetVarNum\fP (int varnum)"
+.br
+.RI "\fIgrid variables number setter \fP"
+.ti -1c
+.RI "void \fBsetSRID\fP (int srid)"
+.br
+.RI "\fIgrid srid setter \fP"
+.ti -1c
+.RI "void \fBsetUndefValue\fP (float undefValue)"
+.br
+.RI "\fIgrid undefined value setter \fP"
+.ti -1c
+.RI "void \fBsetSlotSize\fP (int slotSize)"
+.br
+.RI "\fIgrid slot size setter \fP"
+.ti -1c
+.RI "void \fBsetFields\fP (\fBGridFields\fP *fields)"
+.br
+.RI "\fIgrid fields list setter \fP"
+.ti -1c
+.RI "T & \fBoperator()\fP (int i, int j, int k)"
+.br
+.RI "\fIgrid element access helper \fP"
+.ti -1c
+.RI "void \fBraw_dump\fP ()"
+.br
+.RI "\fIraw dump helper \fP"
+.ti -1c
+.RI "bool \fBconfigure\fP (std::string name, Config &cfg)"
+.br
+.RI "\fIconfigure grid from config file \fP"
+.ti -1c
+.RI "bool \fBmerge\fP (\fBGrid\fP< T > &other)"
+.br
+.RI "\fImerges \fIother\fP whith \fBthis\fP \fP"
+.ti -1c
+.RI "bool \fBreadCtrl\fP (ifstream &in)"
+.br
+.RI "\fIreads grid control file \fP"
+.ti -1c
+.RI "bool \fBread\fP ()"
+.br
+.RI "\fIreads grid binary file \fP"
+.ti -1c
+.RI "bool \fBwriteCtrl\fP (ofstream &out)"
+.br
+.RI "\fIwrite grid ctl file \fP"
+.ti -1c
+.RI "bool \fBwrite\fP (ofstream &out)"
+.br
+.RI "\fIwrites grid binary file \fP"
+.ti -1c
+.RI "bool \fBwriteTxt\fP (ofstream &out, bool esri=false)"
+.br
+.RI "\fIwrites grid text file \fP"
+.ti -1c
+.RI "bool \fBstored\fP (PGconn *conn)"
+.br
+.RI "\fIverify if \fBthis\fP is already stored in database \fP"
+.ti -1c
+.RI "bool \fBstore\fP (PGconn *conn)"
+.br
+.RI "\fIstores grid in database \fP"
+.ti -1c
+.RI "bool \fBinsert\fP (PGconn *conn)"
+.br
+.RI "\fIinsert grid in database \fP"
+.ti -1c
+.RI "bool \fBupdate\fP (PGconn *conn)"
+.br
+.RI "\fIupdates grid in database \fP"
+.ti -1c
+.RI "bool \fBretrieve\fP (PGconn *conn)"
+.br
+.RI "\fIretrieves grid from database \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBreadTxt\fP (ifstream &in)"
+.br
+.RI "\fIreads grid data from text file \fP"
+.ti -1c
+.RI "bool \fBreadBin\fP (ifstream &in)"
+.br
+.RI "\fIreads grid data from binary file \fP"
+.ti -1c
+.RI "bool \fBreadBand\fP (ifstream &in)"
+.br
+.RI "\fIreads data from a grid time band (stream must be opened in binary mode) not appliable to text streams \fP"
+.ti -1c
+.RI "void \fBskipBand\fP (ifstream &in)"
+.br
+.RI "\fIskip the next timeband from reading \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "ostream & \fBoperator<<\fP (ostream &stream, Point &p)"
+.br
+.RI "\fIoutput stream operator for Point data type \fP"
+.ti -1c
+.RI "ostream & \fBoperator<<\fP (ostream &stream, Point *p)"
+.br
+.RI "\fIoutput stream operator for Point* data type \fP"
+.ti -1c
+.RI "istream & \fBoperator>>\fP (istream &stream, Point &p)"
+.br
+.RI "\fIinput stream operator for Point data type \fP"
+.ti -1c
+.RI "istream & \fBoperator>>\fP (istream &stream, Point *p)"
+.br
+.RI "\fIinput stream operator for Point* data type \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T> class fwi::grid::Grid< T >"
+3-dimensional grid 
+.PP
+Definition at line 70 of file Grid.h.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBfwi::grid::Grid\fP< T >::\fBGrid\fP (int rows, int cols, std::string table = \fCGRD_DEFAULT_TABLE\fP, int type = \fCGEOGRID\fP, float xstart = \fCGRD_X_START\fP, float ystart = \fCGRD_Y_START\fP, float xstep = \fCGRD_X_STEP\fP, float ystep = \fCGRD_Y_STEP\fP, COORDINATE_DIRECTION xdir = \fCINCREASING\fP, COORDINATE_DIRECTION ydir = \fCINCREASING\fP, int varnum = \fCGRD_DEFAULT_VARNUM\fP, int srid = \fCGIS_DEFAULT_SRID\fP, float undefValue = \fCGRD_DEFAULT_UNDEF_VALUE\fP, int slotSize = \fCGRD_DEFAULT_SLOTSIZE\fP)\fC [inline]\fP"
+.PP
+Parameterized constructor. \fBParameters:\fP
+.RS 4
+\fIrows\fP rows number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcols\fP columns number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP grid table name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP grid type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxstart\fP grid start x coordinate 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIystart\fP grid y start coordinate 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxstep\fP grid step in x direction 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIystep\fP grid step in y direction 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxdir\fP x coordinate changing direction 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIydir\fP y coordinate changing direction 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvarnum\fP variables number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrid\fP grid srid 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIundefValue\fP undefined value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslotSize\fP slot size 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 996 of file Grid.h.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::configure (std::string name, Config & cfg)\fC [inline]\fP"
+.PP
+configure grid from config file \fBParameters:\fP
+.RS 4
+\fIname\fP grid name as present in config file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcfg\fP configuration class from libconfig++ 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+libconfig++ documentation at http://www.hyperrealm.com/libconfig/ 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1532 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getCols () const\fC [inline]\fP"
+.PP
+cols number getter \fBReturns:\fP
+.RS 4
+grid cols number 
+.RE
+.PP
+
+.PP
+Definition at line 1051 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getCtlPath () const\fC [inline]\fP"
+.PP
+grid ctl file path getter \fBReturns:\fP
+.RS 4
+grid ctl file full path 
+.RE
+.PP
+
+.PP
+Definition at line 1112 of file Grid.h.
+.SS "template<typename T > \fBGrid\fP< T >::grid_t \fBfwi::grid::Grid\fP< T >::getData ()\fC [inline]\fP"
+.PP
+grid internal data pointer getter \fBReturns:\fP
+.RS 4
+internal data representation 
+.RE
+.PP
+
+.PP
+Definition at line 1244 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getDate () const\fC [inline]\fP"
+.PP
+date getter \fBReturns:\fP
+.RS 4
+date current value 
+.RE
+.PP
+
+.PP
+Definition at line 1063 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getDatPath () const\fC [inline]\fP"
+.PP
+grid dat file path getter \fBReturns:\fP
+.RS 4
+grid datfile full path 
+.RE
+.PP
+
+.PP
+Definition at line 1118 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getElementsCount ()\fC [inline]\fP"
+.PP
+gets the element count as rows x cols \fBReturns:\fP
+.RS 4
+element number only x and y dimensions 
+.RE
+.PP
+
+.PP
+Definition at line 1256 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getExportCtlPath () const\fC [inline]\fP"
+.PP
+grid export ctl file path getter \fBReturns:\fP
+.RS 4
+grid export ctl file full path 
+.RE
+.PP
+
+.PP
+Definition at line 1124 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getExportDatPath () const\fC [inline]\fP"
+.PP
+grid export dat file path getter \fBReturns:\fP
+.RS 4
+grid export datfile full path 
+.RE
+.PP
+
+.PP
+Definition at line 1130 of file Grid.h.
+.SS "template<typename T > \fBGridFields\fP * \fBfwi::grid::Grid\fP< T >::getFields () const\fC [inline]\fP"
+.PP
+grid fields list getter \fBReturns:\fP
+.RS 4
+grid fields list 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGridFields\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1250 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getFileNameDateOffset () const\fC [inline]\fP"
+.PP
+grid file name date offset getter \fBReturns:\fP
+.RS 4
+the grid file name date offset in days (+/-) 
+.RE
+.PP
+
+.PP
+Definition at line 1172 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getGradsDate () const\fC [inline]\fP"
+.PP
+date in GrADS format getter \fBReturns:\fP
+.RS 4
+date current value 
+.RE
+.PP
+
+.PP
+Definition at line 1084 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getIOFormat () const\fC [inline]\fP"
+.PP
+grid I/O format getter \fBReturns:\fP
+.RS 4
+grid I/O format 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBfwi_define.h\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1178 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getRows () const\fC [inline]\fP"
+.PP
+rows number getter \fBReturns:\fP
+.RS 4
+grid rows number 
+.RE
+.PP
+
+.PP
+Definition at line 1045 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getSlotSize () const\fC [inline]\fP"
+.PP
+grid slot size getter \fBReturns:\fP
+.RS 4
+grid slot size 
+.RE
+.PP
+
+.PP
+Definition at line 1238 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getSRID () const\fC [inline]\fP"
+.PP
+grid srid getter \fBReturns:\fP
+.RS 4
+grid srid 
+.RE
+.PP
+
+.PP
+Definition at line 1226 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getStartTime () const\fC [inline]\fP"
+.PP
+grid start time getter \fBReturns:\fP
+.RS 4
+the grid start time in GrADS format 
+.RE
+.PP
+
+.PP
+Definition at line 1160 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getTable () const\fC [inline]\fP"
+.PP
+grid database table name getter \fBReturns:\fP
+.RS 4
+table name 
+.RE
+.PP
+
+.PP
+Definition at line 1057 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getTimeBand () const\fC [inline]\fP"
+.PP
+grid time band \fBReturns:\fP
+.RS 4
+the grid time band 
+.RE
+.PP
+
+.PP
+Definition at line 1148 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getTimeBandsNumber () const\fC [inline]\fP"
+.PP
+grid time bands number \fBReturns:\fP
+.RS 4
+the grid time bands number 
+.RE
+.PP
+
+.PP
+Definition at line 1154 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getTimeIncrement () const\fC [inline]\fP"
+.PP
+grid time increment getter \fBReturns:\fP
+.RS 4
+the grid time increment in GrADS format 
+.RE
+.PP
+
+.PP
+Definition at line 1166 of file Grid.h.
+.SS "template<typename T > std::string \fBfwi::grid::Grid\fP< T >::getTitle () const\fC [inline]\fP"
+.PP
+grid title getter \fBReturns:\fP
+.RS 4
+the grid title as in grib files 
+.RE
+.PP
+
+.PP
+Definition at line 1136 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getTotalElementsCount ()\fC [inline]\fP"
+.PP
+gets the total element count as rows x cols x varNum \fBReturns:\fP
+.RS 4
+element total number 
+.RE
+.PP
+
+.PP
+Definition at line 1262 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getType () const\fC [inline]\fP"
+.PP
+grid type getter \fBReturns:\fP
+.RS 4
+grid type 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBfwi_define.h\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1142 of file Grid.h.
+.SS "template<typename T > float \fBfwi::grid::Grid\fP< T >::getUndefValue () const\fC [inline]\fP"
+.PP
+grid undefindined value getter \fBReturns:\fP
+.RS 4
+grid undefined value 
+.RE
+.PP
+
+.PP
+Definition at line 1232 of file Grid.h.
+.SS "template<typename T > int \fBfwi::grid::Grid\fP< T >::getVarNum () const\fC [inline]\fP"
+.PP
+variables number getter \fBReturns:\fP
+.RS 4
+variables number 
+.RE
+.PP
+
+.PP
+Definition at line 1220 of file Grid.h.
+.SS "template<typename T > COORDINATE_DIRECTION \fBfwi::grid::Grid\fP< T >::getXDir () const\fC [inline]\fP"
+.PP
+xDir getter \fBReturns:\fP
+.RS 4
+current value for xDir 
+.RE
+.PP
+
+.PP
+Definition at line 1208 of file Grid.h.
+.SS "template<typename T > float \fBfwi::grid::Grid\fP< T >::getXStart () const\fC [inline]\fP"
+.PP
+grid start x coordinate getter \fBReturns:\fP
+.RS 4
+grid start x coordinate 
+.RE
+.PP
+
+.PP
+Definition at line 1184 of file Grid.h.
+.SS "template<typename T > float \fBfwi::grid::Grid\fP< T >::getXStep () const\fC [inline]\fP"
+.PP
+grid step in x direction getter \fBReturns:\fP
+.RS 4
+grid step in x direction 
+.RE
+.PP
+
+.PP
+Definition at line 1190 of file Grid.h.
+.SS "template<typename T > COORDINATE_DIRECTION \fBfwi::grid::Grid\fP< T >::getYDir () const\fC [inline]\fP"
+.PP
+yDir getter \fBReturns:\fP
+.RS 4
+current value for yDir 
+.RE
+.PP
+
+.PP
+Definition at line 1214 of file Grid.h.
+.SS "template<typename T > float \fBfwi::grid::Grid\fP< T >::getYStart () const\fC [inline]\fP"
+.PP
+grid start y coordinate getter \fBReturns:\fP
+.RS 4
+grid start y coordinate 
+.RE
+.PP
+
+.PP
+Definition at line 1196 of file Grid.h.
+.SS "template<typename T > float \fBfwi::grid::Grid\fP< T >::getYStep () const\fC [inline]\fP"
+.PP
+grid step in y direction getter \fBReturns:\fP
+.RS 4
+grid step in y direction 
+.RE
+.PP
+
+.PP
+Definition at line 1202 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::insert (PGconn * conn)\fC [inline]\fP"
+.PP
+insert grid in database \fBParameters:\fP
+.RS 4
+\fIconn\fP postgresql connection 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2200 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::merge (\fBGrid\fP< T > & other)\fC [inline]\fP"
+.PP
+merges \fIother\fP whith \fBthis\fP \fBParameters:\fP
+.RS 4
+\fIother\fP second grid
+.RE
+.PP
+merge can be done only if rows == other.getRows() && cols == other.getCols() and xStart == other.getXStart() && yStart == other.getYStart() and xStep == other.getXStep() && yStep == other.getYStep() and type == other.getType() && srid == other.getSRID() and slotSize == other.getSlotSize() && undefValue == other.getUndefValue() and table == other.getTable()
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+
+.PP
+Definition at line 1652 of file Grid.h.
+.SS "template<typename T > T & \fBfwi::grid::Grid\fP< T >::operator() (int i, int j, int k)\fC [inline]\fP"
+.PP
+grid element access helper \fBParameters:\fP
+.RS 4
+\fIi\fP row number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIj\fP column number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP plane number 
+.PP
+\fBReturns:\fP
+.RS 4
+grid element at row \fIi\fP column \fIj\fP 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1447 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::read ()\fC [inline]\fP"
+.PP
+reads grid binary file \fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+
+.PP
+Definition at line 1776 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::readBand (ifstream & in)\fC [inline, protected]\fP"
+.PP
+reads data from a grid time band (stream must be opened in binary mode) not appliable to text streams \fBParameters:\fP
+.RS 4
+\fIin\fP input stream 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1919 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::readBin (ifstream & in)\fC [inline, protected]\fP"
+.PP
+reads grid data from binary file \fBParameters:\fP
+.RS 4
+\fIin\fP input stream 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1864 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::readCtrl (ifstream & in)\fC [inline]\fP"
+.PP
+reads grid control file \fBParameters:\fP
+.RS 4
+\fIin\fP input stream 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1770 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::readTxt (ifstream & in)\fC [inline, protected]\fP"
+.PP
+reads grid data from text file \fBParameters:\fP
+.RS 4
+\fIin\fP input stream 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1819 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::retrieve (PGconn * conn)\fC [inline]\fP"
+.PP
+retrieves grid from database \fBParameters:\fP
+.RS 4
+\fIconn\fP postgresql connection 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2337 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setCols (int cols)\fC [inline]\fP"
+.PP
+grid columns number setter \fBParameters:\fP
+.RS 4
+\fIcols\fP new columns number value 
+.RE
+.PP
+
+.PP
+Definition at line 1274 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setCtlPath (std::string filepath)\fC [inline]\fP"
+.PP
+grid ctl file path setter \fBParameters:\fP
+.RS 4
+\fIfilepath\fP new ctl file path value 
+.RE
+.PP
+
+.PP
+Definition at line 1304 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setDatPath (std::string filepath)\fC [inline]\fP"
+.PP
+grid dat file path setter \fBParameters:\fP
+.RS 4
+\fIfilepath\fP new dat file path value 
+.RE
+.PP
+
+.PP
+Definition at line 1310 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setExportCtlPath (std::string filepath)\fC [inline]\fP"
+.PP
+grid export ctl file path setter \fBParameters:\fP
+.RS 4
+\fIfilepath\fP new ctl export file path value 
+.RE
+.PP
+
+.PP
+Definition at line 1316 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setExportDatPath (std::string filepath)\fC [inline]\fP"
+.PP
+grid export dat file path setter \fBParameters:\fP
+.RS 4
+\fIfilepath\fP new dat export file path value 
+.RE
+.PP
+
+.PP
+Definition at line 1322 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setFields (\fBGridFields\fP * fields)\fC [inline]\fP"
+.PP
+grid fields list setter \fBParameters:\fP
+.RS 4
+\fIfields\fP new grid fields list 
+.RE
+.PP
+
+.PP
+Definition at line 1437 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setFileNameDateOffset (int offset)\fC [inline]\fP"
+.PP
+grid file name date offset setter \fBParameters:\fP
+.RS 4
+\fIoffset\fP file name date offset value 
+.RE
+.PP
+
+.PP
+Definition at line 1364 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setIOFormat (int format)\fC [inline]\fP"
+.PP
+grid I/O format setter \fBParameters:\fP
+.RS 4
+\fIformat\fP new I/O format value 
+.RE
+.PP
+
+.PP
+Definition at line 1370 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setRows (int rows)\fC [inline]\fP"
+.PP
+grid rows number setter \fBParameters:\fP
+.RS 4
+\fIrows\fP new rows number value 
+.RE
+.PP
+
+.PP
+Definition at line 1268 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setSlotSize (int slotSize)\fC [inline]\fP"
+.PP
+grid slot size setter \fBParameters:\fP
+.RS 4
+\fIslotSize\fP new grid slot size value 
+.RE
+.PP
+
+.PP
+Definition at line 1431 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setSRID (int srid)\fC [inline]\fP"
+.PP
+grid srid setter \fBParameters:\fP
+.RS 4
+\fIsrid\fP new srid value 
+.RE
+.PP
+
+.PP
+Definition at line 1419 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setStartTime (std::string t)\fC [inline]\fP"
+.PP
+grid start time setter \fBParameters:\fP
+.RS 4
+\fIt\fP grid new start time value in GrADS format 
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.iges.org/grads/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1352 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setTable (std::string table)\fC [inline]\fP"
+.PP
+grid table name setter \fBParameters:\fP
+.RS 4
+\fItable\fP new table name value 
+.RE
+.PP
+
+.PP
+Definition at line 1280 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setTimeBand (int band)\fC [inline]\fP"
+.PP
+grid time band setter \fBParameters:\fP
+.RS 4
+\fIband\fP new time band value 
+.RE
+.PP
+
+.PP
+Definition at line 1340 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setTimeBandsNumber (int bandsNumber)\fC [inline]\fP"
+.PP
+grid time bands number setter \fBParameters:\fP
+.RS 4
+\fIbandsNumber\fP new time bands number value 
+.RE
+.PP
+
+.PP
+Definition at line 1346 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setTimeIncrement (std::string increment)\fC [inline]\fP"
+.PP
+grid time increment setter \fBParameters:\fP
+.RS 4
+\fIincrement\fP new time increment value 
+.RE
+.PP
+
+.PP
+Definition at line 1358 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setTitle (std::string title)\fC [inline]\fP"
+.PP
+grid title setter \fBParameters:\fP
+.RS 4
+\fItitle\fP new title value 
+.RE
+.PP
+
+.PP
+Definition at line 1328 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setType (int type)\fC [inline]\fP"
+.PP
+grid type setter \fBParameters:\fP
+.RS 4
+\fItype\fP new type value 
+.RE
+.PP
+
+.PP
+Definition at line 1334 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setUndefValue (float undefValue)\fC [inline]\fP"
+.PP
+grid undefined value setter \fBParameters:\fP
+.RS 4
+\fIundefValue\fP new grid undefined value 
+.RE
+.PP
+
+.PP
+Definition at line 1425 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setVarNum (int varnum)\fC [inline]\fP"
+.PP
+grid variables number setter Implies grid resize. Elements are preserved only if the new value for \fIvarNum\fP is greater than or equal to the old one.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvarnum\fP new variables number value 
+.RE
+.PP
+
+.PP
+Definition at line 1412 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setXDir (COORDINATE_DIRECTION xDir)\fC [inline]\fP"
+.PP
+xDir setter \fBParameters:\fP
+.RS 4
+\fIxDir\fP new xDir value 
+.RE
+.PP
+
+.PP
+Definition at line 1400 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setXStart (float xstart)\fC [inline]\fP"
+.PP
+grid start x coordinate setter \fBParameters:\fP
+.RS 4
+\fIxstart\fP new xtsrat value 
+.RE
+.PP
+
+.PP
+Definition at line 1376 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setXStep (float xstep)\fC [inline]\fP"
+.PP
+grid step in x direction setter \fBParameters:\fP
+.RS 4
+\fIxstep\fP new xstep value 
+.RE
+.PP
+
+.PP
+Definition at line 1382 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setYDir (COORDINATE_DIRECTION yDir)\fC [inline]\fP"
+.PP
+yDir setter \fBParameters:\fP
+.RS 4
+\fIyDir\fP new yDir value 
+.RE
+.PP
+
+.PP
+Definition at line 1406 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setYStart (float ystart)\fC [inline]\fP"
+.PP
+grid start y coordinate setter \fBParameters:\fP
+.RS 4
+\fIystart\fP new ystart value 
+.RE
+.PP
+
+.PP
+Definition at line 1388 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::setYStep (float ystep)\fC [inline]\fP"
+.PP
+grid step in y direction setter \fBParameters:\fP
+.RS 4
+\fIystep\fP new ystep value 
+.RE
+.PP
+
+.PP
+Definition at line 1394 of file Grid.h.
+.SS "template<typename T > void \fBfwi::grid::Grid\fP< T >::skipBand (ifstream & in)\fC [inline, protected]\fP"
+.PP
+skip the next timeband from reading \fBParameters:\fP
+.RS 4
+\fIin\fP input stream 
+.RE
+.PP
+
+.PP
+Definition at line 1969 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::store (PGconn * conn)\fC [inline]\fP"
+.PP
+stores grid in database \fBParameters:\fP
+.RS 4
+\fIconn\fP postgresql connection 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2180 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::stored (PGconn * conn)\fC [inline]\fP"
+.PP
+verify if \fBthis\fP is already stored in database The existence check is based on the element number: if there aren't elements for \fBthis\fP grid he grid is not present
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP postgresql connection 
+.PP
+\fBReturns:\fP
+.RS 4
+true if grid is present else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2149 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::update (PGconn * conn)\fC [inline]\fP"
+.PP
+updates grid in database \fBParameters:\fP
+.RS 4
+\fIconn\fP postgresql connection 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2283 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::write (ofstream & out)\fC [inline]\fP"
+.PP
+writes grid binary file \fBParameters:\fP
+.RS 4
+\fIout\fP output stream 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2057 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::writeCtrl (ofstream & out)\fC [inline]\fP"
+.PP
+write grid ctl file \fBParameters:\fP
+.RS 4
+\fIout\fP output stream 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1979 of file Grid.h.
+.SS "template<typename T > bool \fBfwi::grid::Grid\fP< T >::writeTxt (ofstream & out, bool esri = \fCfalse\fP)\fC [inline]\fP"
+.PP
+writes grid text file \fBParameters:\fP
+.RS 4
+\fIout\fP output stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIesri\fP flag for ESRI grid format 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success else false 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2093 of file Grid.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

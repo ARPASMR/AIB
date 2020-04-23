@@ -1,0 +1,74 @@
+.TH "include/GridField.h" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/GridField.h \- 
+.PP
+Grid field description class.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'fwi_define.h'\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <vector>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBfwi::grid::GridField\fP"
+.br
+.RI "\fIgrid field descriptor class \fP"
+.ti -1c
+.RI "class \fBfwi::grid::GridFields\fP"
+.br
+.RI "\fIFields list class. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBfwi\fP"
+.br
+.PP
+
+.RI "\fImain fwidbmgr namespace \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef vector< int > \fBfwi::grid::levels_t\fP"
+.br
+.RI "\fIGrADS var levels. \fP"
+.ti -1c
+.RI "typedef vector< GridField * > \fBfwi::grid::fields_t\fP"
+.br
+.RI "\fIshortcut for list<GridField*> \fP"
+.ti -1c
+.RI "typedef vector< GridField * >::iterator \fBfwi::grid::fields_iterator_t\fP"
+.br
+.RI "\fIshortcut for list<GridField*>::iterator \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBGRID_VALUE_TYPE\fP { \fBfwi::grid::INTEGER\fP =  0, \fBfwi::grid::FLOAT\fP =  1, \fBfwi::grid::STRING\fP =  2, \fBfwi::grid::POINT\fP =  3 }"
+.br
+.RI "\fIvalue type to be stored in grid \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Grid field description class. 
+
+
+.PP
+Definition in file \fBGridField.h\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

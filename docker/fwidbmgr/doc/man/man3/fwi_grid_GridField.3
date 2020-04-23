@@ -1,0 +1,330 @@
+.TH "fwi::grid::GridField" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fwi::grid::GridField \- 
+.PP
+grid field descriptor class  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <GridField.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGridField\fP ()"
+.br
+.RI "\fIStandard constructor. \fP"
+.ti -1c
+.RI "\fBGridField\fP (int position, string name, string field_name, levels_t levels, int units, string description, GRID_VALUE_TYPE type=FLOAT)"
+.br
+.RI "\fIParameterized constructor. \fP"
+.ti -1c
+.RI "\fBGridField\fP (const \fBGridField\fP &field)"
+.br
+.RI "\fICopy constructor. \fP"
+.ti -1c
+.RI "virtual \fB~GridField\fP ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "int \fBgetPosition\fP () const "
+.br
+.RI "\fIposition getter \fP"
+.ti -1c
+.RI "string \fBgetName\fP () const "
+.br
+.RI "\fIname getter \fP"
+.ti -1c
+.RI "string \fBgetFieldName\fP () const "
+.br
+.RI "\fIfield name getter \fP"
+.ti -1c
+.RI "levels_t \fBgetLevels\fP () const "
+.br
+.RI "\fIlevels getter \fP"
+.ti -1c
+.RI "int \fBgetUnits\fP () const "
+.br
+.RI "\fIunits getter \fP"
+.ti -1c
+.RI "string \fBgetDescription\fP () const "
+.br
+.RI "\fIdescription getter \fP"
+.ti -1c
+.RI "GRID_VALUE_TYPE \fBgetType\fP () const "
+.br
+.RI "\fItype getter \fP"
+.ti -1c
+.RI "void \fBsetName\fP (string name)"
+.br
+.RI "\fIname setter \fP"
+.ti -1c
+.RI "void \fBsetLevels\fP (levels_t levels)"
+.br
+.RI "\fIlevels setter \fP"
+.ti -1c
+.RI "void \fBsetUnits\fP (int units)"
+.br
+.RI "\fIunits setter \fP"
+.ti -1c
+.RI "void \fBsetDescription\fP (string description)"
+.br
+.RI "\fIdescription setter \fP"
+.ti -1c
+.RI "void \fBsetType\fP (GRID_VALUE_TYPE type)"
+.br
+.RI "\fItype setter \fP"
+.ti -1c
+.RI "\fBGridField\fP & \fBoperator=\fP (\fBGridField\fP &field)"
+.br
+.RI "\fIassignment operator \fP"
+.ti -1c
+.RI "\fBGridField\fP & \fBoperator=\fP (\fBGridField\fP *field)"
+.br
+.RI "\fIassignment operator \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBGridField\fP &field)"
+.br
+.RI "\fIequality operator \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBGridField\fP *field)"
+.br
+.RI "\fIequality operator \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "ostream & \fBoperator<<\fP (ostream &stream, \fBGridField\fP gfd)"
+.br
+.RI "\fIoutput stream operator \fP"
+.ti -1c
+.RI "ostream & \fBoperator<<\fP (ostream &stream, \fBGridField\fP *gfd)"
+.br
+.RI "\fIoutput stream operator \fP"
+.ti -1c
+.RI "istream & \fBoperator>>\fP (istream &stream, GRID_VALUE_TYPE &t)"
+.br
+.RI "\fIinput stream operator \fP"
+.ti -1c
+.RI "istream & \fBoperator>>\fP (istream &stream, \fBGridField\fP &gfd)"
+.br
+.RI "\fIinput stream operator \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+grid field descriptor class 
+.PP
+Definition at line 48 of file GridField.h.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "fwi::grid::GridField::GridField (int position, string name, string field_name, levels_t levels, int units, string description, GRID_VALUE_TYPE type = \fCFLOAT\fP)"
+.PP
+Parameterized constructor. \fBParameters:\fP
+.RS 4
+\fIposition\fP position in field list 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP field name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfield_name\fP database field name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevels\fP levels vector 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIunits\fP GrADS units tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdescription\fP field description 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP field type 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 31 of file GridField.cpp.
+.SH "Member Function Documentation"
+.PP 
+.SS "string fwi::grid::GridField::getDescription () const"
+.PP
+description getter \fBReturns:\fP
+.RS 4
+description 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file GridField.cpp.
+.SS "string fwi::grid::GridField::getFieldName () const"
+.PP
+field name getter \fBReturns:\fP
+.RS 4
+field name 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file GridField.cpp.
+.SS "levels_t fwi::grid::GridField::getLevels () const"
+.PP
+levels getter \fBReturns:\fP
+.RS 4
+levels 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file GridField.cpp.
+.SS "string fwi::grid::GridField::getName () const"
+.PP
+name getter \fBReturns:\fP
+.RS 4
+field name 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file GridField.cpp.
+.SS "int fwi::grid::GridField::getPosition () const"
+.PP
+position getter \fBReturns:\fP
+.RS 4
+field position 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file GridField.cpp.
+.SS "GRID_VALUE_TYPE fwi::grid::GridField::getType () const"
+.PP
+type getter \fBReturns:\fP
+.RS 4
+field type 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file GridField.cpp.
+.SS "int fwi::grid::GridField::getUnits () const"
+.PP
+units getter \fBReturns:\fP
+.RS 4
+units 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file GridField.cpp.
+.SS "\fBGridField\fP & fwi::grid::GridField::operator= (\fBGridField\fP * field)"
+.PP
+assignment operator \fBParameters:\fP
+.RS 4
+\fIfield\fP object to be assigned 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBthis\fP after assignment 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 146 of file GridField.cpp.
+.SS "\fBGridField\fP & fwi::grid::GridField::operator= (\fBGridField\fP & field)"
+.PP
+assignment operator \fBParameters:\fP
+.RS 4
+\fIfield\fP assigned value 
+.PP
+\fBReturns:\fP
+.RS 4
+the changed object 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 130 of file GridField.cpp.
+.SS "bool fwi::grid::GridField::operator== (\fBGridField\fP * field)"
+.PP
+equality operator \fBParameters:\fP
+.RS 4
+\fIfield\fP object to test for equality 
+.PP
+\fBReturns:\fP
+.RS 4
+true on equality else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 170 of file GridField.cpp.
+.SS "bool fwi::grid::GridField::operator== (\fBGridField\fP & field)"
+.PP
+equality operator \fBParameters:\fP
+.RS 4
+\fIfield\fP object to test for equality 
+.PP
+\fBReturns:\fP
+.RS 4
+true on equality else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 164 of file GridField.cpp.
+.SS "void fwi::grid::GridField::setName (string name)"
+.PP
+name setter \fBParameters:\fP
+.RS 4
+\fIname\fP new field name 
+.RE
+.PP
+
+.PP
+Definition at line 96 of file GridField.cpp.
+.SS "void fwi::grid::GridField::setType (GRID_VALUE_TYPE type)"
+.PP
+type setter \fBParameters:\fP
+.RS 4
+\fItype\fP new field type 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file GridField.cpp.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

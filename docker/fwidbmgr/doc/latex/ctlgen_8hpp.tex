@@ -1,0 +1,75 @@
+\hypertarget{ctlgen_8hpp}{\section{include/ctlgen.hpp File Reference}
+\label{ctlgen_8hpp}\index{include/ctlgen.\-hpp@{include/ctlgen.\-hpp}}
+}
+
+
+Grads control file generator using spirit.\-karma from boost libraries.  
+
+
+{\ttfamily \#include $<$boost/spirit/include/karma.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/karma\-\_\-real.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/phoenix\-\_\-core.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/phoenix\-\_\-operator.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/fusion/include/support.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/fusion/include/adapt\-\_\-struct.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/fusion/support.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/type\-\_\-traits.\-hpp$>$}\\*
+Include dependency graph for ctlgen.\-hpp\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ctlgen_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{ctlgen_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacefwi}{fwi}
+\begin{DoxyCompactList}\small\item\em main fwidbmgr namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacefwi_1_1generators_a3e497ecbdeb3ec0db841c3eb2800c530}{typedef real\-\_\-generator$<$ float, \\*
+fixed\-\_\-policy$<$ float $>$ $>$ {\bfseries fwi\-::generators\-::fixed\-\_\-type}}\label{namespacefwi_1_1generators_a3e497ecbdeb3ec0db841c3eb2800c530}
+
+\begin{DoxyCompactList}\small\item\em floating-\/point fixed-\/point generator type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacefwi_1_1generators_aa5ab17d51fdaf53ee6a9b6fc6e09e946}{fixed\-\_\-type const {\bfseries fwi\-::generators\-::fixedgen} = fixed\-\_\-type()}\label{namespacefwi_1_1generators_aa5ab17d51fdaf53ee6a9b6fc6e09e946}
+
+\begin{DoxyCompactList}\small\item\em fixed-\/point generator instance \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Grads control file generator using spirit.\-karma from boost libraries. C\-T\-L file generator This generator produces the .ctl file content about the coupled .dat file like for example\-:
+
+{\ttfamily  D\-S\-E\-T /home/meteo/programmi/interpolazione\-\_\-statistica/oi\-\_\-fwi/temp/20120111t2m\-\_\-g.dat\par
+ T\-I\-T\-L\-E 2m temperature\par
+ U\-N\-D\-E\-F -\/9999.\-000\par
+ X\-D\-E\-F 177 L\-I\-N\-E\-A\-R 1436301.\-37500000 1500.\-00000000000\par
+ Y\-D\-E\-F 174 L\-I\-N\-E\-A\-R 4916704.\-50000000 1500.\-00000000000\par
+ Z\-D\-E\-F 1 L\-I\-N\-E\-A\-R 1.\-000000 1.\-000000\par
+ T\-D\-E\-F 24 L\-I\-N\-E\-A\-R 13\-:00\-Z11jan2012 1\-H\-R\par
+ V\-A\-R\-S 3\par
+ xb 0 99 T background field\par
+ xa 0 99 T analysis field\par
+ xidi 0 99 integral data influence\par
+ E\-N\-D\-V\-A\-R\-S\par
+ }
+
+\begin{DoxySeeAlso}{See also}
+\href{http://www.boost.org/}{\tt http\-://www.\-boost.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{ctlgen_8hpp_source}{ctlgen.\-hpp}.
+

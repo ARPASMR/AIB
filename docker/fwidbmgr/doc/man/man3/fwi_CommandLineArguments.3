@@ -1,0 +1,414 @@
+.TH "fwi::CommandLineArguments" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fwi::CommandLineArguments \- 
+.PP
+Command line arguments class.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <CommandLineArguments.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommandLineArguments\fP ()"
+.br
+.RI "\fIStandard constructor. \fP"
+.ti -1c
+.RI "virtual \fB~CommandLineArguments\fP ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "string \fBgetConfigFilePath\fP () const "
+.br
+.RI "\fIConfig file path getter. \fP"
+.ti -1c
+.RI "string \fBgetAction\fP () const "
+.br
+.RI "\fIAction getter. \fP"
+.ti -1c
+.RI "PGconn * \fBgetPGConnection\fP (Config &cfg, bool create=false)"
+.br
+.RI "\fIGets postgresql connection. \fP"
+.ti -1c
+.RI "void \fBclosePGConnection\fP ()"
+.br
+.RI "\fIGently close postgresql connection. \fP"
+.ti -1c
+.RI "void \fBsetConfigFilePath\fP (string cfgpath)"
+.br
+.RI "\fIConfigFilePath setter. \fP"
+.ti -1c
+.RI "void \fBsetAction\fP (string action)"
+.br
+.RI "\fIAction setter. \fP"
+.ti -1c
+.RI "void \fBsetDate\fP (string date)"
+.br
+.RI "\fIDate setter. \fP"
+.ti -1c
+.RI "void \fBsetHost\fP (string host)"
+.br
+.RI "\fIHost setter. \fP"
+.ti -1c
+.RI "void \fBsetDbName\fP (string dbname)"
+.br
+.RI "\fIDatabase name setter. \fP"
+.ti -1c
+.RI "void \fBsetPort\fP (int port)"
+.br
+.RI "\fIPort setter. \fP"
+.ti -1c
+.RI "void \fBsetUser\fP (string user)"
+.br
+.RI "\fIUser setter. \fP"
+.ti -1c
+.RI "void \fBsetPassword\fP (string password)"
+.br
+.RI "\fIPassword setter. \fP"
+.ti -1c
+.RI "void \fBsetHelp\fP (bool help)"
+.br
+.RI "\fIHelp flag setter. \fP"
+.ti -1c
+.RI "bool \fBisSetAction\fP ()"
+.br
+.RI "\fIChecks for action setting. \fP"
+.ti -1c
+.RI "bool \fBisSetDate\fP ()"
+.br
+.RI "\fIChecks for date setting. \fP"
+.ti -1c
+.RI "bool \fBisSetHost\fP ()"
+.br
+.RI "\fIChecks for host setting. \fP"
+.ti -1c
+.RI "bool \fBisSetDbName\fP ()"
+.br
+.RI "\fIChecks for database name setting. \fP"
+.ti -1c
+.RI "bool \fBisSetPort\fP ()"
+.br
+.RI "\fIChecks for port setting. \fP"
+.ti -1c
+.RI "bool \fBisSetUser\fP ()"
+.br
+.RI "\fIChecks for user setting. \fP"
+.ti -1c
+.RI "bool \fBisSetPassword\fP ()"
+.br
+.RI "\fIChecks for password setting. \fP"
+.ti -1c
+.RI "bool \fBisSetHelp\fP ()"
+.br
+.RI "\fIChecks for help setting. \fP"
+.ti -1c
+.RI "bool \fBcanTryDbConnection\fP ()"
+.br
+.RI "\fIChecks if a database connection could be done based on current settings. \fP"
+.ti -1c
+.RI "string \fBgetConnectionString\fP ()"
+.br
+.RI "\fIGets the connection string based on current settings. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Command line arguments class. 
+
+This class stores and manages command line arguments passed to fwidbmgr.
+.br
+ 
+.SS "fwidbmgr synopsys"
+.PP
+\fIfwidbmgr -a action [-d date] [-D database] [-H host] [-P port] [-U user] [-p password] [-h]\fP
+.br
+ The possible actions for \fBfwidbmgr\fP are:
+.br
+ \fBcreate\fPcreate an empty database structure \fBcreatestdgrid\fPcreates the standard 177x174 point grid \fBfillnometeo\fPfills nometeo field in standard grid \fBfillregionmask\fPfills mask field in standard grid \fBin\fPsave in db input data for date given by option date \fBout\fPsave in db output data of fwi indexes computation \fBoutimg\fPsave in db output images 
+.PP
+.IP "\(bu" 2
+\fIdate\fP must be a valid date in ISO 8601 format ex. (2012-03-22)
+.IP "  \(bu" 4
+\fIdatabase\fP is the database name to be used
+.IP "    \(bu" 6
+\fIhost\fP is the database host name or IP address
+.IP "      \(bu" 8
+\fIport\fP is the postgresql port
+.IP "        \(bu" 10
+\fIuser\fP is the database user that has the proper rights
+.IP "          \(bu" 12
+\fIwhere\fP password is the user password
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+.PP
+\fBh\fP --> prints this text 
+.PP
+Definition at line 64 of file CommandLineArguments.h.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool fwi::CommandLineArguments::canTryDbConnection ()"
+.PP
+Checks if a database connection could be done based on current settings. \fBReturns:\fP
+.RS 4
+true if can try connection else false 
+.RE
+.PP
+
+.PP
+Definition at line 204 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::closePGConnection ()"
+.PP
+Gently close postgresql connection. \fBSee also:\fP
+.RS 4
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file CommandLineArguments.cpp.
+.SS "string fwi::CommandLineArguments::getAction () const"
+.PP
+Action getter. \fBReturns:\fP
+.RS 4
+action argument 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file CommandLineArguments.cpp.
+.SS "string fwi::CommandLineArguments::getConfigFilePath () const"
+.PP
+Config file path getter. \fBReturns:\fP
+.RS 4
+configFilePath argument 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file CommandLineArguments.cpp.
+.SS "string fwi::CommandLineArguments::getConnectionString ()"
+.PP
+Gets the connection string based on current settings. \fBReturns:\fP
+.RS 4
+the connection string 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file CommandLineArguments.cpp.
+.SS "PGconn * fwi::CommandLineArguments::getPGConnection (Config & cfg, bool create = \fCfalse\fP)"
+.PP
+Gets postgresql connection. \fBParameters:\fP
+.RS 4
+\fIcfg\fP configuration class from libconfig++ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcreate\fP if true create a new connection 
+.PP
+\fBReturns:\fP
+.RS 4
+postgresql connection 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+libconfig++ documentation at http://www.hyperrealm.com/libconfig/ 
+.PP
+postgresql documentation at http://www.postgresql.org/ 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 83 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetAction ()"
+.PP
+Checks for action setting. \fBReturns:\fP
+.RS 4
+true if action is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 160 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetDate ()"
+.PP
+Checks for date setting. \fBReturns:\fP
+.RS 4
+true if date is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetDbName ()"
+.PP
+Checks for database name setting. \fBReturns:\fP
+.RS 4
+true if database name is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 175 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetHelp ()"
+.PP
+Checks for help setting. \fBReturns:\fP
+.RS 4
+true if help is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 195 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetHost ()"
+.PP
+Checks for host setting. \fBReturns:\fP
+.RS 4
+true if host is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetPassword ()"
+.PP
+Checks for password setting. \fBReturns:\fP
+.RS 4
+true if password is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 180 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetPort ()"
+.PP
+Checks for port setting. \fBReturns:\fP
+.RS 4
+true if port is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file CommandLineArguments.cpp.
+.SS "bool fwi::CommandLineArguments::isSetUser ()"
+.PP
+Checks for user setting. \fBReturns:\fP
+.RS 4
+true if user is set else false 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setAction (string action)"
+.PP
+Action setter. \fBParameters:\fP
+.RS 4
+\fIaction\fP action to set 
+.RE
+.PP
+
+.PP
+Definition at line 120 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setConfigFilePath (string cfgpath)"
+.PP
+ConfigFilePath setter. \fBParameters:\fP
+.RS 4
+\fIcfgpath\fP configFilePath to set 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setDate (string date)"
+.PP
+Date setter. \fBParameters:\fP
+.RS 4
+\fIdate\fP date to set 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setDbName (string dbname)"
+.PP
+Database name setter. \fBParameters:\fP
+.RS 4
+\fIdbname\fP databasee name to set 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setHelp (bool help)"
+.PP
+Help flag setter. \fBParameters:\fP
+.RS 4
+\fIhelp\fP help flag to set 
+.RE
+.PP
+
+.PP
+Definition at line 155 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setHost (string host)"
+.PP
+Host setter. \fBParameters:\fP
+.RS 4
+\fIhost\fP host to set 
+.RE
+.PP
+
+.PP
+Definition at line 135 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setPassword (string password)"
+.PP
+Password setter. \fBParameters:\fP
+.RS 4
+\fIpassword\fP password to set 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setPort (int port)"
+.PP
+Port setter. \fBParameters:\fP
+.RS 4
+\fIport\fP port to set 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file CommandLineArguments.cpp.
+.SS "void fwi::CommandLineArguments::setUser (string user)"
+.PP
+User setter. \fBParameters:\fP
+.RS 4
+\fIuser\fP user to set 
+.RE
+.PP
+
+.PP
+Definition at line 150 of file CommandLineArguments.cpp.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

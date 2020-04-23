@@ -1,0 +1,108 @@
+.TH "fwi" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fwi \- 
+.PP
+main fwidbmgr namespace  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCommandLineArguments\fP"
+.br
+.RI "\fICommand line arguments class. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+main fwidbmgr namespace 
+
+.SS "Computed indexes"
+.PP
+.PD 0
+.IP "\(bu" 2
+\fIFFMC\fP - Fine Fuel Moisture Code \fIDMC\fP - Duff Moisture Code \fIDC\fP - Drought Code \fIISI\fP - Initial Spread Index \fIBUI\fP - Build Up Index \fIFWI\fP - Fire Weather Index  IndexLowModerateHighVery highEstreme FFMC0 - 8181 - 8888 - 90.590.5 - 92.592.5+ DMC0 - 1313 - 2828 - 4242 - 6363+ DC0 - 8080 - 210210 - 274274 - 360360+ ISI0 - 44 - 88 - 1111 - 1919+ BUI0 - 1919 - 3434 - 5454 - 7777+ FWI0 - 55 - 1414 - 2121 - 3333+ 
+.PP
+.SS "Not computed indexes"
+.PP
+.PD 0
+.IP "  \(bu" 4
+\fIFFDC\fP - Forest Fire Danger Code \fISFDC\fP - Scrub Fire Danger Code \fIGFDC\fP - Grass Fire Danger Code 
+.PP
+.PP
+\fBFFMC\fP \fI(Fine Fuel Moisture Code)\fP is a numerical rating of the moisture content of surface litter and other cured fine fuels. It shows the relative ease of ignition and flammability of fine fuels. The moisture content of fine fuels is very sensitive to the weather.
+.br
+ Even a day of rain, or of fine and windy weather, will significantly affect the FFMC rating.
+.br
+ The system uses a time lag of two-thirds of a day to accurately measure the moisture content in fine fuels.
+.br
+ The FFMC rating is on a scale of 0 to 99. Any figure above 70 is high, and above 90 is extreme.  
+.PP
+\fBDMC\fP \fI(Duff Moisture Code)\fP is a numerical rating of the average moisture content of loosely compacted organic layers of moderate depth.
+.br
+ The code indicates the depth that fire will burn in moderate duff layers and medium size woody material.
+.br
+ Duff layers take longer than surface fuels to dry out but weather conditions over the past couple of weeks will significantly affect the DMC.
+.br
+ The system applies a time lag of 12 days to calculate the DMC.
+.br
+ A DMC rating of more than 30 is dry, and above 40 indicates that intensive burning will occur in the duff and medium fuels.
+.br
+ Burning off operations should not be carried out when the DMC rating is above 40.  
+.PP
+\fBDC\fP \fI(Drought Code)\fP is a numerical rating of the moisture content of deep, compact, organic layers.
+.br
+ It is a useful indicator of seasonal drought and shows the likelihood of fire involving the deep duff layers and large logs.
+.br
+ A long period of dry weather (the system uses 52 days) is needed to dry out these fuels and affect the Drought Code.
+.br
+ A DC rating of 200 is high, and 300 or more is extreme indicating that fire will involve deep sub-surface and heavy fuels.
+.br
+ Burning off should not be permitted when the DC rating is above 300.  
+.PP
+\fBISI\fP \fI(Initial Spread Index)\fP indicates the rate fire will spread in its early stages. It is calculated from the FFMC rating and the wind factor.
+.br
+ The open-ended ISI scale starts at zero and a rating of 10 indicates high rate of spread shortly after igition.
+.br
+ A rating of 16 or more indicates extremely rapid rate of spread.  
+.PP
+\fBBUI\fP \fI(Build Up Index)\fP index shows the amount of fuel available for combustion, indicating how the fire will develop after initial spread.
+.br
+ It is calculated from the Duff Moisture Code and the Drought Code.
+.br
+ The BUI scale starts at zero and is open-ended. A rating above 40 is high, above 60 is extreme.  
+.PP
+\fBFWI\fP \fI(Fire Weather Index)\fP Information from the ISI and BUI is combined to provide a numerical rating of fire intensity - the Fire Weather Index.
+.br
+ The FWI indicates the likely intensity of a fire. The FWI is divided into four fire danger classes: Low 0 - 7 Moderate 8 - 16 High l7 - 31 Extreme 32+
+.br
+  
+.PP
+\fBFFDC\fP \fI(Forest Fire Danger Code)\fP Based on predicted generated 'fire intensity (kw/m?)' in forest type vegetation (pine, beech).
+.br
+ This code denotes how difficult it would be to control a fire in this vegetation type should one start. (Low, Moderate, High, Very High, Extreme)
+.br
+  
+.PP
+\fBSFDC\fP \fI(Scrub Fire Danger Code)\fP Based on predicted generated 'fire intensity (kw/m?)' in scrub type vegetation (manuka, gorse, broom).
+.br
+ This code denotes how difficult it would be to control a fire in this vegetation type should one start. (Low, Moderate, High, Very High, Extreme)
+.br
+  
+.PP
+\fBGFDC\fP \fI(Grass Fire Danger Code)\fP Based on predicted generated 'fire intensity (kw/m?)' in grass type vegetation (dry grass, tussock).
+.br
+ This code denotes how difficult it would be to control a fire in this vegetation type should one start. (Low, Moderate, High, Very High, Extreme)
+.br
+  
+.PP
+
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

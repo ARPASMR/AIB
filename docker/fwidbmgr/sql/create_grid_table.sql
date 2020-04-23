@@ -1,0 +1,51 @@
+-- Table: grid
+--
+-- DROP TABLE grid;
+
+CREATE TABLE grid
+(
+  id serial NOT NULL, -- Primary key
+  --p geometry NOT NULL, -- 3d point
+  z real DEFAULT 0.0, -- quote
+  nometeo boolean NOT NULL DEFAULT false, -- true --> the point has no meteo info
+  name character varying(30) DEFAULT ''::character varying,
+  mask boolean NOT NULL DEFAULT false, -- Maschera confine regione Lombardia
+  dzdx real NOT NULL DEFAULT 0.0, -- dz/dx
+  dzdy real NOT NULL DEFAULT 0.0, -- dz/dy
+  lake_mask boolean NOT NULL DEFAULT false, -- lakes mask
+  urban_weight real NOT NULL DEFAULT 0.0, -- Urban weight between 0.0 and 1.0
+  CONSTRAINT grid_pkey PRIMARY KEY (id ),
+  CONSTRAINT check_urban_weight CHECK (urban_weight >= 0.0::double precision AND urban_weight <= 1.0::double precision)
+)
+WITH (
+  OIDS=TRUE
+);
+
+SELECT AddGeometryColumn('grid', 'p', 3003, 'POINT', 3);
+
+ALTER TABLE grid
+  OWNER TO meteo;
+
+COMMENT ON TABLE grid
+  IS 'Standard grid as used for fwi computation';
+COMMENT ON COLUMN grid.id IS 'Primary key';
+COMMENT ON COLUMN grid.p IS '3d point';
+COMMENT ON COLUMN grid.z IS 'quote';
+COMMENT ON COLUMN grid.nometeo IS 'true --> the point has no meteo info';
+COMMENT ON COLUMN grid.mask IS 'Maschera confine regione Lombardia';
+COMMENT ON COLUMN grid.dzdx IS 'dz/dx';
+COMMENT ON COLUMN grid.dzdy IS 'dz/dy';
+COMMENT ON COLUMN grid.lake_mask IS 'lakes mask';
+COMMENT ON COLUMN grid.urban_weight IS 'Urban weight between 0.0 and 1.0';
+
+-- Index: name_idx
+
+-- DROP INDEX name_idx;
+
+CREATE UNIQUE INDEX name_idx
+  ON grid
+  USING btree(name);
+  --(name COLLATE pg_catalog."default" );
+ALTER TABLE grid CLUSTER ON name_idx;
+COMMENT ON INDEX name_idx
+  IS 'name index';

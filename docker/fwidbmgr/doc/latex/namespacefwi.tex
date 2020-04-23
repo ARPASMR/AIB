@@ -1,0 +1,88 @@
+\hypertarget{namespacefwi}{\section{fwi Namespace Reference}
+\label{namespacefwi}\index{fwi@{fwi}}
+}
+
+
+main fwidbmgr namespace  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classfwi_1_1CommandLineArguments}{Command\-Line\-Arguments}
+\begin{DoxyCompactList}\small\item\em Command line arguments class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+main fwidbmgr namespace \subsubsection*{Computed indexes}
+
+
+\begin{DoxyItemize}
+\item {\itshape F\-F\-M\-C} -\/ Fine Fuel Moisture Code 
+\item {\itshape D\-M\-C} -\/ Duff Moisture Code 
+\item {\itshape D\-C} -\/ Drought Code 
+\item {\itshape I\-S\-I} -\/ Initial Spread Index 
+\item {\itshape B\-U\-I} -\/ Build Up Index 
+\item {\itshape F\-W\-I} -\/ Fire Weather Index 
+\end{DoxyItemize}\begin{TabularC}{6}
+\hline
+\rowcolor{lightgray}{\bf Index}&{\bf Low}&{\bf Moderate}&{\bf High}&{\bf Very high}&{\bf Estreme }\\\cline{1-6}
+F\-F\-M\-C&\PBS\centering 0 -\/ 81&\PBS\centering 81 -\/ 88&\PBS\centering 88 -\/ 90.\-5&\PBS\centering 90.\-5 -\/ 92.\-5&\PBS\centering 92.\-5+ \\\cline{1-6}
+D\-M\-C&\PBS\centering 0 -\/ 13&\PBS\centering 13 -\/ 28&\PBS\centering 28 -\/ 42&\PBS\centering 42 -\/ 63&\PBS\centering 63+ \\\cline{1-6}
+D\-C&\PBS\centering 0 -\/ 80&\PBS\centering 80 -\/ 210&\PBS\centering 210 -\/ 274&\PBS\centering 274 -\/ 360&\PBS\centering 360+ \\\cline{1-6}
+I\-S\-I&\PBS\centering 0 -\/ 4&\PBS\centering 4 -\/ 8&\PBS\centering 8 -\/ 11&\PBS\centering 11 -\/ 19&\PBS\centering 19+ \\\cline{1-6}
+B\-U\-I&\PBS\centering 0 -\/ 19&\PBS\centering 19 -\/ 34&\PBS\centering 34 -\/ 54&\PBS\centering 54 -\/ 77&\PBS\centering 77+ \\\cline{1-6}
+F\-W\-I&\PBS\centering 0 -\/ 5&\PBS\centering 5 -\/ 14&\PBS\centering 14 -\/ 21&\PBS\centering 21 -\/ 33&\PBS\centering 33+ \\\cline{1-6}
+\end{TabularC}
+
+
+\subsubsection*{Not computed indexes}
+
+
+\begin{DoxyItemize}
+\item {\itshape F\-F\-D\-C} -\/ Forest Fire Danger Code 
+\item {\itshape S\-F\-D\-C} -\/ Scrub Fire Danger Code 
+\item {\itshape G\-F\-D\-C} -\/ Grass Fire Danger Code 
+\end{DoxyItemize}
+
+{\bfseries F\-F\-M\-C} {\itshape (Fine Fuel Moisture Code)} is a numerical rating of the moisture content of surface litter and other cured fine fuels. It shows the relative ease of ignition and flammability of fine fuels. The moisture content of fine fuels is very sensitive to the weather.\par
+ Even a day of rain, or of fine and windy weather, will significantly affect the F\-F\-M\-C rating.\par
+ The system uses a time lag of two-\/thirds of a day to accurately measure the moisture content in fine fuels.\par
+ The F\-F\-M\-C rating is on a scale of 0 to 99. Any figure above 70 is high, and above 90 is extreme. 
+
+{\bfseries D\-M\-C} {\itshape (Duff Moisture Code)} is a numerical rating of the average moisture content of loosely compacted organic layers of moderate depth.\par
+ The code indicates the depth that fire will burn in moderate duff layers and medium size woody material.\par
+ Duff layers take longer than surface fuels to dry out but weather conditions over the past couple of weeks will significantly affect the D\-M\-C.\par
+ The system applies a time lag of 12 days to calculate the D\-M\-C.\par
+ A D\-M\-C rating of more than 30 is dry, and above 40 indicates that intensive burning will occur in the duff and medium fuels.\par
+ Burning off operations should not be carried out when the D\-M\-C rating is above 40. 
+
+{\bfseries D\-C} {\itshape (Drought Code)} is a numerical rating of the moisture content of deep, compact, organic layers.\par
+ It is a useful indicator of seasonal drought and shows the likelihood of fire involving the deep duff layers and large logs.\par
+ A long period of dry weather (the system uses 52 days) is needed to dry out these fuels and affect the Drought Code.\par
+ A D\-C rating of 200 is high, and 300 or more is extreme indicating that fire will involve deep sub-\/surface and heavy fuels.\par
+ Burning off should not be permitted when the D\-C rating is above 300. 
+
+{\bfseries I\-S\-I} {\itshape (Initial Spread Index)} indicates the rate fire will spread in its early stages. It is calculated from the F\-F\-M\-C rating and the wind factor.\par
+ The open-\/ended I\-S\-I scale starts at zero and a rating of 10 indicates high rate of spread shortly after igition.\par
+ A rating of 16 or more indicates extremely rapid rate of spread. 
+
+{\bfseries B\-U\-I} {\itshape (Build Up Index)} index shows the amount of fuel available for combustion, indicating how the fire will develop after initial spread.\par
+ It is calculated from the Duff Moisture Code and the Drought Code.\par
+ The B\-U\-I scale starts at zero and is open-\/ended. A rating above 40 is high, above 60 is extreme. 
+
+{\bfseries F\-W\-I} {\itshape (Fire Weather Index)} Information from the I\-S\-I and B\-U\-I is combined to provide a numerical rating of fire intensity -\/ the Fire Weather Index.\par
+ The F\-W\-I indicates the likely intensity of a fire. The F\-W\-I is divided into four fire danger classes\-: Low 0 -\/ 7 Moderate 8 -\/ 16 High l7 -\/ 31 Extreme 32+\par
+ 
+
+{\bfseries F\-F\-D\-C} {\itshape (Forest Fire Danger Code)} Based on predicted generated \char`\"{}fire intensity (kw/m?)\char`\"{} in forest type vegetation (pine, beech).\par
+ This code denotes how difficult it would be to control a fire in this vegetation type should one start. (Low, Moderate, High, Very High, Extreme)\par
+ 
+
+{\bfseries S\-F\-D\-C} {\itshape (Scrub Fire Danger Code)} Based on predicted generated \char`\"{}fire intensity (kw/m?)\char`\"{} in scrub type vegetation (manuka, gorse, broom).\par
+ This code denotes how difficult it would be to control a fire in this vegetation type should one start. (Low, Moderate, High, Very High, Extreme)\par
+ 
+
+{\bfseries G\-F\-D\-C} {\itshape (Grass Fire Danger Code)} Based on predicted generated \char`\"{}fire intensity (kw/m?)\char`\"{} in grass type vegetation (dry grass, tussock).\par
+ This code denotes how difficult it would be to control a fire in this vegetation type should one start. (Low, Moderate, High, Very High, Extreme)\par
+ 

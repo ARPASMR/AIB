@@ -1,0 +1,97 @@
+.TH "include/Grid.h" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/Grid.h \- 
+.PP
+2-dimensions grid class  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'fwi_define.h'\fP
+.br
+\fC#include 'fwi_define.h'\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <fstream>\fP
+.br
+\fC#include <list>\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include 'boost/multi_array.hpp'\fP
+.br
+\fC#include 'boost/date_time/posix_time/posix_time.hpp'\fP
+.br
+\fC#include <boost/date_time/date_facet.hpp>\fP
+.br
+\fC#include <cassert>\fP
+.br
+\fC#include <libpq-fe.h>\fP
+.br
+\fC#include <ctlgen.hpp>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBfwi::grid::Grid< T >\fP"
+.br
+.RI "\fI3-dimensional grid \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBfwi\fP"
+.br
+.PP
+
+.RI "\fImain fwidbmgr namespace \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef Grid< Point * > \fBfwi::grid::PointGrid_t\fP"
+.br
+.RI "\fIstandard grid with 1 Point* variable \fP"
+.ti -1c
+.RI "typedef Grid< float > \fBfwi::grid::Float1Grid_t\fP"
+.br
+.RI "\fIstandard grid with 1 float variable \fP"
+.ti -1c
+.RI "typedef Grid< int > \fBfwi::grid::Int1Grid_t\fP"
+.br
+.RI "\fIstandard grid with 1 int variable \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "log4cxx::LoggerPtr \fBlogger\fP"
+.br
+.RI "\fIApplication logger. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+2-dimensions grid class 
+
+
+.PP
+Definition in file \fBGrid.h\fP.
+.SH "Variable Documentation"
+.PP 
+.SS "log4cxx::LoggerPtr \fBlogger\fP"
+.PP
+Application logger. @see log4cxx documentation at http://logging.apache.org/log4cxx/ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

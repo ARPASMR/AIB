@@ -1,0 +1,260 @@
+.TH "fwi::grid::GridFields" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fwi::grid::GridFields \- 
+.PP
+Fields list class.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <GridField.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGridFields\fP ()"
+.br
+.RI "\fIStandard constructor. \fP"
+.ti -1c
+.RI "\fBGridFields\fP (int fieldsNum)"
+.br
+.RI "\fIParameterized constructor. \fP"
+.ti -1c
+.RI "\fBGridFields\fP (int fieldsNum, GRID_VALUE_TYPE type)"
+.br
+.RI "\fIParameterized constructor. \fP"
+.ti -1c
+.RI "virtual \fB~GridFields\fP ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "int \fBgetFieldsNum\fP () const "
+.br
+.RI "\fIfields number getter \fP"
+.ti -1c
+.RI "void \fBaddField\fP (\fBGridField\fP *field)"
+.br
+.RI "\fIadds a field to fields list \fP"
+.ti -1c
+.RI "void \fBaddField\fP (int position, string name, string field_name, levels_t levels, int units, string description, GRID_VALUE_TYPE type=FLOAT)"
+.br
+.RI "\fIadds a field to fields list by its parameters \fP"
+.ti -1c
+.RI "void \fBremoveField\fP (\fBGridField\fP *field)"
+.br
+.RI "\fIremoves field from fields list \fP"
+.ti -1c
+.RI "void \fBremoveField\fP (string name)"
+.br
+.RI "\fIremoves field by name \fP"
+.ti -1c
+.RI "bool \fBhasField\fP (\fBGridField\fP *field)"
+.br
+.RI "\fIchecks if field is in fields list \fP"
+.ti -1c
+.RI "bool \fBhasField\fP (string name)"
+.br
+.RI "\fIchecks if field with name is present in fields list \fP"
+.ti -1c
+.RI "\fBGridField\fP * \fBgetFieldByName\fP (string &name)"
+.br
+.RI "\fIGets a \fI\fBGridField\fP\fP given its name. \fP"
+.ti -1c
+.RI "int \fBgetFieldPosition\fP (string &name)"
+.br
+.RI "\fIGets field \fIposition\fP given its name  name the searched field name return The \fI\fBGridField\fP\fP position of field named with \fIname\fP. If field's name is not found (NOT_FOUND = -1) is returned. \fP"
+.ti -1c
+.RI "\fBGridField\fP * \fBgetFieldByFieldName\fP (string &fname)"
+.br
+.RI "\fIGets a \fI\fBGridField\fP\fP given its field name. \fP"
+.ti -1c
+.RI "int \fBgetFieldNamePosition\fP (string &fname)"
+.br
+.RI "\fIGets field \fIposition\fP given its field name  name the searched field field name return The \fI\fBGridField\fP\fP position of field named with \fIfname\fP. If field's fname is not found (NOT_FOUND = -1) is returned. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Fields list class. 
+.PP
+Definition at line 268 of file GridField.h.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "fwi::grid::GridFields::GridFields (int fieldsNum)"
+.PP
+Parameterized constructor. \fBParameters:\fP
+.RS 4
+\fIfieldsNum\fP fields number 
+.RE
+.PP
+
+.PP
+Definition at line 212 of file GridField.cpp.
+.SS "fwi::grid::GridFields::GridFields (int fieldsNum, GRID_VALUE_TYPE type)"
+.PP
+Parameterized constructor. \fBParameters:\fP
+.RS 4
+\fIfieldsNum\fP fields number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP fields type 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 221 of file GridField.cpp.
+.SH "Member Function Documentation"
+.PP 
+.SS "void fwi::grid::GridFields::addField (int position, string name, string field_name, levels_t levels, int units, string description, GRID_VALUE_TYPE type = \fCFLOAT\fP)"
+.PP
+adds a field to fields list by its parameters \fBParameters:\fP
+.RS 4
+\fIposition\fP field's position 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP field's name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfield_name\fP database field's name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevels\fP levels vector 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIunits\fP field units 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdescription\fP field description 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP field's type 
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 251 of file GridField.cpp.
+.SS "void fwi::grid::GridFields::addField (\fBGridField\fP * field)"
+.PP
+adds a field to fields list \fBParameters:\fP
+.RS 4
+\fIfield\fP new field 
+.RE
+.PP
+
+.PP
+Definition at line 246 of file GridField.cpp.
+.SS "\fBGridField\fP * fwi::grid::GridFields::getFieldByFieldName (string & fname)"
+.PP
+Gets a \fI\fBGridField\fP\fP given its field name. \fBParameters:\fP
+.RS 4
+\fIfname\fP the searched field name 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fI\fBGridField\fP\fP which fieldname is \fIname\fP else NULL 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 348 of file GridField.cpp.
+.SS "\fBGridField\fP * fwi::grid::GridFields::getFieldByName (string & name)"
+.PP
+Gets a \fI\fBGridField\fP\fP given its name. \fBParameters:\fP
+.RS 4
+\fIname\fP the searched field name 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fI\fBGridField\fP\fP which name is \fIname\fP else NULL 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 300 of file GridField.cpp.
+.SS "int fwi::grid::GridFields::getFieldsNum () const"
+.PP
+fields number getter \fBReturns:\fP
+.RS 4
+fields number 
+.RE
+.PP
+
+.PP
+Definition at line 241 of file GridField.cpp.
+.SS "bool fwi::grid::GridFields::hasField (string name)"
+.PP
+checks if field with name is present in fields list \fBParameters:\fP
+.RS 4
+\fIname\fP name to check for 
+.PP
+\fBReturns:\fP
+.RS 4
+true if field is present else false 
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 287 of file GridField.cpp.
+.SS "bool fwi::grid::GridFields::hasField (\fBGridField\fP * field)"
+.PP
+checks if field is in fields list \fBReturns:\fP
+.RS 4
+true if field is present else false 
+.RE
+.PP
+
+.PP
+Definition at line 281 of file GridField.cpp.
+.SS "void fwi::grid::GridFields::removeField (string name)"
+.PP
+removes field by name \fBParameters:\fP
+.RS 4
+\fIname\fP name of field to be removed 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file GridField.cpp.
+.SS "void fwi::grid::GridFields::removeField (\fBGridField\fP * field)"
+.PP
+removes field from fields list \fBParameters:\fP
+.RS 4
+\fIfield\fP field to be removed 
+.RE
+.PP
+
+.PP
+Definition at line 258 of file GridField.cpp.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fwidbmgr from the source code.

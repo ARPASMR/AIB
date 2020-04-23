@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<doc>
+ <query>
+  <shortdescription>20120111</shortdescription>
+  <description>20120111</description>
+  <databasetype>POSTGRES</databasetype>
+  <databaseport>5432</databaseport>
+  <databasehost>localhost</databasehost>
+  <databasename>testdb</databasename>
+  <databaseusername/>
+  <databasepassword/>
+  <sqlstatement>SELECT "t_0"."p", "t_2"."point_id", "t_2"."xb", "t_2"."xa", "t_2"."tidi", "t_2"."tdb", "t_2"."ta", "t_2"."tda", "t_2"."rha", "t_2"."rhidi", "t_2"."hdxa", "t_2"."bu", "t_2"."bv", "t_2"."bhu", "t_2"."bhv", "t_2"."bvw", "t_2"."avw", "t_2"."au", "t_2"."av", "t_2"."ahu", "t_2"."ahv", "t_2"."adiv", "t_2"."avor", "t_2"."wsidi", "t_2"."xpa", "t_2"."ridiw", "t_2"."ridid", "t_2"."snow_covering", "t_2"."snow_dissolution" FROM "public"."grid" AS "t_0" INNER JOIN "public"."meteo_input" AS "t_2" on "t_0"."id" = "t_2"."point_id" WHERE "t_2"."dt" = '20120111'  </sqlstatement>
+  <sqlgeometrycolumn>p</sqlgeometrycolumn>
+  <sqluniquecolumn>point_id</sqluniquecolumn>
+  <autoconnect>false</autoconnect>
+ </query>
+ <query>
+  <shortdescription>angstrom</shortdescription>
+  <description>angstrom</description>
+  <databasetype>POSTGRES</databasetype>
+  <databaseport>5432</databaseport>
+  <databasehost>localhost</databasehost>
+  <databasename>testdb1</databasename>
+  <databaseusername/>
+  <databasepassword/>
+  <sqlstatement>SELECT  "t_2"."id", "t_2"."p", "t_0"."angstrom" FROM "public"."fwi_indexes" AS "t_0" INNER JOIN "public"."grid" AS "t_2" on "t_0"."point_id" = "t_2"."id"  WHERE 'dt' = '20120501''' </sqlstatement>
+  <sqlgeometrycolumn>p</sqlgeometrycolumn>
+  <sqluniquecolumn>id</sqluniquecolumn>
+  <autoconnect>false</autoconnect>
+ </query>
+ <query>
+  <shortdescription>angstrom</shortdescription>
+  <description>angstrom</description>
+  <databasetype>POSTGRES</databasetype>
+  <databaseport>5432</databaseport>
+  <databasehost>localhost</databasehost>
+  <databasename>testdb2</databasename>
+  <databaseusername/>
+  <databasepassword/>
+  <sqlstatement>SELECT  "t_1"."id", "t_1"."p", "t_0"."angstrom" FROM "public"."fwi_indexes" AS "t_0", "public"."grid" AS "t_1" where "t_1"."id" = "t_0"."point_id" and "t_0"."dt" = '20120501'</sqlstatement>
+  <sqlgeometrycolumn>p</sqlgeometrycolumn>
+  <sqluniquecolumn>id</sqluniquecolumn>
+  <autoconnect>false</autoconnect>
+ </query>
+ <query>
+  <shortdescription>newindex.sql</shortdescription>
+  <description>newindex.sql</description>
+  <databasetype>POSTGRES</databasetype>
+  <databaseport>5432</databaseport>
+  <databasehost>localhost</databasehost>
+  <databasename>testdb2</databasename>
+  <databaseusername/>
+  <databasepassword/>
+  <sqlstatement>SELECT "t_1"."id", "t_1"."p", "t_0"."fmi" FROM "public"."fwi_indexes" AS "t_0", "public"."grid" AS "t_1" WHERE "t_1"."id" = "t_0"."point_id" AND "t_0"."dt" = '''20120502'''    </sqlstatement>
+  <sqlgeometrycolumn>p</sqlgeometrycolumn>
+  <sqluniquecolumn>id</sqluniquecolumn>
+  <autoconnect>false</autoconnect>
+ </query>
+ <query>
+  <shortdescription>fmi-index.sql</shortdescription>
+  <description>fmi-index.sql</description>
+  <databasetype>POSTGRES</databasetype>
+  <databaseport>5432</databaseport>
+  <databasehost>localhost</databasehost>
+  <databasename>testdb2</databasename>
+  <databaseusername/>
+  <databasepassword/>
+  <sqlstatement>SELECT "t_1"."id", "t_1"."p", "t_0"."fmi" FROM "public"."fwi_indexes" AS "t_0", "public"."grid" AS "t_1" WHERE "t_1"."id" = "t_0"."point_id" AND "t_0"."dt" = '20120502'    </sqlstatement>
+  <sqlgeometrycolumn>p</sqlgeometrycolumn>
+  <sqluniquecolumn>id</sqluniquecolumn>
+  <autoconnect>false</autoconnect>
+ </query>
+</doc>

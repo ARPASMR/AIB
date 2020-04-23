@@ -1,0 +1,28 @@
+The application configuration is done via a config file which format is driven by libconfig++ specifications. See the related codumentation at \href{http://www.hyperrealm.com/libconfig/}{\tt http\-://www.\-hyperrealm.\-com/libconfig/}
+
+The following sections describe briefly the main configuration parameters to be set in the configuration file.
+
+
+\begin{DoxyItemize}
+\item \hyperlink{db_connection_config}{Database connection}
+\item \hyperlink{application_paths}{Application paths}
+\item \hyperlink{application_files}{Applications files}
+\item \hyperlink{application_images}{Application images} 
+\end{DoxyItemize}\hypertarget{db_connection_config}{}\section{Database connection}\label{db_connection_config}
+The first configuration parameters to be set are those related to the database connection. You need postgres superuser credentials and the ones of a standard postgres user that must be setup in the database server before running the application. Database connection needed parameters are\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape host} the network name or I\-P address of the machine running postgresql server e.\-g \char`\"{}localhost\char`\"{} 
+\item {\itshape port} e.\-g 5432 is the standard postgresql port change it accordingly to your system setup 
+\item {\itshape dbname} the database name e.\-g. \char`\"{}fwidb\char`\"{} 
+\item {\itshape user} the standard postgres user e.\-g. \char`\"{}meteo\char`\"{} 
+\item {\itshape password} standard user password e.\-g. \char`\"{}secret\char`\"{} 
+\item {\itshape superuser} e.\-g. postgres 
+\item {\itshape superpwd} postgres user password 
+\end{DoxyItemize}\hypertarget{application_paths}{}\section{Application paths}\label{application_paths}
+{\bfseries To be done.} \hypertarget{application_files}{}\section{Application files}\label{application_files}
+This is a big configuration section with many subsections.
+
+{\bfseries To be done} \hypertarget{application_images}{}\section{Application images}\label{application_images}
+{\bfseries To be done} 

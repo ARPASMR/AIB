@@ -1,0 +1,72 @@
+.TH "folder_struct" 3 "15 Dec 2012" "Version 0.1" "fwidbmgr" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+folder_struct \- Distribution folder structure 
+The application resides on disk in a specific folder to be defined by the environment variable \fCFWIDBMGR_HOME\fP. For example \fCFWIDBMGR_HOME=~/fwidbmgr\fP
+.PP
+Folder structure following:
+.PP
+\fBconfig\fP Contains the needed configuration files:
+.IP "\(bu" 2
+\fIfwidbmgr.conf\fP is the application main configuration file
+.IP "  \(bu" 4
+\fIfwiscale.ini\fP (description is needed) not used at the moment
+.IP "    \(bu" 6
+\fILogConfig.xml\fP is the log4cxx configuration file
+.PP
+
+.PP
+
+.PP
+.PP
+\fBlog\fP Contains the log file:
+.IP "\(bu" 2
+\fIfwidbmgrDailyLog.log\fP
+.PP
+.PP
+\fBsql\fP Contains the sql files containing the needed queries to create the fwi database from scratch
+.IP "\(bu" 2
+\fIcreate_fwidb.sql\fP (description is needed)
+.IP "  \(bu" 4
+\fIcreate_fwi_indexes_table.sql\fP (description is needed)
+.IP "    \(bu" 6
+\fIcreate_grid_table.sql\fP (description is needed)
+.IP "      \(bu" 8
+\fIcreate_images_table.sql\fP (description is needed)
+.IP "        \(bu" 10
+\fIcreate_meteo_input_table.sql\fP (description is needed)
+.IP "          \(bu" 12
+\fIcreate_provinces_table.sql\fP (description is needed)
+.IP "            \(bu" 14
+\fIcreate_regions_table.sql\fP (description is needed)
+.IP "              \(bu" 16
+\fIpartition_fwi_indexes_table.sql\fP (description is needed)
+.IP "                \(bu" 18
+\fIpartition_meteo_input_table.sql\fP (description is needed)
+.IP "                  \(bu" 20
+\fIpostgis-64.sql\fP (description is needed)
+.IP "                    \(bu" 22
+\fIspatial_ref_sys.sql\fP (description is needed) 
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+
+.PP
+

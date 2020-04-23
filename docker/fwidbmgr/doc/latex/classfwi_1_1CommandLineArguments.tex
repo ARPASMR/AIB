@@ -1,0 +1,971 @@
+\hypertarget{classfwi_1_1CommandLineArguments}{\section{fwi\-:\-:Command\-Line\-Arguments Class Reference}
+\label{classfwi_1_1CommandLineArguments}\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}}
+}
+
+
+Command line arguments class.  
+
+
+
+
+{\ttfamily \#include $<$Command\-Line\-Arguments.\-h$>$}
+
+
+
+Collaboration diagram for fwi\-:\-:Command\-Line\-Arguments\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classfwi_1_1CommandLineArguments__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfwi_1_1CommandLineArguments_a54afbbabb1a2faf818dedb6fc1901c8d}{\hyperlink{classfwi_1_1CommandLineArguments_a54afbbabb1a2faf818dedb6fc1901c8d}{Command\-Line\-Arguments} ()}\label{classfwi_1_1CommandLineArguments_a54afbbabb1a2faf818dedb6fc1901c8d}
+
+\begin{DoxyCompactList}\small\item\em Standard constructor. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1CommandLineArguments_a9eee8e8c9b3a12bcab2ff944a233f041}{virtual \hyperlink{classfwi_1_1CommandLineArguments_a9eee8e8c9b3a12bcab2ff944a233f041}{$\sim$\-Command\-Line\-Arguments} ()}\label{classfwi_1_1CommandLineArguments_a9eee8e8c9b3a12bcab2ff944a233f041}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a5e55e7e9d3f3ba165a21ead751e1e145}{get\-Config\-File\-Path} () const 
+\begin{DoxyCompactList}\small\item\em Config file path getter. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a744c32d84443793ba21c03959d5f80e2}{get\-Action} () const 
+\begin{DoxyCompactList}\small\item\em Action getter. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a8327187e13b3f2a96cf1becc71c9f68d}{get\-Date} () const 
+\begin{DoxyCompactList}\small\item\em Date getter. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a1813189cfbc370b85ed99f3b9585cebd}{get\-Db\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Database name getter. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a83adbcce0c83237f689b948b8860d3ee}{get\-Host} () const 
+\begin{DoxyCompactList}\small\item\em Host getter. \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1CommandLineArguments_aed3e2ce12b0d735c219352d16c936afa}{get\-Port} () const 
+\begin{DoxyCompactList}\small\item\em Port getter. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a4aa0d96232454f8ba8445d6474e51b3c}{get\-User} () const 
+\begin{DoxyCompactList}\small\item\em User getter. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_a951d2991fe796cc021f64b078a1a55e0}{get\-Password} () const 
+\begin{DoxyCompactList}\small\item\em Password getter. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a683c730b0b79a90b48dc8596dd994bc4}{get\-Help} () const 
+\begin{DoxyCompactList}\small\item\em Help argument presence. \end{DoxyCompactList}\item 
+P\-Gconn $\ast$ \hyperlink{classfwi_1_1CommandLineArguments_a071867c84d4756190ddf6e57a2132131}{get\-P\-G\-Connection} (Config \&cfg, bool create=false)
+\begin{DoxyCompactList}\small\item\em Gets postgresql connection. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_a31c6f8e8c94e7ca5540c4f84c836f1d3}{close\-P\-G\-Connection} ()
+\begin{DoxyCompactList}\small\item\em Gently close postgresql connection. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_ad2548a77ea9819bb6356ffe1ebe2124b}{set\-Config\-File\-Path} (string cfgpath)
+\begin{DoxyCompactList}\small\item\em Config\-File\-Path setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_a94983023c52fd20932d4e64cf5d566ad}{set\-Action} (string action)
+\begin{DoxyCompactList}\small\item\em Action setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_af378e847bef06548a276f6ee4ccc72fe}{set\-Date} (string date)
+\begin{DoxyCompactList}\small\item\em Date setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_a7942eb8218a54ba9843c506396f66f37}{set\-Host} (string host)
+\begin{DoxyCompactList}\small\item\em Host setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_a624d5a4997b520083b32f589674f4e58}{set\-Db\-Name} (string dbname)
+\begin{DoxyCompactList}\small\item\em Database name setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_ab283ed9c1d605308f9df2381ec53340e}{set\-Port} (int port)
+\begin{DoxyCompactList}\small\item\em Port setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_aba8081f570985fba7c0746e4152857a1}{set\-User} (string user)
+\begin{DoxyCompactList}\small\item\em User setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_af865288c92229fd879333c1d22770f13}{set\-Password} (string password)
+\begin{DoxyCompactList}\small\item\em Password setter. \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1CommandLineArguments_ab5e55eda6e153cfb3db823366ad72605}{set\-Help} (bool help)
+\begin{DoxyCompactList}\small\item\em Help flag setter. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a6a2c57edc3311bf3555b6b0a030915e1}{is\-Set\-Action} ()
+\begin{DoxyCompactList}\small\item\em Checks for action setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a582c389cc309b4973a6565dcf5647af3}{is\-Set\-Date} ()
+\begin{DoxyCompactList}\small\item\em Checks for date setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_aff14b156dfdadee9a5ae2ba06976ecb0}{is\-Set\-Host} ()
+\begin{DoxyCompactList}\small\item\em Checks for host setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a883bd2b54b445dd1853d8771537fd2c3}{is\-Set\-Db\-Name} ()
+\begin{DoxyCompactList}\small\item\em Checks for database name setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a587ef2a70389522c52277c1aa49f0f22}{is\-Set\-Port} ()
+\begin{DoxyCompactList}\small\item\em Checks for port setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a72d8f5d8be37affd36adc02c7c7f81d6}{is\-Set\-User} ()
+\begin{DoxyCompactList}\small\item\em Checks for user setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a887eaacdc364872e66d8a487ea1f2285}{is\-Set\-Password} ()
+\begin{DoxyCompactList}\small\item\em Checks for password setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_acfc136e2da1c2519e94d56ee6b897790}{is\-Set\-Help} ()
+\begin{DoxyCompactList}\small\item\em Checks for help setting. \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1CommandLineArguments_a157e286d1dfd5ab7b7ee4e69f85bbc09}{can\-Try\-Db\-Connection} ()
+\begin{DoxyCompactList}\small\item\em Checks if a database connection could be done based on current settings. \end{DoxyCompactList}\item 
+string \hyperlink{classfwi_1_1CommandLineArguments_aa3f9cdc1eedaf1d795f2921a7ecb6367}{get\-Connection\-String} ()
+\begin{DoxyCompactList}\small\item\em Gets the connection string based on current settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Command line arguments class. 
+
+\begin{DoxyVerb}     This class stores and manages command line arguments passed to fwidbmgr.<br />
+     <h2>fwidbmgr synopsys</h2>
+     <i>fwidbmgr -a action [-d date] [-D database] [-H host] [-P port] [-U user] [-p password] [-h]</i><br />
+     The possible actions for <b>fwidbmgr</b> are:<br />
+     <table border="0">
+       <tr><td><b>create</b></td><td>create an empty database structure</td></tr>
+       <tr><td><b>createstdgrid</b></td><td>creates the standard 177x174 point grid</td></tr>
+       <tr><td><b>fillnometeo</b></td><td>fills nometeo field in standard grid</td></tr>
+       <tr><td><b>fillregionmask</b></td><td>fills mask field in standard grid</td></tr>
+       <tr><td><b>in</b></td><td>save in db input data for date given by option date</td></tr>
+       <tr><td><b>out</b></td><td>save in db output data of fwi indexes computation</td></tr>
+       <tr><td><b>outimg</b></td><td>save in db output images</td></tr>
+     </table>
+\end{DoxyVerb}
+
+
+
+\begin{DoxyItemize}
+\item {\itshape date} must be a valid date in I\-S\-O 8601 format ex. (2012-\/03-\/22)
+\item {\itshape database} is the database name to be used
+\item {\itshape host} is the database host name or I\-P address
+\item {\itshape port} is the postgresql port
+\item {\itshape user} is the database user that has the proper rights
+\item {\itshape where} password is the user password
+
+{\bfseries h} --$>$ prints this text 
+\end{DoxyItemize}
+
+Definition at line 64 of file Command\-Line\-Arguments.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfwi_1_1CommandLineArguments_a157e286d1dfd5ab7b7ee4e69f85bbc09}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!can\-Try\-Db\-Connection@{can\-Try\-Db\-Connection}}
+\index{can\-Try\-Db\-Connection@{can\-Try\-Db\-Connection}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{can\-Try\-Db\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::can\-Try\-Db\-Connection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a157e286d1dfd5ab7b7ee4e69f85bbc09}
+
+
+Checks if a database connection could be done based on current settings. 
+
+\begin{DoxyReturn}{Returns}
+true if can try connection else false 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a157e286d1dfd5ab7b7ee4e69f85bbc09_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a31c6f8e8c94e7ca5540c4f84c836f1d3}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!close\-P\-G\-Connection@{close\-P\-G\-Connection}}
+\index{close\-P\-G\-Connection@{close\-P\-G\-Connection}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{close\-P\-G\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::close\-P\-G\-Connection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a31c6f8e8c94e7ca5540c4f84c836f1d3}
+
+
+Gently close postgresql connection. 
+
+\begin{DoxySeeAlso}{See also}
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 106 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a31c6f8e8c94e7ca5540c4f84c836f1d3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a744c32d84443793ba21c03959d5f80e2}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Action@{get\-Action}}
+\index{get\-Action@{get\-Action}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Action}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a744c32d84443793ba21c03959d5f80e2}
+
+
+Action getter. 
+
+\begin{DoxyReturn}{Returns}
+action argument 
+\end{DoxyReturn}
+
+
+Definition at line 43 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a744c32d84443793ba21c03959d5f80e2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a5e55e7e9d3f3ba165a21ead751e1e145}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Config\-File\-Path@{get\-Config\-File\-Path}}
+\index{get\-Config\-File\-Path@{get\-Config\-File\-Path}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Config\-File\-Path}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Config\-File\-Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a5e55e7e9d3f3ba165a21ead751e1e145}
+
+
+Config file path getter. 
+
+\begin{DoxyReturn}{Returns}
+config\-File\-Path argument 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file Command\-Line\-Arguments.\-cpp.
+
+\hypertarget{classfwi_1_1CommandLineArguments_aa3f9cdc1eedaf1d795f2921a7ecb6367}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Connection\-String@{get\-Connection\-String}}
+\index{get\-Connection\-String@{get\-Connection\-String}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Connection\-String}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Connection\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_aa3f9cdc1eedaf1d795f2921a7ecb6367}
+
+
+Gets the connection string based on current settings. 
+
+\begin{DoxyReturn}{Returns}
+the connection string 
+\end{DoxyReturn}
+
+
+Definition at line 214 of file Command\-Line\-Arguments.\-cpp.
+
+\hypertarget{classfwi_1_1CommandLineArguments_a8327187e13b3f2a96cf1becc71c9f68d}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Date@{get\-Date}}
+\index{get\-Date@{get\-Date}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Date}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a8327187e13b3f2a96cf1becc71c9f68d}
+
+
+Date getter. 
+
+\begin{DoxyReturn}{Returns}
+date argument 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a8327187e13b3f2a96cf1becc71c9f68d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a1813189cfbc370b85ed99f3b9585cebd}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Db\-Name@{get\-Db\-Name}}
+\index{get\-Db\-Name@{get\-Db\-Name}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Db\-Name}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Db\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a1813189cfbc370b85ed99f3b9585cebd}
+
+
+Database name getter. 
+
+\begin{DoxyReturn}{Returns}
+database name argument 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a1813189cfbc370b85ed99f3b9585cebd_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a683c730b0b79a90b48dc8596dd994bc4}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Help@{get\-Help}}
+\index{get\-Help@{get\-Help}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Help}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::get\-Help (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a683c730b0b79a90b48dc8596dd994bc4}
+
+
+Help argument presence. 
+
+\begin{DoxyReturn}{Returns}
+true help argument passed to program else false 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file Command\-Line\-Arguments.\-cpp.
+
+\hypertarget{classfwi_1_1CommandLineArguments_a83adbcce0c83237f689b948b8860d3ee}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Host@{get\-Host}}
+\index{get\-Host@{get\-Host}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Host}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Host (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a83adbcce0c83237f689b948b8860d3ee}
+
+
+Host getter. 
+
+\begin{DoxyReturn}{Returns}
+host argument 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a83adbcce0c83237f689b948b8860d3ee_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a951d2991fe796cc021f64b078a1a55e0}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Password@{get\-Password}}
+\index{get\-Password@{get\-Password}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Password}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-Password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a951d2991fe796cc021f64b078a1a55e0}
+
+
+Password getter. 
+
+\begin{DoxyReturn}{Returns}
+password argument 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file Command\-Line\-Arguments.\-cpp.
+
+\hypertarget{classfwi_1_1CommandLineArguments_a071867c84d4756190ddf6e57a2132131}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-P\-G\-Connection@{get\-P\-G\-Connection}}
+\index{get\-P\-G\-Connection@{get\-P\-G\-Connection}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-P\-G\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}P\-Gconn $\ast$ fwi\-::\-Command\-Line\-Arguments\-::get\-P\-G\-Connection (
+\begin{DoxyParamCaption}
+\item[{Config \&}]{cfg, }
+\item[{bool}]{create = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a071867c84d4756190ddf6e57a2132131}
+
+
+Gets postgresql connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg} & configuration class from libconfig++ \\
+\hline
+{\em create} & if true create a new connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+postgresql connection 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+libconfig++ documentation at \href{http://www.hyperrealm.com/libconfig/}{\tt http\-://www.\-hyperrealm.\-com/libconfig/} 
+
+postgresql documentation at \href{http://www.postgresql.org/}{\tt http\-://www.\-postgresql.\-org/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 83 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a071867c84d4756190ddf6e57a2132131_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_aed3e2ce12b0d735c219352d16c936afa}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-Port@{get\-Port}}
+\index{get\-Port@{get\-Port}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-Port}]{\setlength{\rightskip}{0pt plus 5cm}int fwi\-::\-Command\-Line\-Arguments\-::get\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_aed3e2ce12b0d735c219352d16c936afa}
+
+
+Port getter. 
+
+\begin{DoxyReturn}{Returns}
+port argument 
+\end{DoxyReturn}
+
+
+Definition at line 68 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_aed3e2ce12b0d735c219352d16c936afa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a4aa0d96232454f8ba8445d6474e51b3c}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!get\-User@{get\-User}}
+\index{get\-User@{get\-User}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{get\-User}]{\setlength{\rightskip}{0pt plus 5cm}string fwi\-::\-Command\-Line\-Arguments\-::get\-User (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1CommandLineArguments_a4aa0d96232454f8ba8445d6474e51b3c}
+
+
+User getter. 
+
+\begin{DoxyReturn}{Returns}
+user argument 
+\end{DoxyReturn}
+
+
+Definition at line 73 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a4aa0d96232454f8ba8445d6474e51b3c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a6a2c57edc3311bf3555b6b0a030915e1}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Action@{is\-Set\-Action}}
+\index{is\-Set\-Action@{is\-Set\-Action}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Action}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a6a2c57edc3311bf3555b6b0a030915e1}
+
+
+Checks for action setting. 
+
+\begin{DoxyReturn}{Returns}
+true if action is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 160 of file Command\-Line\-Arguments.\-cpp.
+
+\hypertarget{classfwi_1_1CommandLineArguments_a582c389cc309b4973a6565dcf5647af3}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Date@{is\-Set\-Date}}
+\index{is\-Set\-Date@{is\-Set\-Date}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Date}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a582c389cc309b4973a6565dcf5647af3}
+
+
+Checks for date setting. 
+
+\begin{DoxyReturn}{Returns}
+true if date is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 165 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a582c389cc309b4973a6565dcf5647af3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a883bd2b54b445dd1853d8771537fd2c3}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Db\-Name@{is\-Set\-Db\-Name}}
+\index{is\-Set\-Db\-Name@{is\-Set\-Db\-Name}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Db\-Name}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Db\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a883bd2b54b445dd1853d8771537fd2c3}
+
+
+Checks for database name setting. 
+
+\begin{DoxyReturn}{Returns}
+true if database name is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 175 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a883bd2b54b445dd1853d8771537fd2c3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_acfc136e2da1c2519e94d56ee6b897790}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Help@{is\-Set\-Help}}
+\index{is\-Set\-Help@{is\-Set\-Help}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Help}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Help (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_acfc136e2da1c2519e94d56ee6b897790}
+
+
+Checks for help setting. 
+
+\begin{DoxyReturn}{Returns}
+true if help is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 195 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_acfc136e2da1c2519e94d56ee6b897790_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_aff14b156dfdadee9a5ae2ba06976ecb0}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Host@{is\-Set\-Host}}
+\index{is\-Set\-Host@{is\-Set\-Host}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Host}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Host (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_aff14b156dfdadee9a5ae2ba06976ecb0}
+
+
+Checks for host setting. 
+
+\begin{DoxyReturn}{Returns}
+true if host is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 170 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_aff14b156dfdadee9a5ae2ba06976ecb0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a887eaacdc364872e66d8a487ea1f2285}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Password@{is\-Set\-Password}}
+\index{is\-Set\-Password@{is\-Set\-Password}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Password}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a887eaacdc364872e66d8a487ea1f2285}
+
+
+Checks for password setting. 
+
+\begin{DoxyReturn}{Returns}
+true if password is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a887eaacdc364872e66d8a487ea1f2285_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a587ef2a70389522c52277c1aa49f0f22}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-Port@{is\-Set\-Port}}
+\index{is\-Set\-Port@{is\-Set\-Port}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-Port}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a587ef2a70389522c52277c1aa49f0f22}
+
+
+Checks for port setting. 
+
+\begin{DoxyReturn}{Returns}
+true if port is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a587ef2a70389522c52277c1aa49f0f22_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a72d8f5d8be37affd36adc02c7c7f81d6}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!is\-Set\-User@{is\-Set\-User}}
+\index{is\-Set\-User@{is\-Set\-User}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{is\-Set\-User}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::\-Command\-Line\-Arguments\-::is\-Set\-User (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a72d8f5d8be37affd36adc02c7c7f81d6}
+
+
+Checks for user setting. 
+
+\begin{DoxyReturn}{Returns}
+true if user is set else false 
+\end{DoxyReturn}
+
+
+Definition at line 190 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classfwi_1_1CommandLineArguments_a72d8f5d8be37affd36adc02c7c7f81d6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a94983023c52fd20932d4e64cf5d566ad}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Action@{set\-Action}}
+\index{set\-Action@{set\-Action}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Action}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Action (
+\begin{DoxyParamCaption}
+\item[{string}]{action}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a94983023c52fd20932d4e64cf5d566ad}
+
+
+Action setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & action to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 120 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a94983023c52fd20932d4e64cf5d566ad_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_ad2548a77ea9819bb6356ffe1ebe2124b}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Config\-File\-Path@{set\-Config\-File\-Path}}
+\index{set\-Config\-File\-Path@{set\-Config\-File\-Path}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Config\-File\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Config\-File\-Path (
+\begin{DoxyParamCaption}
+\item[{string}]{cfgpath}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_ad2548a77ea9819bb6356ffe1ebe2124b}
+
+
+Config\-File\-Path setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfgpath} & config\-File\-Path to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 115 of file Command\-Line\-Arguments.\-cpp.
+
+\hypertarget{classfwi_1_1CommandLineArguments_af378e847bef06548a276f6ee4ccc72fe}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Date@{set\-Date}}
+\index{set\-Date@{set\-Date}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Date}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Date (
+\begin{DoxyParamCaption}
+\item[{string}]{date}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_af378e847bef06548a276f6ee4ccc72fe}
+
+
+Date setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & date to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 125 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_af378e847bef06548a276f6ee4ccc72fe_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a624d5a4997b520083b32f589674f4e58}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Db\-Name@{set\-Db\-Name}}
+\index{set\-Db\-Name@{set\-Db\-Name}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Db\-Name}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Db\-Name (
+\begin{DoxyParamCaption}
+\item[{string}]{dbname}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a624d5a4997b520083b32f589674f4e58}
+
+
+Database name setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dbname} & databasee name to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 130 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a624d5a4997b520083b32f589674f4e58_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_ab5e55eda6e153cfb3db823366ad72605}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Help@{set\-Help}}
+\index{set\-Help@{set\-Help}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Help}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Help (
+\begin{DoxyParamCaption}
+\item[{bool}]{help}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_ab5e55eda6e153cfb3db823366ad72605}
+
+
+Help flag setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em help} & help flag to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 155 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_ab5e55eda6e153cfb3db823366ad72605_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_a7942eb8218a54ba9843c506396f66f37}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Host@{set\-Host}}
+\index{set\-Host@{set\-Host}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Host}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Host (
+\begin{DoxyParamCaption}
+\item[{string}]{host}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_a7942eb8218a54ba9843c506396f66f37}
+
+
+Host setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & host to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 135 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_a7942eb8218a54ba9843c506396f66f37_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_af865288c92229fd879333c1d22770f13}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Password@{set\-Password}}
+\index{set\-Password@{set\-Password}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Password}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Password (
+\begin{DoxyParamCaption}
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_af865288c92229fd879333c1d22770f13}
+
+
+Password setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em password} & password to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 140 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_af865288c92229fd879333c1d22770f13_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_ab283ed9c1d605308f9df2381ec53340e}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-Port@{set\-Port}}
+\index{set\-Port@{set\-Port}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-Port}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-Port (
+\begin{DoxyParamCaption}
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_ab283ed9c1d605308f9df2381ec53340e}
+
+
+Port setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & port to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 145 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_ab283ed9c1d605308f9df2381ec53340e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1CommandLineArguments_aba8081f570985fba7c0746e4152857a1}{\index{fwi\-::\-Command\-Line\-Arguments@{fwi\-::\-Command\-Line\-Arguments}!set\-User@{set\-User}}
+\index{set\-User@{set\-User}!fwi::CommandLineArguments@{fwi\-::\-Command\-Line\-Arguments}}
+\subsubsection[{set\-User}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::\-Command\-Line\-Arguments\-::set\-User (
+\begin{DoxyParamCaption}
+\item[{string}]{user}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1CommandLineArguments_aba8081f570985fba7c0746e4152857a1}
+
+
+User setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & user to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 150 of file Command\-Line\-Arguments.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1CommandLineArguments_aba8081f570985fba7c0746e4152857a1_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{CommandLineArguments_8h}{Command\-Line\-Arguments.\-h}\item 
+src/\hyperlink{CommandLineArguments_8cpp}{Command\-Line\-Arguments.\-cpp}\end{DoxyCompactItemize}

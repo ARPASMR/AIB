@@ -1,0 +1,367 @@
+\hypertarget{classfwi_1_1grid_1_1GridFields}{\section{fwi\-:\-:grid\-:\-:Grid\-Fields Class Reference}
+\label{classfwi_1_1grid_1_1GridFields}\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}}
+}
+
+
+Fields list class.  
+
+
+
+
+{\ttfamily \#include $<$Grid\-Field.\-h$>$}
+
+
+
+Collaboration diagram for fwi\-:\-:grid\-:\-:Grid\-Fields\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classfwi_1_1grid_1_1GridFields__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfwi_1_1grid_1_1GridFields_a36f0b0b219a047ef181ed18cff94c27e}{\hyperlink{classfwi_1_1grid_1_1GridFields_a36f0b0b219a047ef181ed18cff94c27e}{Grid\-Fields} ()}\label{classfwi_1_1grid_1_1GridFields_a36f0b0b219a047ef181ed18cff94c27e}
+
+\begin{DoxyCompactList}\small\item\em Standard constructor. \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1GridFields_a103dfb1ef4110ad60cd81855bc3a142e}{Grid\-Fields} (int fields\-Num)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1GridFields_abea8f442d5246e1a76c7915e877f708d}{Grid\-Fields} (int fields\-Num, G\-R\-I\-D\-\_\-\-V\-A\-L\-U\-E\-\_\-\-T\-Y\-P\-E type)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1GridFields_a23e7326e33dfd20a305edea9510c10d8}{virtual \hyperlink{classfwi_1_1grid_1_1GridFields_a23e7326e33dfd20a305edea9510c10d8}{$\sim$\-Grid\-Fields} ()}\label{classfwi_1_1grid_1_1GridFields_a23e7326e33dfd20a305edea9510c10d8}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classfwi_1_1grid_1_1GridFields_a1aefa6b58f76e2e5f0373a493bd28517}{get\-Fields\-Num} () const 
+\begin{DoxyCompactList}\small\item\em fields number getter \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1GridFields_ace69526746a7cdf0f356c4d635fd3359}{add\-Field} (\hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field} $\ast$field)
+\begin{DoxyCompactList}\small\item\em adds a field to fields list \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1GridFields_a50301785fe0af270a3c4f0af2ee8f06b}{add\-Field} (int position, string name, string field\-\_\-name, levels\-\_\-t levels, int units, string description, G\-R\-I\-D\-\_\-\-V\-A\-L\-U\-E\-\_\-\-T\-Y\-P\-E type=F\-L\-O\-A\-T)
+\begin{DoxyCompactList}\small\item\em adds a field to fields list by its parameters \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1GridFields_aba88c89ac3a49a30927d91733a21bb5e}{remove\-Field} (\hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field} $\ast$field)
+\begin{DoxyCompactList}\small\item\em removes field from fields list \end{DoxyCompactList}\item 
+void \hyperlink{classfwi_1_1grid_1_1GridFields_a1f9762a1ba30c23f7bf664df9be6c54d}{remove\-Field} (string name)
+\begin{DoxyCompactList}\small\item\em removes field by name \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1GridFields_a86a81529ff06c2cba5666219679f176b}{has\-Field} (\hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field} $\ast$field)
+\begin{DoxyCompactList}\small\item\em checks if field is in fields list \end{DoxyCompactList}\item 
+bool \hyperlink{classfwi_1_1grid_1_1GridFields_ac34658d6ff8f0db162898b47b92c8bc2}{has\-Field} (string name)
+\begin{DoxyCompactList}\small\item\em checks if field with name is present in fields list \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field} $\ast$ \hyperlink{classfwi_1_1grid_1_1GridFields_a5e442334885f0aad108694a8b2131c31}{get\-Field\-By\-Name} (string \&name)
+\begin{DoxyCompactList}\small\item\em Gets a {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} given its name. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1GridFields_a3cdc87d29c6469e99499788ba004d957}{int \hyperlink{classfwi_1_1grid_1_1GridFields_a3cdc87d29c6469e99499788ba004d957}{get\-Field\-Position} (string \&name)}\label{classfwi_1_1grid_1_1GridFields_a3cdc87d29c6469e99499788ba004d957}
+
+\begin{DoxyCompactList}\small\item\em Gets field {\itshape position} given its name  name the searched field name return The {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} position of field named with {\itshape name}. If field's name is not found (N\-O\-T\-\_\-\-F\-O\-U\-N\-D = -\/1) is returned. \end{DoxyCompactList}\item 
+\hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field} $\ast$ \hyperlink{classfwi_1_1grid_1_1GridFields_a580e2c5ab477660d16237bb8d8030bd1}{get\-Field\-By\-Field\-Name} (string \&fname)
+\begin{DoxyCompactList}\small\item\em Gets a {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} given its field name. \end{DoxyCompactList}\item 
+\hypertarget{classfwi_1_1grid_1_1GridFields_a7eba82f83dee48495d1057ba46c24dce}{int \hyperlink{classfwi_1_1grid_1_1GridFields_a7eba82f83dee48495d1057ba46c24dce}{get\-Field\-Name\-Position} (string \&fname)}\label{classfwi_1_1grid_1_1GridFields_a7eba82f83dee48495d1057ba46c24dce}
+
+\begin{DoxyCompactList}\small\item\em Gets field {\itshape position} given its field name  name the searched field field name return The {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} position of field named with {\itshape fname}. If field's fname is not found (N\-O\-T\-\_\-\-F\-O\-U\-N\-D = -\/1) is returned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fields list class. 
+
+Definition at line 268 of file Grid\-Field.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfwi_1_1grid_1_1GridFields_a103dfb1ef4110ad60cd81855bc3a142e}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!Grid\-Fields@{Grid\-Fields}}
+\index{Grid\-Fields@{Grid\-Fields}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{Grid\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}fwi\-::grid\-::\-Grid\-Fields\-::\-Grid\-Fields (
+\begin{DoxyParamCaption}
+\item[{int}]{fields\-Num}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_a103dfb1ef4110ad60cd81855bc3a142e}
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fields\-Num} & fields number \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 212 of file Grid\-Field.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classfwi_1_1grid_1_1GridFields_a103dfb1ef4110ad60cd81855bc3a142e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_abea8f442d5246e1a76c7915e877f708d}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!Grid\-Fields@{Grid\-Fields}}
+\index{Grid\-Fields@{Grid\-Fields}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{Grid\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}fwi\-::grid\-::\-Grid\-Fields\-::\-Grid\-Fields (
+\begin{DoxyParamCaption}
+\item[{int}]{fields\-Num, }
+\item[{G\-R\-I\-D\-\_\-\-V\-A\-L\-U\-E\-\_\-\-T\-Y\-P\-E}]{type}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_abea8f442d5246e1a76c7915e877f708d}
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fields\-Num} & fields number \\
+\hline
+{\em type} & fields type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 221 of file Grid\-Field.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classfwi_1_1grid_1_1GridFields_abea8f442d5246e1a76c7915e877f708d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfwi_1_1grid_1_1GridFields_ace69526746a7cdf0f356c4d635fd3359}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!add\-Field@{add\-Field}}
+\index{add\-Field@{add\-Field}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{add\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::grid\-::\-Grid\-Fields\-::add\-Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Grid\-Field} $\ast$}]{field}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_ace69526746a7cdf0f356c4d635fd3359}
+
+
+adds a field to fields list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & new field \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 246 of file Grid\-Field.\-cpp.
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_a50301785fe0af270a3c4f0af2ee8f06b}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!add\-Field@{add\-Field}}
+\index{add\-Field@{add\-Field}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{add\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::grid\-::\-Grid\-Fields\-::add\-Field (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{string}]{name, }
+\item[{string}]{field\-\_\-name, }
+\item[{levels\-\_\-t}]{levels, }
+\item[{int}]{units, }
+\item[{string}]{description, }
+\item[{G\-R\-I\-D\-\_\-\-V\-A\-L\-U\-E\-\_\-\-T\-Y\-P\-E}]{type = {\ttfamily FLOAT}}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_a50301785fe0af270a3c4f0af2ee8f06b}
+
+
+adds a field to fields list by its parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & field's position \\
+\hline
+{\em name} & field's name \\
+\hline
+{\em field\-\_\-name} & database field's name \\
+\hline
+{\em levels} & levels vector \\
+\hline
+{\em units} & field units \\
+\hline
+{\em description} & field description \\
+\hline
+{\em type} & field's type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 251 of file Grid\-Field.\-cpp.
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_a580e2c5ab477660d16237bb8d8030bd1}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!get\-Field\-By\-Field\-Name@{get\-Field\-By\-Field\-Name}}
+\index{get\-Field\-By\-Field\-Name@{get\-Field\-By\-Field\-Name}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{get\-Field\-By\-Field\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Grid\-Field} $\ast$ fwi\-::grid\-::\-Grid\-Fields\-::get\-Field\-By\-Field\-Name (
+\begin{DoxyParamCaption}
+\item[{string \&}]{fname}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_a580e2c5ab477660d16237bb8d8030bd1}
+
+
+Gets a {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} given its field name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & the searched field name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} which fieldname is {\itshape name} else N\-U\-L\-L 
+\end{DoxyReturn}
+
+
+Definition at line 348 of file Grid\-Field.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1GridFields_a580e2c5ab477660d16237bb8d8030bd1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_a5e442334885f0aad108694a8b2131c31}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!get\-Field\-By\-Name@{get\-Field\-By\-Name}}
+\index{get\-Field\-By\-Name@{get\-Field\-By\-Name}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{get\-Field\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Grid\-Field} $\ast$ fwi\-::grid\-::\-Grid\-Fields\-::get\-Field\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_a5e442334885f0aad108694a8b2131c31}
+
+
+Gets a {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} given its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the searched field name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The {\itshape \hyperlink{classfwi_1_1grid_1_1GridField}{Grid\-Field}} which name is {\itshape name} else N\-U\-L\-L 
+\end{DoxyReturn}
+
+
+Definition at line 300 of file Grid\-Field.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfwi_1_1grid_1_1GridFields_a5e442334885f0aad108694a8b2131c31_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_a1aefa6b58f76e2e5f0373a493bd28517}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!get\-Fields\-Num@{get\-Fields\-Num}}
+\index{get\-Fields\-Num@{get\-Fields\-Num}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{get\-Fields\-Num}]{\setlength{\rightskip}{0pt plus 5cm}int fwi\-::grid\-::\-Grid\-Fields\-::get\-Fields\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classfwi_1_1grid_1_1GridFields_a1aefa6b58f76e2e5f0373a493bd28517}
+
+
+fields number getter 
+
+\begin{DoxyReturn}{Returns}
+fields number 
+\end{DoxyReturn}
+
+
+Definition at line 241 of file Grid\-Field.\-cpp.
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_a86a81529ff06c2cba5666219679f176b}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!has\-Field@{has\-Field}}
+\index{has\-Field@{has\-Field}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{has\-Field}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::grid\-::\-Grid\-Fields\-::has\-Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Grid\-Field} $\ast$}]{field}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_a86a81529ff06c2cba5666219679f176b}
+
+
+checks if field is in fields list 
+
+\begin{DoxyReturn}{Returns}
+true if field is present else false 
+\end{DoxyReturn}
+
+
+Definition at line 281 of file Grid\-Field.\-cpp.
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_ac34658d6ff8f0db162898b47b92c8bc2}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!has\-Field@{has\-Field}}
+\index{has\-Field@{has\-Field}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{has\-Field}]{\setlength{\rightskip}{0pt plus 5cm}bool fwi\-::grid\-::\-Grid\-Fields\-::has\-Field (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_ac34658d6ff8f0db162898b47b92c8bc2}
+
+
+checks if field with name is present in fields list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name to check for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if field is present else false 
+\end{DoxyReturn}
+
+
+Definition at line 287 of file Grid\-Field.\-cpp.
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_aba88c89ac3a49a30927d91733a21bb5e}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!remove\-Field@{remove\-Field}}
+\index{remove\-Field@{remove\-Field}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{remove\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::grid\-::\-Grid\-Fields\-::remove\-Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Grid\-Field} $\ast$}]{field}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_aba88c89ac3a49a30927d91733a21bb5e}
+
+
+removes field from fields list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & field to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 258 of file Grid\-Field.\-cpp.
+
+\hypertarget{classfwi_1_1grid_1_1GridFields_a1f9762a1ba30c23f7bf664df9be6c54d}{\index{fwi\-::grid\-::\-Grid\-Fields@{fwi\-::grid\-::\-Grid\-Fields}!remove\-Field@{remove\-Field}}
+\index{remove\-Field@{remove\-Field}!fwi::grid::GridFields@{fwi\-::grid\-::\-Grid\-Fields}}
+\subsubsection[{remove\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void fwi\-::grid\-::\-Grid\-Fields\-::remove\-Field (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classfwi_1_1grid_1_1GridFields_a1f9762a1ba30c23f7bf664df9be6c54d}
+
+
+removes field by name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of field to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 269 of file Grid\-Field.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{GridField_8h}{Grid\-Field.\-h}\item 
+src/\hyperlink{GridField_8cpp}{Grid\-Field.\-cpp}\end{DoxyCompactItemize}
