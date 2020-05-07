@@ -7,8 +7,6 @@ RUN apt -y update && \
 # Development packages
 RUN apt -y install g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev
 
-RUN apt -y install vim
-
 COPY src /development
 
 RUN cd /development/fortran/lib && \
