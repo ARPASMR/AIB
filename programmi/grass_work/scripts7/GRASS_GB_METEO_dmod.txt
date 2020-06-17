@@ -22,7 +22,10 @@ DIR_NEVE_IMG=$DIR_BASE/immagini/meteo/neve
 DIR_ANA_IMG=$DIR_BASE/immagini/ana
 DIR_IMG_PNG=$DIR_BASE/immagini/png
 DIR_INI=$DIR_BASE/ini
+#dir legende (aggiunta GTER)
 DIR_LEGENDE=$DIR_BASE/legende
+#titoli e accessori (aggiunta GTER)
+DIR_TITOLI=$DIR_BASE/titoli
 # File input meteo
 tempin=$DIR_ANA/t$underscore$dataieri.txt
 humiin=$DIR_ANA/ur$underscore$dataieri.txt
@@ -70,104 +73,117 @@ r.mapcalc expression="wind=wind/3.6" --o --quiet
 #
 ############# Temperatura ###############
 #
-echo "Plotto temperatura $dataieri"
- #export GRASS_PNGFILE=$tempout
- export GRASS_RENDER_WIDTH=800
- export GRASS_RENDER_HEIGHT=600
- export GRASS_RENDER_TRUECOLOR=TRUE
- d.mon start=png output=$tempout --quiet --overwrite
- d.mon select=png --quiet
+echo "Plotto temperatura $dataieri su file $tempout" 
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$tempout
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=png output=$tempout --quiet --overwrite
+ #d.mon select=png --quiet
  r.colors map=temp rules=$DIR_LEGENDE/scala_colori_temp --quiet
  d.rast map=temp --quiet
  d.legend raster=temp labelnum=10 at=10,65,0,5 --quiet
  d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB label_layer=1 \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
                label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
-d.mon stop=png --quiet
+#d.mon stop=png --quiet
 #
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_GRASS/titolometeo.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" '$DIR_TITOLI/titolometeo.gif'
 #
 # Converto in .gif per impaginata finale
 convert -size 800x600 xc:white -font Helvetica-Bold -pointsize 25 \
         -draw "image over 50,25 0,0 '$tempout'" \
 	-draw "text 65,225 '°C'" \
-        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $tempgif
+        -draw "image over 100,15 0,0 '$DIR_TITOLI/titolometeo.gif'" $tempgif
 #
 ############ Umidità Relativa #############
 #
 echo "Plotto umidtà relativa $dataieri"
- # export GRASS_PNGFILE=$humiout
- export GRASS_RENDER_WIDTH=800
- export GRASS_RENDER_HEIGHT=600
- export GRASS_RENDER_TRUECOLOR=TRUE
- d.mon start=png output=$humiout --quiet --overwrite
- d.mon select=png --quiet
- r.colors map=humi rules=$DIR_LEGENDE/scala_colori_ur --quiet
- d.rast map=humi --quiet 
- d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB label_layer=1 \
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$humiout
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=png output=$humiout --quiet --overwrite
+#d.mon select=png --quiet
+r.colors map=humi rules=$DIR_LEGENDE/scala_colori_ur --quiet
+d.rast map=humi --quiet 
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
                 label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
- d.mon stop=png --quiet
+#d.mon stop=png --quiet
 #
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_GRASS/titolometeo.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_TITOLI/titolometeo.gif
 #
 # Converto in .gif per impaginata finale
 convert -size 800x600 xc:white \
         -draw "image over 50,25 0,0 '$humiout'" \
 	-draw "image over 30,240 0,0 '$humilegend'" \
-        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $humigif
+        -draw "image over 100,15 0,0 '$DIR_TITOLI/titolometeo.gif'" $humigif
 #
 ############# Velocità Vento ##############
 #
 echo "Plotto velocità vento $dataieri"
- #export GRASS_PNGFILE=$windout
-  export GRASS_RENDER_WIDTH=800
- export GRASS_RENDER_HEIGHT=600
- export GRASS_RENDER_TRUECOLOR=TRUE
- d.mon start=png output=$windout --quiet --overwrite
- d.mon select=png --quiet
- r.colors map=wind rules=$DIR_LEGENDE/scala_colori_ws --quiet
- d.rast map=wind --quiet
- d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB  label_layer=1 \
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$windout
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+# d.mon start=png output=$windout --quiet --overwrite
+# d.mon select=png --quiet
+r.colors map=wind rules=$DIR_LEGENDE/scala_colori_ws --quiet
+d.rast map=wind --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none  label_layer=1 \
                 label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
- d.mon stop=png --quiet
+# d.mon stop=png --quiet
 #
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_GRASS/titolometeo.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_TITOLI/titolometeo.gif
 #
 # Converto in .gif per impaginata finale
 convert -size 800x600 xc:white \
         -draw "image over 50,25 0,0 '$windout'" \
 	-draw "image over 30,240 0,0 '$windlegend'" \
-        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $windgif
+        -draw "image over 100,15 0,0 '$DIR_TITOLI/titolometeo.gif'" $windgif
 #
 ############ Precipitazione Tot #############
 #
 echo "Plotto precipitazione totale $dataieri"
  #export GRASS_PNGFILE=$rainout
- export GRASS_RENDER_WIDTH=800
- export GRASS_RENDER_HEIGHT=600
- export GRASS_RENDER_TRUECOLOR=TRUE
- d.mon start=png output=$rainout --quiet --overwrite
- d.mon select=png --quiet
- r.colors map=rain rules=$DIR_LEGENDE/scala_colori_prec24 --quiet
- d.rast map=rain --quiet
- d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB  label_layer=1 \
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$rainout
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+# d.mon start=png output=$rainout --quiet --overwrite
+# d.mon select=png --quiet
+r.colors map=rain rules=$DIR_LEGENDE/scala_colori_prec24 --quiet
+d.rast map=rain --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none  label_layer=1 \
                 label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
- d.mon stop=png --quiet
+# d.mon stop=png --quiet
 #
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOieri/$MESEieri/$ANNOieri 12:00 - Analisi" $DIR_GRASS/titolometeo.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOieri/$MESEieri/$ANNOieri 12:00 - Analisi" $DIR_TITOLI/titolometeo.gif
 #
 # Converto in .gif per impaginata finale
 convert -size 800x600 xc:white \
         -draw "image over 50,25 0,0 '$rainout'" \
 	-draw "image over 30,150 0,0 '$rainlegend'" \
-        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $raingif
+        -draw "image over 100,15 0,0 '$DIR_TITOLI/titolometeo.gif'" $raingif
 #
 ################### IDI ######################
 #
@@ -177,23 +193,27 @@ r.in.gdal -o  input=$IDIin output=IDI --quiet --overwrite
 #
 echo "Plotto IDI"
  # export GRASS_PNGFILE=$IDIout
- export GRASS_RENDER_WIDTH=800
- export GRASS_RENDER_HEIGHT=600
- export GRASS_RENDER_TRUECOLOR=TRUE
- d.mon start=png output=$IDIout --quiet --overwrite
- d.mon select=png --quiet
- d.rast map=IDI --quiet
- d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB  label_layer=1 \
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$IDIout
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+# d.mon start=png output=$IDIout --quiet --overwrite
+# d.mon select=png --quiet
+d.rast map=IDI --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none  label_layer=1 \
                 label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
- d.mon stop=png --quiet
+# d.mon stop=png --quiet
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"IDI - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_GRASS/titoloIDI.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"IDI - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_TITOLI/titoloIDI.gif
 #
 # Converto in .gif per impaginata finale
 convert -size 700x500 xc:white \
         -draw "image over 50,25 0,0 '$IDIout'" \
-        -draw "image over 100,0 0,0 '$DIR_GRASS/titoloIDI.gif'" $IDIgif
+        -draw "image over 100,0 0,0 '$DIR_TITOLI/titoloIDI.gif'" $IDIgif
 #
 ##################### Neve #######################
 #
@@ -203,24 +223,28 @@ r.in.gdal -o input=$snowin output=neve --quiet --overwrite
 echo "Plotto mappa neve mascherata su AO"
 r.mask vector=AO  --quiet
  #export GRASS_PNGFILE=$snowout
- export GRASS_RENDER_WIDTH=800
- export GRASS_RENDER_HEIGHT=600
- export GRASS_RENDER_TRUECOLOR=TRUE 
- d.mon start=png output=$snowout --quiet --overwrite
- d.mon select=png --quiet
- d.rast map=neve --quiet
- d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB  label_layer=1 \
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$snowout
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+# d.mon start=png output=$snowout --quiet --overwrite
+# d.mon select=png --quiet
+d.rast map=neve --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none  label_layer=1 \
                 label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
- d.mon stop=png --quiet
+# d.mon stop=png --quiet
 g.remove -f type=raster name=MASK --quiet
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Copertura Nevosa - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_GRASS/titoloneve.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Copertura Nevosa - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_TITOLI/titoloneve.gif
 #
 # Converto in .gif per impaginata finale
 convert -size 700x500 xc:white \
         -draw "image over 50,25 0,0 '$snowout'" \
-        -draw "image over 100,0 0,0 '$DIR_GRASS/titoloneve.gif'" $snowgif 
+        -draw "image over 100,0 0,0 '$DIR_TITOLI/titoloneve.gif'" $snowgif 
 #
 echo "END GRASS_GB_METEO_dmod.txt"
 echo "###########################################"

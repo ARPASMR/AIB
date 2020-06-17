@@ -53,7 +53,8 @@ export GISRC=$HOME/.grassrc7_batch               # path to GRASS settings file
 export GIS_LOCK=$$                               # use PID as lock file number
 export PATH=$GISBASE/bin:$GISBASE/scripts:$PATH
 export LD_LIBRARY_PATH=$GISBASE/lib:$LD_LIBRARY_PATH
-
+export PYTHONPATH=$GISBASE/etc/python
+export PYTHONLIB=/usr/lib/python3.8
 
 
 # generate GRASS settings file:
