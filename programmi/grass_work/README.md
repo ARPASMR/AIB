@@ -22,3 +22,5 @@ quelle di Milanone non sono copiate su github, mentre si copieranno quelle per i
 - file  batch-grass7.sh usato per lanciare GRASS
 
 - file esempio_script.sh da usare per riscrivere lo script completo
+
+- location GRASS (GB e WGS84) aggiornate dove è stato fatto un v.build.all per aggiornare la topologia ma probabilmente sono da aggiornare le AO (sentire R. Grimaldelli 2020-07-01)
