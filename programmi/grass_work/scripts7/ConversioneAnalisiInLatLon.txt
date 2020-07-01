@@ -1,0 +1,195 @@
+#################    ConversioneAnalisiInLatLon.txt   ############
+#                                                                #
+#  MARIA RANCI - 8 APRILE 2010                                   #
+#                conversione delle mappe di analisi per          #
+#                la visualizzazione sulle googlemaps             #
+#                                                                #
+#  GTER - MARZO 2020 quiet mode ai comandi GRASS                  
+#  GTER - GIUGNO 2020 adattamento a GRASS 7 e pulizia ulteriore 
+##################################################################
+#
+#nomeindice="ffmc"
+#dataieri="20100407"
+#
+ echo "indice: $nomeindice di $dataieri"
+#
+MESE=${dataieri:4:2}
+#
+AO=AO
+LL=LL
+underscore=_
+#cartella con tutte le legende
+DIR_LEGENDE=$DIR_BASE/legende
+
+# ini
+filescale=$DIR_BASE/legende/fwiscale.ini
+
+fileoutmask=$DIR_BASE/immagini/ana/$nomeindice$underscore$dataieri$underscore$LL.png
+fileoutAO=$DIR_BASE/immagini/ana/$nomeindice$underscore$AO$underscore$dataieri$underscore$LL.png
+dirgrass=$DIR_GRASS
+#dir_tabella=/home/meteo/programmi/fwi_grid/tabella
+#
+colore1=0:100:0
+colore2=50:205:50
+colore3=255:255:0
+colore4=255:127:0
+colore5=255:0:0
+colore6=139:35:35
+#
+#####################################################################
+#                              1                                    #
+#####################################################################
+#
+echo "impostazione regione di calcolo"            
+g.region vect=LAMI res=0.0135
+
+echo "rimozione indici e IDI in memoria"
+g.remove -f  type=raster name=indici_IDI_neve_bruc --quiet
+
+echo "conversione in LAT LON "
+ r.proj input=indici_IDI_neve_bruc location=GB  mapset=AIB  output=indici_IDI_neve_bruc --quiet --overwrite
+
+echo "esportazione immagini"            
+#export GRASS_PNGFILE=$fileoutmask
+ export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$fileoutmask
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+# d.mon start=PNG
+# d.mon select=PNG
+ r.colors map=indici_IDI_neve_bruc rules=$DIR_LEGENDE/fwi$underscore$nomeindice$underscore$MESE --quiet
+ d.rast map=indici_IDI_neve_bruc --quiet
+# d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+#               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+#d.mon stop=PNG                                                                                    
+convert  $fileoutmask -transparent white $fileoutmask
+#####################################################################
+#
+echo "legge scale dell'indice"
+#-----------------------------------------------------
+# CONTROLLO SU ESISTENZA FILE 
+   if [ ! -f $filescale ]; then
+  	echo "$filescale : non esiste"
+  	exit 1
+   elif [ ! -r $filescale ]; then
+  	echo "$filescale: errore in lettura"
+  	exit 2
+   fi
+#
+# INDIVIDUO INDICE
+ case "$nomeindice" in
+# trova corrispondenza esatta in fwiscale.ini e determina il numero di riga
+  "mc")   numriga=`grep -nx "MC"   $filescale | awk -F : '{print $1}'`;;
+  "ffmc") numriga=`grep -nx "FFMC" $filescale | awk -F : '{print $1}'`;;
+  "dmc")  numriga=`grep -nx "DMC"  $filescale | awk -F : '{print $1}'`;;
+  "dc")   numriga=`grep -nx "DC"   $filescale | awk -F : '{print $1}'`;;
+  "isi")  numriga=`grep -nx "ISI"  $filescale | awk -F : '{print $1}'`;;
+  "bui")  numriga=`grep -nx "BUI"  $filescale | awk -F : '{print $1}'`;;
+  "fwi")  numriga=`grep -nx "FWI"  $filescale | awk -F : '{print $1}'`;;
+  "dsr")  numriga=`grep -nx "DSR"  $filescale | awk -F : '{print $1}'`;;
+  *) echo $nomeindice " indice non riconosciuto " ;;
+  *) exit 9 ;;
+ esac
+#echo numriga=$numriga
+#
+# INDIVIDUO MESE 
+X=${MESE#0}
+punta=$((X+1))
+#
+# RICAVO SOGLIE
+ aux=$((numriga+1))
+L1=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+2))
+L2=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+3))
+L3=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+4))
+L4=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+5))
+L5=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+echo "L1="$L1" | "
+echo "L2="$L2" | "
+echo "L3="$L3" | "
+echo "L4="$L4" | "
+echo "L5="$L5" | "
+#
+#-----------------------------------------------------
+# 2 ######  AGGREGAZIONE SULLE AREE OMOGENEE 
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+
+v.db.dropcolumn --q map=AO columns="FI_median,FI_number,FI_minimum,FI_maximum,FI_average,FI_range,FI_stddev,FI_variance,FI_coeff_var,FI_sum,FI_first_quartile,FI_third_quartile,FI_percentile_90,FI_mean"
+
+v.rast.stats -c map=AO raster=indici_IDI_neve_bruc colprefix=FI --q
+
+v.db.addcolumn map=AO columns="FI_mean integer" --q
+
+v.db.update map=AO column=FI_mean query_column="round(FI_average)"
+
+
+# questa parte sostituita con comando GRASS precedente possibile con DB nuovo DB sqlite 
+#v.rast.stats -c vector=AO raster=indici_IDI_neve_bruc colprefix=FI
+#echo " aggregazione sulle aree omogenee e visualizzazione in AGGREGATO.png"            
+#v.db.select -c map=AO layer=1 column=cat,FI_mean fs=" " > $dirgrass/mean_fi.txt          
+
+# calcolo delle medie dell'indice sulle aree omogenee 
+#for ((t=1; t<=15; t++))
+#do
+#	head -$t $dirgrass/mean_fi.txt | tail -1 > $dirgrass/b.txt
+#	read cat mean < $dirgrass/b.txt
+#	echo "round (${mean})" | bc -l $dirgrass/arrot.b > $dirgrass/fi.txt
+#	read FI < $dirgrass/fi.txt
+#	echo "update AO set FI_mean=${FI} where cat=${t}" | db.execute
+#done
+
+
+
+
+
+#export GRASS_PNGFILE=$fileoutAO
+ export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$fileoutAO
+export GRASS_RENDER_WIDTH=800
+export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=PNG
+#d.mon select=PNG
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore1 --quiet
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore2 --quiet
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore3 --quiet
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore4 --quiet
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore5 --quiet
+d.vect map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore6 --quiet
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+#d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+#              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes --quiet
+        
+d.labels   label=ao_mean              
+#d.what.vect
+#d.out.file output=output/AGGREGATO res=2 format=png compression=0         
+#d.mon  stop=PNG                                                      
+
+# 3 ##### # GRAFICO  
+#convert xc:transparent \
+#        -draw "image over 100,  0   0,  0 '$fileoutAOpng1'  "            \ $fileoutAOpng1
+convert  $fileoutAO -transparent white $fileoutAO
+#

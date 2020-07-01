@@ -1,0 +1,12 @@
+COMMAND: v.in.ogr -o dsn="/home/meteo/programmi/grass_work/scripts/Aree_IC/aree_ic.shp" output="aree_ic" layer="aree_ic" min_area=0.0001 snap=-1
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Wed Dec 14 17:07:55 2011
+-----------------------------------------------------
+12 input polygons
+Total area: 2.38525E+10 (368 areas)
+Overlapping area: 29.181 (181 areas)
+Area without category: 8.93935 (175 areas)
+---------------------------------------------------------------------------------
+COMMAND: v.proj input="aree_ic" location="GB" mapset="PERMANENT" output="aree_ic"
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: WGS84 MAPSET: PERMANENT USER: meteo DATE: Wed Dec 14 17:09:57 2011

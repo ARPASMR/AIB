@@ -16,7 +16,7 @@
 #  DAVIDE GALERI - MARZO 2013adattamento a Milanone Virtuale      #
 #                                                                 #
 #  GTER - MARZO 2020 quiet mode ai comandi GRASS                  #
-#  GTER - GIUGNO 2020 adattamento a GRASS 7
+#  GTER - GIUGNO 2020 adattamento a GRASS 7 e pulizia ulteriore
 ###################################################################
 #
 echo "########################################################"
@@ -240,7 +240,7 @@ echo "L5="$L5" | "
 
 echo "Aggregazione su Aree Omogenee e salvataggio immagini"
 # valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
-v.db.dropcolumn --q map=AO columns="FI_number,FI_minimum,FI_maximum,FI_average,FI_range,FI_stddev,FI_varianc,FI_coeff_v,FI_sum, FI_mean"
+v.db.dropcolumn --q map=AO columns="FI_median,FI_number,FI_minimum,FI_maximum,FI_average,FI_range,FI_stddev,FI_variance,FI_coeff_var,FI_sum,FI_first_quartile,FI_third_quartile,FI_percentile_90,FI_mean"
 
 v.rast.stats -c map=AO raster=indici_IDI_neve_bruc colprefix=FI --q
 

@@ -1,0 +1,11 @@
+COMMAND: v.in.ogr dsn="/home/meteo/programmi/grass_work/scripts/stazioni_GB/stazioni_fireless_GB.shp" output="stazioni_fireless_GB" layer="stazioni_fireless_GB" min_area=0.0001 snap=-1
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Thu Jun  8 14:08:29 2017
+---------------------------------------------------------------------------------
+COMMAND: v.db.dropcol "--q" "column=ValoreAIB" "map=stazioni_fireless_GB@PERMANENT" "layer=1"
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Thu Jun  8 14:57:54 2017
+---------------------------------------------------------------------------------
+COMMAND: v.db.addcol "--q" "map=stazioni_fireless_GB@PERMANENT" "layer=1" "columns=ValoreAIB double precision"
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Thu Jun  8 14:58:23 2017

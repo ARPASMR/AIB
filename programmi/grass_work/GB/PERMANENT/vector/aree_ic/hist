@@ -1,0 +1,12 @@
+COMMAND: v.in.ogr dsn="/home/meteo/programmi/grass_work/scripts/Aree_IC/aree_neve.shp" output="aree_ic" min_area=0.0001 snap=-1
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Wed Dec 23 07:31:12 2015
+-----------------------------------------------------
+14 input polygons
+Total area: 2.38693E+10 (18 areas)
+Overlapping area: 0 (0 areas)
+Area without category: 460691 (4 areas)
+---------------------------------------------------------------------------------
+COMMAND: v.db.addcol "--q" "map=aree_ic@PERMANENT" "layer=1" "columns=SNOW_mean integer"
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Sat Sep 10 15:34:07 2016

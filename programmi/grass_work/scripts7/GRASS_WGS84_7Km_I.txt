@@ -1,0 +1,57 @@
+#################    GRASS_WGS84_7Km_I.txt   ################
+#                                                           #
+#  MARIA RANCI - 1 APRILE 2009                              #
+#  MARIA RANCI - 24 NOVEMBRE 2009 modifiche per raccordo    #
+#                                 con codice fortran        #
+#
+#  GTER - MARZO 2020 quiet mode ai comandi GRASS                  
+#  GTER - GIUGNO 2020 adattamento a GRASS 7 e pulizia ulteriore                                                      
+#############################################################
+#
+
+####  da input:
+#echo "####################################"
+#echo "START GRASS_WGS84_7Km_I.txt"
+echo "Trasformazione indice: $nomeindice del $dataieri"
+
+underscore=_
+LAMI=lami
+fileoutLAMItxt=$DIR_BASE/indici/ana/$nomeindice$underscore$LAMI$underscore$dataieri.txt
+temporaneo=$DIR_BASE/indici/ana/temp
+#
+#####################################################################
+#                              1                                    #
+#####################################################################
+echo "impostazione regione di calcolo"            
+g.region vector=LAMI res=0.063 --quiet 
+#
+echo "rimozione indici e IDI in memoria"
+g.remove -f  type=raster name=indici,neve --quiet 
+
+#  1 ######### CONVERSIONE IN LAT LON 
+echo "conversione in LAT LON $nomeindice"            
+r.proj input=indici_IDI_neve_bruc location=GB  mapset=AIB output=indici method=nearest --quiet --overwrite
+echo "conversione in LAT LON della neve"            
+r.proj input=neve location=GB mapset=AIB output=neve method=nearest --quiet --overwrite
+#
+#  2 ######### ESPORTAZIONE COME FILE DI TESTO SUI PUNTI DEL LAMI
+
+echo "estraggo l'indice sui punti del lami e lo memorizzo nella colonna VAL"
+r.null map=indici null=0  --quiet           
+v.what.rast --quiet map=LAMI raster=indici column=VAL 
+#d.what.vect LAMI
+
+echo "esportazione in file di testo"            
+
+g.region vector=LAMI  --quiet
+v.out.ascii input=LAMI output=$fileoutLAMItxt separator="," columns=VAL --quiet --overwrite
+
+#mkdir $temporaneo
+#v.out.ogr -c input=LAMI type=point dsn=$temporaneo olayer=temporaneo layer=1 format=CSV 
+#cp $temporaneo/temporaneo.csv $fileoutLAMItxt
+#rm $temporaneo/temporaneo.csv
+#rmdir  $temporaneo
+
+
+#echo "END GRASS_WGS84_7Km_I.txt"
+#echo "####################################"

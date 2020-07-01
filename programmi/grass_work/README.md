@@ -6,7 +6,7 @@ Cartella con script GRASS (versione 6 su Milanone, 7 su nuovo Docker)
 
 * controllare che linguaggio di script sia bash e non dash
 * installare imagemagick
-* fare un v.build.all sui repository di GRASS (GB e WGS84)
+* fare un v.build.all sui repository di GRASS (GB e WGS84) e *usare nuovi repository da copiare su github*
 
 
 ## Descrizione

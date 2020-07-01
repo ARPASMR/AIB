@@ -40,7 +40,7 @@ windout=$DIR_IMG_PNG/ws$underscore$dataieri.png
 rainout=$DIR_IMG_PNG/prec24$underscore$dataieri.png
 IDIout=$DIR_IMG_PNG/IDI_comune_$dataieri.png
 snowout=$DIR_IMG_PNG/neve$underscore$dataieri.png
-tempgiftempgif=$DIR_ANAME_IMG/t$underscore$dataieri.gif
+tempgif=$DIR_ANAME_IMG/t$underscore$dataieri.gif
 humigif=$DIR_ANAME_IMG/ur$underscore$dataieri.gif
 windgif=$DIR_ANAME_IMG/ws$underscore$dataieri.gif
 raingif=$DIR_ANAME_IMG/prec24$underscore$dataieri.gif
@@ -92,17 +92,17 @@ export GRASS_RENDER_FILE_READ=TRUE
 #d.mon stop=png --quiet
 #
 # Aggiunta titolo
-convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" '$DIR_TITOLI/titolometeo.gif'
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOieri/$MESEieri/$ANNOieri - Analisi" $DIR_TITOLI/titolometeo.gif
 #
 # Converto in .gif per impaginata finale
 convert -size 800x600 xc:white -font Helvetica-Bold -pointsize 25 \
         -draw "image over 50,25 0,0 '$tempout'" \
 	-draw "text 65,225 '°C'" \
-        -draw "image over 100,15 0,0 '$DIR_TITOLI/titolometeo.gif'" $tempgif
+	-draw "image over 100,15 0,0 '$DIR_TITOLI/titolometeo.gif'" $tempgif
 #
 ############ Umidità Relativa #############
 #
-echo "Plotto umidtà relativa $dataieri"
+echo "Plotto umidità relativa $dataieri"
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$humiout
 export GRASS_RENDER_WIDTH=800

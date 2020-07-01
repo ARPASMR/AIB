@@ -40,31 +40,30 @@ for nomeindice in ffmc dmc dc isi bui fwi
  
  
  
- # da decommentare
- #       	case $nomeindice in ffmc|dmc|dc)
+        	case $nomeindice in ffmc|dmc|dc)
         	
         	
         	
         	
 ###     C) GRASS in WGS84 risoluzione 7Km
-#                     grass63 -text $DIR_GRASS/WGS84/PERMANENT <  $DIR_GRASS/scripts/GRASS_WGS84_7Km_I.txt
+#                     grass63 -text $DIR_GRASS/WGS84/PERMANENT <  $DIR_GRASS/scripts/GRASS_WGS84_7Km_I.txt 
 
 
 # da decommentare
-#                        echo "GRASS_WGS84_7Km_I inizio ========================================================================="
-#                        /home/meteo/script/fwi/batch-grass6.sh WGS84 AIB -file $DIR_GRASS/scripts/GRASS_WGS84_7Km_I.txt
-#			if [ "$?" -ne 0 ]
-#			then
-#				echo "codice errore di grass63 in WGS84"
-#				exit 1
-#			fi
-#                        echo "GRASS_WGS84_7Km_I fine ========================================================================="
-#                	;;
-#        	esac
+                        echo "GRASS_WGS84_7Km_I inizio ========================================================================="
+                        ./batch-grass7.sh WGS84 AIB -file $DIR_GRASS/scripts7/GRASS_WGS84_7Km_I.txt $DIR_BASE
+			if [ "$?" -ne 0 ]
+			then
+				echo "codice errore di grass63 in WGS84"
+			exit 1
+			fi
+                        echo "GRASS_WGS84_7Km_I fine ========================================================================="
+                	;;
+        	esac
 
-#                echo "ConversioneAnalisiinLatLon.txt inizio ========================================================================"
-#                /home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/ConversioneAnalisiInLatLon.txt 
-#                echo "ConversioneAnalisiinLatLon.txt fine ========================================================================="
+                echo "ConversioneAnalisiinLatLon.txt inizio ========================================================================"
+               ./batch-grass7.sh WGS84 AIB -file $DIR_GRASS/scripts7/ConversioneAnalisiInLatLon.txt  $DIR_BASE
+                echo "ConversioneAnalisiinLatLon.txt fine ========================================================================="
 
 	done
 #echo "ok" >$end_grass.$dataoggi

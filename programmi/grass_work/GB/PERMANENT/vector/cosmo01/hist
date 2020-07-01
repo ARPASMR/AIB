@@ -1,0 +1,7 @@
+COMMAND: v.in.ascii input="/home/meteo/ic/input_data/temporanei/cosmo01.txt" output="cosmo01" format="point" fs=" " skip=0 x=4 y=3 z=0 cat=0
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: WGS84 MAPSET: PERMANENT USER: meteo DATE: Fri Dec  9 17:15:08 2011
+---------------------------------------------------------------------------------
+COMMAND: v.proj input="cosmo01" location="WGS84" mapset="PERMANENT" output="cosmo01"
+GISDBASE: /home/meteo/programmi/grass_work
+LOCATION: GB MAPSET: PERMANENT USER: meteo DATE: Fri Dec  9 18:08:47 2011
