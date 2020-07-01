@@ -6,7 +6,8 @@ Cartella con script GRASS (versione 6 su Milanone, 7 su nuovo Docker)
 
 * controllare che linguaggio di script sia bash e non dash
 * installare imagemagick
-* fare un v.build.all sui repository di GRASS (GB e WGS84) e *usare nuovi repository da copiare su github*
+* usare nuovi repository  GRASS (GB e WGS84) copiati su github
+* ebentualmente aggiungere / aggiornare dati GRASS (es. AO sentire R. Grimaldelli 2020-07-01)
 
 
 ## Descrizione
@@ -23,4 +24,4 @@ quelle di Milanone non sono copiate su github, mentre si copieranno quelle per i
 
 - file esempio_script.sh da usare per riscrivere lo script completo
 
-- location GRASS (GB e WGS84) aggiornate dove è stato fatto un v.build.all per aggiornare la topologia ma probabilmente sono da aggiornare le AO (sentire R. Grimaldelli 2020-07-01)
+- location GRASS (GB e WGS84) aggiornate dove è stato fatto un v.build.all per aggiornare la topologia 
