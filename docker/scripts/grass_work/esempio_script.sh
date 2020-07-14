@@ -14,6 +14,11 @@ export dataieri=20200607
 
 export DIR_BASE=/home/roberto/conversione_GRASS
 
+#lo script bash conversione_img_neve/neve_operativo.sh e comando successivo ConversioneCoperturaNevosa_mod.txt può essere sostituito dalla seguente riga bash
+gdal_translate -of "AAIgrid" neve_YYYYMMDD.img neve_YYYYMMDD.txt
+# il comando gdal_translate fa effettivamente la stessa conversione di formato che si farebbe con lo script GRASS che risulta quindi inutile
+
+
 
 
 echo "GRASS_GB_METEO inizio ========================================================================="
