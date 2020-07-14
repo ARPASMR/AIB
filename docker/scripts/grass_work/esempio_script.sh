@@ -2,7 +2,8 @@
 
 
 # da personalizzare in fase di lancio
-export DIR_GRASS=/home/roberto/conversione_GRASS/GRASS7/grass_work
+export DIR_BASE=/home/roberto/conversione_GRASS
+export DIR_GRASS=$DIR_BASE/GRASS7/grass_work
 
 ###################################################
 # da decommentare qua
@@ -12,12 +13,12 @@ export dataieri=20200607
 
 #DIR_BASE=/home/meteo/programmi/fwi_grid
 
-export DIR_BASE=/home/roberto/conversione_GRASS
+
+
 
 #lo script bash conversione_img_neve/neve_operativo.sh e comando successivo ConversioneCoperturaNevosa_mod.txt può essere sostituito dalla seguente riga bash
 gdal_translate -of "AAIgrid" neve_YYYYMMDD.img neve_YYYYMMDD.txt
 # il comando gdal_translate fa effettivamente la stessa conversione di formato che si farebbe con lo script GRASS che risulta quindi inutile
-
 
 
 

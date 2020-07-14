@@ -1,0 +1,359 @@
+###################################################################
+#
+#nomeindice="ffmc"
+#dataoggi="20080302"
+#datadomani="20080302"
+
+
+echo "START ConversionePrevisioneInGB_dmod.txt"
+echo "indice: $nomeindice"
+echo "IERI: $dataieri"
+# echo "OGGI: $dataoggi"
+# echo "DOMANI: $datadomani"
+MESE=${dataoggi:4:2}
+#MESE=$(date +%m)
+echo "mese: " $MESE ", indice " $nomeindice
+#
+###################################################################
+#  definizione di giorno, mese e anno per scrivere date nei titoli:
+ANNOoggi=${dataoggi:0:4}
+MESEoggi=${dataoggi:4:2}
+GIORNOoggi=${dataoggi:6:2}
+
+ANNOdomani=${datadomani:0:4}
+MESEdomani=${datadomani:4:2}
+GIORNOdomani=${datadomani:6:2}
+###################################################################
+#
+mask=mask
+AO=AO
+legenda=legenda
+underscore=_
+nome=GB
+uno=1
+due=2
+# Paths:
+DIR_PREV_IMG=$DIR_BASE/immagini/prev
+DIR_IMG_PNG=$DIR_BASE/immagini/png
+#DIR_GRASS=/home/meteo/programmi/grass_work/scripts
+#
+filescale=$DIR_BASE/legende/fwiscale.ini
+fileout1=$DIR_IMG_PNG/$nomeindice$underscore$nome$underscore$dataoggi$underscore$uno.png
+fileout2=$DIR_IMG_PNG/$nomeindice$underscore$nome$underscore$datadomani$underscore$due.png
+fileoutAO1=$DIR_IMG_PNG/$nomeindice$underscore$AO$underscore$dataoggi$underscore$uno.png
+fileoutAO2=$DIR_IMG_PNG/$nomeindice$underscore$AO$underscore$datadomani$underscore$due.png
+fileout1gif=$DIR_PREV_IMG/$nomeindice$underscore$dataoggi$underscore$uno.gif
+fileout2gif=$DIR_PREV_IMG/$nomeindice$underscore$datadomani$underscore$due.gif
+fileoutAO1gif=$DIR_PREV_IMG/$nomeindice$underscore$AO$underscore$dataoggi$underscore$uno.gif
+fileoutAO2gif=$DIR_PREV_IMG/$nomeindice$underscore$AO$underscore$datadomani$underscore$due.gif
+#
+colore1=0:100:0
+colore2=50:205:50
+colore3=255:255:0
+colore4=255:127:0
+colore5=255:0:0
+colore6=139:35:35
+#
+#####################################################################
+echo "impostazione regione di calcolo"            
+g.region -d --quiet
+#
+echo "conversione in GB dell'indice previsto"            
+g.remove -f type=raster name=indici_prev1,indici_prev2 --quiet
+
+echo "conversione in GB dell'indice previsto"            
+r.proj input=indici_prev1 location=WGS84 mapset=AIB output=indici_prev1 --quiet
+r.proj input=indici_prev2 location=WGS84 mapset=AIB output=indici_prev2 --quiet
+#
+############################   indice oggi ########################
+echo "salvataggio immagini oggi"
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$fileout1
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#export GRASS_PNGFILE=$fileout1
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+r.colors map=indici_prev1 rules=$DIR_BASE/legende/fwi$underscore$nomeindice$underscore$MESEoggi --quiet
+d.rast map=indici_prev1 --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.out.file output=$fileoutputpng res=2 format=png compression=0
+#d.mon stop=PNG --quiet
+convert  $fileout1 -transparent white $fileout1
+#
+# aggiunta del titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"$nomeindice - $GIORNOoggi/$MESEoggi/$ANNOoggi - PREVISIONE +1G" $DIR_GRASS/titoloindice.gif
+#convert -size 1380x960 xc:white \
+convert -size 700x500 xc:white \
+        -draw "image over 100,  25   0,  0 '$fileout1'  "             \
+        -draw "image over 100,  0   0,  0 '$DIR_GRASS/titoloindice.gif'      " $fileout1gif
+echo "legge scale dell'indice"
+rm $fileout1
+#-----------------------------------------------------
+#
+# CONTROLLO SU ESISTENZA FILE 
+   if [ ! -e $filescale ]; then
+  	echo "$filescale : non esiste"
+  	exit 1
+   elif [ ! -r $filescale ]; then
+  	echo "$filescale: errore in lettura"
+  	exit 2
+   fi
+
+#
+# INDIVIDUO INDICE
+ case "$nomeindice" in
+# trova corrispondenza esatta in fwiscale.ini e determina il numero di riga
+  "mc")   numriga=`grep -nx "MC"   $filescale | awk -F : '{print $1}'`;;
+  "ffmc") numriga=`grep -nx "FFMC" $filescale | awk -F : '{print $1}'`;;
+  "dmc")  numriga=`grep -nx "DMC"  $filescale | awk -F : '{print $1}'`;;
+  "dc")   numriga=`grep -nx "DC"   $filescale | awk -F : '{print $1}'`;;
+  "isi")  numriga=`grep -nx "ISI"  $filescale | awk -F : '{print $1}'`;;
+  "bui")  numriga=`grep -nx "BUI"  $filescale | awk -F : '{print $1}'`;;
+  "fwi")  numriga=`grep -nx "FWI"  $filescale | awk -F : '{print $1}'`;;
+  "dsr")  numriga=`grep -nx "DSR"  $filescale | awk -F : '{print $1}'`;;
+  *) echo $nomeindice " indice non riconosciuto " ;;
+  *) exit 9 ;;
+ esac
+#echo numriga=$numriga
+#
+# INDIVIDUO MESE 
+X=${MESE#0}
+punta=$((X+1))
+#
+# RICAVO SOGLIE
+ aux=$((numriga+1))
+L1=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+2))
+L2=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+3))
+L3=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+4))
+L4=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+5))
+L5=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+echo "L1="$L1" | "
+echo "L2="$L2" | "
+echo "L3="$L3" | "
+echo "L4="$L4" | "
+echo "L5="$L5" | "
+#-----------------------------------------------------
+
+echo "aggregazione su Aree Omogenee e salvataggio immagini"
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+
+v.db.dropcolumn --q map=AO columns="FI_median,FI_number,FI_minimum,FI_maximum,FI_average,FI_range,FI_stddev,FI_variance,FI_coeff_var,FI_sum,FI_first_quartile,FI_third_quartile,FI_percentile_90,FI_mean"
+
+v.rast.stats -c map=AO raster=indici_prev1 colprefix=FI --quiet
+
+v.db.addcolumn map=AO columns="FI_mean integer" --q
+
+v.db.update map=AO column=FI_mean query_column="round(FI_average)"
+
+
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$fileoutAO1
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#export GRASS_PNGFILE=$fileoutAO1
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore1
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore2
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore3
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore4
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore5
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore6
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+#d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+#              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+      
+d.labels   label=ao_mean --quiet              
+#d.what.vect
+#d.out.file output=output/AGGREGATO res=2 format=png compression=0         
+#d.mon  stop=PNG --quiet 
+
+
+echo "aggiunta trasparenza per la pubblicazione su WEB"
+convert  $fileoutAO1 -transparent white $fileoutAO1 
+#
+echo "aggiunta didascalie "
+convert -background white -fill black -font Helvetica-Bold -pointsize 15 label:Legenda $DIR_GRASS/label_legenda.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"$nomeindice - $GIORNOoggi/$MESEoggi/$ANNOoggi - PREVISIONE +1G" $DIR_GRASS/titolo.gif
+#convert -size 1380x960 xc:white \
+convert -size 700x500 xc:white \
+        -draw "image over 100,  25   0,  0 '$fileoutAO1'  "             \
+        -draw "image over  20,150 100,  0 '$DIR_BASE/titoli/label_legenda.gif'" \
+        -draw "image over  20,200 100,  0 '$DIR_BASE/titoli/legenda.png'"       \
+        -draw "image over 100,  0   0,  0 '$DIR_GRASS/titolo.gif'      " $fileoutAO1gif
+#convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
+
+
+
+############################   indice domani ########################
+echo "salvataggio immagini domani "
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$fileout2
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#export GRASS_PNGFILE=$fileout2
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+r.colors map=indici_prev2 rules=$DIR_BASE/legende/fwi$underscore$nomeindice$underscore$MESEdomani --quiet
+d.rast map=indici_prev2 --quiet
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.out.file output=$fileoutputpng res=2 format=png compression=0
+#d.mon stop=PNG --quiet
+
+
+ 
+convert  $fileout2 -transparent white $fileout2
+#
+# aggiunta del titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"$nomeindice - $GIORNOdomani/$MESEdomani/$ANNOdomani - PREVISIONE +2G" $DIR_GRASS/titoloindice.gif
+#convert -size 1380x960 xc:white \
+convert -size 700x500 xc:white \
+        -draw "image over 100,  25   0,  0 '$fileout2'  "             \
+        -draw "image over 100,  0   0,  0 '$DIR_GRASS/titoloindice.gif'      " $fileout2gif
+echo "legge scale dell'indice"
+rm $fileout2
+#-----------------------------------------------------
+#
+# CONTROLLO SU ESISTENZA FILE 
+   if [ ! -e $filescale ]; then
+  	echo "$filescale : non esiste"
+  	exit 1
+   elif [ ! -r $filescale ]; then
+  	echo "$filescale: errore in lettura"
+  	exit 2
+   fi
+
+#
+# INDIVIDUO INDICE
+ case "$nomeindice" in
+# trova corrispondenza esatta in fwiscale.ini e determina il numero di riga
+  "mc")   numriga=`grep -nx "MC"   $filescale | awk -F : '{print $1}'`;;
+  "ffmc") numriga=`grep -nx "FFMC" $filescale | awk -F : '{print $1}'`;;
+  "dmc")  numriga=`grep -nx "DMC"  $filescale | awk -F : '{print $1}'`;;
+  "dc")   numriga=`grep -nx "DC"   $filescale | awk -F : '{print $1}'`;;
+  "isi")  numriga=`grep -nx "ISI"  $filescale | awk -F : '{print $1}'`;;
+  "bui")  numriga=`grep -nx "BUI"  $filescale | awk -F : '{print $1}'`;;
+  "fwi")  numriga=`grep -nx "FWI"  $filescale | awk -F : '{print $1}'`;;
+  "dsr")  numriga=`grep -nx "DSR"  $filescale | awk -F : '{print $1}'`;;
+  *) echo $nomeindice " indice non riconosciuto " ;;
+  *) exit 9 ;;
+ esac
+#echo numriga=$numriga
+#
+# INDIVIDUO MESE 
+X=${MESE#0}
+punta=$((X+1))
+#
+# RICAVO SOGLIE
+ aux=$((numriga+1))
+L1=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+2))
+L2=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+3))
+L3=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+4))
+L4=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+ aux=$((numriga+5))
+L5=`awk 'NR=='$aux'' $filescale | awk -F " " '{print $'$punta'}'`
+echo "L1="$L1" | "
+echo "L2="$L2" | "
+echo "L3="$L3" | "
+echo "L4="$L4" | "
+echo "L5="$L5" | "
+#-----------------------------------------------------
+
+
+
+echo "aggregazione su Aree Omogenee e salvataggio immagini domani"
+# valuta le statistiche per le aree omogenee sul raster indice corretta precedentemente
+
+v.db.dropcolumn --q map=AO columns="FI_median,FI_number,FI_minimum,FI_maximum,FI_average,FI_range,FI_stddev,FI_variance,FI_coeff_var,FI_sum,FI_first_quartile,FI_third_quartile,FI_percentile_90,FI_mean"
+
+v.rast.stats -c map=AO raster=indici_prev2 colprefix=FI --quiet
+
+v.db.addcolumn map=AO columns="FI_mean integer" --q
+
+v.db.update map=AO column=FI_mean query_column="round(FI_average)"
+
+
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$fileoutAO2
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#export GRASS_PNGFILE=$fileoutAO2
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean <= $L1"                     \
+              color=black fcolor=$colore1
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L1 AND FI_mean <= $L2"   \
+              color=black fcolor=$colore2
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L2 AND FI_mean <= $L3"   \
+              color=black fcolor=$colore3
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L3 AND FI_mean <= $L4"   \
+              color=black fcolor=$colore4
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L4 AND FI_mean <= $L5"   \
+              color=black fcolor=$colore5
+d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $L5"                      \
+              color=black fcolor=$colore6
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+#d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+#              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
+               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+      
+d.labels   label=ao_mean --quiet              
+#d.what.vect
+#d.out.file output=output/AGGREGATO res=2 format=png compression=0         
+#d.mon  stop=PNG --quiet 
+
+
+
+echo "aggiunta trasparenza per la pubblicazione su WEB"
+convert  $fileoutAO2 -transparent white $fileoutAO2 
+#
+echo "aggiunta didascalie "
+convert -background white -fill black -font Helvetica-Bold -pointsize 15 label:Legenda $DIR_GRASS/label_legenda.gif
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"$nomeindice - $GIORNOdomani/$MESEdomani/$ANNOdomani - PREVISIONE +2G" $DIR_GRASS/titolo.gif
+#convert -size 1380x960 xc:white \
+convert -size 700x500 xc:white \
+        -draw "image over 100,  25   0,  0 '$fileoutAO2'  "             \
+        -draw "image over  20,150 100,  0 '$DIR_BASE/titoli/label_legenda.gif'" \
+        -draw "image over  20,200 100,  0 '$DIR_BASE/titoli/legenda.png'"       \
+        -draw "image over 100,  0   0,  0 '$DIR_GRASS/titolo.gif'      " $fileoutAO2gif
+#convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
+echo "END ConversionePrevisioneInGB_dmod.txt"
