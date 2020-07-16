@@ -23,6 +23,7 @@
 ## ambiente
 DIR_BASE=/fwi
 DIR_DATA=$DIR_BASE/data
+DIR_IMG=$DIR_DATA/immagini
 DIR_SCRIPTS=$DIR_BASE/scripts
 DIR_BIN=/$DIR_BASE/bin
 
@@ -30,16 +31,22 @@ DIR_BIN=/$DIR_BASE/bin
 DIR_INI=$DIR_DATA/ini
 DIR_ANA=$DIR_DATA/meteo/ana
 DIR_PREVI=$DIR_DATA/meteo/prev
-DIR_NEVE_IMG=/$DIR_DATA/immagini/meteo/neve
-
-
+DIR_NEVE_IMG=$DIR_IMG/meteo/neve
+## DIR_IMG_PNG sembra non sia usata in questo script
+DIR_IMG_PNG=$DIR_IMG/pmg
+DIR_ANA_IMG=$DIR_IMG/ana
+DIR_PREV_IMG=$DIR_IMG/prev
+DIR_ANAME_IMG=$DIR_IMG/meteo/ana/archivio
+DIR_PREVME_IMG=$DIR_IMG/meteo/prev/archivio
+DIR_ANAMET_IMP=$DIR_IMG/meteo/ana
+DIR_FORMET_IMP=$DIR_IMG/meteo/prev
+DIR_NONFWI_IMG=$DIR_IMG
+DIR_SPEDIZIONI=$DIR_DATA/spedizioni
+DIR_VUOTI=$DIR_DATA/modelli_vuoti
+DIR_GRASS=$DIR_SCRIPTS/grass_work
 
 ## fwigrid_ana fortran binary
 FWIGRID_ANA=$DIR_BIN/fwigrid_ana
-
-
-
-
 
 
 
@@ -311,28 +318,28 @@ scp $DIR_NONFWI_IMG/impaginata_NONFWI_$dataieri.gif meteo@10.10.0.14:$WEBSERVER_
 
 # copio analisi su WEB-SERVER ARPA 172.16.1.6/ecc
 # A) copia delle mappe con aggregazione su Aree 
-rm -f $SPEDIZIONI/*
-cp $DIR_ANA_IMG/*_legenda_$dataieri.gif $SPEDIZIONI/
-rename legenda_$dataieri ieri $SPEDIZIONI/*.gif
+rm -f $DIR_SPEDIZIONI/*
+cp $DIR_ANA_IMG/*_legenda_$dataieri.gif $DIR_SPEDIZIONI/
+rename legenda_$dataieri ieri $DIR_SPEDIZIONI/*.gif
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient2
 prompt
 cd $WEBESTDIR1
-lcd $SPEDIZIONI
+lcd $DIR_SPEDIZIONI
 mput *
 End-of-smbclient2
 #
 # B) copia delle mappe originali mascherate con neve\idi\aree non bruciabili per GoogleMaps (e in più mappe aggregate per thumbnails)
-rm $SPEDIZIONI/*.*
-cp $DIR_ANA_IMG/*_mask_$dataieri.png $SPEDIZIONI/
-cp $DIR_ANA_IMG/*_AO_$dataieri.png $SPEDIZIONI/
-cp $DIR_ANA_IMG/*_$dataieri$underscore$ll.png $SPEDIZIONI/
-cp $DIR_ANA_IMG/*_AO_$dataieri$underscore$ll.png $SPEDIZIONI/
-rename $dataieri$underscore$ll ieri $SPEDIZIONI/*.png
-rename AO_$dataieri$underscore$ll A0_ieri $SPEDIZIONI/*.png
+rm $DIR_SPEDIZIONI/*.*
+cp $DIR_ANA_IMG/*_mask_$dataieri.png $DIR_SPEDIZIONI/
+cp $DIR_ANA_IMG/*_AO_$dataieri.png $DIR_SPEDIZIONI/
+cp $DIR_ANA_IMG/*_$dataieri$underscore$ll.png $DIR_SPEDIZIONI/
+cp $DIR_ANA_IMG/*_AO_$dataieri$underscore$ll.png $DIR_SPEDIZIONI/
+rename $dataieri$underscore$ll ieri $DIR_SPEDIZIONI/*.png
+rename AO_$dataieri$underscore$ll A0_ieri $DIR_SPEDIZIONI/*.png
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient3
 prompt
 cd $WEBESTDIR2
-lcd $SPEDIZIONI
+lcd $DIR_SPEDIZIONI
 mput *
 End-of-smbclient3
 
@@ -459,39 +466,39 @@ else
 
 # copio FORECAST su WEB SERVER ARPA 172.16.1.6/ecc
 # A) copia delle mappe con aggregazione su Aree
-            rm $SPEDIZIONI/*
-            cp $DIR_PREV_IMG/*AO*$dataoggi$underscore"1".gif $SPEDIZIONI/
-            cp $DIR_PREV_IMG/*AO*$datadomani$underscore"2".gif $SPEDIZIONI/
-            rename AO_$dataoggi$underscore"1" oggi $SPEDIZIONI/*.gif
-            rename AO_$datadomani$underscore"2" domani $SPEDIZIONI/*.gif
+            rm $DIR_SPEDIZIONI/*
+            cp $DIR_PREV_IMG/*AO*$dataoggi$underscore"1".gif $DIR_SPEDIZIONI/
+            cp $DIR_PREV_IMG/*AO*$datadomani$underscore"2".gif $DIR_SPEDIZIONI/
+            rename AO_$dataoggi$underscore"1" oggi $DIR_SPEDIZIONI/*.gif
+            rename AO_$datadomani$underscore"2" domani $DIR_SPEDIZIONI/*.gif
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient4
 prompt
 cd $WEBESTDIR1
-lcd $SPEDIZIONI
+lcd $DIR_SPEDIZIONI
 mput *
 End-of-smbclient4
 
 # B) copia delle mappe originali mascherate con neve\idi\aree non bruciabili per GoogleMaps (e in più mappe aggregate per thumbnails)
-            rm $SPEDIZIONI/*
-            cp $DIR_PREV_IMG/*_$dataoggi$underscore"1".png $SPEDIZIONI/
-            cp $DIR_PREV_IMG/*_$datadomani$underscore"2".png $SPEDIZIONI/
-            rename $underscore$dataoggi$underscore"1" _oggi $SPEDIZIONI/*.png
-            rename $underscore$datadomani$underscore"2" _domani $SPEDIZIONI/*.png
+            rm $DIR_SPEDIZIONI/*
+            cp $DIR_PREV_IMG/*_$dataoggi$underscore"1".png $DIR_SPEDIZIONI/
+            cp $DIR_PREV_IMG/*_$datadomani$underscore"2".png $DIR_SPEDIZIONI/
+            rename $underscore$dataoggi$underscore"1" _oggi $DIR_SPEDIZIONI/*.png
+            rename $underscore$datadomani$underscore"2" _domani $DIR_SPEDIZIONI/*.png
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient5
 prompt
 cd $WEBESTDIR2
-lcd $SPEDIZIONI
+lcd $DIR_SPEDIZIONI
 mput *
 End-of-smbclient5
 #
 # Copia su /previsore del file per la compilazione del bollettino "Vigilanza AIB"
-            rm $SPEDIZIONI/*.*
-            cp $DIR_INI/creaxvigaib$underscore$dataieri".txt" $SPEDIZIONI/
-            cp $DIR_INI/creaxvigaib$underscore$dataoggi".txt" $SPEDIZIONI/ 
-            cp $DIR_INI/creaxvigaib$underscore$datadomani".txt" $SPEDIZIONI/
-            cp $DIR_INI/creaxvigalp$underscore$dataieri".txt" $SPEDIZIONI/
-            cp $DIR_INI/creaxvigalp$underscore$dataoggi".txt" $SPEDIZIONI/
-            cp $DIR_INI/creaxvigalp$underscore$datadomani".txt" $SPEDIZIONI/
+            rm $DIR_SPEDIZIONI/*.*
+            cp $DIR_INI/creaxvigaib$underscore$dataieri".txt" $DIR_SPEDIZIONI/
+            cp $DIR_INI/creaxvigaib$underscore$dataoggi".txt" $DIR_SPEDIZIONI/ 
+            cp $DIR_INI/creaxvigaib$underscore$datadomani".txt" $DIR_SPEDIZIONI/
+            cp $DIR_INI/creaxvigalp$underscore$dataieri".txt" $DIR_SPEDIZIONI/
+            cp $DIR_INI/creaxvigalp$underscore$dataoggi".txt" $DIR_SPEDIZIONI/
+            cp $DIR_INI/creaxvigalp$underscore$datadomani".txt" $DIR_SPEDIZIONI/
             WEBPREVIP=10.10.0.10
             WEBPREVDIR=F
             WEBPREVDIR1=Incendi_boschivi/creaxvigaib/
@@ -499,12 +506,12 @@ End-of-smbclient5
             WEBPREVUSR=ARPA/meteo
             WEBPREVPWD="%meteo2010"
 # ...prima però li copio su meteo.arpalombardia.it/Precompilazione/AIB/bolvig
-scp $SPEDIZIONI/creaxvigaib* meteoweb@172.16.1.10:/var/www/meteo/Precompilazione/AIB/bolvig			
+scp $DIR_SPEDIZIONI/creaxvigaib* meteoweb@172.16.1.10:/var/www/meteo/Precompilazione/AIB/bolvig			
 
 $SMBCLIENT //$WEBPREVIP/$WEBPREVDIR -U $WEBPREVUSR%$WEBPREVPWD <<End-of-smbclient6
 prompt
 cd $WEBPREVDIR1
-lcd $SPEDIZIONI
+lcd $DIR_SPEDIZIONI
 mput creaxvigaib*
 cd $WEBPREVDIR2
 mput creaxvigaib*
@@ -512,11 +519,11 @@ End-of-smbclient6
 #
 
 # Copia su /previsore delle mappe per la compilazione del bollettino "Meteo Stagione AIB"
-            rm $SPEDIZIONI/*.*
-            cp $DIR_ANA_IMG/ffmc$underscore"mask"$underscore$dataieri".gif" $SPEDIZIONI/
-            cp $DIR_ANA_IMG/dmc$underscore"mask"$underscore$dataieri".gif" $SPEDIZIONI/
-	    cp $DIR_ANA_IMG/dc$underscore"mask"$underscore$dataieri".gif" $SPEDIZIONI/
-	    cp $DIR_NEVE_IMG/neve$underscore$dataieri".gif" $SPEDIZIONI/
+            rm $DIR_SPEDIZIONI/*.*
+            cp $DIR_ANA_IMG/ffmc$underscore"mask"$underscore$dataieri".gif" $DIR_SPEDIZIONI/
+            cp $DIR_ANA_IMG/dmc$underscore"mask"$underscore$dataieri".gif" $DIR_SPEDIZIONI/
+	    cp $DIR_ANA_IMG/dc$underscore"mask"$underscore$dataieri".gif" $DIR_SPEDIZIONI/
+	    cp $DIR_NEVE_IMG/neve$underscore$dataieri".gif" $DIR_SPEDIZIONI/
             WEBPREVDIR2=Incendi_boschivi/Meteo_stagione/mappe/ffmc/
             WEBPREVDIR3=../dmc/
             WEBPREVDIR4=../dc/
@@ -524,7 +531,7 @@ End-of-smbclient6
 $SMBCLIENT //$WEBPREVIP/$WEBPREVDIR -U $WEBPREVUSR%$WEBPREVPWD <<End-of-smbclient7
 prompt
 cd $WEBPREVDIR2
-lcd $SPEDIZIONI
+lcd $DIR_SPEDIZIONI
 mput ffmc*
 cd $WEBPREVDIR3
 mput dmc*

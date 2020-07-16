@@ -3,22 +3,49 @@
 ###	definizioni
 
 ## modificare percorsi inserendo: DIR_BASE, FWIGRID, GRASS_WORK
-HOME=/home/meteo
-DIR_INI=/home/meteo/programmi/fwi_grid/ini
-DIR_ANA=/home/meteo/programmi/fwi_grid/meteo/ana
-DIR_PREVI=/home/meteo/programmi/fwi_grid/meteo/prev
-DIR_NEVE_IMG=/home/meteo/programmi/fwi_grid/immagini/meteo/neve
-DIR_IMG_PNG=/home/meteo/programmi/fwi_grid/immagini/png
-DIR_ANA_IMG=/home/meteo/programmi/fwi_grid/immagini/ana
-DIR_PREV_IMG=/home/meteo/programmi/fwi_grid/immagini/prev
-DIR_ANAME_IMG=/home/meteo/programmi/fwi_grid/immagini/meteo/ana/archivio
-DIR_PREVME_IMG=/home/meteo/programmi/fwi_grid/immagini/meteo/prev/archivio
-DIR_ANAMET_IMP=/home/meteo/programmi/fwi_grid/immagini/meteo/ana
-DIR_FORMET_IMP=/home/meteo/programmi/fwi_grid/immagini/meteo/prev
-DIR_NONFWI_IMG=/home/meteo/programmi/non_fwi_grid/immagini/ana
-SPEDIZIONI=$HOME/programmi/fwi_grid/spedizioni
-DIR_VUOTI=$HOME/programmi/fwi_grid/modelli_vuoti
-DIR_GRASS=/home/meteo/programmi/grass_work
+#HOME=/home/meteo
+#DIR_INI=/home/meteo/programmi/fwi_grid/ini
+#DIR_ANA=/home/meteo/programmi/fwi_grid/meteo/ana
+#DIR_PREVI=/home/meteo/programmi/fwi_grid/meteo/prev
+#DIR_NEVE_IMG=/home/meteo/programmi/fwi_grid/immagini/meteo/neve
+#DIR_IMG_PNG=/home/meteo/programmi/fwi_grid/immagini/png
+#DIR_ANA_IMG=/home/meteo/programmi/fwi_grid/immagini/ana
+#DIR_PREV_IMG=/home/meteo/programmi/fwi_grid/immagini/prev
+#DIR_ANAME_IMG=/home/meteo/programmi/fwi_grid/immagini/meteo/ana/archivio
+#DIR_PREVME_IMG=/home/meteo/programmi/fwi_grid/immagini/meteo/prev/archivio
+#DIR_ANAMET_IMP=/home/meteo/programmi/fwi_grid/immagini/meteo/ana
+#DIR_FORMET_IMP=/home/meteo/programmi/fwi_grid/immagini/meteo/prev
+#DIR_NONFWI_IMG=/home/meteo/programmi/non_fwi_grid/immagini/ana
+#SPEDIZIONI=$HOME/programmi/fwi_grid/spedizioni
+#DIR_VUOTI=$HOME/programmi/fwi_grid/modelli_vuoti
+#DIR_GRASS=/home/meteo/programmi/grass_work
+
+## ambiente
+DIR_BASE=/fwi
+DIR_DATA=$DIR_BASE/data
+DIR_IMG=$DIR_DATA/immagini
+DIR_SCRIPTS=$DIR_BASE/scripts
+DIR_BIN=/$DIR_BASE/bin
+
+## path fwi
+DIR_INI=$DIR_DATA/ini
+DIR_ANA=$DIR_DATA/meteo/ana
+DIR_PREVI=$DIR_DATA/meteo/prev
+DIR_NEVE_IMG=$DIR_IMG/meteo/neve
+DIR_PNG_IMG=$DIR_IMG/pmg
+
+
+
+## fwigrid_ana fortran binary
+FWIGRID_ANA=$DIR_BIN/fwigrid_ana
+
+
+
+
+
+
+
+
 # Analisi su Ghost Virtuale
 WEBSERVER_V_ANA=/var/www/html/prodottimeteo/analisi/fwi
 WEBSERVER_V_ANAME=/var/www/html/prodottimeteo/analisi/fwi_meteo
