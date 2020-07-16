@@ -1,8 +1,6 @@
 #!/bin/bash
 
 ###	definizioni
-
-## modificare percorsi inserendo: DIR_BASE, FWIGRID, GRASS_WORK
 HOME=/home/meteo
 DIR_INI=/home/meteo/programmi/fwi_grid/ini
 DIR_ANA=/home/meteo/programmi/fwi_grid/meteo/ana
@@ -33,9 +31,7 @@ end_grass=$HOME/tmp/end_grass
 end_forecast=$HOME/tmp/end_forecast
 underscore="_"
 ll="LL"
-
-## parte di pubblicazione resta uguale, in attesa di modifiche apportate in GESTISCO per passaggio da ghost2 a ghost3
-
+#
 SMBCLIENT=/usr/bin/smbclient
 WEBESTIP=172.16.1.6
 #WEBESTIP=172.16.1.2
@@ -59,9 +55,6 @@ export dataaltroieri=$(date --date='2 day ago' +"%Y%m%d") && echo $dataaltroieri
 export dataieri=$(date --date=yesterday +"%Y%m%d") && echo $dataieri
 export dataoggi=$(date +"%Y%m%d") && echo $dataoggi
 export datadomani=$(date --date=tomorrow +"%Y%m%d") && echo $datadomani
-
-logger - is -p user.notice "Script per il calcolo di FWI iniziato $dataoggi" -t "PREVISORE"
-
 
 ## Inizializza immagini su web-server
 if [ ! -s $end_grass.$dataoggi ]
@@ -87,11 +80,6 @@ fi
 
 ###########  creazione file di neve per analisi di ieri
 
-## se Bellingeri resta autonomo (dipende da UOICT) direttamente copia lui nell'area NFS o dove decideremo, altrimenti...soluzione altrenativa
-
-## accorpare cobcversione_neve in un unico script e fare ordine unitamente alla parte qui sotto di trattamento immagine satelliatere (oppure inserire qui piccoli script)
-
-
 if [ ! -s $end_isaia.$dataoggi ] 
 then
 
@@ -104,12 +92,10 @@ then
     then
   #se la directory $DIR_NEVE contiene piu' di 1 file allora ...
       echo "ERRORE: directory $DIR_NEVE contiene piu' di 1 file"
-      logger - is -p user.crit "ERRORE: directory $DIR_NEVE contiene piu' di 1 file" -t "PREVISORE"
       exit 1
     else
   #...altrimenti la directory $DIR_NEVE contiene esattamente 1 file
       echo "directory $DIR_NEVE contiene 1 solo file"
-      logger - is -p user.notice "directory $DIR_NEVE contiene 1 solo file" -t "PREVISORE"
     # il seguente ciclo FOR verra' ripetuto una sola volta: e' tanto per leggere il 
     #  nome dell'unico file (.img) che so essere in DIR_NEVE e ricavare la data alla quale
     # il file si riferisce (DATA_NEVE)
@@ -151,10 +137,6 @@ fi
 ###	  A)  Script OI per interpolazione dati meteo + calcolo analisi FWI
 if [ ! -s $end_isaia.$dataoggi ] 
 then
-
-## al posto di oi_fwi lanciare fwigrid_ana, con input meteo già disponibile in directory opportuna
-## prima verifico che ci siano i file di input meteo (attualmente su mediano), se ok fwigrid_ana prende la data da riga di comando, altrimenti stop
-
 	$HOME/script/interpolazione/oi_fwi.sh -s $dataaltroieri"1300" -e $dataieri"1200"
 	if [ $? == 1 ] 
 	then
@@ -169,9 +151,6 @@ fi
 if [ ! -s $end_grass.$dataoggi ]
 then 
 ###     B1) GRASS meteo ANALISI
-
-## mantenere struttura, macambiare grass7 e PERMANENT, ecc...inserire variabili d'ambiente
-
                 echo "GRASS_GB_METEO inizio ========================================================================="
                 /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_METEO_dmod.txt
                 echo "GRASS_GB_METEO fine ==========================================================================="
@@ -216,14 +195,9 @@ echo "ok" >$end_grass.$dataoggi
 #----------------------------------
 # [10] memorizzazione db indici
 #----------------------------------
-
-### da commentare
-
 echo `date +%Y-%m-%d" "%H:%M`" Memorizzazione db indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
 $FWIDBMGR -a out -d $dataieri
 echo `date +%Y-%m-%d" "%H:%M`" DONE."
-
-### da commentare (tenendo conto che per il calcolo utilizza i dati meteo in db)
 
 #----------------------------------
 # [11] calcolo nuovi indici
@@ -232,8 +206,6 @@ echo `date +%Y-%m-%d" "%H:%M`" Calcolo nuovi indici giorno: "$FWIDBDATE" FWIDBMG
 $FWIDBMGR -a computeidx -d $dataieri
 echo `date +%Y-%m-%d" "%H:%M`" DONE."
 
-## da commentare o togliere
-
 #----------------------------------
 # [12] export nuovi indici
 #----------------------------------
@@ -241,15 +213,10 @@ echo `date +%Y-%m-%d" "%H:%M`" Export nuovi indici giorno: "$FWIDBDATE" FWIDBMGR
 $FWIDBMGR -a exportidx -d $dataieri
 echo `date +%Y-%m-%d" "%H:%M`" DONE."
 
-## da commentare o togliere (da aggiornare su Grass7)
-
 ###     GRASS FMI ANALISI
                 echo "GRASS_GB_METEO inizio ========================================================================="
                 /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_FMI.txt
                 echo "GRASS_GB_METEO fine ==========================================================================="
-
-
-## da mantenere tale e quale fino a ****
 
 ###	conversione file in formato gif ANALISI -> creazione impaginata
 
@@ -296,7 +263,7 @@ lcd $SPEDIZIONI
 mput *
 End-of-smbclient2
 #
-# B) copia delle mappe originali mascherate con neve\idi\aree non bruciabili per GoogleMaps (e in più mappe aggregate per thumbnails)
+# B) copia delle mappe originali mascherate con neve\idi\aree non bruciabili per GoogleMaps (e in piÃ¹ mappe aggregate per thumbnails)
 rm $SPEDIZIONI/*.*
 cp $DIR_ANA_IMG/*_mask_$dataieri.png $SPEDIZIONI/
 cp $DIR_ANA_IMG/*_AO_$dataieri.png $SPEDIZIONI/
@@ -312,10 +279,6 @@ mput *
 End-of-smbclient3
 
 fi
-
-## ****
-
-## da commentare
 
 #----------------------------------
 # [13] memorizzazione db immagini
@@ -446,7 +409,7 @@ lcd $SPEDIZIONI
 mput *
 End-of-smbclient4
 
-# B) copia delle mappe originali mascherate con neve\idi\aree non bruciabili per GoogleMaps (e in più mappe aggregate per thumbnails)
+# B) copia delle mappe originali mascherate con neve\idi\aree non bruciabili per GoogleMaps (e in piÃ¹ mappe aggregate per thumbnails)
             rm $SPEDIZIONI/*
             cp $DIR_PREV_IMG/*_$dataoggi$underscore"1".png $SPEDIZIONI/
             cp $DIR_PREV_IMG/*_$datadomani$underscore"2".png $SPEDIZIONI/
@@ -472,8 +435,8 @@ End-of-smbclient5
             WEBPREVDIR1=Incendi_boschivi/creaxvigaib/
 			WEBPREVDIR2="\Precompilazione\AIB_vig"
             WEBPREVUSR=ARPA/meteo
-            WEBPREVPWD="%meteo2010"
-# ...prima però li copio su meteo.arpalombardia.it/Precompilazione/AIB/bolvig
+            WEBPREVPWD="**********"
+# ...prima perÃ² li copio su meteo.arpalombardia.it/Precompilazione/AIB/bolvig
 scp $SPEDIZIONI/creaxvigaib* meteoweb@172.16.1.10:/var/www/meteo/Precompilazione/AIB/bolvig			
 
 $SMBCLIENT //$WEBPREVIP/$WEBPREVDIR -U $WEBPREVUSR%$WEBPREVPWD <<End-of-smbclient6
