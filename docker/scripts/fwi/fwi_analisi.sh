@@ -82,7 +82,8 @@ WEBESTPWD=meteo
 WEBESTWKG=ARPA
 
 # applicativo memorizzazione database
-FWIDBMGR=$HOME/dev/redist/fwidbmgr/fwidbmgr
+# non utilizzato
+# FWIDBMGR=$HOME/dev/redist/fwidbmgr/fwidbmgr
 
 #count=/tmp/fwi_count
 #end_grassWGS84=$HOME/tmp/end_grassWGS84.txt
@@ -250,28 +251,28 @@ echo "ok" >$end_grass.$dataoggi
 #----------------------------------
 
 ### da commentare
-
-echo `date +%Y-%m-%d" "%H:%M`" Memorizzazione db indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
-$FWIDBMGR -a out -d $dataieri
-echo `date +%Y-%m-%d" "%H:%M`" DONE."
+# 
+# echo `date +%Y-%m-%d" "%H:%M`" Memorizzazione db indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
+# $FWIDBMGR -a out -d $dataieri
+# echo `date +%Y-%m-%d" "%H:%M`" DONE."
 
 ### da commentare (tenendo conto che per il calcolo utilizza i dati meteo in db)
-
+# 
 #----------------------------------
 # [11] calcolo nuovi indici
 #----------------------------------
-echo `date +%Y-%m-%d" "%H:%M`" Calcolo nuovi indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
-$FWIDBMGR -a computeidx -d $dataieri
-echo `date +%Y-%m-%d" "%H:%M`" DONE."
+# echo `date +%Y-%m-%d" "%H:%M`" Calcolo nuovi indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
+# $FWIDBMGR -a computeidx -d $dataieri
+# echo `date +%Y-%m-%d" "%H:%M`" DONE."
 
 ## da commentare o togliere
 
 #----------------------------------
 # [12] export nuovi indici
 #----------------------------------
-echo `date +%Y-%m-%d" "%H:%M`" Export nuovi indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
-$FWIDBMGR -a exportidx -d $dataieri
-echo `date +%Y-%m-%d" "%H:%M`" DONE."
+# echo `date +%Y-%m-%d" "%H:%M`" Export nuovi indici giorno: "$FWIDBDATE" FWIDBMGR_HOME="$FWIDBMGR_HOME
+# $FWIDBMGR -a exportidx -d $dataieri
+# echo `date +%Y-%m-%d" "%H:%M`" DONE."
 
 ## da commentare o togliere (da aggiornare su Grass7)
 
@@ -348,13 +349,13 @@ fi
 ## ****
 
 ## da commentare
-
+# 
 #----------------------------------
 # [13] memorizzazione db immagini
 #----------------------------------
-echo `date +%Y-%m-%d" "%H:%M`" Memorizzazione db immagini giorno: "$FWIDBDATE
-$FWIDBMGR -a outimg -d $dataieri
-echo `date +%Y-%m-%d" "%H:%M`" DONE."
+# echo `date +%Y-%m-%d" "%H:%M`" Memorizzazione db immagini giorno: "$FWIDBDATE
+# $FWIDBMGR -a outimg -d $dataieri
+# echo `date +%Y-%m-%d" "%H:%M`" DONE."
 
 ###	fine esecuzione analisi
 
