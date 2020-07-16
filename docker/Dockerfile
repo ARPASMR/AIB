@@ -1,13 +1,13 @@
 FROM debian:buster-slim
 
 # System update
-RUN apt -y update && \
-    apt -y upgrade
+RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y update && \
+    apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y upgrade
 
 # Development packages
-RUN apt -y install g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev
+RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev
 
-RUN apt -y install vim
+RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim
 
 COPY src /development
 
