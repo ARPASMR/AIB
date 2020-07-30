@@ -31,6 +31,7 @@ DIR_BIN=/$DIR_BASE/bin
 DIR_INI=$DIR_DATA/ini
 DIR_ANA=$DIR_DATA/meteo/ana
 DIR_PREVI=$DIR_DATA/meteo/prev
+DIR_NEVE=$DIR_DATA/modis_neve
 DIR_NEVE_IMG=$DIR_IMG/meteo/neve
 ## DIR_IMG_PNG sembra non sia usata in questo script
 DIR_IMG_PNG=$DIR_IMG/pmg
@@ -129,7 +130,7 @@ if [ ! -s $end_isaia.$dataoggi ]
 then
 
 # controlla la cartella /home/meteo/programmi/fwi_grid/modis_neve
-  DIR_NEVE=/home/meteo/programmi/fwi_grid/modis_neve/
+  #### DIR_NEVE=/home/meteo/programmi/fwi_grid/modis_neve/
   NUMFILES_NEVE=`ls -1 $DIR_NEVE* | wc -l`
   if [ "$NUMFILES_NEVE" -gt 0 ]; then
 #se la directory $DIR_NEVE non e' vuota allora ...

@@ -16,6 +16,7 @@ RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y inst
 RUN mkdir -p /fwi/data/ini && \
     mkdir -p /fwi/data/meteo/ana && \
     mkdir -p /fwi/data/meteo/prev && \
+    mkdir -p /fwi/data/modis_neve && \
     mkdir -p /fwi/data/immagini/png && \
     mkdir -p /fwi/data/immagini/ana && \
     mkdir -p /fwi/data/immagini/prev && \
