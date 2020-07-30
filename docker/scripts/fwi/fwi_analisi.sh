@@ -45,6 +45,9 @@ DIR_NONFWI_IMG=$DIR_IMG
 DIR_SPEDIZIONI=$DIR_DATA/spedizioni
 DIR_VUOTI=$DIR_DATA/modelli_vuoti
 DIR_GRASS=$DIR_SCRIPTS/grass_work
+GRASS_SCRIPTS=$DIR_GRASS/scripts7
+
+BATCH_GRASS=$DIR_GRASS/batch-grass7.sh
 
 ## fwigrid_ana fortran binary
 FWIGRID_ANA=$DIR_BIN/fwigrid_ana
@@ -232,7 +235,7 @@ then
 ## mantenere struttura, macambiare grass7 e PERMANENT, ecc...inserire variabili d'ambiente
 
                 echo "GRASS_GB_METEO inizio ========================================================================="
-                /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_METEO_dmod.txt
+                $BATCH_GRASS GB AIB -file $GRASS_SCRIPTS/GRASS_GB_METEO_dmod.txt
                 echo "GRASS_GB_METEO fine ==========================================================================="
 
 	for nomeindice in ffmc dmc dc isi bui fwi
@@ -241,7 +244,8 @@ then
 ###     B2) GRASS in GB risoluzione 1500m
 #               grass63 -text $DIR_GRASS/GB/PERMANENT <  $DIR_GRASS/scripts/GRASS_GB_1500m.txt
                 echo "GRASS_GB_1500m inizio ========================================================================="
-                /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_1500m_rgmod.txt
+                ##/home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_1500m_rgmod.txt
+                $BATCH_GRASS GB AIB -file $GRASS_SCRIPTS/GRASS_GB_1500m_rgmod.txt
 		if [ "$?" -ne 0 ]
 		then
 			echo "codice errore di grass63 in GB"
@@ -254,7 +258,8 @@ then
 ###     C) GRASS in WGS84 risoluzione 7Km
 #                       grass63 -text $DIR_GRASS/WGS84/PERMANENT <  $DIR_GRASS/scripts/GRASS_WGS84_7Km_I.txt
                         echo "GRASS_WGS84_7Km_I inizio ========================================================================="
-                        /home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_7Km_I.txt
+                        ##/home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_7Km_I.txt
+                        $BATCH_GRASS WGS84 AIB -file $GRASS_SCRIPTS/GRASS_WGS84_7Km_I.txt
 			if [ "$?" -ne 0 ]
 			then
 				echo "codice errore di grass63 in WGS84"
@@ -265,7 +270,8 @@ then
         	esac
 
                 echo "ConversioneAnalisiinLatLon.txt inizio ========================================================================"
-                /home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/ConversioneAnalisiInLatLon.txt 
+                ##/home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/ConversioneAnalisiInLatLon.txt 
+                $BATCH_GRASS WGS84 AIB -file $GRASS_SCRIPTS/ConversioneAnalisiInLatLon.txt
                 echo "ConversioneAnalisiinLatLon.txt fine ========================================================================="
 
 	done
@@ -304,7 +310,8 @@ echo "ok" >$end_grass.$dataoggi
 
 ###     GRASS FMI ANALISI
                 echo "GRASS_GB_METEO inizio ========================================================================="
-                /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_FMI.txt
+                ##/home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_GB_FMI.txt
+                $BATCH_GRASS GB AIB -file $GRASS_SCRIPTS/GRASS_GB_FMI.txt
                 echo "GRASS_GB_METEO fine ==========================================================================="
 
 
@@ -421,18 +428,22 @@ else
 ###	E) GRASS in WGS84 risoluzione 7Km
 #	        grass63 -text $DIR_GRASS/WGS84/PERMANENT < $DIR_GRASS/scripts/GRASS_WGS84_7Km_II.txt
                 echo "GRASS_WGS84_7Km_II inizio ========================================================================="
-                /home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_7Km_II.txt 
+                ##/home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_7Km_II.txt 
+                $BATCH_GRASS WGS84 AIB -file $GRASS_SCRIPTS/GRASS_WGS84_7Km_II.txt
                 echo "GRASS_WGS84_7Km_II fine ========================================================================="
                 echo "ConversionePrevisioneInGB.txt inizio ========================================================================"
-                /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/ConversionePrevisioneInGB_dmod.txt 
+                ##/home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/ConversionePrevisioneInGB_dmod.txt 
+                $BATCH_GRASS GB AIB -file $GRASS_SCRIPTS/ConversionePrevisioneInGB_dmod.txt
                 echo "ConversionePrevisioneInGB.txt  fine ========================================================================="
 	    done
 
                 echo "GRASS_WGS84_METEO_I inizio ========================================================================="
-                /home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_METEO_I_dmod.txt 
+                ##/home/meteo/script/fwi/batch-grass6.sh WGS84 PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_METEO_I_dmod.txt 
+                $BATCH_GRASS WGS84 AIB -file $GRASS_SCRIPTS/GRASS_WGS84_METEO_I_dmod.txt
                 echo "GRASS_WGS84_METEO_I fine ==========================================================================="
                 echo "GRASS_WGS84_METEO_II inizio ========================================================================"
-                /home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_METEO_II_dmod.txt 
+                ##/home/meteo/script/fwi/batch-grass6.sh GB PERMANENT -file $DIR_GRASS/scripts/GRASS_WGS84_METEO_II_dmod.txt 
+                $BATCH_GRASS GB AIB -file $GRASS_SCRIPTS/GRASS_WGS84_METEO_II_dmod.txt
                 echo "GRASS_WGS84_METEO_II  fine ========================================================================="
 
 ###	F) CREO file per compilazione "Vigilanza AIB"	
