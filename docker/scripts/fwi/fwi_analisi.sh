@@ -82,6 +82,30 @@ WEBESTUSR=meteo_img
 WEBESTPWD=meteo
 WEBESTWKG=ARPA
 
+####################
+# functions
+####################
+
+function neve_operativo {
+  echo "conversione copertura nevosa"
+
+  for FILE in $DIR_NEVE/*.img
+  do 
+    ##export fileneve=$FILE
+    FILEOUT=`echo $FILE | awk -F "." '{print $(NF-1)};'`.txt
+    ##export fileoutneve=$FILEOUT
+    echo " passaggio da "$FILE" >> a >> "$FILEOUT
+    #  grass -text $DIR_GRASS/GB/PERMANENT <  $DIR_GRASS/scripts/ConversioneCoperturaNevosa_mod.txt
+    ## $DIR_GRASS/batch-grass7.sh GB PERMANENT -file $DIR_GRASS/scripts/ConversioneCoperturaNevosa_mod.txt
+
+    gdal_translate -of "AAIgrid" $FILE $FILEOUT
+
+  done
+}
+
+
+
+
 # applicativo memorizzazione database
 # non utilizzato
 # FWIDBMGR=$HOME/dev/redist/fwidbmgr/fwidbmgr
@@ -156,7 +180,8 @@ then
       if [ "$DATA_NEVE" == "$dataieri"  ]; then
       # se DATA_NEVE coincide con la data di IERI allora chiamo lo script per la Conversione Neve
       #  e sposto i files creati in /home/meteo/programmi/fwi_grid/meteo/ana 
-             /home/meteo/script/fwi/conversione_img_neve/neve_operativo.sh
+             ##/home/meteo/script/fwi/conversione_img_neve/neve_operativo.sh
+             neve_operativo
 	     if [ "$?" -ne 0 ]
 	     then
       	        echo "codice errore di neve_operativo"
