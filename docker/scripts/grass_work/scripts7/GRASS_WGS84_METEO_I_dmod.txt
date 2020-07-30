@@ -1,0 +1,193 @@
+#!/bin/bash
+###################################################################
+#                     DAVIDE GALERI - GEN 2011                    #
+#              Plot delle mappe meteo in previsione di            #
+#                       t - ur - ws - prec24                      #
+###################################################################
+#
+###################################################################
+# definizione di giorno, mese e anno per scrivere date nei titoli:
+ANNOoggi=${dataoggi:0:4}
+MESEoggi=${dataoggi:4:2}
+GIORNOoggi=${dataoggi:6:2}
+
+ANNOdomani=${datadomani:0:4}
+MESEdomani=${datadomani:4:2}
+GIORNOdomani=${datadomani:6:2}
+###################################################################
+#
+LAMI=lami
+underscore=_
+primo=_1
+secondo=_2
+OGGI=oggi
+DOMANI=domani
+CTRL=ctrl
+# Paths
+DIR_PREVI=$DIR_BASE/meteo/prev
+# GTER cambiato percorso - non ha senso mettere questi file nella cartella del GRASSDB 
+DIR_WGS84=$DIR_BASE/meteo/prev/input_reform
+DIR_GRASS=$DIR_GRASS
+# File ascii meteo in input
+tempascii1=$DIR_PREVI/t$underscore$LAMI$underscore$dataoggi$primo.txt
+#tdascii1=$DIR_PREVI/td$underscore$LAMI$underscore$dataoggi$primo.txt
+humiin1=$DIR_PREVI/ctrl/ur$underscore$LAMI$underscore$dataoggi$primo$underscore$CTRL.txt
+rainascii1=$DIR_PREVI/tp$underscore$LAMI$underscore$dataoggi$primo.txt
+windascii1=$DIR_PREVI/vv$underscore$LAMI$underscore$dataoggi$primo.txt
+tempascii2=$DIR_PREVI/t$underscore$LAMI$underscore$dataoggi$secondo.txt
+#tdascii2=$DIR_PREVI/td$underscore$LAMI$underscore$dataoggi$secondo.txt
+humiin2=$DIR_PREVI/ctrl/ur$underscore$LAMI$underscore$dataoggi$secondo$underscore$CTRL.txt
+rainascii2=$DIR_PREVI/tp$underscore$LAMI$underscore$dataoggi$secondo.txt
+windascii2=$DIR_PREVI/vv$underscore$LAMI$underscore$dataoggi$secondo.txt
+# File grass meteo input
+tempin1=$DIR_WGS84/temp$underscore$LAMI$underscore$OGGI.txt
+#tdin1=$DIR_WGS84/tdin$underscore$LAMI$underscore$OGGI.txt
+rainin1=$DIR_WGS84/prec24$underscore$LAMI$underscore$OGGI.txt
+windin1=$DIR_WGS84/wind$underscore$LAMI$underscore$OGGI.txt
+#
+tempin2=$DIR_WGS84/temp$underscore$LAMI$underscore$DOMANI.txt
+#tdin2=$DIR_WGS84/tdin$underscore$LAMI$underscore$DOMANI.txt
+rainin2=$DIR_WGS84/prec24$underscore$LAMI$underscore$DOMANI.txt
+windin2=$DIR_WGS84/wind$underscore$LAMI$underscore$DOMANI.txt
+#
+########################################
+#                 Oggi                 #
+########################################
+#
+echo "########################################################"
+echo "START GRASS_WGS84_METEO_I_dmod.txt"
+echo "Plot mappe meteo in previsione di Temperatura, Umidità Relativa, Velocità del Vento e Precipitazione Totale"
+echo "OGGI: $dataoggi"
+#
+tail +10 $tempascii1 | awk '$1!=999.000 { print $1, $2, $3, $4, $5 }' > $tempin1
+#tail +10 $tdascii1 | awk '$1!=999.000 { print $1, $2, $3, $4, $5 }' > $tdin1
+tail +10 $rainascii1 | awk '$1!=999.000 { print $1, $2, $3, $4, $5 }' > $rainin1
+tail +11 $windascii1 | awk '$1!=999.000 { print $1, $2, $3, $4, $5, $6 }' | head -1246 > $windin1
+#
+echo "Imposto region di calcolo"
+g.region vector=AO res=0.063 --quiet
+#
+echo "Rimuovo vector file meteo in memoria"
+g.remove  -f  type=vector name=temp,humi,rain,wind --quiet
+#
+echo "Importo vector file meteo"
+v.in.ascii input=$tempin1 output=temp separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+#v.in.ascii input=$tdin1 output=td separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+v.in.ascii input=$humiin1 output=humi separator=, format=point skip=1 x=5 y=4 z=0 cat=1 --quiet
+v.in.ascii input=$rainin1 output=rain separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+v.in.ascii input=$windin1 output=wind separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+#
+echo "Rimuovo raster meteo in memoria"
+g.remove   -f  type=raster name=temp,humi,rain,windA,windB --quiet
+#
+echo "Rasterizzo i vector file meteo"
+v.surf.idw input=temp output=temp npoints=1 layer=1 column=dbl_5 --quiet
+#v.surf.idw input=td output=td npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=humi output=humi npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=rain output=rain npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=wind output=windA npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=wind output=windB npoints=1 layer=1 column=dbl_6 --quiet
+#
+#echo "Rimuovi doppi file raster in memoria"
+#g.remove rast=humiA,humiB,humi
+#
+#echo "Calcolo mappa umidità relativa $dataoggi"
+#r.mapcalculator amap=temp outfile=humiA formula="(6.1078^((17.269388*(A-273.15))/(A-35.86)))"
+#r.mapcalculator amap=td outfile=humiB formula="(6.1078^((17.269388*(A-273.15))/(A-35.86)))"
+#r.mapcalculator amap=humiA bmap=humiB outfile=humi formula="(B/A)*100"
+#
+echo "Rimuovo raster wind in memoria"
+g.remove -f  type=raster name=wind --quiet
+#
+echo "Calcolo mappa velocità del vento $dataoggi"
+r.mapcalc expression="wind=((windA^2)+(windB^2))^0.5" --o --quiet
+#r.mapcalculator amap=windA bmap=windB outfile=wind formula="((A^2)+(B^2))^0.5"
+#
+echo "Calcolo mappa temperatura $dataoggi in °C"
+r.mapcalc expression="temp=temp-273.5" --o --quiet
+#r.mapcalculator --overwrite amap=temp outfile=temp formula="A-273.15"
+#
+echo "Maschero region con AO"
+#r.mask input=AO
+v.to.rast input=AO output=AO use=cat --quiet --o
+r.mapcalc expression="temp=temp*AO/AO" --o --quiet
+r.mapcalc expression="humi=humi*AO/AO" --o --quiet
+r.mapcalc expression="wind=wind*AO/AO" --o --quiet
+r.mapcalc expression="rain=rain*AO/AO" --o --quiet
+#r.mapcalculator --overwrite amap=temp outfile=temp formula="A"
+#r.mapcalculator --overwrite amap=humi outfile=humi formula="A"
+#r.mapcalculator --overwrite amap=wind outfile=wind formula="A"
+#r.mapcalculator --overwrite amap=rain outfile=rain formula="A"
+#g.remove rast=MASK
+#
+########################################
+#               Domani                 #
+########################################
+#
+echo "Plot mappe meteo in previsione di Temperatura, Umidità Relativa, Velocità del Vento e Precipitazione Totale"
+echo "DOMANI: $datadomani"
+#
+tail +10 $tempascii2 | awk '$1!=999.000 { print $1, $2, $3, $4, $5 }' > $tempin2
+#tail +10 $tdascii2 | awk '$1!=999.000 { print $1, $2, $3, $4, $5 }' > $tdin2
+tail +10 $rainascii2 | awk '$1!=999.000 { print $1, $2, $3, $4, $5 }' > $rainin2
+tail +11 $windascii2 | awk '$1!=999.000 { print $1, $2, $3, $4, $5, $6 }' | head -1246 > $windin2
+#
+echo "Rimuovo vector file meteo in memoria"
+g.remove  -f  type=vector name=temp,humi,rain,wind --quiet
+#
+echo "Importo vector file meteo"
+v.in.ascii input=$tempin2 output=temp separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+#v.in.ascii input=$tdin2 output=td separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+v.in.ascii input=$humiin2 output=humi separator=, format=point skip=1 x=5 y=4 z=0 cat=1 --quiet
+v.in.ascii input=$rainin2 output=rain separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+v.in.ascii input=$windin2 output=wind separator=" " format=point skip=0 x=4 y=3 z=0 --quiet
+#
+echo "Rimuovo raster meteo in memoria"
+g.remove -f  type=raster name=temp2,humi2,rain2,wind2A,wind2B --quiet
+#
+echo "Rasterizzo i vector file meteo"
+v.surf.idw input=temp output=temp2 npoints=1 layer=1 column=dbl_5 --quiet
+#v.surf.idw input=td output=td npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=humi output=humi2 npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=rain output=rain2 npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=wind output=wind2A npoints=1 layer=1 column=dbl_5 --quiet
+v.surf.idw input=wind output=wind2B npoints=1 layer=1 column=dbl_6 --quiet
+#
+#echo "Rimuovi doppi file raster in memoria"
+#g.remove rast=humiA,humiB,humi2
+#
+#echo "Calcolo mappa umidità relativa $datadomani"
+#r.mapcalculator amap=temp2 outfile=humiA formula="(6.1078^((17.269388*(A-273.15))/(A-35.86)))"
+#r.mapcalculator amap=td outfile=humiB formula="(6.1078^((17.269388*(A-273.15))/(A-35.86)))"
+#r.mapcalculator amap=humiA bmap=humiB outfile=humi2 formula="(B/A)*100"
+#
+echo "Rimuovo raster wind in memoria"
+g.remove -f  type=raster name=wind2
+#
+echo "Calcolo mappa velocità del vento $datadomani"
+r.mapcalc expression="wind2=((wind2A^2)+(wind2B^2))^0.5" --o --quiet
+#r.mapcalculator amap=windA bmap=windB outfile=wind2 formula="((A^2)+(B^2))^0.5"
+#
+echo "Calcolo mappa temperatura $datadomani in °C"
+r.mapcalc expression="temp=temp-273.5" --o --quiet
+#r.mapcalculator --overwrite amap=temp2 outfile=temp2 formula="A-273.15"
+#
+echo "Calcolo mappa precipitazione $datadomani"
+r.mapcalc expression="rain2=rain2-rain" --o --quiet
+#r.mapcalculator --overwrite amap=rain bmap=rain2 outfile=rain2 formula="B-A"
+#
+echo "Maschero region con AO"
+#r.mask input=AO
+r.mapcalc expression="temp2=temp2*AO/AO" --o --quiet
+r.mapcalc expression="humi2=humi2*AO/AO" --o --quiet
+r.mapcalc expression="wind2=wind2*AO/AO" --o --quiet
+r.mapcalc expression="rain2=rain2*AO/AO" --o --quiet
+#r.mapcalculator --overwrite amap=temp2 outfile=temp2 formula="A"
+#r.mapcalculator --overwrite amap=humi2 outfile=humi2 formula="A"
+#r.mapcalculator --overwrite amap=wind2 outfile=wind2 formula="A"
+#r.mapcalculator --overwrite amap=rain2 outfile=rain2 formula="A"
+#g.remove rast=MASK
+#
+
+echo "END GRASS_WGS84_METEO_I_dmod.txt"
+echo "########################################################"
