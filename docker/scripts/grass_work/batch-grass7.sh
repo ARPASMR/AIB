@@ -12,7 +12,7 @@
 # Customize this:
 #------------------------------------------------------------------------------
 
-GISBASE=/usr/lib/grass74               # path to GRASS binaries and libraries
+GISBASE=/usr/lib/grass76               # path to GRASS binaries and libraries
 GISDBASE=$HOME/conversione_GRASS/GRASS7/grass_work  # path to grassdata
 
 

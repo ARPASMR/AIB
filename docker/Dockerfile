@@ -7,7 +7,7 @@ RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y upda
 # Development packages
 RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install \
         g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
-        smbclient
+        smbclient imagemagick
 
 RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim
 

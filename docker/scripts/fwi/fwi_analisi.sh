@@ -353,7 +353,7 @@ scp $DIR_NONFWI_IMG/impaginata_NONFWI_$dataieri.gif meteo@10.10.0.14:$WEBSERVER_
 # A) copia delle mappe con aggregazione su Aree 
 rm -f $DIR_SPEDIZIONI/*
 cp $DIR_ANA_IMG/*_legenda_$dataieri.gif $DIR_SPEDIZIONI/
-rename legenda_$dataieri ieri $DIR_SPEDIZIONI/*.gif
+rename.ul legenda_$dataieri ieri $DIR_SPEDIZIONI/*.gif
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient2
 prompt
 cd $WEBESTDIR1
@@ -367,8 +367,8 @@ cp $DIR_ANA_IMG/*_mask_$dataieri.png $DIR_SPEDIZIONI/
 cp $DIR_ANA_IMG/*_AO_$dataieri.png $DIR_SPEDIZIONI/
 cp $DIR_ANA_IMG/*_$dataieri$underscore$ll.png $DIR_SPEDIZIONI/
 cp $DIR_ANA_IMG/*_AO_$dataieri$underscore$ll.png $DIR_SPEDIZIONI/
-rename $dataieri$underscore$ll ieri $DIR_SPEDIZIONI/*.png
-rename AO_$dataieri$underscore$ll A0_ieri $DIR_SPEDIZIONI/*.png
+rename.ul $dataieri$underscore$ll ieri $DIR_SPEDIZIONI/*.png
+rename.ul AO_$dataieri$underscore$ll A0_ieri $DIR_SPEDIZIONI/*.png
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient3
 prompt
 cd $WEBESTDIR2
@@ -506,8 +506,8 @@ else
             rm $DIR_SPEDIZIONI/*
             cp $DIR_PREV_IMG/*AO*$dataoggi$underscore"1".gif $DIR_SPEDIZIONI/
             cp $DIR_PREV_IMG/*AO*$datadomani$underscore"2".gif $DIR_SPEDIZIONI/
-            rename AO_$dataoggi$underscore"1" oggi $DIR_SPEDIZIONI/*.gif
-            rename AO_$datadomani$underscore"2" domani $DIR_SPEDIZIONI/*.gif
+            rename.ul AO_$dataoggi$underscore"1" oggi $DIR_SPEDIZIONI/*.gif
+            rename.ul AO_$datadomani$underscore"2" domani $DIR_SPEDIZIONI/*.gif
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient4
 prompt
 cd $WEBESTDIR1
@@ -519,8 +519,8 @@ End-of-smbclient4
             rm $DIR_SPEDIZIONI/*
             cp $DIR_PREV_IMG/*_$dataoggi$underscore"1".png $DIR_SPEDIZIONI/
             cp $DIR_PREV_IMG/*_$datadomani$underscore"2".png $DIR_SPEDIZIONI/
-            rename $underscore$dataoggi$underscore"1" _oggi $DIR_SPEDIZIONI/*.png
-            rename $underscore$datadomani$underscore"2" _domani $DIR_SPEDIZIONI/*.png
+            rename.ul $underscore$dataoggi$underscore"1" _oggi $DIR_SPEDIZIONI/*.png
+            rename.ul $underscore$datadomani$underscore"2" _domani $DIR_SPEDIZIONI/*.png
 $SMBCLIENT //$WEBESTIP/$WEBESTDIR -U $WEBESTUSR%$WEBESTPWD <<End-of-smbclient5
 prompt
 cd $WEBESTDIR2
