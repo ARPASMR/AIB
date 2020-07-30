@@ -54,7 +54,6 @@ FWIGRID_ANA=$DIR_BIN/fwigrid_ana
 
 
 
-
 # Analisi su Ghost Virtuale
 WEBSERVER_V_ANA=/var/www/html/prodottimeteo/analisi/fwi
 WEBSERVER_V_ANAME=/var/www/html/prodottimeteo/analisi/fwi_meteo
