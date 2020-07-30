@@ -37,6 +37,10 @@ COPY scripts /fwi/scripts
 
 COPY src /development
 
+# scripts permissions
+RUN chmod 755 /fwi/scripts/fwi/fwi_analisi.sh && \
+    chmod 755 /fwi/scripts/grass_work/batch-grass7.sh
+
 RUN cd /development/fortran/lib && \
     gfortran -c GrADSlib_new.f90 && \
     gfortran -c calendar.f90 && \
