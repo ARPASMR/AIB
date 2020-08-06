@@ -1,0 +1,327 @@
+#!/bin/bash
+###################################################################
+#                     DAVIDE GALERI - GEN 2011                    #
+#              Plot delle mappe meteo in previsione di            #
+#                       t - ur - ws - prec24                      #
+###################################################################
+#
+###################################################################
+# definizione di giorno, mese e anno per scrivere date nei titoli:
+ANNOoggi=${dataoggi:0:4}
+MESEoggi=${dataoggi:4:2}
+GIORNOoggi=${dataoggi:6:2}
+
+ANNOdomani=${datadomani:0:4}
+MESEdomani=${datadomani:4:2}
+GIORNOdomani=${datadomani:6:2}
+###################################################################
+#
+LAMI=lami
+underscore=_
+primo=_1
+secondo=_2
+# Paths
+DIR_PREVI=$DIR_BASE/meteo/prev
+DIR_PREVME_IMG=$DIR_BASE/immagini/meteo/prev/archivio
+DIR_IMG_PNG=$DIR_BASE/immagini/png
+DIR_GRASS=$DIR_GRASS
+# Mappe PNG grass meteo output
+tempout1=$DIR_IMG_PNG/t$underscore$LAMI$underscore$dataoggi$primo.png
+humiout1=$DIR_IMG_PNG/ur$underscore$LAMI$underscore$dataoggi$primo.png
+windout1=$DIR_IMG_PNG/ws$underscore$LAMI$underscore$dataoggi$primo.png
+rainout1=$DIR_IMG_PNG/prec24$underscore$LAMI$underscore$dataoggi$primo.png
+tempout2=$DIR_IMG_PNG/temp$underscore$LAMI$underscore$dataoggi$secondo.png
+humiout2=$DIR_IMG_PNG/ur$underscore$LAMI$underscore$dataoggi$secondo.png
+windout2=$DIR_IMG_PNG/ws$underscore$LAMI$underscore$dataoggi$secondo.png
+rainout2=$DIR_IMG_PNG/prec24$underscore$LAMI$underscore$dataoggi$secondo.png
+# Mappe GIF grass meteo output
+tempgif1=$DIR_PREVME_IMG/t$underscore$LAMI$underscore$dataoggi$primo.gif
+humigif1=$DIR_PREVME_IMG/ur$underscore$LAMI$underscore$dataoggi$primo.gif
+windgif1=$DIR_PREVME_IMG/ws$underscore$LAMI$underscore$dataoggi$primo.gif
+raingif1=$DIR_PREVME_IMG/prec24$underscore$LAMI$underscore$dataoggi$primo.gif
+tempgif2=$DIR_PREVME_IMG/t$underscore$LAMI$underscore$dataoggi$secondo.gif
+humigif2=$DIR_PREVME_IMG/ur$underscore$LAMI$underscore$dataoggi$secondo.gif
+windgif2=$DIR_PREVME_IMG/ws$underscore$LAMI$underscore$dataoggi$secondo.gif
+raingif2=$DIR_PREVME_IMG/prec24$underscore$LAMI$underscore$dataoggi$secondo.gif
+# Legende meteo
+humilegend=$DIR_BASE/titoli/urlegend.gif
+windlegend=$DIR_BASE/titoli/wslegend.gif
+rainlegend=$DIR_BASE/titoli/prec24legend.gif
+# Folder legende
+DIR_LEGENDE=$DIR_BASE/legende
+
+#
+########################################
+#                 Oggi                 #
+########################################
+#
+echo "Imposto regione do calcolo"
+g.region -d
+#
+echo "Riproietto mappe meteo di oggi in GB"
+r.proj input=temp location=WGS84 mapset=AIB output=temp method=nearest --o
+r.proj input=humi location=WGS84 mapset=AIB output=humi method=nearest --o
+r.proj input=wind location=WGS84 mapset=AIB output=wind method=nearest --o
+r.proj input=rain location=WGS84 mapset=AIB output=rain method=nearest --o
+#
+########### Temperatura ###########
+echo "Plotto Temperatura $dataoggi"
+# export GRASS_PNGFILE=$tempout1
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$tempout1
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#export GRASS_PNGFILE=$fileoutAOpng2
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+
+r.colors map=temp rules=$DIR_LEGENDE/scala_colori_temp --quiet
+d.rast map=temp
+d.legend raster=temp labelnum=10 at=10,65,0,5
+#d.vect map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+#               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
+#               lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+               
+               
+# d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOoggi/$MESEoggi/$ANNOoggi - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white -font Helvetica-Bold -pointsize 25 \
+        -draw "image over 50,25 0,0 '$tempout1'" \
+	-draw "text 65,225 '°C'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $tempgif1
+#
+
+
+
+######### Umidità Relativa ##########
+echo "Plotto Umidità Relativa $dataoggi"
+#export GRASS_PNGFILE=$humiout1
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$humiout1
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+
+r.colors map=humi rules=$DIR_LEGENDE/scala_colori_ur
+d.rast map=humi
+ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+#d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOoggi/$MESEoggi/$ANNOoggi - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white \
+        -draw "image over 50,25 0,0 '$humiout1'" \
+	-draw "image over 30,240 0,0 '$humilegend'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $humigif1
+#
+
+
+
+######### Velocità Vento ##########
+echo "Plotto Velocità Vento $dataoggi"
+#export GRASS_PNGFILE=$windout1
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$windout1
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+
+# d.mon start=PNG
+# d.mon select=PNG
+r.colors map=wind rules=$DIR_LEGENDE/scala_colori_ws
+d.rast map=wind
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOoggi/$MESEoggi/$ANNOoggi - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white \
+        -draw "image over 50,25 0,0 '$windout1'" \
+	-draw "image over 30,240 0,0 '$windlegend'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $windgif1
+#
+
+
+
+
+######### Precipitazione Tot. ##########
+echo "Plotto Precipitazione Totale $dataoggi"
+# export GRASS_PNGFILE=$rainout1
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$rainout1
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+# d.mon start=PNG
+# d.mon select=PNG
+r.colors map=rain rules=$DIR_LEGENDE/scala_colori_prec24
+d.rast map=rain
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+#d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOoggi/$MESEoggi/$ANNOoggi 12:00 - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white \
+        -draw "image over 50,25 0,0 '$rainout1'" \
+	-draw "image over 30,150 0,0 '$rainlegend'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $raingif1
+#
+
+
+
+
+
+
+########################################
+#               Domani                 #
+########################################
+#
+echo "Riproietto mappe meteo di domani in GB"
+r.proj input=temp2 location=WGS84  mapset=AIB output=temp2 method=nearest --o
+r.proj input=humi2 location=WGS84  mapset=AIB output=humi2 method=nearest --o
+r.proj input=wind2 location=WGS84  mapset=AIB output=wind2 method=nearest --o
+r.proj input=rain2 location=WGS84  mapset=AIB output=rain2 method=nearest --o
+#
+########### Temperatura ###########
+echo "Plotto Temperatura $datadomani"
+#export GRASS_PNGFILE=$tempout2
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$tempout2
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+r.colors map=temp2 rules=$DIR_LEGENDE/scala_colori_temp
+d.rast map=temp2
+d.legend raster=temp labelnum=10 at=10,65,0,5
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Temperatura - $GIORNOdomani/$MESEdomani/$ANNOdomani - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white -font Helvetica-Bold -pointsize 25 \
+        -draw "image over 50,25 0,0 '$tempout2'" \
+	-draw "text 65,225 '°C'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $tempgif2
+#
+######### Umidità Relativa ##########
+echo "Plotto Umidità Relativa $datadomani"
+# export GRASS_PNGFILE=$humiout2
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$humiout2
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+r.colors map=humi2 rules=$DIR_LEGENDE/scala_colori_ur
+d.rast map=humi2
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Umidità Relativa - $GIORNOdomani/$MESEdomani/$ANNOdomani - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white \
+        -draw "image over 50,25 0,0 '$humiout2'" \
+	-draw "image over 30,240 0,0 '$humilegend'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $humigif2
+#
+######### Velocità Vento ##########
+echo "Plotto Velocità Vento $datadomani"
+# export GRASS_PNGFILE=$windout2
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$windout2
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+r.colors map=wind2 rules=$DIR_LEGENDE/scala_colori_ws
+d.rast map=wind2
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Velocità Vento - $GIORNOdomani/$MESEdomani/$ANNOdomani - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white \
+        -draw "image over 50,25 0,0 '$windout2'" \
+	-draw "image over 30,240 0,0 '$windlegend'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $windgif2
+#
+######### Precipitazione Tot. ##########
+echo "Plotto Precipitazione Totale $datadomani"
+# export GRASS_PNGFILE=$rainout2
+export GRASS_RENDER_IMMEDIATE=cairo
+export GRASS_RENDER_FILE=$rainout2
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
+export GRASS_RENDER_TRUECOLOR=TRUE
+export GRASS_RENDER_TRANSPARENT=TRUE
+export GRASS_RENDER_FILE_READ=TRUE
+#d.mon start=PNG --quiet
+#d.mon select=PNG --quiet
+r.colors map=rain2 rules=$DIR_LEGENDE/scala_colori_prec24
+d.rast map=rain2
+d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
+               width=0 wscale=1 color=black fill_color=none label_layer=1 \
+               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+# d.mon stop=PNG
+#
+# Aggiunta titolo
+convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"Prec. Tot. h24 - $GIORNOdomani/$MESEdomani/$ANNOdomani 12:00 - Previsione" $DIR_GRASS/titolometeo.gif
+#
+# Converto in .gif per impaginata finale
+convert -size 800x600 xc:white \
+        -draw "image over 50,25 0,0 '$rainout2'" \
+	-draw "image over 30,150 0,0 '$rainlegend'" \
+        -draw "image over 100,15 0,0 '$DIR_GRASS/titolometeo.gif'" $raingif2
+#

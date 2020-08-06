@@ -28,19 +28,21 @@ rm_old_files="rm {0}/*.dat".format(output_dir)
 p=subprocess.Popen(rm_old_files, stdout=subprocess.PIPE, shell=True)
 out, err = p.communicate() 
 result = out.split('\n')
-
-
-yesterday = datetime.date.today()-datetime.timedelta(hours=int(24))
-
-print("Inizio script run_ascii2grads per la data {0}".format(yesterday))
-
-
-yd=yesterday.strftime("%Y%m%d")
+# modifica per parametro della data:
+# se passo una data come parametro nel formato AAAAMMGG allora il giorno di partenza diventa quello
+if len(sys.argv)>0:
+   dummy_start_data=datetime.datetime.strptime(sys.argv[1],"%Y%m%d")
+   yd=dummy_start_data.strftime("%Y%m%d")
+   print yd
+else:
+   yesterday = datetime.date.today()-datetime.timedelta(hours=int(24))
+   print yesterday
+   yd=yesterday.strftime("%Y%m%d")
 
 
 data_start="{0}12UTCplus1.txt".format(yd)
 
-#print data_start
+print data_start
 
 crea_dummy="python {1}/crea_dummy.py  -s {0} -t 24 -h 1 -p dummy".format(data_start,path_d)
 
@@ -203,4 +205,4 @@ for lin in result:
         print(lin)
 
         
-print("Fine script run_ascii2grads per la data {0}".format(yesterday))
+print("Fine script run_ascii2grads per la data {0}".format(yd))
