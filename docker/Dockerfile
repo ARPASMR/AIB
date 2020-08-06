@@ -1,5 +1,8 @@
 FROM debian:buster-slim
 
+ENV http_proxy="http://meteo:%meteo2010@proxy2.arpa.local:8080"
+ENV https_proxy="https://meteo:%meteo2010@proxy2.arpa.local:8080"
+
 # System update
 RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y update && \
     apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y upgrade
@@ -35,7 +38,11 @@ RUN mkdir -p /fwi/bin
 # copy bash & grass scripts
 COPY scripts /fwi/scripts
 
+# copy fortran code
 COPY src /development
+
+# copy docker entrypoint
+COPY docker-entrypoint.sh /
 
 # scripts permissions
 RUN chmod 755 /fwi/scripts/fwi/fwi_analisi.sh && \
@@ -48,5 +55,5 @@ RUN cd /development/fortran/lib && \
     gfortran  fwigrid_ana_3.01.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
     cp fwigrid_ana /fwi/bin
 
-CMD /bin/bash
+CMD /docker-entrypoint.sh
 
