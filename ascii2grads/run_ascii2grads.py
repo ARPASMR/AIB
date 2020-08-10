@@ -30,7 +30,7 @@ out, err = p.communicate()
 result = out.split('\n')
 # modifica per parametro della data:
 # se passo una data come parametro nel formato AAAAMMGG allora il giorno di partenza diventa quello
-if len(sys.argv)>0:
+if len(sys.argv)>1:
    dummy_start_data=datetime.datetime.strptime(sys.argv[1],"%Y%m%d")
    yd=dummy_start_data.strftime("%Y%m%d")
    print yd
@@ -132,6 +132,10 @@ for lin in result:
 old_file='{0}/tdrh_g.ctl'.format(output_dir)
 new_file='{0}/rhtd_g.ctl'.format(output_dir)
 
+if debug==1:
+    print('new_file={0}'.format(new_file))
+    print('old_file={0}'.format(old_file))
+   
 os.rename(old_file,new_file)
 
 
@@ -158,6 +162,10 @@ for lin in result:
 old_file='{0}/plzln_g.ctl'.format(output_dir)
 new_file='{0}/raintana11_g.ctl'.format(output_dir)
 
+if debug==1:
+    print('new_file={0}'.format(new_file))
+    print('old_file={0}'.format(old_file))
+   
 os.rename(old_file,new_file)
 
 
@@ -184,6 +192,10 @@ for lin in result:
 
 old_file='{0}/CUMplzln_g.ctl'.format(output_dir)
 new_file='{0}/CUMraintana11_g.ctl'.format(output_dir)
+
+if debug==1:
+    print('new_file={0}'.format(new_file))
+    print('old_file={0}'.format(old_file))
 
 os.rename(old_file,new_file)
 
