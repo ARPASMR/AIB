@@ -124,20 +124,6 @@ for lin in result:
         print(lin)
 
 
-#rename file 
-#probabilmente dovuto ad un errore di battitura 
-#il dat e il ctl in questo caso hanno un nome diverso
-#quindi li creaiamo con il nome del dat giusto e poi rinominiamo il ctl che lo richiama
-
-old_file='{0}/tdrh_g.ctl'.format(output_dir)
-new_file='{0}/rhtd_g.ctl'.format(output_dir)
-
-if debug==1:
-    print('new_file={0}'.format(new_file))
-    print('old_file={0}'.format(old_file))
-   
-os.rename(old_file,new_file)
-
 
 #rain
 rain="python {2}/ascii2grads.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -v {0}/precipitazione_IDI/PRIDIW,{0}/precipitazione_IDI/PRIDID -z xpa,xidiw,xidid -o plzln_g -p {0}/grads_file".format(path,data_start,path_d)
@@ -154,21 +140,6 @@ for lin in result:
 
 
 
-#rename file
-#probabilmente dovuto ad un errore di battitura
-#il dat e il ctl in questo caso hanno un nome diverso
-#quindi li creaiamo con il nome del dat giusto e poi rinominiamo il ctl che lo richiama
-
-old_file='{0}/plzln_g.ctl'.format(output_dir)
-new_file='{0}/raintana11_g.ctl'.format(output_dir)
-
-if debug==1:
-    print('new_file={0}'.format(new_file))
-    print('old_file={0}'.format(old_file))
-   
-os.rename(old_file,new_file)
-
-
 
 #rain_cumulata
 rain_cum="python {2}/ascii2grads_cumulata.py  -i {0}/precipitazione/PR_{1} -t 24 -h 1 -z rain -o CUMplzln_g -p {0}/grads_file".format(path,data_start,path_d)
@@ -182,23 +153,6 @@ result = out.split('\n')
 for lin in result:
     if not lin.startswith('#'):
         print(lin)
-
-
-
-#rename file
-#probabilmente dovuto ad un errore di battitura
-#il dat e il ctl in questo caso hanno un nome diverso
-#quindi li creaiamo con il nome del dat giusto e poi rinominiamo il ctl che lo richiama
-
-old_file='{0}/CUMplzln_g.ctl'.format(output_dir)
-new_file='{0}/CUMraintana11_g.ctl'.format(output_dir)
-
-if debug==1:
-    print('new_file={0}'.format(new_file))
-    print('old_file={0}'.format(old_file))
-
-os.rename(old_file,new_file)
-
 
 
 
