@@ -334,7 +334,7 @@ def main():
     else:
         title_output_ctl=title_output
     
-    nomefile_ctl="{0}/{1}.ctl".format(output_path,title_output)
+    nomefile_ctl="{0}/{1}.ctl".format(output_path,title_output_ctl)
     if debug==1:
         print("Inizio a scrivere il file {0}".format(nomefile_ctl))
     data_file_output=data_read_z.strftime("%Y%m%d")
