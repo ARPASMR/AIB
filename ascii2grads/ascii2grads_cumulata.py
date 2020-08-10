@@ -348,8 +348,17 @@ def main():
     ########################################################
     #l'output_path andrebbe reso assoluto anzichè relativo?
     ########################################################
-    
-    nomefile_ctl="{0}/{1}.ctl".format(output_path,title_output)
+     #controllo il titolo e nel caso cambio quello del ctl
+    if title_output=='tdrh_g':
+        title_output_ctl='rhtd_g'
+    elif title_output=='plzln_g':
+        title_output_ctl='raintana11_g'
+    elif title_output=='CUMplzln_g':
+        title_output_ctl='CUMraintana11_g'
+    else:
+        title_output_ctl=title_output
+   
+    nomefile_ctl="{0}/{1}.ctl".format(output_path,title_output_ctl)
     if debug==1:
         print("Inizio a scrivere il file {0}".format(nomefile_ctl))
     data_file_output=data_read_z.strftime("%Y%m%d")
