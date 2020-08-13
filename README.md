@@ -25,7 +25,7 @@ https://drive.google.com/file/d/1301Rr5IztjZ-_Z99DyQ2-e98mDiM7IQu/view?usp=shari
 ## Organizzazione dei file
 L'organizzazione degli script e dei programmi è la seguente (_nota: estratta solo la parte in milanone che corrisponde agli script; i programmi eseguibili e i relativi sorgenti non sono compresi in questo repository_)
 
-**./asci2grads** contiene gli script attualmente presenti su Mediano per convertire i dati da formato ascii a grads e usati per sostituire lo script oi_fwi.sh dalla procedura di calcolo degli indici (GTER srl - 2018)
+**./asci2grads** per gli script ascii2grads attualmente presenti su Mediano usare il repository https://github.com/ARPASMR/ascii2grads
 
 **./script** contiene gli script principali e quello lanciato da crontab
 
