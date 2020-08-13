@@ -25,6 +25,8 @@ RUN mkdir -p /fwi/data/ini && \
     mkdir -p /fwi/data/immagini/prev && \
     mkdir -p /fwi/data/immagini/meteo/ana/archivio && \
     mkdir -p /fwi/data/immagini/meteo/prev/archivio && \
+    mkdir -p /fwi/data/indici/ana && \
+    mkdir -p /fwi/data/indici/prev && \
     mkdir -p /fwi/data/spedizioni && \
     mkdir -p /fwi/data/modelli_vuoti
 
