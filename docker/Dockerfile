@@ -28,7 +28,8 @@ RUN mkdir -p /fwi/data/ini && \
     mkdir -p /fwi/data/indici/ana && \
     mkdir -p /fwi/data/indici/prev && \
     mkdir -p /fwi/data/spedizioni && \
-    mkdir -p /fwi/data/modelli_vuoti
+    mkdir -p /fwi/data/modelli_vuoti && \
+    mkdir -p /fwi/data/geoinfo
 
 # create scripts folder containing bash and grass scripts
 RUN mkdir -p /fwi/scripts/grass_work && \
