@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
-ENV http_proxy="http://meteo:%meteo2010@proxy2.arpa.local:8080"
-ENV https_proxy="https://meteo:%meteo2010@proxy2.arpa.local:8080"
+# ENV http_proxy="http://meteo:%meteo2010@proxy2.arpa.local:8080"
+# ENV https_proxy="https://meteo:%meteo2010@proxy2.arpa.local:8080"
 
 # System update
 RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y update && \

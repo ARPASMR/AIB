@@ -1,3 +1,4 @@
+#!/bin/bash
 
 if [ "$1" == "v" ]; then
   echo "Work with volume"
