@@ -51,12 +51,16 @@ COPY docker-entrypoint.sh /
 RUN chmod 755 /fwi/scripts/fwi/fwi_analisi.sh && \
     chmod 755 /fwi/scripts/grass_work/batch-grass7.sh
 
+# compile libraries, analysis and forecast code
 RUN cd /development/fortran/lib && \
     gfortran -c GrADSlib_new.f90 && \
     gfortran -c calendar.f90 && \
     cd /development/fortran/analysis && \
-    gfortran  fwigrid_ana_3.01.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
-    cp fwigrid_ana /fwi/bin
+    gfortran fwigrid_ana_3.01.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
+    cp fwigrid_ana /fwi/bin && \
+    cd /development/fortran/forecast && \
+    gfortran fwigrid_for_1.31.f90 -o fwigrid_for && \
+    cp fwigrid_for /fwi/bin
 
 CMD /docker-entrypoint.sh
 
