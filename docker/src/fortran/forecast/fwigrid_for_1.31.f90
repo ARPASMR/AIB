@@ -82,7 +82,8 @@ DATA (iFILOC(kk,1), kk=1,6) /107,108,109,110,111,112/
 
 ! percorso della directory di lavoro con "/" finale (quella contenente almeno le directory ini e log, eventualmente anche l'eseguibile fwigrid_for)
 
-sPATH0 = "/home/meteo/programmi/fwi_grid/"
+! sPATH0 = "/home/meteo/programmi/fwi_grid/"
+sPATH0 = "/fwi/data/"
 
 ! rg  modificato: ora sono letti da fwigrid_for.ini
 !  sPATH1 = "/home/meteo/programmi/fwi_grid/indici/ana/"   ! percorso con file indici (input da analisi)

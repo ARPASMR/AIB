@@ -17,6 +17,7 @@ RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y inst
 # create data folder for input & output
 # this folder to be mounted on host or NFS
 RUN mkdir -p /fwi/data/ini && \
+    mkdir -p /fwi/data/log && \
     mkdir -p /fwi/data/meteo/ana && \
     mkdir -p /fwi/data/meteo/prev && \
     mkdir -p /fwi/data/modis_neve && \
