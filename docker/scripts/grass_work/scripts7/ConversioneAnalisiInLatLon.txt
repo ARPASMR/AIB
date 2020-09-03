@@ -19,13 +19,13 @@ AO=AO
 LL=LL
 underscore=_
 #cartella con tutte le legende
-DIR_LEGENDE=$DIR_BASE/legende
+DIR_LEGENDE=$DIR_GRASS/legende
 
 # ini
-filescale=$DIR_BASE/legende/fwiscale.ini
+filescale=$DIR_GRASS/legende/fwiscale.ini
 
-fileoutmask=$DIR_BASE/immagini/ana/$nomeindice$underscore$dataieri$underscore$LL.png
-fileoutAO=$DIR_BASE/immagini/ana/$nomeindice$underscore$AO$underscore$dataieri$underscore$LL.png
+fileoutmask=$DIR_DATA/immagini/ana/$nomeindice$underscore$dataieri$underscore$LL.png
+fileoutAO=$DIR_DATA/immagini/ana/$nomeindice$underscore$AO$underscore$dataieri$underscore$LL.png
 dirgrass=$DIR_GRASS
 #dir_tabella=/home/meteo/programmi/fwi_grid/tabella
 #
@@ -181,7 +181,7 @@ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x s
 #              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 v.label map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
-               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes --quiet
+               color=black rotation=0 width=1 hcolor=none hwidth=2 bgcolor=yellow border=black opaque=yes --quiet
         
 d.labels   label=ao_mean              
 #d.what.vect

@@ -15,9 +15,9 @@
 #
 echo "####################################################"
 echo "START GRASS_WGS84_7Km_II.txt"
- echo "indice: $nomeindice"
- echo "OGGI: $dataoggi"
- echo "DOMANI: $datadomani"
+echo "indice: $nomeindice"
+echo "OGGI: $dataoggi"
+echo "DOMANI: $datadomani"
 #
 MESE=${dataoggi:4:2}
 #
@@ -40,15 +40,17 @@ underscore=_
 primo=_1
 secondo=_2
 LL=LL
-fileinput1=$DIR_BASE/indici/prev/$nomeindice$underscore$LAMI$underscore$dataoggi$primo.txt
-fileinput2=$DIR_BASE/indici/prev/$nomeindice$underscore$LAMI$underscore$datadomani$secondo.txt
-filescale=$DIR_BASE/ini/fwiscale.ini
-fileoutpng1=$DIR_BASE/immagini/prev/$nomeindice$underscore$LL$underscore$dataoggi$primo.png
-fileoutpng2=$DIR_BASE/immagini/prev/$nomeindice$underscore$LL$underscore$datadomani$secondo.png
+
+
+fileinput1=$DIR_DATA/indici/prev/$nomeindice$underscore$LAMI$underscore$dataoggi$primo.txt
+fileinput2=$DIR_DATA/indici/prev/$nomeindice$underscore$LAMI$underscore$datadomani$secondo.txt
+filescale=$DIR_DATA/ini/fwiscale.ini
+fileoutpng1=$DIR_DATA/immagini/prev/$nomeindice$underscore$LL$underscore$dataoggi$primo.png
+fileoutpng2=$DIR_DATA/immagini/prev/$nomeindice$underscore$LL$underscore$datadomani$secondo.png
 #fileoutgif1=$DIR_BASE/immagini/prev/$nomeindice$underscore$dataoggi$primo.gif
 #fileoutgif2=$DIR_BASE/immagini/prev/$nomeindice$underscore$datadomani$secondo.gif
-fileoutAOpng1=$DIR_BASE/immagini/prev/$nomeindice$underscore$LL$underscore$AO$underscore$dataoggi$primo.png
-fileoutAOpng2=$DIR_BASE/immagini/prev/$nomeindice$underscore$LL$underscore$AO$underscore$datadomani$secondo.png
+fileoutAOpng1=$DIR_DATA/immagini/prev/$nomeindice$underscore$LL$underscore$AO$underscore$dataoggi$primo.png
+fileoutAOpng2=$DIR_DATA/immagini/prev/$nomeindice$underscore$LL$underscore$AO$underscore$datadomani$secondo.png
 #fileoutAOlegendagif1=$DIR_BASE/immagini/prev/$nomeindice$underscore$WEB$underscore$dataoggi$primo.gif
 #fileoutAOlegendagif2=$DIR_BASE/immagini/prev/$nomeindice$underscore$WEB$underscore$datadomani$secondo.gif
 dirgrass=$DIR_GRASS
@@ -122,7 +124,7 @@ export GRASS_RENDER_FILE_READ=TRUE
  
 #d.mon start=PNG --quiet
 #d.mon select=PNG --quiet
-r.colors --quiet map=indici_prev1 rules=$DIR_BASE/legende/fwi$underscore$nomeindice$underscore$MESE
+r.colors --quiet map=indici_prev1 rules=$DIR_GRASS/legende/fwi$underscore$nomeindice$underscore$MESE
 d.rast map=indici_prev1 --quiet
 d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fill_color=none label_layer=1 \
@@ -153,7 +155,7 @@ export GRASS_RENDER_FILE_READ=TRUE
  
 #d.mon start=PNG --quiet
 #d.mon select=PNG --quiet
-r.colors --quiet map=indici_prev2 rules=$DIR_BASE/legende/fwi$underscore$nomeindice$underscore$MESE
+r.colors --quiet map=indici_prev2 rules=$DIR_GRASS/legende/fwi$underscore$nomeindice$underscore$MESE
 d.rast map=indici_prev2 --quiet
  d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fill_color=none label_layer=1 \
@@ -264,7 +266,7 @@ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x s
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
-               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+               color=black rotation=0 width=1 hcolor=none hwidth=2 bgcolor=yellow border=black opaque=yes
       
 d.labels   label=ao_mean --quiet              
 #d.what.vect
@@ -329,7 +331,7 @@ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x s
               width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
-               color=black rotation=0 width=1 hcolor=none hwidth=2 background=yellow border=black opaque=yes
+               color=black rotation=0 width=1 hcolor=none hwidth=2 bgcolor=yellow border=black opaque=yes
       
 d.labels   label=ao_mean --quiet              
 #d.what.vect

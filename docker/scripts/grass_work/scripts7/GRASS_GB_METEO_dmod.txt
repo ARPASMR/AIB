@@ -16,16 +16,16 @@ GIORNOieri=${dataieri:6:2}
 #
 underscore=_
 # Paths
-DIR_ANA=$DIR_BASE/meteo/ana
-DIR_ANAME_IMG=$DIR_BASE/immagini/meteo/ana/archivio
-DIR_NEVE_IMG=$DIR_BASE/immagini/meteo/neve
-DIR_ANA_IMG=$DIR_BASE/immagini/ana
-DIR_IMG_PNG=$DIR_BASE/immagini/png
-DIR_INI=$DIR_BASE/ini
+DIR_ANA=$DIR_DATA/meteo/ana
+DIR_ANAME_IMG=$DIR_DATA/immagini/meteo/ana/archivio
+DIR_NEVE_IMG=$DIR_DATA/immagini/meteo/neve
+DIR_ANA_IMG=$DIR_DATA/immagini/ana
+DIR_IMG_PNG=$DIR_DATA/immagini/png
+DIR_INI=$DIR_DATA/ini
 #dir legende (aggiunta GTER)
-DIR_LEGENDE=$DIR_BASE/legende
+DIR_LEGENDE=$DIR_GRASS/legende
 #titoli e accessori (aggiunta GTER)
-DIR_TITOLI=$DIR_BASE/titoli
+DIR_TITOLI=$DIR_GRASS/titoli
 # File input meteo
 tempin=$DIR_ANA/t$underscore$dataieri.txt
 humiin=$DIR_ANA/ur$underscore$dataieri.txt

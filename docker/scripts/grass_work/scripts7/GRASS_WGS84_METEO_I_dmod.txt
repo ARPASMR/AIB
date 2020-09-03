@@ -24,9 +24,9 @@ OGGI=oggi
 DOMANI=domani
 CTRL=ctrl
 # Paths
-DIR_PREVI=$DIR_BASE/meteo/prev
+DIR_PREVI=$DIR_DATA/meteo/prev
 # GTER cambiato percorso - non ha senso mettere questi file nella cartella del GRASSDB 
-DIR_WGS84=$DIR_BASE/meteo/prev/input_reform
+DIR_WGS84=$DIR_DATA/meteo/prev/input_reform
 DIR_GRASS=$DIR_GRASS
 # File ascii meteo in input
 tempascii1=$DIR_PREVI/t$underscore$LAMI$underscore$dataoggi$primo.txt

@@ -21,9 +21,9 @@ underscore=_
 primo=_1
 secondo=_2
 # Paths
-DIR_PREVI=$DIR_BASE/meteo/prev
-DIR_PREVME_IMG=$DIR_BASE/immagini/meteo/prev/archivio
-DIR_IMG_PNG=$DIR_BASE/immagini/png
+DIR_PREVI=$DIR_DATA/meteo/prev
+DIR_PREVME_IMG=$DIR_DATA/immagini/meteo/prev/archivio
+DIR_IMG_PNG=$DIR_DATA/immagini/png
 DIR_GRASS=$DIR_GRASS
 # Mappe PNG grass meteo output
 tempout1=$DIR_IMG_PNG/t$underscore$LAMI$underscore$dataoggi$primo.png
@@ -44,11 +44,11 @@ humigif2=$DIR_PREVME_IMG/ur$underscore$LAMI$underscore$dataoggi$secondo.gif
 windgif2=$DIR_PREVME_IMG/ws$underscore$LAMI$underscore$dataoggi$secondo.gif
 raingif2=$DIR_PREVME_IMG/prec24$underscore$LAMI$underscore$dataoggi$secondo.gif
 # Legende meteo
-humilegend=$DIR_BASE/titoli/urlegend.gif
-windlegend=$DIR_BASE/titoli/wslegend.gif
-rainlegend=$DIR_BASE/titoli/prec24legend.gif
+humilegend=$DIR_GRASS/titoli/urlegend.gif
+windlegend=$DIR_GRASS/titoli/wslegend.gif
+rainlegend=$DIR_GRASS/titoli/prec24legend.gif
 # Folder legende
-DIR_LEGENDE=$DIR_BASE/legende
+DIR_LEGENDE=$DIR_GRASS/legende
 
 #
 ########################################

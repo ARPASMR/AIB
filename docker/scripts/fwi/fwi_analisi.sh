@@ -21,8 +21,8 @@
 #DIR_GRASS=/home/meteo/programmi/grass_work
 
 ## ambiente
-DIR_BASE=/fwi
-DIR_DATA=$DIR_BASE/data
+export DIR_BASE=/fwi
+export DIR_DATA=$DIR_BASE/data
 DIR_IMG=$DIR_DATA/immagini
 DIR_SCRIPTS=$DIR_BASE/scripts
 DIR_BIN=/$DIR_BASE/bin
@@ -44,7 +44,7 @@ DIR_FORMET_IMP=$DIR_IMG/meteo/prev
 DIR_NONFWI_IMG=$DIR_IMG
 DIR_SPEDIZIONI=$DIR_DATA/spedizioni
 DIR_VUOTI=$DIR_DATA/modelli_vuoti
-DIR_GRASS=$DIR_SCRIPTS/grass_work
+export DIR_GRASS=$DIR_SCRIPTS/grass_work
 GRASS_SCRIPTS=$DIR_GRASS/scripts7
 
 BATCH_GRASS=$DIR_GRASS/batch-grass7.sh

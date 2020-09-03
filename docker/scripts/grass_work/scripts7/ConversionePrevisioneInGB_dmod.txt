@@ -33,11 +33,11 @@ nome=GB
 uno=1
 due=2
 # Paths:
-DIR_PREV_IMG=$DIR_BASE/immagini/prev
-DIR_IMG_PNG=$DIR_BASE/immagini/png
+DIR_PREV_IMG=$DIR_DATA/immagini/prev
+DIR_IMG_PNG=$DIR_DATA/immagini/png
 #DIR_GRASS=/home/meteo/programmi/grass_work/scripts
 #
-filescale=$DIR_BASE/legende/fwiscale.ini
+filescale=$DIR_GRASS/legende/fwiscale.ini
 fileout1=$DIR_IMG_PNG/$nomeindice$underscore$nome$underscore$dataoggi$underscore$uno.png
 fileout2=$DIR_IMG_PNG/$nomeindice$underscore$nome$underscore$datadomani$underscore$due.png
 fileoutAO1=$DIR_IMG_PNG/$nomeindice$underscore$AO$underscore$dataoggi$underscore$uno.png
@@ -77,7 +77,7 @@ export GRASS_RENDER_FILE_READ=TRUE
 #export GRASS_PNGFILE=$fileout1
 #d.mon start=PNG --quiet
 #d.mon select=PNG --quiet
-r.colors map=indici_prev1 rules=$DIR_BASE/legende/fwi$underscore$nomeindice$underscore$MESEoggi --quiet
+r.colors map=indici_prev1 rules=$DIR_GRASS/legende/fwi$underscore$nomeindice$underscore$MESEoggi --quiet
 d.rast map=indici_prev1 --quiet
  d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fill_color=none label_layer=1 \
@@ -202,8 +202,8 @@ convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"
 #convert -size 1380x960 xc:white \
 convert -size 700x500 xc:white \
         -draw "image over 100,  25   0,  0 '$fileoutAO1'  "             \
-        -draw "image over  20,150 100,  0 '$DIR_BASE/titoli/label_legenda.gif'" \
-        -draw "image over  20,200 100,  0 '$DIR_BASE/titoli/legenda.png'"       \
+        -draw "image over  20,150 100,  0 '$DIR_GRASS/titoli/label_legenda.gif'" \
+        -draw "image over  20,200 100,  0 '$DIR_GRASS/titoli/legenda.png'"       \
         -draw "image over 100,  0   0,  0 '$DIR_GRASS/titolo.gif'      " $fileoutAO1gif
 #convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
 
@@ -221,7 +221,7 @@ export GRASS_RENDER_FILE_READ=TRUE
 #export GRASS_PNGFILE=$fileout2
 #d.mon start=PNG --quiet
 #d.mon select=PNG --quiet
-r.colors map=indici_prev2 rules=$DIR_BASE/legende/fwi$underscore$nomeindice$underscore$MESEdomani --quiet
+r.colors map=indici_prev2 rules=$DIR_GRASS/legende/fwi$underscore$nomeindice$underscore$MESEdomani --quiet
 d.rast map=indici_prev2 --quiet
  d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fill_color=none label_layer=1 \
@@ -352,8 +352,8 @@ convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"
 #convert -size 1380x960 xc:white \
 convert -size 700x500 xc:white \
         -draw "image over 100,  25   0,  0 '$fileoutAO2'  "             \
-        -draw "image over  20,150 100,  0 '$DIR_BASE/titoli/label_legenda.gif'" \
-        -draw "image over  20,200 100,  0 '$DIR_BASE/titoli/legenda.png'"       \
+        -draw "image over  20,150 100,  0 '$DIR_GRASS/titoli/label_legenda.gif'" \
+        -draw "image over  20,200 100,  0 '$DIR_GRASS/titoli/legenda.png'"       \
         -draw "image over 100,  0   0,  0 '$DIR_GRASS/titolo.gif'      " $fileoutAO2gif
 #convert  $fileoutAOlegendagif -transparent white $fileoutAOlegendagif 
 echo "END ConversionePrevisioneInGB_dmod.txt"
