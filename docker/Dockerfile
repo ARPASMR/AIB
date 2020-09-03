@@ -12,7 +12,7 @@ RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y inst
         g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
         smbclient imagemagick
 
-RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim
+RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim nano
 
 # create data folder for input & output
 # this folder to be mounted on host or NFS

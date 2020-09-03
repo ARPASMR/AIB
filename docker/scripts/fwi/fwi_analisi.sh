@@ -51,7 +51,7 @@ BATCH_GRASS=$DIR_GRASS/batch-grass7.sh
 
 ## fwigrid_ana fortran binary
 FWIGRID_ANA=$DIR_BIN/fwigrid_ana
-
+FWIGRID_FOR=$DIR_BIN/fwigrid_for
 
 
 # Analisi su Ghost Virtuale
@@ -84,6 +84,12 @@ WEBESTUSR=meteo_img
 WEBESTPWD=meteo
 WEBESTWKG=ARPA
 
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++ DEBUG non facciamo analisi
+#if false; then
+
+
 ####################
 # functions
 ####################
@@ -96,7 +102,7 @@ function neve_operativo {
     ##export fileneve=$FILE
     FILEOUT=`echo $FILE | awk -F "." '{print $(NF-1)};'`.txt
     ##export fileoutneve=$FILEOUT
-    echo " passaggio da "$FILE" >> a >> "$FILEOUT
+    echo " passaggio da $FILE  a $FILEOUT "
     #  grass -text $DIR_GRASS/GB/PERMANENT <  $DIR_GRASS/scripts/ConversioneCoperturaNevosa_mod.txt
     ## $DIR_GRASS/batch-grass7.sh GB PERMANENT -file $DIR_GRASS/scripts/ConversioneCoperturaNevosa_mod.txt
 
@@ -105,6 +111,8 @@ function neve_operativo {
   done
 }
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++ DEBUG non facciamo analisi
+#if false; then
 
 
 
@@ -115,12 +123,18 @@ function neve_operativo {
 #count=/tmp/fwi_count
 #end_grassWGS84=$HOME/tmp/end_grassWGS84.txt
 #
-export dataaltroieri=$(date --date='2 day ago' +"%Y%m%d") && echo $dataaltroieri
-export dataieri=$(date --date=yesterday +"%Y%m%d") && echo $dataieri
-export dataoggi=$(date +"%Y%m%d") && echo $dataoggi
-export datadomani=$(date --date=tomorrow +"%Y%m%d") && echo $datadomani
+export dataaltroieri=$(date --date='2 day ago' +"%Y%m%d") && echo "dataaltroieri: " $dataaltroieri
+export dataieri=$(date --date=yesterday +"%Y%m%d") && echo "dataieri: " $dataieri
+export dataoggi=$(date +"%Y%m%d") && echo "dataoggi: " $dataoggi
+export datadomani=$(date --date=tomorrow +"%Y%m%d") && echo "datadomani: " $datadomani
 
 logger - is -p user.notice "Script per il calcolo di FWI iniziato $dataoggi" -t "PREVISORE"
+
+
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++ DEBUG non facciamo analisi
+if false; then
 
 
 ## Inizializza immagini su web-server
@@ -391,10 +405,16 @@ fi
 
 ###	fine esecuzione analisi
 
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++  DEBUG  per non fare analisi
+fi
+
+
+
 ###	eseguo forecast, triggerato da file control
-datacontrologgi=`cat $control|cut -d' ' -f1` && echo $datacontrol
-datacontrolieri=$(date +%Y%m%d --date "$dataoggi -24 hour") && echo $datacontrolieri
-datacontroldomani=$(date +%Y%m%d --date "$dataoggi +24 hour") && echo $datacontroldomani
+datacontrologgi=`cat $control|cut -d' ' -f1` && echo "control: " $control 
+echo "datacontrologgi: " $datacontrologgi
+datacontrolieri=$(date +%Y%m%d --date "$dataoggi -24 hour") && echo "datacontrolieri: " $datacontrolieri
+datacontroldomani=$(date +%Y%m%d --date "$dataoggi +24 hour") && echo "datacontroldomani: " $datacontroldomani
 
 ### controllo se la parte di forecast oggi e' gia' stata eseguita
 if [ -s $end_forecast.$dataoggi ]
@@ -413,7 +433,9 @@ else
       then
 ###	D) FORTRAN PREVISIONE
             echo $dataieri"  "$dataoggi"  "$datadomani > $datafor
-            /home/meteo/programmi/fwi_grid/fwigrid_for_1.4
+            #/home/meteo/programmi/fwi_grid/fwigrid_for_1.4ù
+            #+++++++++++++++++++++++++++++++++++++++++ DEBUG
+            #$FWIGRID_FOR
 
 	    if [ "$?" -ne 0 ]
 	    then
@@ -446,7 +468,8 @@ else
                 echo "GRASS_WGS84_METEO_II  fine ========================================================================="
 
 ###	F) CREO file per compilazione "Vigilanza AIB"	
-            /home/meteo/programmi/fwi_grid/creaxvigaib_2.1
+            #********************************************  verificare il sorgente di creaxvigaib ***************************
+            #/home/meteo/programmi/fwi_grid/creaxvigaib_2.1
 	    if [ "$?" -ne 0 ]
 	    then
 		echo "codice errore di creaxvigaib"

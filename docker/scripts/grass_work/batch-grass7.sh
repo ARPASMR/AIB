@@ -13,8 +13,8 @@
 #------------------------------------------------------------------------------
 
 GISBASE=/usr/lib/grass76               # path to GRASS binaries and libraries
-GISDBASE=$HOME/conversione_GRASS/GRASS7/grass_work  # path to grassdata
-
+#GISDBASE=$HOME/conversione_GRASS/GRASS7/grass_work  # path to grassdata
+GISDBASE=/fwi/scripts/grass_work #path to grassdata 
 
 
 # Nothing to change below (I think)
@@ -71,12 +71,12 @@ EOF
 #------------------------------------------------------------------------------
 if test "$3" = "-file"
 then
-    cat $4 | sh
+    cat $4 | bash
 else
     # strip off the location and mapset,
     shift 2
     # then execute the command which remains:
-    echo "$*" | sh
+    echo "$*" | bash
 fi
 
 
