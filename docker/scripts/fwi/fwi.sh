@@ -53,6 +53,9 @@ BATCH_GRASS=$DIR_GRASS/batch-grass7.sh
 FWIGRID_ANA=$DIR_BIN/fwigrid_ana
 FWIGRID_FOR=$DIR_BIN/fwigrid_for
 
+# initialization files
+FWIGRID_ANA_NMLFILE="fwigrid2020.nl"
+FWIGRID_ANA_NMLPATH=$DIR_INI/$FWIGRID_ANA_NMLFILE
 
 # Analisi su Ghost Virtuale
 WEBSERVER_V_ANA=/var/www/html/prodottimeteo/analisi/fwi
@@ -230,7 +233,11 @@ then
 ## al posto di oi_fwi lanciare fwigrid_ana, con input meteo già disponibile in directory opportuna
 ## prima verifico che ci siano i file di input meteo (attualmente su mediano), se ok fwigrid_ana prende la data da riga di comando, altrimenti stop
 
-	$HOME/script/interpolazione/oi_fwi.sh -s $dataaltroieri"1300" -e $dataieri"1200"
+	# $HOME/script/interpolazione/oi_fwi.sh -s $dataaltroieri"1300" -e $dataieri"1200"
+	altroieriyyyy=${dataaltroieri:0:4}
+	altroierimm=${dataaltroieri:4:2}
+	altroieridd=${dataaltroieri:6:2}
+        $FWIGRID_ANA $DIR_INI $FWIGRID_ANA_NMLPATH $altroieriyyyy $altroierimm $altroieridd
 	if [ $? == 1 ] 
 	then
 		echo "codice errore di oi_fwi.sh"

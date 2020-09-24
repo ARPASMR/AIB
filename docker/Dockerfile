@@ -24,6 +24,7 @@ RUN apt -y install vim nano
 # this folder to be mounted on host or NFS
 RUN mkdir -p /fwi/data/ini && \
     mkdir -p /fwi/data/log && \
+    mkdir -p /fwi/data/meteo_interp_inp && \
     mkdir -p /fwi/data/meteo/ana && \
     mkdir -p /fwi/data/meteo/prev && \
     mkdir -p /fwi/data/modis_neve && \
@@ -48,6 +49,9 @@ RUN mkdir -p /fwi/bin
 # copy bash & grass scripts
 COPY scripts /fwi/scripts
 
+# A usefull alias
+RUN echo "alias ll='ls -al --color=auto'" >> /root/.bashrc
+
 # copy fortran code
 COPY src /development
 
@@ -55,7 +59,7 @@ COPY src /development
 COPY docker-entrypoint.sh /
 
 # scripts permissions
-RUN chmod 755 /fwi/scripts/fwi/fwi_analisi.sh && \
+RUN chmod 755 /fwi/scripts/fwi/fwi.sh && \
     chmod 755 /fwi/scripts/grass_work/batch-grass7.sh
 
 # compile libraries, analysis and forecast code
