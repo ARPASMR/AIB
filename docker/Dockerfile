@@ -4,15 +4,21 @@ FROM debian:buster-slim
 # ENV https_proxy="https://meteo:%meteo2010@proxy2.arpa.local:8080"
 
 # System update
-RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y update && \
-    apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y upgrade
+# RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y update && \
+#     apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y upgrade
+RUN apt -y update && \
+    apt -y upgrade
 
 # Development packages
-RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install \
+# RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install \
+#         g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
+#         smbclient imagemagick
+RUN apt -y install \
         g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
         smbclient imagemagick
 
-RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim nano
+# RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim nano
+RUN apt -y install vim nano
 
 # create data folder for input & output
 # this folder to be mounted on host or NFS
