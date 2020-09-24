@@ -57,7 +57,7 @@ RUN cd /development/fortran/lib && \
     gfortran -c GrADSlib_new.f90 && \
     gfortran -c calendar.f90 && \
     cd /development/fortran/analysis && \
-    gfortran fwigrid_ana_3.01.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
+    gfortran fwigrid_ana_4.0.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
     cp fwigrid_ana /fwi/bin && \
     cd /development/fortran/forecast && \
     gfortran fwigrid_for_1.31.f90 -o fwigrid_for && \
