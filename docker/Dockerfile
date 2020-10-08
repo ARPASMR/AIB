@@ -14,7 +14,7 @@ RUN apt -y update && \
 #         g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
 #         smbclient imagemagick
 RUN apt -y install \
-        g++ gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
+        g++ gdb gfortran grass libboost1.67-all-dev libgfortran-7-dev libgfortran-8-dev \
         smbclient imagemagick
 
 # RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false -y install vim nano
@@ -70,7 +70,7 @@ RUN cd /development/fortran/lib && \
     gfortran fwigrid_ana_4.0.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
     cp fwigrid_ana /fwi/bin && \
     cd /development/fortran/forecast && \
-    gfortran fwigrid_for_1.31.f90 -o fwigrid_for && \
+    gfortran fwigrid_for_1.33.f90 -o fwigrid_for && \
     cp fwigrid_for /fwi/bin
 
 CMD /docker-entrypoint.sh
