@@ -59,7 +59,7 @@ COPY src /development
 COPY docker-entrypoint.sh /
 
 # scripts permissions
-RUN chmod 755 /fwi/scripts/fwi/fwi_analisi.sh && \
+RUN chmod 755 /fwi/scripts/fwi/fwi.sh && \
     chmod 755 /fwi/scripts/grass_work/batch-grass7.sh
 
 # compile libraries, analysis and forecast code
