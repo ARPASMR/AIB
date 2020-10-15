@@ -442,7 +442,7 @@ else
             echo $dataieri"  "$dataoggi"  "$datadomani > $datafor
             #/home/meteo/programmi/fwi_grid/fwigrid_for_1.4ù
             #+++++++++++++++++++++++++++++++++++++++++ DEBUG
-            #$FWIGRID_FOR
+            $FWIGRID_FOR
 
 	    if [ "$?" -ne 0 ]
 	    then

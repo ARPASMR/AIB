@@ -154,7 +154,7 @@ INTEGER       ::  coord(2,NPUNTIMAX)
 INTEGER       ::  isnowper(iMAX_X_DIM,iMAX_Y_DIM),isnowper_lenght,istdby
 CHARACTER     ::  infmt*30,inpath*70,outpath*70,sYYYY*4
 CHARACTER(2)  ::  ihr,ida,imo1,ihri,idai,imoi,sMMM,sDD
-CHARACTER     ::  dum*2,giorno*8,ieri*8,sTEMP*12,iyr*4,iyri*4, asdomar*100
+CHARACTER     ::  dum*2,giorno*8,inizio*8,ieri*8,oggi*8,sTEMP*12,iyr*4,iyri*4, asdomar*100
 CHARACTER(70) ::  sPATH0,sPATH1,sPATH2,sPATH3,sPATHFILEini
 CHARACTER(30) ::  sFILO(6),sFILOC(6), sFILIT(3), sFILINTE(10),sPREFI(10)
 CHARACTER(30) ::  sPRE_TEMP,sPRE_TEMP_IDI,sPRE_RH,sPRE_RH_IDI,sPRE_VELU,sPRE_VELV  
@@ -196,7 +196,7 @@ DATA iFILINTE / 161,162,163,164,165,166,167,168,169,170/
 ! CTL files
 !-----------
 
-REAL    :: rUNDEF_TEMP, rUNDEF_RELH, rUNDEF_WIND, rUNDEF_PIOG, rUNDEF_ORO
+REAL    :: rUNDEF_TEMP, rUNDEF_RELH, rUNDEF_WIND, rUNDEF_PIOG
 INTEGER :: iNTIM, iTINC, iHH, iMM, iDD, iMMM, iYYYY
 INTEGER :: iNTIM_FWI, iTINC_FWI, iHH_FWI, iMM_FWI, iDD_FWI, iMMM_FWI, iYYYY_FWI
 INTEGER :: iNTIMTMP, iTINCTMP, iHHTMP, iMMTMP, iDDTMP, iMMMTMP, iYYYYTMP
@@ -320,6 +320,8 @@ NAMELIST /INPUT/ sPATH0, sPATH1, sPATH2, sPATH3,                 &
 ! [0.1] pointers initialization
 !!  sTITLE_FWI='FWI indexes (fwigrid.f90)'
  iNVARS_FWI=6
+ iNX=174  !! corrisponde a ir
+ iNY=177  !! corrisponde a ic
 !!  iTINC_FWI=1
 !!  ALLOCATE( svABRV_FWI(iNVARS_FWI), svDSCR_FWI(iNVARS_FWI), &
 !!              STAT=iRetCode )
@@ -378,6 +380,10 @@ NAMELIST /INPUT/ sPATH0, sPATH1, sPATH2, sPATH3,                 &
   rvFWIana=rUNDEF_FWI
   ws=rUNDEF
   isciolgo=0
+  rUNDEF_TEMP=rUNDEF
+  rUNDEF_RELH=rUNDEF
+  rUNDEF_WIND=rUNDEF
+  rUNDEF_PIOG=rUNDEF
 
 !===============================================================================
 ! [1] Read command line arguments and Init file
@@ -1102,7 +1108,9 @@ WRITE (*,*) asdomar
   iHH=13
  
  !! RG 2020 Pongo iNTIM=24; vedi se impostarlo da ini in modo generale
-  
+ !    apertura file di log giornaliero
+
+  inizio=sYYYY//sMMM//sDD
   iNTIM=24
 
  Write(*,*) iYYYY,iMMM,iDD,iHH
@@ -1170,7 +1178,11 @@ WRITE (*,*) asdomar
 
     giorno=iyr//imo1//ida
 
-
+    OPEN(13,file=TRIM(sPATH0)//"log/fwigrid_ana_OI_inp_"//inizio//".log",status="unknown",IOSTAT=iRetCode)
+    IF(iRetCode/=0) THEN
+     PRINT *,'fwigrid_ana: error opening file fwigrid_ana_OI_inp.log'
+     STOP 1
+    ENDIF
 
 !! Lettura input meteo interpolati
 !! crea nome file Marta Interpolato (parametro o idi)
@@ -1219,8 +1231,11 @@ write(*,*) asdomar
 !!!	    ENDIF
 
 
-      OPEN(unit=iFILINTE(kop),file=TRIM(sPATH3)//TRIM(sPREFI(kop))//giorno//ihri//sSUB,status='old',IOSTAT=iRetCode)
+!      OPEN(unit=iFILINTE(kop),file=TRIM(sPATH3)//TRIM(sPREFI(kop))//giorno//ihri//sSUB,status='old',IOSTAT=iRetCode)
+      OPEN(unit=iFILINTE(kop),file=asdomar,status='old',IOSTAT=iRetCode)
       IF (iRetCode/=0) THEN
+	    write(*,*) iRetCode
+	    write(*,*) iFILINTE(kop)
         PRINT *,'fwigrid: error opening file <',TRIM(sPREFI(kop))//giorno,'>'
         STOP 1
       ENDIF
@@ -1231,21 +1246,21 @@ write(*,*) asdomar
       READ(iFILINTE(kop),*) sTEMP, rCELLSIZE
       READ(iFILINTE(kop),*) sTEMP, rNODATA
       IF(iCOL.ne.iCOLok.or.iRIG.ne.iRIGok) THEN
-        WRITE(14,*) "Numero righe e\o colonne non corretto nel file "//TRIM(sPREFI(kop))//ieri//'.txt'
+        WRITE(13,*) "Numero righe e\o colonne non corretto nel file "//TRIM(sPREFI(kop))//ieri//'.txt'
         STOP 1
       END IF
       IF(rXLCORN.ne.rXLCORNok.or.rYLCORN.ne.rYLCORNok.or.rCELLSIZE.ne.rCELLSIZEok) THEN
-        WRITE(14,*) "Coordinate e\o passo di griglia non corretti nel file "//TRIM(sPREFI(kop))//ieri//'.txt'
+        WRITE(13,*) "Coordinate e\o passo di griglia non corretti nel file "//TRIM(sPREFI(kop))//ieri//'.txt'
         STOP 1
       END IF
       IF(rNODATA.ne.rUNDEF_FWI) THEN
-        WRITE(14,*) "Codice di dato non valido errato nel file "//TRIM(sPREFI(kop))//ieri//'.txt'
+        WRITE(13,*) "Codice di dato non valido errato nel file "//TRIM(sPREFI(kop))//ieri//'.txt'
         STOP 1
       END IF
       DO ir=1,iRIG
         READ(iFILINTE(kop),*) (rvVALINT(ir,ic), ic=1,iCOL)
       END DO
-	  
+
 	  
       metinte: SELECT CASE (kop)
       CASE (1)
@@ -1254,6 +1269,11 @@ write(*,*) asdomar
          rvTEMP_ANA_GRID(ir,ic)=rvVALINT(ir,ic)
 		END DO 
        END DO
+!!	   DO ir=1,iRIG
+!!        write(13,*) (rvTEMP_ANA_GRID(ir,ic), ic=1,iCOL)
+!!       END DO
+!!	   write(13,*) 
+	  
       CASE (2)
        DO ir=1,iRIG
 	    DO ic=1,iCOL
@@ -1445,7 +1465,7 @@ write(*,*) asdomar
       imo1='0'//imo1
     END IF
 
-    giorno=iyr//imo1//ida
+    oggi=iyr//imo1//ida
 
 ! nota la data corrente corrente iDD1... , calcolo la data di ieri iDD2 ...
 
@@ -1500,7 +1520,11 @@ write(*,*) asdomar
 
     ieri=iyri//imoi//idai
 
-
+    OPEN(14,file=TRIM(sPATH0)//"log/fwigrid_ana"//oggi//".log",status="unknown",IOSTAT=iRetCode)
+    IF(iRetCode/=0) THEN
+     PRINT *,'fwigrid_ana: error opening file fwigrid_ana_'//oggi//'.log'
+     STOP 1
+    ENDIF
 
 ! **************
 
@@ -1517,13 +1541,6 @@ write(*,*) asdomar
     iditot=1
 
 
-!    apertura file di log giornaliero
-
-    OPEN(14,file=TRIM(sPATH0)//"log/fwigrid_ana"//giorno//".log",status="unknown",IOSTAT=iRetCode)
-      IF(iRetCode/=0) THEN
-        PRINT *,'fwigrid_ana: error opening file fwigrid_ana_'//giorno//'.log'
-      STOP 1
-    ENDIF
 
 
 ! lettura file indici e precipitazioni temporanei per i punti con neve al suolo (solo al primo giorno del run)
@@ -1562,7 +1579,9 @@ write(*,*) asdomar
         END IF
         DO ir=1,iRIG
           READ(iFILIT(kk),*) (ind_tmp(ir,ic,kk), ic=1,iCOL)
+		  write(14,*)  (ind_tmp(ir,ic,kk), ic=1,iCOL)
         END DO
+		write(14,*)
         CLOSE(iFILIT(kk))
       END DO
 
@@ -1591,8 +1610,10 @@ write(*,*) asdomar
       END IF
       DO ir=1,iRIG
         READ(94,*) (raincum(ir,ic), ic=1,iCOL)
+		write(14,*) (raincum(ir,ic), ic=1,iCOL)
       END DO
-      CLOSE(94)
+	  write(14,*)
+	  CLOSE(94)
 
     END IF
 
@@ -1628,7 +1649,9 @@ write(*,*) asdomar
       END IF
       DO ir=1,iRIG
         READ(iFILI(kk),*) (rvFWIana(ir,ic,kk), ic=1,iCOL)
+		write(14,*) (rvFWIana(ir,ic,kk), ic=1,iCOL)
       END DO
+	  write(14,*)
       CLOSE(iFILI(kk))
     END DO
 
@@ -1638,9 +1661,9 @@ write(*,*) asdomar
 ! Esempio:  neve_$data.txt = matrice con 2 nei punti con neve, 1 nei punti senza neve, 0 nei punti incerti
 
 
-    OPEN(74,file=TRIM(sPATH2)//"neve_"//giorno//".txt",status="old",IOSTAT=iRetCode)
+    OPEN(74,file=TRIM(sPATH2)//"neve_"//oggi//".txt",status="old",IOSTAT=iRetCode)
     IF (iRetCode/=0) THEN
-      PRINT *,'fwigrid: error opening file neve_'//giorno//'.txt'
+      PRINT *,'fwigrid: error opening file neve_'//oggi//'.txt'
       STOP 1
     ENDIF
     READ(74,*) sTEMP, iCOL
@@ -1650,20 +1673,22 @@ write(*,*) asdomar
     READ(74,*) sTEMP, rCELLSIZE  
     READ(74,*) sTEMP, iNODATA
     IF(iCOL.ne.iCOLok.or.iRIG.ne.iRIGok) THEN
-      WRITE(14,*) "Numero righe e\o colonne non corretto nel file neve_"//giorno//".txt"
+      WRITE(14,*) "Numero righe e\o colonne non corretto nel file neve_"//oggi//".txt"
       STOP 1
     END IF
     IF(rXLCORN.ne.rXLCORNok.or.rYLCORN.ne.rYLCORNok.or.rCELLSIZE.ne.rCELLSIZEok) THEN
-      WRITE(14,*) "Coordinate e\o passo di griglia non corretti nel file neve_"//giorno//".txt"
+      WRITE(14,*) "Coordinate e\o passo di griglia non corretti nel file neve_"//oggi//".txt"
       STOP 1
     END IF
     IF(iNODATA.ne.iUNDEF) THEN
-      WRITE(14,*) "Coordinate e\o passo di griglia non corretti nel file neve_"//giorno//".txt"
+      WRITE(14,*) "Coordinate e\o passo di griglia non corretti nel file neve_"//oggi//".txt"
       STOP 1
     END IF
     DO ir=1,iRIG
       READ(74,*) (iSNOWtod(ir,ic), ic=1,iCOL)  ! (1 se non neve, 2 se neve, 0 se non definito)
-    END DO
+      write(14,*) (iSNOWtod(ir,ic), ic=1,iCOL)
+	END DO
+	write(14,*)
     CLOSE(74)
 
     OPEN(75,file=TRIM(sPATH2)//"neve_"//ieri//".txt",status="old",IOSTAT=iRetCode)
@@ -1691,7 +1716,9 @@ write(*,*) asdomar
     END IF
     DO ir=1,iRIG
       READ(75,*) (iSNOWold(ir,ic), ic=1,iCOL) ! (1 se non neve, 2 se neve, 0 se non definito)
+      write(14,*) (iSNOWold(ir,ic), ic=1,iCOL) ! 
     END DO
+    write(14,*)
     CLOSE(75)
 
 
@@ -1734,7 +1761,9 @@ write(*,*) asdomar
     END IF
     DO ir=1,iRIG
       READ(76,*) (isnowper(ir,ic), ic=1,iCOL)
+	  write(14,*) (isnowper(ir,ic), ic=1,iCOL)
     END DO
+	write(14,*)
     CLOSE(76)
 
 ! lettura file "codice di scioglimento" di ieri (ogni giorno del run)
@@ -1769,7 +1798,9 @@ write(*,*) asdomar
     END IF
     DO ir=1,iRIG
       READ(77,*) (isciolgo(ir,ic), ic=1,iCOL)
+	  write(14,*) (isciolgo(ir,ic), ic=1,iCOL)
     END DO
+	write(14,*)
     CLOSE(77)
 
 ! *********   ciclo sui punti di griglia    ******	 (verificare L'ORDINE DEI PUNTI-INDICI)
@@ -1915,7 +1946,7 @@ write(*,*) asdomar
           IF(ilomb(ir,ic).ne.iUNDEF) THEN
             inorm=1
             WRITE(14,*) "Errore: sottoindici di ieri non definiti! -> indici di oggi invalidi"
-            WRITE(14,*)  "Oggi: ",giorno, "Punto di griglia: ",ir,ic
+            WRITE(14,*)  "Oggi: ",oggi, "Punto di griglia: ",ir,ic
           END IF
           GOTO 40
         END IF
@@ -1928,13 +1959,13 @@ write(*,*) asdomar
 
           IF(ind_tmp(ir,ic,1).eq.rUNDEF_FWI.or.ind_tmp(ir,ic,2).eq.rUNDEF_FWI.or.ind_tmp(ir,ic,3).eq.rUNDEF_FWI) THEN
             WRITE(14,*)  "Errore: valore indefinito nel file indice_tmp di ieri"
-            WRITE(14,*)  "Oggi: ",giorno, "Punto di griglia: ",ir,ic
+            WRITE(14,*)  "Oggi: ",oggi, "Punto di griglia: ",ir,ic
             WRITE(14,*)  "INTERROMPO IL PROGRAMMA"
             STOP 1
           END IF
           IF(raincum(ir,ic).eq.rUNDEF) THEN
             WRITE(14,*)  "Errore: valore indefinito nel file raincum_tmp di ieri"
-            WRITE(14,*)  "Oggi: ",giorno, "Punto di griglia: ",ir,ic
+            WRITE(14,*)  "Oggi: ",oggi, "Punto di griglia: ",ir,ic
             WRITE(14,*)  "INTERROMPO IL PROGRAMMA"
             STOP 1
           END IF
@@ -1958,7 +1989,7 @@ write(*,*) asdomar
 
               IF(ind_tmp(ir,ic,1).eq.rSNOWCODE.or.ind_tmp(ir,ic,2).eq.rSNOWCODE.or.ind_tmp(ir,ic,3).eq.rSNOWCODE) THEN   ! dubbio: qui e' rSNOWCODE o rUNDEF_SNOW, oppure non ind_tmp?
                 WRITE(14,*)  "Errore: codice rSNOWCODE trovato in punto senza neve"
-                WRITE(14,*)  "Oggi: ",giorno, "Punto di griglia: ",ir,ic
+                WRITE(14,*)  "Oggi: ",oggi, "Punto di griglia: ",ir,ic
                 WRITE(14,*)  "INTERROMPO IL PROGRAMMA"
                STOP 1
               END IF
@@ -1983,21 +2014,21 @@ write(*,*) asdomar
               IF(ind_tmp(ir,ic,1).eq.rUNDEF_SNOW.or.(ind_tmp(ir,ic,1).lt.0..or.ind_tmp(ir,ic,1).gt.101.)) THEN
                 fo=rUNDEF_FWI
                 WRITE(14,*) "Errore di corrispondenza nei punti di griglia tra neve e ffmc_tmp -> indici di oggi invalidi"
-                WRITE(14,*)  "Giorno ",giorno, "Punto di griglia: ",ir,ic
+                WRITE(14,*)  "Giorno ",oggi, "Punto di griglia: ",ir,ic
                 inorm=1
                 GOTO 40
               END IF
               IF(ind_tmp(ir,ic,2).eq.rUNDEF_SNOW.or.ind_tmp(ir,ic,2).lt.0.) THEN
                 po=rUNDEF_FWI
                 WRITE(14,*) "Errore di corrispondenza nei punti di griglia tra neve e dmc_tmp -> indici di oggi invalidi"
-                WRITE(14,*)  "Giorno ",giorno, "Punto di griglia: ",ir,ic
+                WRITE(14,*)  "Giorno ",oggi, "Punto di griglia: ",ir,ic
                 inorm=1
                 GOTO 40
               END IF
               IF(ind_tmp(ir,ic,3).eq.rUNDEF_SNOW.or.ind_tmp(ir,ic,3).lt.0.) THEN
                 dot=rUNDEF_FWI
                 WRITE(14,*) "Errore di corrispondenza nei punti di griglia tra neve e dc_tmp -> indici di oggi invalidi"
-                WRITE(14,*)  "Giorno ",giorno, "Punto di griglia: ",ir,ic
+                WRITE(14,*)  "Giorno ",oggi, "Punto di griglia: ",ir,ic
                 inorm=1
                 GOTO 40
               END IF
@@ -2180,6 +2211,8 @@ write(*,*) asdomar
 
 ! verifica presenza dati meteo non validi
 
+!		write(13,*) ir,ic,t,rUNDEF_TEMP,h,rUNDEF_RELH,w,rUNDEF_WIND,r,rUNDEF_PIOG,fo,po,dot
+
         IF(t.eq.rUNDEF_TEMP.or.h.eq.rUNDEF_RELH.or.w.eq.rUNDEF_WIND.or.r.eq.rUNDEF_PIOG) THEN
           mc=rUNDEF_FWI
           ffm=rUNDEF_FWI
@@ -2192,7 +2225,7 @@ write(*,*) asdomar
           IF(ilomb(ir,ic).ne.iUNDEF) THEN
             inorm=1
             WRITE(14,*) "Errore: dati meteo non definiti! -> indici di oggi invalidi"
-            WRITE(14,*)  "Oggi: ",giorno, "Punto di griglia: ",ir,ic
+            WRITE(14,*)  "Oggi: ",oggi, "Punto di griglia: ",ir,ic
           END IF
           GOTO 40
         END IF
@@ -2418,13 +2451,16 @@ write(*,*) asdomar
 !!        rvFWIindexes(ic,(iRIGok+1-ir),5)=bui
 !!        rvFWIindexes(ic,(iRIGok+1-ir),6)=fwi
 
-        rvFWIindexes(ir,ic,1)=ffm
+        write(13,*) ir,ic,ffm,dmc,dc,si,bui,fwi
+		
+		rvFWIindexes(ir,ic,1)=ffm
         rvFWIindexes(ir,ic,2)=dmc
         rvFWIindexes(ir,ic,3)=dc
         rvFWIindexes(ir,ic,4)=si
         rvFWIindexes(ir,ic,5)=bui
         rvFWIindexes(ir,ic,6)=fwi
-
+        write(13,*) ir,ic,rvFWIindexes(ir,ic,1),rvFWIindexes(ir,ic,2),rvFWIindexes(ir,ic,3),rvFWIindexes(ir,ic,4),&
+		rvFWIindexes(ir,ic,5),rvFWIindexes(ir,ic,6)
 
 
 ! **** Assegnazione matrici classi ****
@@ -2632,16 +2668,19 @@ write(*,*) asdomar
 !                                       la sezione di "overwintering"
 !! RG2020 cambio indici interni
     DO kk=1,6
-      OPEN(unit=iFILO(kk),file=TRIM(sPATH1)//TRIM(sFILO(kk))//'grezzi_'//giorno//'.txt',status='unknown')
+      OPEN(unit=iFILO(kk),file=TRIM(sPATH1)//TRIM(sFILO(kk))//'grezzi_'//oggi//'.txt',status='unknown')
       WRITE(iFILO(kk),"(a5,1x,i3)") "ncols", iCOLok
       WRITE(iFILO(kk),"(a5,1x,i3)") "nrows", iRIGok
       WRITE(iFILO(kk),"(a9,1x,f11.3)") "xllcorner", rXLCORN
       WRITE(iFILO(kk),"(a9,1x,f11.3)") "yllcorner", rYLCORN
       WRITE(iFILO(kk),"(a8,1x,f8.3)") "cellsize", rCELLSIZE
       WRITE(iFILO(kk),"(a12,1x,f11.5)") "NODATA_value", rUNDEF_FWI
+
+	  	  
       DO ir=1,iRIGok
 !!        WRITE(iFILO(kk),"((1x,f11.5))") (rvFWIindexes(ic,(iRIGok+1-ir),kk), ic=1,iCOLok)
-        WRITE(iFILO(kk),"((1x,f11.5))") (rvFWIindexes(ir,ic,kk), ic=1,iCOLok)
+        WRITE(iFILO(kk),"(177(1x,f11.5))") (rvFWIindexes(ir,ic,kk), ic=1,iCOLok)
+!!		  WRITE(iFILO(kk),*) (rvFWIindexes(ir,ic,kk), ic=1,iCOLok)
       END DO
       CLOSE(iFILO(kk))
     END DO
@@ -2653,7 +2692,7 @@ write(*,*) asdomar
 !                             N.B. tali valori sono calcolati classificando, mediante il file fwiclassi.ini, i valori ottenuti al punto precedente (ffmc_grezzi).
 
     DO kk=1,6
-      OPEN(unit=iFILOC(kk),file=TRIM(sPATH1)//TRIM(sFILOC(kk))//giorno//'.txt',status='unknown')
+      OPEN(unit=iFILOC(kk),file=TRIM(sPATH1)//TRIM(sFILOC(kk))//oggi//'.txt',status='unknown')
       WRITE(iFILOC(kk),"(a5,1x,i3)") "ncols", iCOLok
       WRITE(iFILOC(kk),"(a5,1x,i3)") "nrows", iRIGok
       WRITE(iFILOC(kk),"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2662,14 +2701,14 @@ write(*,*) asdomar
       WRITE(iFILOC(kk),"(a12,1x,i5)") "NODATA_value", iUNDEF
       DO ir=1,iRIGok
 !!        WRITE(iFILOC(kk),"((1x,i5))") (iFWIind_class(ic,(iRIGok+1-ir),kk), ic=1,iCOLok)
-        WRITE(iFILOC(kk),"((1x,i5))") (iFWIind_class(ir,ic,kk), ic=1,iCOLok)
+        WRITE(iFILOC(kk),"(177(1x,i5))") (iFWIind_class(ir,ic,kk), ic=1,iCOLok)
       END DO
       CLOSE(iFILOC(kk))
     END DO
 
 !  file idi complessivo del giorno corrente
 
-    OPEN(unit=99,file=TRIM(sPATH2)//"IDI_comune_"//giorno//".txt",status='unknown')
+    OPEN(unit=99,file=TRIM(sPATH2)//"IDI_comune_"//oggi//".txt",status='unknown')
     WRITE(99,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(99,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(99,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2677,14 +2716,14 @@ write(*,*) asdomar
     WRITE(99,"(a8,1x,f8.3)") "cellsize", rCELLSIZE
     WRITE(99,"(a12,1x,i5)") "NODATA_value", iUNDEF
     DO ir=1,iRIGok
-      WRITE(99,"((1x,i5))") (iditot(ir,ic), ic=1,iCOLok)
+      WRITE(99,"(177(1x,i5))") (iditot(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(99)
 
 ! file indici temporanei e precipitazioni totali cumulate temporanee: per trattamento "neve al suolo".
 
     DO kk=1,3
-      OPEN(unit=iFILOT(kk),file=TRIM(sPATH1)//TRIM(sFILIT(kk))//giorno//'.txt',status='unknown')
+      OPEN(unit=iFILOT(kk),file=TRIM(sPATH1)//TRIM(sFILIT(kk))//oggi//'.txt',status='unknown')
       WRITE(iFILOT(kk),"(a5,1x,i3)") "ncols", iCOLok
       WRITE(iFILOT(kk),"(a5,1x,i3)") "nrows", iRIGok
       WRITE(iFILOT(kk),"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2692,12 +2731,12 @@ write(*,*) asdomar
       WRITE(iFILOT(kk),"(a8,1x,f8.3)") "cellsize", rCELLSIZE
       WRITE(iFILOT(kk),"(a12,1x,f11.5)") "NODATA_value", rNODATA
       DO ir=1,iRIGok
-        WRITE(iFILOT(kk),"((1x,f11.5))") (ind_tmp(ir,ic,kk), ic=1,iCOLok)
+        WRITE(iFILOT(kk),"(177(1x,f11.5))") (ind_tmp(ir,ic,kk), ic=1,iCOLok)
       END DO
       CLOSE(iFILOT(kk))
     END DO
 
-    OPEN(unit=94,file=TRIM(sPATH2)//"raincum_tmp_"//giorno//'.txt',status='unknown')
+    OPEN(unit=94,file=TRIM(sPATH2)//"raincum_tmp_"//oggi//'.txt',status='unknown')
     WRITE(94,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(94,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(94,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2705,14 +2744,14 @@ write(*,*) asdomar
     WRITE(94,"(a8,1x,f8.3)") "cellsize", rCELLSIZE  
     WRITE(94,"(a12,1x,f7.1)") "NODATA_value", rUNDEF
     DO ir=1,iRIGok
-      WRITE(94,"((1x,f7.1))") (raincum(ir,ic), ic=1,iCOLok)
+      WRITE(94,"(177(1x,f7.1))") (raincum(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(94)
 
 !  file dati meteo in input (per plottaggio mappe con GRASS) 
 !  temperatura
 
-    OPEN(unit=122,file=TRIM(sPATH2)//"t_"//giorno//".txt",status='unknown')
+    OPEN(unit=122,file=TRIM(sPATH2)//"t_"//oggi//".txt",status='unknown')
     WRITE(122,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(122,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(122,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2721,13 +2760,13 @@ write(*,*) asdomar
     WRITE(122,"(a12,1x,f7.1)") "NODATA_value", rUNDEF_TEMP
     DO ir=1,iRIGok
 !!      WRITE(122,"((1x,f7.1))") (rvTEMP_ANA_GRID(ic,(iRIGok+1-ir)), ic=1,iCOLok)
-      WRITE(122,"((1x,f7.1))") (rvTEMP_ANA_GRID(ir,ic), ic=1,iCOLok)
+      WRITE(122,"(177(1x,f7.1))") (rvTEMP_ANA_GRID(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(122)
 
 !  umidita' relativa
 
-    OPEN(unit=123,file=TRIM(sPATH2)//"ur_"//giorno//".txt",status='unknown')
+    OPEN(unit=123,file=TRIM(sPATH2)//"ur_"//oggi//".txt",status='unknown')
     WRITE(123,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(123,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(123,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2736,13 +2775,13 @@ write(*,*) asdomar
     WRITE(123,"(a12,1x,f7.1)") "NODATA_value", rUNDEF_RELH
     DO ir=1,iRIGok
 !! 	    WRITE(123,"((1x,f7.1))") (rvRELH_ANA_GRID(ic,(iRIGok+1-ir)), ic=1,iCOLok)
-      WRITE(123,"((1x,f7.1))") (rvRELH_ANA_GRID(ir,ic), ic=1,iCOLok)
+      WRITE(123,"(177(1x,f7.1))") (rvRELH_ANA_GRID(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(123)
 
 !  velocita' vento
 
-    OPEN(unit=124,file=TRIM(sPATH2)//"ws_"//giorno//".txt",status='unknown')
+    OPEN(unit=124,file=TRIM(sPATH2)//"ws_"//oggi//".txt",status='unknown')
     WRITE(124,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(124,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(124,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2750,13 +2789,13 @@ write(*,*) asdomar
     WRITE(124,"(a8,1x,f8.3)") "cellsize", rCELLSIZE  
     WRITE(124,"(a12,1x,f7.1)") "NODATA_value", rUNDEF_WIND
     DO ir=1,iRIGok
-      WRITE(124,"((1x,f7.1))") (ws(ir,ic), ic=1,iCOLok)
+      WRITE(124,"(177(1x,f7.1))") (ws(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(124)
 
 !  Precipitazioni totali
 
-    OPEN(unit=125,file=TRIM(sPATH2)//"prec24_"//giorno//".txt",status='unknown')
+    OPEN(unit=125,file=TRIM(sPATH2)//"prec24_"//oggi//".txt",status='unknown')
     WRITE(125,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(125,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(125,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2764,7 +2803,7 @@ write(*,*) asdomar
     WRITE(125,"(a8,1x,f8.3)") "cellsize", rCELLSIZE  
     WRITE(125,"(a12,1x,f7.1)") "NODATA_value", rUNDEF_PIOG
     DO ir=1,iRIGok
-      WRITE(125,"((1x,f7.1))") (rvPIOG24_ANA_GRID(ir,ic), ic=1,iCOLok)
+      WRITE(125,"(177(1x,f7.1))") (rvPIOG24_ANA_GRID(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(125)
 
@@ -2787,7 +2826,7 @@ write(*,*) asdomar
 	
 !  file "periodo innevamento" del giorno corrente
 
-    OPEN(unit=78,file=TRIM(sPATH2)//"snowper_"//giorno//".txt",status='unknown')
+    OPEN(unit=78,file=TRIM(sPATH2)//"snowper_"//oggi//".txt",status='unknown')
     WRITE(78,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(78,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(78,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2795,13 +2834,13 @@ write(*,*) asdomar
     WRITE(78,"(a8,1x,f8.3)") "cellsize", rCELLSIZE
     WRITE(78,"(a12,1x,i5)") "NODATA_value", iUNDEF
     DO ir=1,iRIGok
-      WRITE(78,"((1x,i5))") (isnowper(ir,ic), ic=1,iCOLok)
+      WRITE(78,"(177(1x,i5))") (isnowper(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(78)
 
 !  file "codice scioglimento" del giorno corrente
 
-    OPEN(unit=79,file=TRIM(sPATH2)//"isciolgo_"//giorno//".txt",status='unknown')
+    OPEN(unit=79,file=TRIM(sPATH2)//"isciolgo_"//oggi//".txt",status='unknown')
     WRITE(79,"(a5,1x,i3)") "ncols", iCOLok
     WRITE(79,"(a5,1x,i3)") "nrows", iRIGok
     WRITE(79,"(a9,1x,f11.3)") "xllcorner", rXLCORN
@@ -2809,7 +2848,7 @@ write(*,*) asdomar
     WRITE(79,"(a8,1x,f8.3)") "cellsize", rCELLSIZE
     WRITE(79,"(a12,1x,i5)") "NODATA_value", iUNDEF
     DO ir=1,iRIGok
-      WRITE(79,"((1x,i5))") (isciolgo(ir,ic), ic=1,iCOLok)
+      WRITE(79,"(177(1x,i5))") (isciolgo(ir,ic), ic=1,iCOLok)
     END DO
     CLOSE(79)
 
@@ -2823,13 +2862,15 @@ write(*,*) asdomar
     ELSE
       WRITE(14,*) 
       WRITE(14,*) iYYYY1,iMMM1,iDD1,iHH1," Giorno elaborato con errori"
-      WRITE(*,*)  iYYYY1,iMMM1,iDD1,iHH1," Giorno elaborato con errori"
+	  write(*,*)  it
+      WRITE(*,*)  iYYYY1,iMMM1,iDD1,iHH1," Giorno elaborato con errari"
+	  write(*,*)  it
       inorm=0
     END IF
 
     idi=1
+    CLOSE(13) 
     CLOSE(14)
-
 !  DA FARE
 
 !  problema dell'arrotondamento in output: tronco o arrotondare
@@ -2892,16 +2933,17 @@ write(*,*) asdomar
 !-------------------------------------------------------------------------------
 ! [8.3] close files with timesteps information
 
-  CLOSE(101)
-  CLOSE(111)
-  CLOSE(121)
-  CLOSE(131)
-  CLOSE(18)
-  CLOSE(19)
-  CLOSE(20)
-  CLOSE(21)
-  CLOSE(22)
-  CLOSE(31)
+!!  CLOSE(101)
+!!  CLOSE(111)
+!!  CLOSE(121)
+!!  CLOSE(131)
+!!  CLOSE(18)
+!!  CLOSE(19)
+!!  CLOSE(20)
+!!  CLOSE(21)
+!!  CLOSE(22)
+!!  CLOSE(31)
+
 
 !!  Righe seguenti, con !!, commentate RG luglio 2020 *************************************************************
 
