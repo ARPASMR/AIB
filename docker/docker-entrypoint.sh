@@ -2,7 +2,7 @@
 
 facility="FWI"
 
-do_analisys=/fwi/script/fwi.sh
+do_analisys=/fwi/scripts/fwi.sh
 
 errtag="ERROR"
 infotag=" INFO"
