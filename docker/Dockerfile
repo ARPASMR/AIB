@@ -70,7 +70,7 @@ RUN cd /development/fortran/lib && \
     gfortran fwigrid_ana_4.0.f90 ../lib/calendar.o ../lib/GrADSlib_new.o -I../lib -L../lib  -o fwigrid_ana && \
     cp fwigrid_ana /fwi/bin && \
     cd /development/fortran/forecast && \
-    gfortran fwigrid_for_1.33.f90 -o fwigrid_for && \
+    gfortran fwigrid_for_1.34.f90 -o fwigrid_for && \
     cp fwigrid_for /fwi/bin
 
 CMD /docker-entrypoint.sh

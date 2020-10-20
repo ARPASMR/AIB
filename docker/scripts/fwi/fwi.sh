@@ -54,7 +54,7 @@ FWIGRID_ANA=$DIR_BIN/fwigrid_ana
 FWIGRID_FOR=$DIR_BIN/fwigrid_for
 
 # initialization files
-FWIGRID_ANA_NMLFILE="fwigrid2020.nl"
+FWIGRID_ANA_NMLFILE="fwigrid2020.nml"
 FWIGRID_ANA_NMLPATH=$DIR_INI/$FWIGRID_ANA_NMLFILE
 
 # Analisi su Ghost Virtuale
