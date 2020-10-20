@@ -83,7 +83,7 @@ DATA (iFILOC(kk,1), kk=1,6) /107,108,109,110,111,112/
 
 ! percorso della directory di lavoro con "/" finale (quella contenente almeno le directory ini e log, eventualmente anche l'eseguibile fwigrid_for)
 
-sPATH0 = "/home/meteo/programmi/fwi_grid/"
+sPATH0 = "/fwi/data/"
 
 ! rg  modificato: ora sono letti da fwigrid_for.ini
 !  sPATH1 = "/home/meteo/programmi/fwi_grid/indici/ana/"   ! percorso con file indici (input da analisi)
@@ -293,7 +293,7 @@ DO kk=1,3
     PRINT *,'fwigrid: error opening file <',TRIM(sFILO(kk))//Sieri,'>'
     STOP 1
   ENDIF
-  READ(iFILIN(kk),*) 
+  !!!!READ(iFILIN(kk),*) 
   DO nn=1,iNP
     READ(iFILIN(kk),*) lon1,lat1,num,val
     IF(val.eq.rUNDEF_GRAS) THEN
@@ -370,99 +370,99 @@ END DO
 
 !  scrittura file input meteo per controllare 1 volta che la lettura sia corretta!!!! poi commentare
 
-    DO km=1,4
-      sFILICM(km,1)=TRIM(ADJUSTL(sFILICM(km,1)))//Soggi//'_1_ctrl.txt'
-      sFILICM(km,2)=TRIM(ADJUSTL(sFILICM(km,2)))//Soggi//'_2_ctrl.txt'
-    END DO
-
-    DO km=1,4
-      DO kd=1,2
-        OPEN(unit=iFILICM(km,kd),file=TRIM(ADJUSTL(sPATH2))//'ctrl/'//TRIM(sFILICM(km,kd)),status='unknown',IOSTAT=iRetCode)
-        IF (iRetCode/=0) THEN
-          PRINT *,'fwigrid_for: error opening file <',TRIM(sFILICM(km,kd)),'>'
-          STOP 1
-        ENDIF
-        WRITE(iFILICM(km,kd),*)
-        DO ipt=1,iNP
-          WRITE(Sipt,"(i4)") ipt
-          WRITE(Slatrif,"(f7.3)") latrif(ipt)
-          WRITE(Slonrif,"(f7.3)") lonrif(ipt)
-          WRITE(Slatrif2,"(f7.3)") latrif2(ipt)
-          WRITE(Slonrif2,"(f7.3)") lonrif2(ipt)
-          WRITE(Smet,"(f5.1)") met(ipt,km,kd)
-          Sriga=TRIM(ADJUSTL(Sipt))//','//TRIM(ADJUSTL(Slatrif2))//','//TRIM(ADJUSTL(Slonrif2))//','//TRIM(ADJUSTL(Slatrif))//','&
-            //TRIM(ADJUSTL(Slonrif))//','//TRIM(ADJUSTL(Smet))
-
-          WRITE(iFILICM(km,kd),*) TRIM(ADJUSTL(Sriga))
-        END DO
-        CLOSE(iFILICM(km,kd))
-      END DO
-    END DO
+!!    DO km=1,4
+!!      sFILICM(km,1)=TRIM(ADJUSTL(sFILICM(km,1)))//Soggi//'_1_ctrl.txt'
+!!      sFILICM(km,2)=TRIM(ADJUSTL(sFILICM(km,2)))//Soggi//'_2_ctrl.txt'
+!!    END DO
+!!
+!!    DO km=1,4
+!!      DO kd=1,2
+!!        OPEN(unit=iFILICM(km,kd),file=TRIM(ADJUSTL(sPATH2))//'ctrl/'//TRIM(sFILICM(km,kd)),status='unknown',IOSTAT=iRetCode)
+!!        IF (iRetCode/=0) THEN
+!!          PRINT *,'fwigrid_for: error opening file <',TRIM(sFILICM(km,kd)),'>'
+!!          STOP 1
+!!       ENDIF
+!!        WRITE(iFILICM(km,kd),*)
+!!        DO ipt=1,iNP
+!!          WRITE(Sipt,"(i4)") ipt
+!!          WRITE(Slatrif,"(f7.3)") latrif(ipt)
+!!          WRITE(Slonrif,"(f7.3)") lonrif(ipt)
+!!          WRITE(Slatrif2,"(f7.3)") latrif2(ipt)
+!!          WRITE(Slonrif2,"(f7.3)") lonrif2(ipt)
+!!          WRITE(Smet,"(f5.1)") met(ipt,km,kd)
+!!          Sriga=TRIM(ADJUSTL(Sipt))//','//TRIM(ADJUSTL(Slatrif2))//','//TRIM(ADJUSTL(Slonrif2))//','//TRIM(ADJUSTL(Slatrif))//','&
+!!            //TRIM(ADJUSTL(Slonrif))//','//TRIM(ADJUSTL(Smet))
+!!
+!!          WRITE(iFILICM(km,kd),*) TRIM(ADJUSTL(Sriga))
+!!        END DO
+!!        CLOSE(iFILICM(km,kd))
+!!      END DO
+!!    END DO
 
 ! aggiungo 2 file per umidita' relativa
 
-    OPEN(unit=49,file=TRIM(ADJUSTL(sPATH2))//'ctrl/ur_lami_'//Soggi//'_1_ctrl.txt',status='unknown',IOSTAT=iRetCode)
-    IF (iRetCode/=0) THEN
-      PRINT *,'fwigrid_for: error opening file <','ur_lami_'//Soggi,'>'
-      STOP 1
-    ENDIF
-    WRITE(49,"(a18)") "cat,BO,BO1,Y,X,VAL"
-    DO ipt=1,iNP
-      esat_t=(6.1078*exp((17.269388*(met(ipt,1,1)-273.15))/(met(ipt,1,1)-35.86)))
-      esat_td=(6.1078*exp((17.269388*(met(ipt,2,1)-273.15))/(met(ipt,2,1)-35.86)))
-      ur=(esat_td/esat_t)*100
-      WRITE(Sipt,"(i4)") ipt
-      WRITE(Slatrif,"(f7.3)") latrif(ipt)
-      WRITE(Slonrif,"(f7.3)") lonrif(ipt)
-      WRITE(Slatrif2,"(f7.3)") latrif2(ipt)
-      WRITE(Slonrif2,"(f7.3)") lonrif2(ipt)
-      WRITE(Sur,"(f5.1)") ur
-      Sriga=TRIM(ADJUSTL(Sipt))//','//TRIM(ADJUSTL(Slatrif2))//','//TRIM(ADJUSTL(Slonrif2))//','//TRIM(ADJUSTL(Slatrif))//','&
-            //TRIM(ADJUSTL(Slonrif))//','//TRIM(ADJUSTL(Sur))
-
-      WRITE(49,*) TRIM(ADJUSTL(Sriga))
-    END DO
-    CLOSE(49)
-
-    OPEN(unit=50,file=TRIM(ADJUSTL(sPATH2))//'ctrl/ur_lami_'//Soggi//'_2_ctrl.txt',status='unknown',IOSTAT=iRetCode)
-    IF (iRetCode/=0) THEN
-      PRINT *,'fwigrid_for: error opening file <','ur_lami_'//Sdomani,'>'
-      STOP 1
-    ENDIF
-    WRITE(50,*)
-    DO ipt=1,iNP
-      esat_t=(6.1078*exp((17.269388*(met(ipt,1,2)-273.15))/(met(ipt,1,2)-35.86)))
-      esat_td=(6.1078*exp((17.269388*(met(ipt,2,2)-273.15))/(met(ipt,2,2)-35.86)))
-      ur=(esat_td/esat_t)*100
-      WRITE(Sipt,"(i4)") ipt
-      WRITE(Slatrif,"(f7.3)") latrif(ipt)
-      WRITE(Slonrif,"(f7.3)") lonrif(ipt)
-      WRITE(Slatrif2,"(f7.3)") latrif2(ipt)
-      WRITE(Slonrif2,"(f7.3)") lonrif2(ipt)
-      WRITE(Sur,"(f11.5)") ur
-      Sriga=TRIM(ADJUSTL(Sipt))//','//TRIM(ADJUSTL(Slatrif2))//','//TRIM(ADJUSTL(Slonrif2))//','//TRIM(ADJUSTL(Slatrif))//','&
-            //TRIM(ADJUSTL(Slonrif))//','//TRIM(ADJUSTL(Sur))
-
-      WRITE(50,*) TRIM(ADJUSTL(Sriga))
-    END DO
-    CLOSE(50)
+!!    OPEN(unit=49,file=TRIM(ADJUSTL(sPATH2))//'ctrl/ur_lami_'//Soggi//'_1_ctrl.txt',status='unknown',IOSTAT=iRetCode)
+!!    IF (iRetCode/=0) THEN
+!!      PRINT *,'fwigrid_for: error opening file <','ur_lami_'//Soggi,'>'
+!!      STOP 1
+!!    ENDIF
+!!    WRITE(49,"(a18)") "cat,BO,BO1,Y,X,VAL"
+!!    DO ipt=1,iNP
+!!      esat_t=(6.1078*exp((17.269388*(met(ipt,1,1)-273.15))/(met(ipt,1,1)-35.86)))
+!!      esat_td=(6.1078*exp((17.269388*(met(ipt,2,1)-273.15))/(met(ipt,2,1)-35.86)))
+!!      ur=(esat_td/esat_t)*100
+!!      WRITE(Sipt,"(i4)") ipt
+!!      WRITE(Slatrif,"(f7.3)") latrif(ipt)
+!!      WRITE(Slonrif,"(f7.3)") lonrif(ipt)
+!!      WRITE(Slatrif2,"(f7.3)") latrif2(ipt)
+!!      WRITE(Slonrif2,"(f7.3)") lonrif2(ipt)
+!!      WRITE(Sur,"(f5.1)") ur
+!!      Sriga=TRIM(ADJUSTL(Sipt))//','//TRIM(ADJUSTL(Slatrif2))//','//TRIM(ADJUSTL(Slonrif2))//','//TRIM(ADJUSTL(Slatrif))//','&
+!!            //TRIM(ADJUSTL(Slonrif))//','//TRIM(ADJUSTL(Sur))
+!!
+!!      WRITE(49,*) TRIM(ADJUSTL(Sriga))
+!!    END DO
+!!    CLOSE(49)
+!!
+!!    OPEN(unit=50,file=TRIM(ADJUSTL(sPATH2))//'ctrl/ur_lami_'//Soggi//'_2_ctrl.txt',status='unknown',IOSTAT=iRetCode)
+!!    IF (iRetCode/=0) THEN
+!!      PRINT *,'fwigrid_for: error opening file <','ur_lami_'//Sdomani,'>'
+!!      STOP 1
+!!    ENDIF
+!!    WRITE(50,*)
+!!    DO ipt=1,iNP
+!!      esat_t=(6.1078*exp((17.269388*(met(ipt,1,2)-273.15))/(met(ipt,1,2)-35.86)))
+!!      esat_td=(6.1078*exp((17.269388*(met(ipt,2,2)-273.15))/(met(ipt,2,2)-35.86)))
+!!      ur=(esat_td/esat_t)*100
+!!      WRITE(Sipt,"(i4)") ipt
+!!      WRITE(Slatrif,"(f7.3)") latrif(ipt)
+!!      WRITE(Slonrif,"(f7.3)") lonrif(ipt)
+!!      WRITE(Slatrif2,"(f7.3)") latrif2(ipt)
+!!      WRITE(Slonrif2,"(f7.3)") lonrif2(ipt)
+!!      WRITE(Sur,"(f11.5)") ur
+!!      Sriga=TRIM(ADJUSTL(Sipt))//','//TRIM(ADJUSTL(Slatrif2))//','//TRIM(ADJUSTL(Slonrif2))//','//TRIM(ADJUSTL(Slatrif))//','&
+!!            //TRIM(ADJUSTL(Slonrif))//','//TRIM(ADJUSTL(Sur))
+!!
+!!      WRITE(50,*) TRIM(ADJUSTL(Sriga))
+!!    END DO
+!!    CLOSE(50)
 
 
 !!!!!!! *****  scrivere file input indici per controllare 1 volta che la lettura sia corretta!!!! poi commentare
 
-   DO kk=1,3
-     OPEN(unit=iFILICN(kk),file=TRIM(ADJUSTL(sPATH1))//'ctrl/'//TRIM(sFILO(kk))//Sieri//'_ctrl.txt',status='unknown',&
-	      IOSTAT=iRetCode)
-     IF (iRetCode/=0) THEN
-       PRINT *,'fwigrid_for: error opening file <',TRIM(sFILO(kk))//Sieri//'_ctrl','>'
-       STOP 1
-     ENDIF
-     WRITE(iFILICN(kk),*) 
-     DO ipt=1,iNP
-       WRITE(iFILICN(kk),"(i4,3x,4(f7.3,3x),f11.5)") ipt,latrif2(ipt),lonrif2(ipt),latrif(ipt),lonrif(ipt),rvFWIinp(ipt,kk,1)
-     END DO
-     CLOSE(iFILICN(kk))
-   END DO
+!!   DO kk=1,3
+!!!!     OPEN(unit=iFILICN(kk),file=TRIM(ADJUSTL(sPATH1))//'ctrl/'//TRIM(sFILO(kk))//Sieri//'_ctrl.txt',status='unknown',&
+!!	      IOSTAT=iRetCode)
+!!     IF (iRetCode/=0) THEN
+!!       PRINT *,'fwigrid_for: error opening file <',TRIM(sFILO(kk))//Sieri//'_ctrl','>'
+!!       STOP 1
+!!     ENDIF
+!!     WRITE(iFILICN(kk),*) 
+!!!!     DO ipt=1,iNP
+!!       WRITE(iFILICN(kk),"(i4,3x,4(f7.3,3x),f11.5)") ipt,latrif2(ipt),lonrif2(ipt),latrif(ipt),lonrif(ipt),rvFWIinp(ipt,kk,1)
+!!     END DO
+!!     CLOSE(iFILICN(kk))
+!!   END DO
 
 
 ! *********   inizio ciclo sui giorni di previsione   *******
