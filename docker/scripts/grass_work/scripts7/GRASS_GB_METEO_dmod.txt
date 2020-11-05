@@ -76,8 +76,8 @@ r.mapcalc expression="wind=wind/3.6" --o --quiet
 echo "Plotto temperatura $dataieri su file $tempout" 
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$tempout
-export GRASS_RENDER_WIDTH=800
-export GRASS_RENDER_HEIGHT=600
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
 export GRASS_RENDER_TRUECOLOR=TRUE
 export GRASS_RENDER_TRANSPARENT=TRUE
 export GRASS_RENDER_FILE_READ=TRUE
@@ -105,8 +105,8 @@ convert -size 800x600 xc:white -font Helvetica-Bold -pointsize 25 \
 echo "Plotto umidità relativa $dataieri"
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$humiout
-export GRASS_RENDER_WIDTH=800
-export GRASS_RENDER_HEIGHT=600
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
 export GRASS_RENDER_TRUECOLOR=TRUE
 export GRASS_RENDER_TRANSPARENT=TRUE
 export GRASS_RENDER_FILE_READ=TRUE
@@ -133,8 +133,8 @@ convert -size 800x600 xc:white \
 echo "Plotto velocità vento $dataieri"
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$windout
-export GRASS_RENDER_WIDTH=800
-export GRASS_RENDER_HEIGHT=600
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
 export GRASS_RENDER_TRUECOLOR=TRUE
 export GRASS_RENDER_TRANSPARENT=TRUE
 export GRASS_RENDER_FILE_READ=TRUE
@@ -162,8 +162,8 @@ echo "Plotto precipitazione totale $dataieri"
  #export GRASS_PNGFILE=$rainout
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$rainout
-export GRASS_RENDER_WIDTH=800
-export GRASS_RENDER_HEIGHT=600
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
 export GRASS_RENDER_TRUECOLOR=TRUE
 export GRASS_RENDER_TRANSPARENT=TRUE
 export GRASS_RENDER_FILE_READ=TRUE
@@ -195,13 +195,14 @@ echo "Plotto IDI"
  # export GRASS_PNGFILE=$IDIout
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$IDIout
-export GRASS_RENDER_WIDTH=800
-export GRASS_RENDER_HEIGHT=600
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
 export GRASS_RENDER_TRUECOLOR=TRUE
 export GRASS_RENDER_TRANSPARENT=TRUE
 export GRASS_RENDER_FILE_READ=TRUE
 # d.mon start=png output=$IDIout --quiet --overwrite
 # d.mon select=png --quiet
+r.colors map=rain rules=$DIR_LEGENDE/scala_colori_IDI --quiet
 d.rast map=IDI --quiet
 d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
                width=0 wscale=1 color=black fill_color=none  label_layer=1 \
@@ -225,8 +226,8 @@ r.mask vector=AO  --quiet
  #export GRASS_PNGFILE=$snowout
 export GRASS_RENDER_IMMEDIATE=cairo
 export GRASS_RENDER_FILE=$snowout
-export GRASS_RENDER_WIDTH=800
-export GRASS_RENDER_HEIGHT=600
+#export GRASS_RENDER_WIDTH=800
+#export GRASS_RENDER_HEIGHT=600
 export GRASS_RENDER_TRUECOLOR=TRUE
 export GRASS_RENDER_TRANSPARENT=TRUE
 export GRASS_RENDER_FILE_READ=TRUE

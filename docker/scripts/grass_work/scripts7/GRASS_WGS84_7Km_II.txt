@@ -266,8 +266,8 @@ d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $
 #              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fill_color=none label_layer=1 \
-               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+               width=0 wscale=1 color=black fill_color=none label_layer=1  
+#               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
 v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
                color=black rotation=0 width=1 hcolor=none hwidth=2 bgcolor=yellow border=black opaque=yes
       
@@ -334,8 +334,8 @@ d.vect --quiet map=AO type=area display=shape attrcol=FI_mean where="FI_mean > $
 #              width=0 wscale=1 color=black fcolor=200:200:200 rgb_column=GRASSRGB llayer=1 \
 #              lcolor=red bgcolor=none bcolor=none lsize=8 font=romans xref=left yref=center
 d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x size=8 layer=1      \
-               width=0 wscale=1 color=black fill_color=none label_layer=1 \
-               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
+               width=0 wscale=1 color=black fill_color=none label_layer=1 
+#               label_color=red label_bgcolor=none label_bcolor=none label_size=8 font=romans xref=left yref=center
 v.label --quiet map=AO type=centroid layer=1 column=FI_mean labels=ao_mean xoffset=0 yoffset=0 size=4200      \
                color=black rotation=0 width=1 hcolor=none hwidth=2 bgcolor=yellow border=black opaque=yes
       

@@ -104,7 +104,8 @@ r.mapcalc expression="wind=((windA^2)+(windB^2))^0.5" --o --quiet
 #r.mapcalculator amap=windA bmap=windB outfile=wind formula="((A^2)+(B^2))^0.5"
 #
 echo "Calcolo mappa temperatura $dataoggi in °C"
-r.mapcalc expression="temp=temp-273.5" --o --quiet
+# le temperarure sono già in Celsius.. non serve questa riga 
+#r.mapcalc expression="temp=temp-273.5" --o --quiet
 #r.mapcalculator --overwrite amap=temp outfile=temp formula="A-273.15"
 #
 echo "Maschero region con AO"
@@ -169,7 +170,8 @@ r.mapcalc expression="wind2=((wind2A^2)+(wind2B^2))^0.5" --o --quiet
 #r.mapcalculator amap=windA bmap=windB outfile=wind2 formula="((A^2)+(B^2))^0.5"
 #
 echo "Calcolo mappa temperatura $datadomani in °C"
-r.mapcalc expression="temp=temp-273.5" --o --quiet
+# le temperarure sono già in Celsius.. non serve questa riga 
+#r.mapcalc expression="temp=temp-273.5" --o --quiet
 #r.mapcalculator --overwrite amap=temp2 outfile=temp2 formula="A-273.15"
 #
 echo "Calcolo mappa precipitazione $datadomani"
