@@ -122,7 +122,7 @@ g.remove -f type=raster name=indiciout --q
 r.mapcalc expression="indiciout=if(indici_tmp<0,indici_tmp,indici_calc)" --o --quiet
 #r.mapcalculator amap=indici_calc bmap=indici_tmp formula="if(B<0,B,A)" outfile=indiciout --q
 echo "Esportazione in file di testo"
-r.out.gdal format=AAIGrid input=indiciout output=$fileouttxt --q --overwrite
+r.out.gdal nodata=-9999 format=AAIGrid input=indiciout output=$fileouttxt --q --overwrite
 #r.out.arc input=indiciout output=$fileouttxt --q
 
 #
@@ -150,7 +150,7 @@ r.mapcalc expression="indici_IDI_neve_bruc=if(AB>0,indici_IDI_neve,null())" --o 
 #
 g.region -d --q
 echo "esportazione in file di testo"
-r.out.gdal format=AAIGrid input=indici_IDI_neve_bruc output=$fileoutmasktxt --q --overwrite
+r.out.gdal nodata=-9999 format=AAIGrid input=indici_IDI_neve_bruc output=$fileoutmasktxt --q --overwrite
 # r.out.arc input=indici_IDI_neve_bruc output=$fileoutmasktxt --q
 #####################################################################
 #
