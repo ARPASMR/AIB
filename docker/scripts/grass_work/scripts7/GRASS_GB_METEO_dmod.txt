@@ -212,7 +212,7 @@ d.vect --quiet map=AO type=point,line,boundary,face display=shape icon=basic/x s
 convert -background white -fill black -font Helvetica-Bold -pointsize 30 label:"IDI - $GIORNOieri/$MESEieri/$ANNOieri" $DIR_TITOLI/titoloIDI.gif
 #
 # Converto in .gif per impaginata finale
-convert -size 700x500 xc:white \
+convert -size 800x600 xc:white \
         -draw "image over 50,25 0,0 '$IDIout'" \
         -draw "image over 100,0 0,0 '$DIR_TITOLI/titoloIDI.gif'" $IDIgif
 #
